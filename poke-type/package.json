@@ -1,0 +1,22 @@
+{
+  "name": "poke-type",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pinia": "^2.0.33",
+    "vue": "^3.2.25",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.4",
+    "prettier": "2.8.4",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.15",
+    "vue-tsc": "^0.34.7"
+  }
+}

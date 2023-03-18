@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game for Children</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .lpm,
+    .lives {
+      position: absolute;
+      font-size: 20px;
+    }
+
+    .lpm {
+      top: 10px;
+      left: 10px;
+    }
+
+    .lives {
+      top: 40px;
+      left: 10px;
+    }
+
+
+    .word {
+      position: absolute;
+      font-size: 24px;
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      user-select: none;
+    }
+
+    .correct {
+      color: #4caf50;
+    }
+
+    .difficulty-selector {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    ∫ .difficulty-selector button {
+      margin: 0 10px;
+      padding: 5px 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .score {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+    }
+
+    .score button {
+      margin-left: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="lpm">LPM: <span id="lpm">0</span></div>
+  <div class="lives">Lives: <span id="lives">3</span></div>
+
+  <div id="difficulty-selector" class="difficulty-selector">
+    <button onclick="startGame('easy')">Easy</button>
+    <button onclick="startGame('medium')">Medium</button>
+    <button onclick="startGame('hard')">Hard</button>
+    <button onclick="startGame('extreme')">Extreme</button>
+
+
+  </div>
+
+
+  <div class="score">
+    Score: <span id="score">0</span>
+    <button id="restart" onclick="restartGame()" style="display:none; font-size: 20px;">↺</button>
+    <select id="wordListSelect"></select>
+  </div>
+  <div id="game-over" class="game-over" style="display:none;">
+    <div class="message">Game Over! Your score is: <span id="final-score">0</span></div>
+  </div>
+  <script>
+    'use strict';
+
+    let wordLists = {};
+
+    //wordLists = data;
+    fetch('words.json')
+      .then((response) => response.json())
+      .then((data) => {
+        wordLists = data;
+        populateWordListSelect();
+      })
+      .catch((error) => {
+        console.error('Error loading word lists:', error);
+      });
+
+    const defaultLives = 3;
+    let words = ['geen woorden  maar daden'];
+    let activeWord = null;
+    let activeIndex = 0;
+    let score = 0;
+    let difficulty = '';
+    let letterCount = 0;
+    let startTime = null;
+    let lives = defaultLives;
+    let gamePaused = false;
+    let animationInterval = null;
+    const difficulties = {
+      easy: 0.001,
+      medium: 0.002,
+      hard: 0.003,
+      extreme: 0.006,
+    };
+
+    function getRandomWord() {
+      return words[Math.floor(Math.random() * words.length)];
+    }
+
+    function createWordElement(word) {
+      const wordElement = document.createElement('div');
+      wordElement.classList.add('word');
+      wordElement.innerText = word;
+      return wordElement;
+    }
+
+    function updateLpm() {
+      const currentTime = new Date();
+      const minutes = Math.max((currentTime - startTime) / 1000 / 60, 1);
+      const lpm = Math.round(letterCount / minutes);
+      document.getElementById('lpm').innerText = lpm;
+    }
+
+    function updateWordElement(wordElement, word, index) {
+      let innerHTML = '';
+      for (let i = 0; i < word.length; i++) {
+        innerHTML += (i < index) ? `<span class="correct">${word[i]}</span>` : word[i];
+      }
+      wordElement.innerHTML = innerHTML;
+    }
+
+    function startNewWord() {
+      if (activeWord) {
+        const wordElement = document.querySelector('.word');
+        if (wordElement) document.body.removeChild(wordElement);
+      }
+
+      activeWord = getRandomWord();
+      activeIndex = 0;
+      const wordElement = createWordElement(activeWord);
+
+      // Set a random height position for the word
+      const windowHeight = window.innerHeight;
+      const wordHeight = wordElement.offsetHeight;
+      const maxHeight = windowHeight - wordHeight - 100;
+      const randomHeight = Math.floor(Math.random() * maxHeight);
+      wordElement.style.top = `${randomHeight}px`;
+
+      document.body.appendChild(wordElement);
+      animateWord(wordElement);
+    }
+
+    function animateWord(wordElement) {
+      let xPos = 0;
+      const screenWidth = window.innerWidth;
+      const speed = screenWidth * difficulties[difficulty];
+      clearInterval(animationInterval);
+      animationInterval = setInterval(() => {
+        //console.log(wordElement.innerText);
+        if (!gamePaused) {
+          xPos += speed;
+          wordElement.style.left = `${xPos}px`;
+
+          const wordWidth = wordElement.getBoundingClientRect().width;
+
+          if (xPos >= window.innerWidth - wordWidth) {
+            clearInterval(animationInterval);
+            decreaseLives();
+            startNewWord();
+          }
+        }
+      }, 1000 / 60);
+    }
+
+    function handleKeyPress(e) {
+      if (activeWord && activeWord[activeIndex] === e.key && e.key.match(/^[a-zA-Z]$/)) {
+        activeIndex++;
+        letterCount++;
+        updateLpm();
+        if (activeIndex === activeWord.length) {
+          score++;
+          document.getElementById('score').innerText = score;
+
+          startNewWord();
+        } else {
+          const wordElement = document.querySelector('.word');
+          updateWordElement(wordElement, activeWord, activeIndex);
+        }
+      }
+    }
+
+    function startGame(selectedDifficulty) {
+      difficulty = selectedDifficulty;
+      const selectedWordList = document.getElementById('wordListSelect').value;
+      words = wordLists[selectedWordList] || [];
+      startNewWord
+        ();
+      letterCount = 0;
+      startTime = new Date();
+      // Hide the difficulty selector and show the restart button
+      document.getElementById('difficulty-selector').style.display = 'none';
+      document.getElementById('restart').style.display = 'block';
+    }
+
+    function restartGame() {
+      if (activeWord) {
+        const wordElement = document.querySelector('.word');
+        if (wordElement) document.body.removeChild(wordElement);
+      }
+
+      // Reset score
+      score = 0;
+      document.getElementById('score').innerText = score;
+
+      // Reset lives
+      lives = defaultLives;
+      document.getElementById('lives').innerText = lives;
+
+      // Show the difficulty selector and hide the restart button
+      document.getElementById('difficulty-selector').style.display = 'flex';
+      document.getElementById('restart').style.display = 'none';
+      gamePaused = false;
+      document.getElementById('game-over').style.display = 'none';
+    }
+    function populateWordListSelect() {
+      const wordListSelect = document.getElementById('wordListSelect');
+      Object.keys(wordLists).forEach((key) => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.innerText = key;
+        wordListSelect.appendChild(option);
+      });
+    }
+    function decreaseLives() {
+      if (lives > 0) {
+        lives--;
+        document.getElementById('lives').innerText = lives;
+        if (lives === 0) {
+          gameOver();
+        }
+      }
+    }
+
+    function gameOver() {
+      // Display a modal or other in-game element to show the game over message
+      // Replace this with your desired implementation
+      document.getElementById('game-over').style.display = 'block';
+      if (activeWord) {
+        const wordElement = document.querySelector('.word');
+        if (wordElement) document.body.removeChild(wordElement);
+      }
+      activeWord = null;
+      gamePaused = true;
+      document.getElementById('restart').style.display = 'block';
+    }
+
+    document.addEventListener('keypress', handleKeyPress);
+
+  </script>
+</body>
+
+</html>
