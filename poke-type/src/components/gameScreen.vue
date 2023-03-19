@@ -16,7 +16,18 @@
               Score: {{ game.score }}
               <button @click="onRestartButtonClick">↺</button>
             </div>
+          </div>
+        </div>
+      </div>
 
+      <div
+        v-if="game.gameState === 'NewGame'"
+        class="difficulty-selector modal is-active is-clipped"
+      >
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">Kies je moeilijkheid</header>
+          <section class="modal-card-body">
             <select v-model="game.selectedWordList">
               <option
                 v-for="wordList in Object.keys(game.wordLists)"
@@ -26,22 +37,6 @@
                 {{ wordList }}
               </option>
             </select>
-          </div>
-        </div>
-      </div>
-
-      <div
-        v-if="!game.gameStarted"
-        class="difficulty-selector modal is-active is-clipped"
-      >
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">Kies je moeilijkheid</header>
-          <section class="modal-card-body">
-            <span>
-              {{ gameOverText }}
-            </span>
-
             <div class="buttons">
               <button
                 class="button is-info is-light"
@@ -71,7 +66,23 @@
           </section>
         </div>
       </div>
-
+      <div
+        v-if="game.gameState === 'Gameover'"
+        class="difficulty-selector modal is-active is-clipped"
+      >
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">Gameover</header>
+          <section class="modal-card-body">
+            
+            <span> Je score is: {{ game.score }} </span>
+            <br/>
+            <span>
+              <button @click="onRestartButtonClick">↺ Start nieuw spel</button>
+            </span>
+          </section>
+        </div>
+      </div>
       <div
         v-if="game.activeWord"
         :style="{
@@ -92,16 +103,12 @@
 </template>
 
 <script setup lang="ts">
-import {  onMounted, } from "vue";
+import { onMounted } from "vue";
 import { useGameStore } from "../store/game";
 import { computed } from "@vue/reactivity";
 
 const game = useGameStore();
-const gameOverText = computed(() =>
-    game.lives === 0 && game.letterCount > 0
-        ? `Game Over! Je score is: ${game.score}`
-        : ""
-);
+
 onMounted(() => {
   game.loadWordLists();
 });
@@ -137,11 +144,6 @@ document.addEventListener("keypress", onKeyPress);
 .correct {
   color: #4caf50;
 }
-
-/* .difficulty-selector {
-  display: flex;
-  margin-bottom: 20px;
-} */
 
 ∫ .difficulty-selector button {
   margin: 0 10px;

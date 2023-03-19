@@ -1,13 +1,13 @@
 <template>
   <div class="navbar is-fixed-top">
     <div class="navbar-menu">
-      <router-link class="navbar-item"  role="button" to="/shop">
+      <router-link class="navbar-item" role="button" to="/shop">
         <span> 🏪 Pokeball Shop</span>
       </router-link>
-      <router-link class="navbar-item"  role="button" to="/inventory">
+      <router-link class="navbar-item" role="button" to="/inventory">
         <span>🐾 My Pokemons</span>
       </router-link>
-      <router-link class="navbar-item"  role="button" to="/game">
+      <router-link class="navbar-item" role="button" to="/game">
         <span>🎮 Game</span>
       </router-link>
     </div>
@@ -29,7 +29,6 @@ enum Navigation {
 }
 
 const activeScreen = ref<Navigation>(Navigation.game);
-
 </script>
 <style>
 #app {

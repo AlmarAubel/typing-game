@@ -1,7 +1,8 @@
 import { gql, request } from "graphql-request";
 import pokemonsRaw from "../assets/pokemons.json";
-export interface RarityLevel {
-  name: string;
+import { RarityLevel } from "./pokemonUtils";
+export interface RarityLevelRange {
+  name: RarityLevel;
   range: [number, number];
 }
 
@@ -24,27 +25,32 @@ const query = gql`
   }
 `;
 
-const rarityLevels: RarityLevel[] = [
+const rarityLevels: RarityLevelRange[] = [
   { name: "common", range: [200, 255] },
   { name: "uncommon", range: [100, 199] },
   { name: "rare", range: [50, 99] },
   { name: "legendary", range: [0, 49] },
 ];
 
-function determineRarity(captureRate: number): string {
+function determineRarity(captureRate: number): RarityLevel {
   for (const rarity of rarityLevels) {
     const [min, max] = rarity.range;
     if (captureRate >= min && captureRate <= max) {
       return rarity.name;
     }
   }
-  return "unknown";
+  return "common";
 }
 
 function groupPokemonsByRarity(pokemons: Pokemon[]): {
   [key: string]: Pokemon[];
 } {
-  const groupedPokemons: { [key: string]: Pokemon[] } = {};
+  const groupedPokemons: Record<RarityLevel, Pokemon[]> = {
+    common: [],
+    uncommon: [],
+    rare: [],
+    legendary: [],
+  };
 
   pokemons.forEach((pokemon) => {
     const rarity = pokemon.rarity;

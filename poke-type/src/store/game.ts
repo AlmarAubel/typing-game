@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import wordsJson from "../assets/words.json";
 import { usePokemonStore } from "./pokemonStore";
 
+type GameState = "NewGame" | "Running" | "Gameover";
+
 interface State {
   wordLists: Record<string, string[]>;
   selectedWordList: string;
@@ -11,7 +13,7 @@ interface State {
   score: number;
   difficulty: string;
   letterCount: number;
-
+  gameState: GameState;
   startTime: Date | null;
   lives: number;
   gameStarted: boolean;
@@ -37,6 +39,7 @@ export const useGameStore = defineStore("game", {
     score: 0,
     words: ["x"],
     difficulty: "",
+    gameState: "NewGame",
     letterCount: 0,
     startTime: null,
     lives: 3,
@@ -48,7 +51,7 @@ export const useGameStore = defineStore("game", {
       easy: 0.001,
       medium: 0.002,
       hard: 0.003,
-      extreme: 0.006,
+      extreme: 0.016,
     },
   }),
   getters: {
@@ -76,7 +79,7 @@ export const useGameStore = defineStore("game", {
     },
     startGame(selectedDifficulty: string) {
       this.difficulty = selectedDifficulty;
-
+      this.gameState = "Running";
       this.words = this.wordLists[this.selectedWordList] || [];
       this.gameStarted = true;
       this.startNewWord();
@@ -88,6 +91,7 @@ export const useGameStore = defineStore("game", {
       this.score = 0;
       this.lives = 3;
       this.gameStarted = false;
+      this.gameState = "NewGame";
     },
 
     handleKeyPress(key: string) {
@@ -166,6 +170,7 @@ export const useGameStore = defineStore("game", {
       const pokemonStore = usePokemonStore();
       pokemonStore.points += this.score;
       clearInterval(this.animationInterval!);
+      this.gameState = "Gameover";
       this.gameStarted = false;
     },
   },

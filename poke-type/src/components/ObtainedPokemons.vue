@@ -9,8 +9,9 @@
       >
         <h2>{{ pokemon.name }}</h2>
         <img :src="pokemon.imgUrl" :alt="pokemon.name" />
-        <span class="tag" :class="rarityColors[pokemon.rarity!]"> {{ pokemon.rarity }}</span>
-       
+        <span class="tag" :class="rarityColors[pokemon.rarity!]">
+          {{ pokemon.rarity }}</span
+        >
       </div>
     </div>
   </div>
@@ -22,8 +23,7 @@ import { usePokemonStore } from "../store/pokemonStore";
 import { RarityLevel } from "../utils/pokemonUtils";
 const store = usePokemonStore();
 
-
-const rarityColors:Record<RarityLevel, string> = {
+const rarityColors: Record<RarityLevel, string> = {
   common: "is-primary",
   uncommon: "is-warning",
   rare: "is-danger",
