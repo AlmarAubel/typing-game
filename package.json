@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "deploy":"node deploy",
+    "builddeploy": "npm run build && npm run deploy ",
     "preview": "vite preview"
   },
   "dependencies": {
