@@ -9,7 +9,7 @@ export interface Pokemon {
   id: number;
   name: string;
   imgUrl: string;
-  rarity?: string;
+  rarity?: RarityLevel;
 }
 
 const query = gql`

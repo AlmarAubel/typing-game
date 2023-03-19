@@ -25,7 +25,7 @@ export const usePokemonStore = defineStore({
       [PokeballType.ULTRABALL]: 0,
       [PokeballType.MASTERBALL]: 0,
     },
-    points: 100,
+    points: 500,
     obtainedPokemons: [],
   }),
   actions: {

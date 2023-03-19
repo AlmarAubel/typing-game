@@ -1,32 +1,27 @@
 <template>
-  <div class="navbar">
+  <div class="navbar is-fixed-top">
     <div class="navbar-menu">
-      <div class="navbar-item" @click="goToPokeballShop">
-        <!-- <img src="/assets/pokeball-shop.png" alt="Pokeball Shop" /> -->
-
+      <router-link class="navbar-item"  role="button" to="/shop">
         <span> 🏪 Pokeball Shop</span>
-      </div>
-      <div class="navbar-item" @click="goToMyPokemons">
-        <!-- <img src="/assets/my-pokemons.png" alt="My Pokemons" /> -->
+      </router-link>
+      <router-link class="navbar-item"  role="button" to="/inventory">
         <span>🐾 My Pokemons</span>
-      </div>
-      <div class="navbar-item" @click="goToGame">
+      </router-link>
+      <router-link class="navbar-item"  role="button" to="/game">
         <span>🎮 Game</span>
-      </div>
+      </router-link>
     </div>
   </div>
-  <div class="pokemon-app">
-    <pokemon v-if="activeScreen === Navigation.pokeballshop"></pokemon>
-    <game-screen v-if="activeScreen === Navigation.game" />
-    <obtained-pokemons v-if="activeScreen === Navigation.pokemoninventory" />
+
+  <div class="section">
+    <div class="pokemon-app container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
 
-import gameScreen from "./components/gameScreen.vue";
-import pokemon from "./components/pokemon.vue";
-import ObtainedPokemons from "./components/ObtainedPokemons.vue";
 enum Navigation {
   game,
   pokeballshop,
@@ -35,20 +30,6 @@ enum Navigation {
 
 const activeScreen = ref<Navigation>(Navigation.game);
 
-const goToPokeballShop = () => {
-  // Navigeer naar de Pokeball Shop pagina
-  activeScreen.value = Navigation.pokeballshop;
-};
-
-const goToMyPokemons = () => {
-  // Navigeer naar de My Pokemons pagina
-  activeScreen.value = Navigation.pokemoninventory;
-};
-
-const goToGame = () => {
-  // Navigeer naar het Game pagina
-  activeScreen.value = Navigation.game;
-};
 </script>
 <style>
 #app {
@@ -57,9 +38,9 @@ const goToGame = () => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
-body {
+/* body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   display: flex;
@@ -68,5 +49,5 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-}
+} */
 </style>

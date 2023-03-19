@@ -1,59 +1,113 @@
 <template>
-  <div class="game-container">
-    <div class="lpm">LPM: {{ game.calculateLPM() }}</div>
-    <div class="lives">Lives: {{ game.lives }}</div>
+  <div class="fullheight-content hero">
+    <div class="game-container level">
+      <div class="level-left">
+        <div class="columns is-vcentered">
+          <div class="column is-narrow">
+            <div class="lpm">LPM: {{ game.calculateLPM() }}</div>
+            <div class="lives">Lives: {{ game.lives }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="score level-right">
+        <div class="columns is-vcentered">
+          <div class="column is-narrow">
+            <div class="container">
+              Score: {{ game.score }}
+              <button @click="onRestartButtonClick">↺</button>
+            </div>
 
-    <div v-if="!game.gameStarted" class="difficulty-selector">
-      <button @click="onDifficultyButtonClick('easy')">Easy</button>
-      <button @click="onDifficultyButtonClick('medium')">Medium</button>
-      <button @click="onDifficultyButtonClick('hard')">Hard</button>
-      <button @click="onDifficultyButtonClick('extreme')">Extreme</button>
-    </div>
+            <select v-model="game.selectedWordList">
+              <option
+                v-for="wordList in Object.keys(game.wordLists)"
+                :key="wordList"
+                :value="wordList"
+              >
+                {{ wordList }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <div class="score">
-      Score: {{ game.score }}
-      <button @click="onRestartButtonClick">↺</button>
-      <select v-model="game.selectedWordList">
-        <option
-          v-for="wordList in Object.keys(game.wordLists)"
-          :key="wordList"
-          :value="wordList"
+      <div
+        v-if="!game.gameStarted"
+        class="difficulty-selector modal is-active is-clipped"
+      >
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">Kies je moeilijkheid</header>
+          <section class="modal-card-body">
+            <span>
+              {{ gameOverText }}
+            </span>
+
+            <div class="buttons">
+              <button
+                class="button is-info is-light"
+                @click="onDifficultyButtonClick('easy')"
+              >
+                Makkelijk
+              </button>
+              <button
+                class="button is-success is-light"
+                @click="onDifficultyButtonClick('medium')"
+              >
+                Gemiddeld
+              </button>
+              <button
+                class="button is-warning is-light"
+                @click="onDifficultyButtonClick('hard')"
+              >
+                Moeilijk
+              </button>
+              <button
+                class="button is-danger is-light"
+                @click="onDifficultyButtonClick('extreme')"
+              >
+                Extreem
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div
+        v-if="game.activeWord"
+        :style="{
+          top: game.wordTopPosition + 'px',
+          left: game.wordLeftPosition + 'px',
+        }"
+        class="word"
+      >
+        <template
+          v-for="(char, index) in game.activeWord.split('')"
+          :key="index"
         >
-          {{ wordList }}
-        </option>
-      </select>
-    </div>
-
-    <div
-      v-if="game.activeWord"
-      :style="{
-        top: game.wordTopPosition + 'px',
-        left: game.wordLeftPosition + 'px',
-      }"
-      class="word"
-    >
-      <template v-for="(char, index) in game.activeWord.split('')" :key="index">
-        <span :class="{ correct: index < game.activeIndex }">{{ char }}</span>
-      </template>
-    </div>
-
-    <div v-if="game.lives === 0" class="game-over">
-      <div class="message">Game Over! Your score is: {{ game.score }}</div>
+          <span :class="{ correct: index < game.activeIndex }">{{ char }}</span>
+        </template>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import {  onMounted, } from "vue";
 import { useGameStore } from "../store/game";
+import { computed } from "@vue/reactivity";
 
 const game = useGameStore();
-
+const gameOverText = computed(() =>
+    game.lives === 0 && game.letterCount > 0
+        ? `Game Over! Je score is: ${game.score}`
+        : ""
+);
 onMounted(() => {
   game.loadWordLists();
 });
 
 const onDifficultyButtonClick = (difficulty: string) => {
+  game.restartGame();
   game.startGame(difficulty);
 };
 
@@ -71,41 +125,6 @@ document.addEventListener("keypress", onKeyPress);
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.lpm,
-.lives {
-  position: absolute;
-  font-size: 20px;
-}
-
-.lpm {
-  top: 10px;
-  left: 10px;
-}
-
-.lives {
-  top: 40px;
-  left: 10px;
-}
-
 .word {
   position: absolute;
   font-size: 24px;
@@ -119,23 +138,16 @@ body {
   color: #4caf50;
 }
 
-.difficulty-selector {
+/* .difficulty-selector {
   display: flex;
   margin-bottom: 20px;
-}
+} */
 
 ∫ .difficulty-selector button {
   margin: 0 10px;
   padding: 5px 15px;
   font-size: 18px;
   cursor: pointer;
-}
-
-.score {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  font-size: 20px;
 }
 
 .score button {
@@ -155,5 +167,11 @@ body {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+}
+
+.fullheight-content {
+  min-height: calc(
+    100vh - 10rem
+  ); /* Subtract the navbar height (3.25rem by default in Bulma) */
 }
 </style>

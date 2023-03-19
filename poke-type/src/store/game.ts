@@ -21,11 +21,11 @@ interface State {
   difficulties: Record<string, number>;
 }
 
-const pointsMultiplier = {
-  easy: 3,
+const pointsMultiplier: { [key: string]: number } = {
+  easy: 4,
   medium: 2,
   hard: 1,
-  extreme: 0.25,
+  extreme: 1,
 };
 
 export const useGameStore = defineStore("game", {
@@ -99,9 +99,9 @@ export const useGameStore = defineStore("game", {
         this.activeIndex++;
         this.letterCount++;
         if (this.activeIndex === this.activeWord.length) {
-          // const multiplier = pointsMultiplier[this.difficulty];
-          // state.score += 1 * multiplier;
-          this.score += 2;
+          const multiplier = pointsMultiplier[this.difficulty];
+          this.score += 1 * multiplier;
+          //this.score += 2;
           this.startNewWord();
         }
       }
