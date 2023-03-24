@@ -1,177 +1,193 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import wordsJson from "../assets/words.json";
-import { usePokemonStore } from "./pokemonStore";
+import {usePokemonStore} from "./pokemonStore";
+import {useStorage} from '@vueuse/core'
+import {computed, reactive} from "vue";
 
-type GameState = "NewGame" | "Running" | "Gameover";
+type GameState = "NewGame" | "Running" | "Gameover" | "Ended";
 
 interface State {
-  wordLists: Record<string, string[]>;
-  selectedWordList: string;
-  activeWord: string | null;
-  activeIndex: number;
-  words: string[];
-  score: number;
-  difficulty: string;
-  letterCount: number;
-  gameState: GameState;
-  startTime: Date | null;
-  lives: number;
-  gameStarted: boolean;
-  wordTopPosition: number;
-  wordLeftPosition: number;
-  animationInterval: number | null;
-  difficulties: Record<string, number>;
+    wordLists: Record<string, string[]>;
+    selectedWordList: string;
+    activeWord: string | null;
+    activeIndex: number;
+    words: string[];
+    score: number;
+    difficulty: string;
+    letterCount: number;
+    gameState: GameState;
+    startTime: Date | null;
+    lives: number;
+    gameStarted: boolean;
+    wordTopPosition: number;
+    wordLeftPosition: number;
+    animationInterval: number | null;
+    difficulties: Record<string, number>;
 }
 
 const pointsMultiplier: { [key: string]: number } = {
-  easy: 4,
-  medium: 2,
-  hard: 1,
-  extreme: 1,
+    easy: 4,
+    medium: 2,
+    hard: 1,
+    extreme: 1,
 };
 
-export const useGameStore = defineStore("game", {
-  state: (): State => ({
-    wordLists: {},
-    selectedWordList: "AVI-Start-kort",
-    activeWord: null,
-    activeIndex: 0,
-    score: 0,
-    words: ["x"],
-    difficulty: "",
-    gameState: "NewGame",
-    letterCount: 0,
-    startTime: null,
-    lives: 3,
-    gameStarted: false,
-    wordTopPosition: 0,
-    wordLeftPosition: 0,
-    animationInterval: null,
-    difficulties: {
-      easy: 0.001,
-      medium: 0.002,
-      hard: 0.003,
-      extreme: 0.016,
-    },
-  }),
-  getters: {
-    calculateLPM(state): () => number {
-      return () => {
-        if (!state.startTime) return 0;
+export const useGameStore = defineStore("game", () => {
+    const state = reactive<State>({
+        wordLists: {},
+        selectedWordList: "AVI-Start-kort",
+        activeWord: null,
+        activeIndex: 0,
+        score: 0,
+        words: ["x"],
+        difficulty: "",
+        gameState: "NewGame",
+        letterCount: 0,
+        startTime: null,
+        lives: 3,
+        gameStarted: false,
+        wordTopPosition: 0,
+        wordLeftPosition: 0,
+        animationInterval: null,
+        difficulties: {
+            easy: 0.001,
+            medium: 0.002,
+            hard: 0.003,
+            extreme: 0.016,
+        },
+    })
+    const calculateLPM = computed((): number => {
 
-        const currentTime = new Date();
-        const minutes = Math.max(
-          (currentTime.getTime() - state.startTime.getTime()) / 1000 / 60,
-          1
-        );
-        const lpm = Math.round(state.letterCount / minutes);
-        return lpm;
-      };
-    },
-  },
-  actions: {
-    loadWordLists() {
-      this.wordLists = wordsJson;
-      this.selectedWordList = Object.keys(this.wordLists)[0];
-    },
-    selectWordList(selectedWordList: string) {
-      this.selectedWordList = selectedWordList;
-    },
-    startGame(selectedDifficulty: string) {
-      this.difficulty = selectedDifficulty;
-      this.gameState = "Running";
-      this.words = this.wordLists[this.selectedWordList] || [];
-      this.gameStarted = true;
-      this.startNewWord();
-      this.letterCount = 0;
-      this.startTime = new Date();
-    },
+            if (!state.startTime) return 0;
 
-    restartGame() {
-      this.score = 0;
-      this.lives = 3;
-      this.gameStarted = false;
-      this.gameState = "NewGame";
-    },
-
-    handleKeyPress(key: string) {
-      if (
-        this.activeWord &&
-        this.activeWord[this.activeIndex] === key &&
-        key.match(/^[a-zA-Z]$/)
-      ) {
-        this.activeIndex++;
-        this.letterCount++;
-        if (this.activeIndex === this.activeWord.length) {
-          const multiplier = pointsMultiplier[this.difficulty];
-          this.score += 1 * multiplier;
-          //this.score += 2;
-          this.startNewWord();
+            const currentTime = new Date();
+            const minutes = Math.max(
+                (currentTime.getTime() - state.startTime.getTime()) / 1000 / 60,
+                1
+            );
+            const lpm = Math.round(state.letterCount / minutes);
+            return lpm;
         }
-      }
-    },
+    )
+    
+    function loadWordLists() {
+        state.wordLists = wordsJson;
+        state.selectedWordList = Object.keys(state.wordLists)[0];
+    }
+    
+    function selectWordList(selectedWordList: string) {
+        state.selectedWordList = selectedWordList;
+    }
 
-    startNewWord() {
-      if (this.activeWord) {
-        this.removeWordElement();
-      }
+    function startGame(selectedDifficulty: string) {
+        state.difficulty = selectedDifficulty;
+        state.gameState = "Running";
+        state.words = state.wordLists[state.selectedWordList] || [];
+        state.gameStarted = true;
+        startNewWord();
+        state.letterCount = 0;
+        state.startTime = new Date();
+    }
 
-      this.activeWord = this.getRandomWord();
-      this.activeIndex = 0;
+    function restartGame() {
+        state.score = 0;
+        state.lives = 3;
+        state.gameStarted = false;
+        state.gameState = "NewGame";
+    }
 
-      const windowHeight = window.innerHeight;
-      const maxHeight = windowHeight - 100;
-      const randomHeight = Math.floor(Math.random() * maxHeight);
-      this.wordTopPosition = randomHeight;
-
-      this.animateWord();
-    },
-
-    removeWordElement() {
-      clearInterval(this.animationInterval!);
-      this.wordLeftPosition = 0;
-    },
-
-    getRandomWord(): string {
-      return this.words[Math.floor(Math.random() * this.words.length)];
-    },
-
-    animateWord() {
-      const screenWidth = window.innerWidth;
-      const speed = screenWidth * this.difficulties[this.difficulty];
-      clearInterval(this.animationInterval!);
-      this.animationInterval = setInterval(() => {
-        if (!this.gameStarted) {
-          clearInterval(this.animationInterval!);
-          return;
+    function handleKeyPress(key: string) {
+        if (
+            state.activeWord &&
+            state.activeWord[state.activeIndex] === key &&
+            key.match(/^[a-zA-Z]$/)
+        ) {
+            state.activeIndex++;
+            state.letterCount++;
+            if (state.activeIndex === state.activeWord.length) {
+                const multiplier = pointsMultiplier[state.difficulty];
+                state.score += 1 * multiplier;
+                //state.score += 2;
+                startNewWord();
+            }
         }
-        this.wordLeftPosition += speed;
+    }
 
-        const wordWidth = 24 * this.activeWord!.length;
-
-        if (this.wordLeftPosition >= window.innerWidth - wordWidth) {
-          clearInterval(this.animationInterval!);
-          this.decreaseLives();
-          this.startNewWord();
+    function startNewWord() {
+        if (state.activeWord) {
+            removeWordElement();
         }
-      }, 1000 / 60);
-    },
 
-    decreaseLives() {
-      if (this.lives > 0) {
-        this.lives--;
-        if (this.lives === 0) {
-          this.gameOver();
+        state.activeWord = getRandomWord();
+        state.activeIndex = 0;
+
+        const windowHeight = window.innerHeight;
+        const maxHeight = windowHeight - 100;
+        const randomHeight = Math.floor(Math.random() * maxHeight);
+        state.wordTopPosition = randomHeight;
+
+        animateWord();
+    }
+
+    function removeWordElement() {
+        clearInterval(state.animationInterval!);
+        state.wordLeftPosition = 0;
+    }
+
+    function getRandomWord(): string {
+        return state.words[Math.floor(Math.random() * state.words.length)];
+    }
+
+    function animateWord() {
+        const screenWidth = window.innerWidth;
+        const speed = screenWidth * state.difficulties[state.difficulty];
+        clearInterval(state.animationInterval!);
+        state.animationInterval = setInterval(() => {
+            if (!state.gameStarted) {
+                clearInterval(state.animationInterval!);
+                return;
+            }
+            state.wordLeftPosition += speed;
+
+            const wordWidth = 24 * state.activeWord!.length;
+            if (state.wordLeftPosition >= screenWidth - wordWidth) {
+                clearInterval(state.animationInterval!);
+                decreaseLives();
+                startNewWord();
+            }
+        }, 1000 / 60);
+    }
+
+    function decreaseLives() {
+        if (state.lives > 0) {
+            state.lives--;
+            if (state.lives === 0) {
+                gameOver("Gameover");
+            }
         }
-      }
-    },
+    }
 
-    gameOver() {
-      const pokemonStore = usePokemonStore();
-      pokemonStore.points += this.score;
-      clearInterval(this.animationInterval!);
-      this.gameState = "Gameover";
-      this.gameStarted = false;
-    },
-  },
+    function gameOver(reason: "Gameover" | "Ended") {
+        const pokemonStore = usePokemonStore();
+        pokemonStore.addPoints(state.score);
+        clearInterval(state.animationInterval!);
+        state.gameState = reason ?? "Gameover";
+        state.gameStarted = false;
+    }
+    
+    return {
+        state,
+        gameOver,
+        handleKeyPress,
+        restartGame,
+        startGame,
+        selectWordList,
+        loadWordLists,
+        calculateLPM,
+        
+    }
+    
+
 });
+
+

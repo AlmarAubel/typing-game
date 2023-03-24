@@ -3,7 +3,7 @@
   <div class="pokemon-app">
     <div class="header">
       <h1>My Pokemons</h1>
-      <p class="points">Beschikbare punten: {{ store.points }}</p>
+      <p class="points">Beschikbare punten: {{ store.state.points }}</p>
     </div>
     <div class="pokeballs">
       <div
@@ -12,10 +12,10 @@
         class="pokeball"
       >
         <div class="pokeball-image">
-          <img :src="`/assets/${pokeballType}.png`" :alt="pokeballType" />
+          <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" />
         </div>
         <h2>{{ pokeballType }}</h2>
-        <p>Amount: {{ store.pokeballs[pokeballType] }}</p>
+        <p>Amount: {{ store.state.pokeballs[pokeballType] }}</p>
         <button
           class="open-btn"
           @click="() => store.openPokeball(pokeballType)"
@@ -58,7 +58,7 @@ const closeOverlay = () => {
 };
 
 watch(
-  () => store.obtainedPokemons,
+  () => store.state.obtainedPokemons,
   (newPokemons, oldPokemons) => {
     obtainedPokemon.value = newPokemons[newPokemons.length - 1];
   },
@@ -77,7 +77,7 @@ const getPrice = (pokeballType: PokeballType) => {
 };
 
 const canBuy = (pokeballType: PokeballType) => {
-  return store.points >= getPrice(pokeballType);
+  return store.state.points >= getPrice(pokeballType);
 };
 
 const buyPokeball = (pokeballType: PokeballType) => {

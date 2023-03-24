@@ -67,11 +67,11 @@ export async function getPokemon() {
     id: number;
     name: string;
     pokemon_v2_pokemonspecy: { capture_rate: number };
-    pokemon_v2_pokemonsprites: any;
-  }[] = //pokemonsRaw;
-    await request("https://beta.pokeapi.co/graphql/v1beta", query).then(
-      (data: any) => data.pokemon_v2_pokemon
-    );
+    pokemon_v2_pokemonsprites: any;    
+  }[] = pokemonsRaw;
+    // await request("https://beta.pokeapi.co/graphql/v1beta", query).then(
+    //   (data: any) => data.pokemon_v2_pokemon
+    // );
   console.log(JSON.stringify(pokemons));
   const categorizedPokemons: Pokemon[] = pokemons.map((p) => ({
     id: p.id,

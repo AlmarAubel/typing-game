@@ -1,68 +1,85 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import {
-  PokeballType,
-  PokeballChance,
-  pokeballChances,
-  getRandomRarity,
-  getRandomPokemonByRarity,
+    PokeballType,
+    PokeballChance,
+    pokeballChances,
+    getRandomRarity,
+    getRandomPokemonByRarity,
 } from "../utils/pokemonUtils";
-import { Pokemon, getPokemon } from "../utils/pokeDex";
+import {Pokemon, getPokemon} from "../utils/pokeDex";
+import {reactive} from "vue";
+import {RemovableRef, useLocalStorage, useStorage} from "@vueuse/core";
 
 interface PokemonState {
-  pokemons: { [key: string]: Pokemon[] };
-  pokeballs: { [key: string]: number };
-  obtainedPokemons: Pokemon[];
-  points: number;
+    pokemons: { [key: string]: Pokemon[] };
+    pokeballs: RemovableRef<{ [key: string]: number }>
+    obtainedPokemons: Pokemon[];
+    points: number;
 }
 
-export const usePokemonStore = defineStore({
-  id: "pokemon",
-  state: (): PokemonState => ({
-    pokemons: {}, // You'll need to fetch and process the data from the PokeAPI, then set it here
-    pokeballs: {
-      [PokeballType.POKEBALL]: 0,
-      [PokeballType.GREATBALL]: 0,
-      [PokeballType.ULTRABALL]: 0,
-      [PokeballType.MASTERBALL]: 0,
-    },
-    points: 11500,
-    obtainedPokemons: [],
-  }),
-  actions: {
-    async init() {
-      this.pokemons = await getPokemon();
-    },
-    addPoints(points: number) {
-      this.points += points;
-    },
-    setPokemons(pokemons: { [key: string]: Pokemon[] }) {
-      this.pokemons = pokemons;
-    },
-    async obtainPokemon(pokemon: Pokemon) {
-      this.obtainedPokemons.push(pokemon);
-    },
-    usePokeball(pokeballType: PokeballType) {
-      if (this.pokeballs[pokeballType] > 0) {
-        this.pokeballs[pokeballType]--;
-      }
-    },
-    buyPokeball(pokeballType: PokeballType, price: number) {
-      if (this.points >= price) {
-        this.points -= price;
-        this.pokeballs[pokeballType]++;
-      }
-    },
-    openPokeball(pokeballType: PokeballType): void {
-      if (this.pokeballs[pokeballType] > 0) {
-        this.pokeballs[pokeballType]--;
-        const pokeballChance: PokeballChance = pokeballChances[pokeballType];
-        const rarity: string = getRandomRarity(pokeballChance);
-        const pokemon: Pokemon = getRandomPokemonByRarity(
-          this.pokemons,
-          rarity
-        );
-        this.obtainPokemon(pokemon);
-      }
-    },
-  },
+export const usePokemonStore = defineStore("pokemon", () => {
+    
+    const state = reactive<PokemonState>({
+        pokemons: {}, // You'll need to fetch and process the data from the PokeAPI, then set it here
+        pokeballs: useLocalStorage('pokeballs', {
+            [PokeballType.POKEBALL]: 0,
+            [PokeballType.GREATBALL]: 0,
+            [PokeballType.ULTRABALL]: 0,
+            [PokeballType.MASTERBALL]: 0,
+        }),
+        points: 11500,
+        obtainedPokemons: [],
+    })
+    
+
+
+    async function init() {
+        state.pokemons = await getPokemon();
+    }
+    
+    function addPoints(points: number) {
+        state.points += points;
+    }
+    function setPokemons(pokemons: { [key: string]: Pokemon[] }) {
+        state.pokemons = pokemons;
+    }
+
+    function obtainPokemon(pokemon: Pokemon) {
+        state.obtainedPokemons.push(pokemon);
+    }
+
+    function usePokeball(pokeballType: PokeballType) {
+        if (state.pokeballs[pokeballType] > 0) {
+            state.pokeballs[pokeballType]--;
+        }
+    }
+
+    function buyPokeball(pokeballType: PokeballType, price: number) {
+        if (state.points >= price) {
+            state.points -= price;
+            state.pokeballs[pokeballType]++;
+        }
+    }
+
+    function openPokeball(pokeballType: PokeballType): void {
+        if (state.pokeballs[pokeballType] > 0) {
+            state.pokeballs[pokeballType]--;
+            const pokeballChance: PokeballChance = pokeballChances[pokeballType];
+            const rarity: string = getRandomRarity(pokeballChance);
+            const pokemon: Pokemon = getRandomPokemonByRarity(
+                state.pokemons,
+                rarity
+            );
+            obtainPokemon(pokemon);
+        }
+    }
+    return{
+        state,
+        init,
+        openPokeball,
+        buyPokeball,
+        setPokemons,
+        addPoints,
+        usePokeball
+    }
 });

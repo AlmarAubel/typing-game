@@ -3,13 +3,13 @@
     <h1>Obtained Pokemons</h1>
     <div class="pokemon-grid">
       <div
-        v-for="pokemon in store.obtainedPokemons"
+        v-for="pokemon in store.state.obtainedPokemons"
         :key="pokemon.id"
         class="pokemon-card"
       >
         <h2>{{ pokemon.name }}</h2>
         <img :src="pokemon.imgUrl" :alt="pokemon.name" />
-        <span class="tag" :class="rarityColors[pokemon.rarity!]">
+        <span class="tag" :class="rarityColors[pokemon.rarity]">
           {{ pokemon.rarity }}</span
         >
       </div>
@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { usePokemonStore } from "../store/pokemonStore";
 import { RarityLevel } from "../utils/pokemonUtils";
 const store = usePokemonStore();
@@ -45,10 +44,6 @@ const rarityColors: Record<RarityLevel, string> = {
   padding: 1rem;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.pokemon-types {
-  margin-top: 0.5rem;
 }
 
 .pokemon-types span {

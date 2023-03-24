@@ -1,17 +1,5 @@
 <template>
-  <div class="navbar is-fixed-top">
-    <div class="navbar-menu">
-      <router-link class="navbar-item" role="button" to="/shop">
-        <span> 🏪 Pokeball Shop</span>
-      </router-link>
-      <router-link class="navbar-item" role="button" to="/inventory">
-        <span>🐾 My Pokemons</span>
-      </router-link>
-      <router-link class="navbar-item" role="button" to="/game">
-        <span>🎮 Game</span>
-      </router-link>
-    </div>
-  </div>
+  <main-navigation/>
 
   <div class="section">
     <div class="pokemon-app container">
@@ -20,7 +8,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref} from "vue";
+import MainNavigation from "./MainNavigation.vue";
 
 enum Navigation {
   game,
