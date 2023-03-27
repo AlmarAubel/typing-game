@@ -28,7 +28,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("/WoordRazernij"),
+  history: createWebHistory(),
   routes,
 });
 
