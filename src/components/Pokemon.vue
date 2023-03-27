@@ -11,8 +11,7 @@
         :key="pokeballType"
         class="pokeball"
       >
-        <div class="pokeball-image">
-          <img :src="getImgUrl(pokeballType)"/>
+        <div class="pokeball-image">          
           <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" />
         </div>
         <h2>{{ pokeballType }}</h2>
