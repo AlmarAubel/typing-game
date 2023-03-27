@@ -50,9 +50,9 @@ export const useGameStore = defineStore("game", () => {
         wordLeftPosition: 0,
         animationInterval: null,
         difficulties: {
-            easy: 0.001,
-            medium: 0.002,
-            hard: 0.003,
+            easy: 0.0005,
+            medium: 0.001,
+            hard: 0.002,
             extreme: 0.016,
         },
     })

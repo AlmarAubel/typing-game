@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Obtained Pokemons</h1>
+    <h1>Obtained Pokemons ({{store.state.obtainedPokemons.length}})</h1>
     <div class="pokemon-grid">
       <div
         v-for="pokemon in store.state.obtainedPokemons"

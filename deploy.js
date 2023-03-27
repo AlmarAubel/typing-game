@@ -14,6 +14,7 @@ const config = {
   remoteRoot: process.env.FTP_REMOTE_PATH,
   include: ["*"],
   deleteRemote: true,
+  sftp: true,
 };
 
 ftpDeploy

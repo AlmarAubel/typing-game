@@ -20,7 +20,6 @@
     "uil",
     "vos",
     "wip",
-    "xant",
     "yin",
     "zee",
     "aap",
@@ -107,10 +106,7 @@
     "wasje",
     "wasje",
     "wasbak",
-    "waszak",
-    "fietsbel",
-    "pietsen",
-    "kietelen"
+    "waszak"
   ],
   "AVI-M3": [
     "hond",
@@ -159,7 +155,10 @@
     "stoelgang",
     "vogelnest",
     "vuurtoren",
-    "walvis"
+    "walvis",
+    "fietsbel",
+    "pietsen",
+    "kietelen"
   ],
   "AVI-E3": [
     "schilderij",

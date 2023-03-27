@@ -63,6 +63,7 @@ function groupPokemonsByRarity(pokemons: Pokemon[]): {
   return groupedPokemons;
 }
 export async function getPokemon() {
+  // @ts-ignore
   const pokemons: {
     id: number;
     name: string;

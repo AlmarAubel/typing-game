@@ -12,6 +12,7 @@
         class="pokeball"
       >
         <div class="pokeball-image">
+          <img :src="getImgUrl(pokeballType)"/>
           <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" />
         </div>
         <h2>{{ pokeballType }}</h2>
@@ -48,7 +49,7 @@ import { usePokemonStore } from "../store/pokemonStore";
 import { PokeballType } from "../utils/pokemonUtils";
 
 import { Pokemon, getPokemon } from "../utils/pokeDex";
-
+const getImgUrl = (pokeballType:string)=> new URL(`../assets/${pokeballType}.png`, import.meta.url).href;
 const store = usePokemonStore();
 const obtainedPokemon = ref<Pokemon>();
 

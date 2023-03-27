@@ -44,7 +44,7 @@
             </select>
             <div>
               Spel duur in seconden
-              <input :value="gameDuration" @input="event=>gameDuration= event.target.value"/>
+              <input :value="gameDuration" @input="(event:any) =>gameDuration= event.target.value"/>
             </div>
             <div>
               <button class="button is-primary" @click="toggleOnscreenKeyboard()">               
@@ -126,7 +126,7 @@ import OnScreenKeyboardToggle from "./OnScreenKeyboardToggle.vue";
 import {useToggle} from "@vueuse/core";
 
 const game = useGameStore();
-const gameDuration = ref<number>(60);
+const gameDuration = ref<number>(120);
 const gameDurationMs = computed(() => gameDuration.value * 1000);
 const {timeLeft,  start} = useTimeoutTimer(gameDurationMs, gameEnded);
 const [useOnscreenKeyboard, toggleOnscreenKeyboard] = useToggle()
