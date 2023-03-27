@@ -14,7 +14,8 @@
         </ul>
        
         <p class="section">
-          In WoordRazernij krijg je de kans om je typevaardigheden te testen en verbeteren. Kies een moeilijkheidsgraad die bij jouw vaardigheden past en typ de woorden die op het scherm verschijnen zo snel mogelijk. Hoe sneller je typt, hoe meer punten je verdient. Met deze punten kun je Pokéballs kopen in onze speciale shop, waarmee je Pokémon kunt verzamelen om je eigen unieke verzameling op te bouwen.
+          In WoordRazernij krijg je de kans om je typevaardigheden te testen en verbeteren. Kies een moeilijkheidsgraad die bij jouw vaardigheden past en typ de woorden die op het scherm verschijnen zo snel mogelijk. Hoe sneller je typt, hoe meer punten je verdient. 
+          Met deze punten kun je Pokéballs kopen in onze speciale shop, waarmee je Pokémon kunt verzamelen om je eigen unieke verzameling op te bouwen. V2
         </p>
   
         <p class="section">
