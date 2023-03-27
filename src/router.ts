@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import GameScreen from "./components/GameScreen.vue";
-import ObtainedPokemons from "./components/ObtainedPokemons.vue";
-import Pokemon from "./components/Pokemon.vue";
-import PromoText from "./components/Welcome.vue";
+import GameScreen from "@/components/GameScreen.vue";
+import ObtainedPokemons from "@/components/ObtainedPokemons.vue";
+import Pokemon from "@/components/Pokemon.vue";
+import PromoText from "@/components/Welcome.vue";
 
 const routes = [
   {
