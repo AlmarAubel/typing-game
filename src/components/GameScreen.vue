@@ -25,62 +25,7 @@
         </div>
       </div>
 
-      <div
-          v-if="game.state.gameState === 'NewGame'"
-          class="difficulty-selector modal is-active is-clipped"
-      >
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">Kies je moeilijkheid</header>
-          <section class="modal-card-body">
-            <select v-model="game.state.selectedWordList">
-              <option
-                  v-for="wordList in Object.keys(game.state.wordLists)"
-                  :key="wordList"
-                  :value="wordList"
-              >
-                {{ wordList }}
-              </option>
-            </select>
-            <div>
-              Spel duur in seconden
-              <input :value="gameDuration" @input="(event:any) =>gameDuration= event.target.value"/>
-            </div>
-            <div>
-              <button class="button is-primary" @click="toggleOnscreenKeyboard()">               
-                Scherm toetsenboard {{ useOnscreenKeyboard ? "️✔" :"❌"  }}
-              </button>
-            </div>
-
-            <div class="buttons">
-              <button
-                  class="button is-info is-light"
-                  @click="onDifficultyButtonClick('easy')"
-              >
-                Makkelijk
-              </button>
-              <button
-                  class="button is-success is-light"
-                  @click="onDifficultyButtonClick('medium')"
-              >
-                Gemiddeld
-              </button>
-              <button
-                  class="button is-warning is-light"
-                  @click="onDifficultyButtonClick('hard')"
-              >
-                Moeilijk
-              </button>
-              <button
-                  class="button is-danger is-light"
-                  @click="onDifficultyButtonClick('extreme')"
-              >
-                Extreem
-              </button>
-            </div>
-          </section>
-        </div>
-      </div>
+      
       <div
           v-if="game.state.gameState === 'Gameover' || game.state.gameState==='Ended'"
           class="difficulty-selector modal is-active is-clipped"
@@ -124,16 +69,19 @@ import useTimeoutTimer from "../utils/useTimeoutTime";
 import {formatMilliseconds} from "../utils/helpers";
 import OnScreenKeyboardToggle from "./OnScreenKeyboardToggle.vue";
 import {useToggle} from "@vueuse/core";
+import {useGameSettingsStore} from "@/store/gameSettingsStore";
 
 const game = useGameStore();
-const gameDuration = ref<number>(120);
-const gameDurationMs = computed(() => gameDuration.value * 1000);
-const {timeLeft,  start} = useTimeoutTimer(gameDurationMs, gameEnded);
+const settings = useGameSettingsStore();
+const {timeLeft,  start} = useTimeoutTimer(settings.gameDurationMs, gameEnded);
 const [useOnscreenKeyboard, toggleOnscreenKeyboard] = useToggle()
 const shouldShowKeyboard = computed(() => game.state.gameState === "Running" && useOnscreenKeyboard.value)
+
 onMounted(() => {
-  game.loadWordLists();
+  start();
+  game.startGame();
 });
+
 const formattedTime = computed(() => formatMilliseconds(timeLeft.value, false));
 
 
@@ -141,11 +89,7 @@ function gameEnded() {
   game.gameOver("Ended")
 }
 
-const onDifficultyButtonClick = (difficulty: string) => {
-  game.restartGame();
-  game.startGame(difficulty);
-  start();
-};
+
 
 const onRestartButtonClick = () => {
   game.restartGame();

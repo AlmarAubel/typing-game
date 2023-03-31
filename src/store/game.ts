@@ -1,46 +1,29 @@
 import {defineStore} from "pinia";
-import wordsJson from "../assets/words.json";
 import {usePokemonStore} from "./pokemonStore";
-import {useStorage} from '@vueuse/core'
 import {computed, reactive} from "vue";
+import {useGameSettingsStore} from "@/store/gameSettingsStore";
 
 type GameState = "NewGame" | "Running" | "Gameover" | "Ended";
 
-interface State {
-    wordLists: Record<string, string[]>;
-    selectedWordList: string;
+interface State {   
     activeWord: string | null;
-    activeIndex: number;
-    words: string[];
+    activeIndex: number;    
     score: number;
-    difficulty: string;
-    letterCount: number;
+     letterCount: number;
     gameState: GameState;
     startTime: Date | null;
     lives: number;
     gameStarted: boolean;
     wordTopPosition: number;
     wordLeftPosition: number;
-    animationInterval: number | null;
-    difficulties: Record<string, number>;
+    animationInterval: number | null;   
 }
 
-const pointsMultiplier: { [key: string]: number } = {
-    easy: 4,
-    medium: 2,
-    hard: 1,
-    extreme: 1,
-};
-
 export const useGameStore = defineStore("game", () => {
-    const state = reactive<State>({
-        wordLists: {},
-        selectedWordList: "AVI-Start-kort",
+    const state = reactive<State>({      
         activeWord: null,
         activeIndex: 0,
-        score: 0,
-        words: ["x"],
-        difficulty: "",
+        score: 0,        
         gameState: "NewGame",
         letterCount: 0,
         startTime: null,
@@ -48,14 +31,9 @@ export const useGameStore = defineStore("game", () => {
         gameStarted: false,
         wordTopPosition: 0,
         wordLeftPosition: 0,
-        animationInterval: null,
-        difficulties: {
-            easy: 0.0005,
-            medium: 0.001,
-            hard: 0.002,
-            extreme: 0.016,
-        },
+        animationInterval: null,        
     })
+    const settings = useGameSettingsStore();
     const calculateLPM = computed((): number => {
 
             if (!state.startTime) return 0;
@@ -69,20 +47,10 @@ export const useGameStore = defineStore("game", () => {
             return lpm;
         }
     )
-    
-    function loadWordLists() {
-        state.wordLists = wordsJson;
-        state.selectedWordList = Object.keys(state.wordLists)[0];
-    }
-    
-    function selectWordList(selectedWordList: string) {
-        state.selectedWordList = selectedWordList;
-    }
 
-    function startGame(selectedDifficulty: string) {
-        state.difficulty = selectedDifficulty;
-        state.gameState = "Running";
-        state.words = state.wordLists[state.selectedWordList] || [];
+    function startGame() {
+        restartGame();   
+        state.gameState = "Running";        
         state.gameStarted = true;
         startNewWord();
         state.letterCount = 0;
@@ -104,10 +72,8 @@ export const useGameStore = defineStore("game", () => {
         ) {
             state.activeIndex++;
             state.letterCount++;
-            if (state.activeIndex === state.activeWord.length) {
-                const multiplier = pointsMultiplier[state.difficulty];
-                state.score += 1 * multiplier;
-                //state.score += 2;
+            if (state.activeIndex === state.activeWord.length) {                
+                state.score += 1 * 5;               
                 startNewWord();
             }
         }
@@ -135,12 +101,13 @@ export const useGameStore = defineStore("game", () => {
     }
 
     function getRandomWord(): string {
-        return state.words[Math.floor(Math.random() * state.words.length)];
+        const words = settings.wordList;
+        return words[Math.floor(Math.random() * words.length)];
     }
 
     function animateWord() {
         const screenWidth = window.innerWidth;
-        const speed = screenWidth * state.difficulties[state.difficulty];
+        const speed = screenWidth * settings.speed;
         clearInterval(state.animationInterval!);
         state.animationInterval = setInterval(() => {
             if (!state.gameStarted) {
@@ -180,9 +147,7 @@ export const useGameStore = defineStore("game", () => {
         gameOver,
         handleKeyPress,
         restartGame,
-        startGame,
-        selectWordList,
-        loadWordLists,
+        startGame,       
         calculateLPM,
         
     }

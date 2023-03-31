@@ -3,12 +3,18 @@ import GameScreen from "@/components/GameScreen.vue";
 import ObtainedPokemons from "@/components/ObtainedPokemons.vue";
 import Pokemon from "@/components/Pokemon.vue";
 import PromoText from "@/components/Welcome.vue";
+import NewGame from "@/components/NewGame.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: PromoText,
+  },
+  {
+    path: "/nieuwspel",
+    name: "NewGame",
+    component: NewGame,
   },
   {
     path: "/game",
