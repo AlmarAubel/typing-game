@@ -45,9 +45,9 @@
         }"
         class="word"
       >
-        <div v-for="(char, index) in game.state.activeWord?.split('')" :key="index">
+        <template v-for="(char, index) in game.state.activeWord?.split('')" :key="index">
           <span :class="{ correct: index < game.state.activeIndex }">{{ char }}</span>
-        </div>
+        </template>
       </div>
     </div>
   </div>
