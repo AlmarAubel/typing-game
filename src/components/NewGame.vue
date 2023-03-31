@@ -1,8 +1,6 @@
 <template>
   <section class="section">
-    <div
-        class="difficulty-selector container"
-    >
+    <div class="difficulty-selector container">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Woorden lijst</label>
@@ -10,12 +8,7 @@
         <div class="field-body">
           <div class="select is-info">
             <select v-model="settings.selectedWordList">
-              <option
-                  v-for="wordList in Object.keys(settings.wordLists)"
-                  :key="wordList"
-                  :value="wordList"
-                  :selected="settings.selectedWordList === wordList"
-              >
+              <option v-for="wordList in Object.keys(settings.wordLists)" :key="wordList" :value="wordList" :selected="settings.selectedWordList === wordList">
                 {{ wordList }}
               </option>
             </select>
@@ -24,12 +17,10 @@
       </div>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">
-            Spel duur in seconden
-          </label>
+          <label class="label"> Spel duur in seconden </label>
         </div>
         <div class="field-body">
-          <input class="input" v-model="settings.gameDurationInSec" type="number"/>
+          <input class="input" v-model="settings.gameDurationInSec" type="number" />
         </div>
       </div>
       <!--        <div>-->
@@ -39,9 +30,7 @@
       <!--        </div>-->
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">
-            Moeilijkheid
-          </label>
+          <label class="label"> Moeilijkheid </label>
         </div>
         <div class="field-body">
           <div class="select is-info">
@@ -59,17 +48,14 @@
 </template>
 
 <script setup lang="ts">
-import {useGameSettingsStore} from "@/store/gameSettingsStore";
-import {useRouter} from "vue-router";
+import { useGameSettingsStore } from "@/store/gameSettingsStore";
+import { useRouter } from "vue-router";
 
 const settings = useGameSettingsStore();
-const router = useRouter()
+const router = useRouter();
 const onStartButtonClick = () => {
-  router.push({name: "GameScreen"})
-  
+  router.push({ name: "GameScreen" });
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

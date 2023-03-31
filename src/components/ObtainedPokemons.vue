@@ -1,17 +1,11 @@
 <template>
   <div>
-    <h1>Obtained Pokemons ({{store.state.obtainedPokemons.length}})</h1>
+    <h1>Obtained Pokemons ({{ store.state.obtainedPokemons.length }})</h1>
     <div class="pokemon-grid">
-      <div
-        v-for="pokemon in store.state.obtainedPokemons"
-        :key="pokemon.id"
-        class="pokemon-card"
-      >
+      <div v-for="pokemon in store.state.obtainedPokemons" :key="pokemon.id" class="pokemon-card">
         <h2>{{ pokemon.name }}</h2>
         <img :src="pokemon.imgUrl" :alt="pokemon.name" />
-        <span class="tag" :class="rarityColors[pokemon.rarity]">
-          {{ pokemon.rarity }}</span
-        >
+        <span class="tag" :class="rarityColors[pokemon.rarity]"> {{ pokemon.rarity }}</span>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "lint:js": "eslint src --ext .ts,.vue --fix",
     "build": "vue-tsc --noEmit && vite build",
     "deploy": "node deploy",
     "builddeploy": "npm run build && npm run deploy ",
@@ -19,13 +20,21 @@
     "vue": "^3.2.25"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "@vitejs/plugin-vue": "^2.3.4",
+    "@vue/eslint-config-typescript": "^11.0.2",
     "bulma": "^0.9.4",
     "dotenv": "^16.0.3",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.10.0",
     "ftp-deploy": "^2.4.3",
     "prettier": "2.8.4",
     "typescript": "^4.5.4",
     "vite": "^2.9.15",
+    "vue-eslint-parser": "^9.1.1",
     "vue-router": "^4.1.6",
     "vue-tsc": "^0.35.2"
   }

@@ -1,5 +1,5 @@
 <template>
-  <main-navigation/>
+  <main-navigation />
 
   <div class="section">
     <div class="pokemon-app container">
@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {ref} from "vue";
+import { ref } from "vue";
 import MainNavigation from "./MainNavigation.vue";
 
 enum Navigation {
@@ -28,14 +28,4 @@ const activeScreen = ref<Navigation>(Navigation.game);
   color: #2c3e50;
   /* margin-top: 60px; */
 }
-/* body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-} */
 </style>

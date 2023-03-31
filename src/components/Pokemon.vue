@@ -6,29 +6,14 @@
       <p class="points">Beschikbare punten: {{ store.state.points }}</p>
     </div>
     <div class="pokeballs">
-      <div
-        v-for="pokeballType in Object.values(PokeballType)"
-        :key="pokeballType"
-        class="pokeball"
-      >
-        <div class="pokeball-image">          
+      <div v-for="pokeballType in Object.values(PokeballType)" :key="pokeballType" class="pokeball">
+        <div class="pokeball-image">
           <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" />
         </div>
         <h2>{{ pokeballType }}</h2>
         <p>Amount: {{ store.state.pokeballs[pokeballType] }}</p>
-        <button
-          class="open-btn"
-          @click="() => store.openPokeball(pokeballType)"
-        >
-          Open {{ pokeballType }}
-        </button>
-        <button
-          class="buy-btn"
-          :disabled="!canBuy(pokeballType)"
-          @click="buyPokeball(pokeballType)"
-        >
-          Koop voor {{ getPrice(pokeballType) }} punten
-        </button>
+        <button class="open-btn" @click="() => store.openPokeball(pokeballType)">Open {{ pokeballType }}</button>
+        <button class="buy-btn" :disabled="!canBuy(pokeballType)" @click="buyPokeball(pokeballType)">Koop voor {{ getPrice(pokeballType) }} punten</button>
       </div>
     </div>
 
@@ -48,7 +33,7 @@ import { usePokemonStore } from "../store/pokemonStore";
 import { PokeballType } from "../utils/pokemonUtils";
 
 import { Pokemon, getPokemon } from "../utils/pokeDex";
-const getImgUrl = (pokeballType:string)=> new URL(`../assets/${pokeballType}.png`, import.meta.url).href;
+const getImgUrl = (pokeballType: string) => new URL(`../assets/${pokeballType}.png`, import.meta.url).href;
 const store = usePokemonStore();
 const obtainedPokemon = ref<Pokemon>();
 

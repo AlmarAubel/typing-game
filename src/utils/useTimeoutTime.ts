@@ -1,50 +1,50 @@
-import { ref, watch, onMounted, onUnmounted, computed, Ref } from 'vue';
-import {MaybeRef} from "@vueuse/core";
+import { ref, watch, onMounted, onUnmounted, computed, Ref } from "vue";
+import { MaybeRef } from "@vueuse/core";
 
 interface TimeoutTimer {
-    timeLeft: Ref<number>;
-    isTimeout: Ref<boolean>;
-    start: () => void;
+  timeLeft: Ref<number>;
+  isTimeout: Ref<boolean>;
+  start: () => void;
 }
 
 function useTimeoutTimer(timespan: MaybeRef<number>, onTimeout: () => void): TimeoutTimer {
-    const timespanRef = ref(timespan);
-    const timeLeft = ref(timespanRef.value);    
-    const isTimeout = ref(false);
-    let intervalId: number;
-    const updateInterval = 200
-    let startTime: number;
+  const timespanRef = ref(timespan);
+  const timeLeft = ref(timespanRef.value);
+  const isTimeout = ref(false);
+  let intervalId: number;
+  const updateInterval = 200;
+  let startTime: number;
 
-    const updateTimer = () => {
-        const elapsedTime = performance.now() - startTime;        
-        const remainingTime = timespanRef.value - elapsedTime;
+  const updateTimer = () => {
+    const elapsedTime = performance.now() - startTime;
+    const remainingTime = timespanRef.value - elapsedTime;
 
-        if (remainingTime > 0) {
-            timeLeft.value = remainingTime;
-        } else {
-            clearInterval(intervalId);
-            timeLeft.value = 0;
-            isTimeout.value = true;
-            onTimeout();
-        }
-    };
-    const startTimer = () => {
-        timeLeft.value = timespanRef.value;
-        if (intervalId) clearInterval(intervalId);
-        isTimeout.value = false;
-        startTime = performance.now();
-        intervalId = setInterval(updateTimer, updateInterval);
-    };
+    if (remainingTime > 0) {
+      timeLeft.value = remainingTime;
+    } else {
+      clearInterval(intervalId);
+      timeLeft.value = 0;
+      isTimeout.value = true;
+      onTimeout();
+    }
+  };
+  const startTimer = () => {
+    timeLeft.value = timespanRef.value;
+    if (intervalId) clearInterval(intervalId);
+    isTimeout.value = false;
+    startTime = performance.now();
+    intervalId = setInterval(updateTimer, updateInterval);
+  };
 
-    onUnmounted(() => {
-        clearInterval(intervalId);
-    });
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
 
-    return {
-        timeLeft: computed(() => timeLeft.value),
-        isTimeout: computed(() => isTimeout.value),
-        start: startTimer,
-    };
+  return {
+    timeLeft: computed(() => timeLeft.value),
+    isTimeout: computed(() => isTimeout.value),
+    start: startTimer,
+  };
 }
 
 export default useTimeoutTimer;

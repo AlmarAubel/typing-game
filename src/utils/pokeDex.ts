@@ -63,16 +63,17 @@ function groupPokemonsByRarity(pokemons: Pokemon[]): {
   return groupedPokemons;
 }
 export async function getPokemon() {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const pokemons: {
     id: number;
     name: string;
     pokemon_v2_pokemonspecy: { capture_rate: number };
-    pokemon_v2_pokemonsprites: any;    
+    pokemon_v2_pokemonsprites: any;
   }[] = pokemonsRaw;
-    // await request("https://beta.pokeapi.co/graphql/v1beta", query).then(
-    //   (data: any) => data.pokemon_v2_pokemon
-    // );
+  // await request("https://beta.pokeapi.co/graphql/v1beta", query).then(
+  //   (data: any) => data.pokemon_v2_pokemon
+  // );
   console.log(JSON.stringify(pokemons));
   const categorizedPokemons: Pokemon[] = pokemons.map((p) => ({
     id: p.id,

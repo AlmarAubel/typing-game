@@ -1,19 +1,20 @@
 <template>
-  <input type="text" id="hiddenInput" style="position: absolute; opacity: 0;" ref="inputElement"
-         @input="handleInput">
+  <input type="text" id="hiddenInput" style="position: absolute; opacity: 0" ref="inputElement" @input="handleInput" />
   <button @click="toggleKeyboard()" class="button is-info">⌨️</button>
 </template>
 
 <script lang="ts" setup>
-import {computed, ref, watch} from "vue";
+import { computed, ref, watch } from "vue";
 
-const emit = defineEmits(['keypressed'])
+const emit = defineEmits(["keypressed"]);
 const props = defineProps({
-  showKeyboard: Boolean
-})
+  showKeyboard: Boolean,
+});
 
-watch(() => props.showKeyboard,
-    v => v ? toggleKeyboard() : showKeyboard());
+watch(
+  () => props.showKeyboard,
+  (v) => (v ? toggleKeyboard() : showKeyboard())
+);
 
 const inputElement = ref<HTMLInputElement>();
 const keyBoardisShowed = computed(() => inputElement.value === document.activeElement);
@@ -36,6 +37,4 @@ function hideKeyboard() {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="fullheight-content ">
+  <div class="fullheight-content">
     <div class="game-container level">
       <div class="level-left">
         <div class="columns is-vcentered">
@@ -11,7 +11,6 @@
       </div>
       <div class="timer">
         {{ formattedTime }}
-
       </div>
       <div class="score level-right">
         <div class="columns is-vcentered">
@@ -19,24 +18,19 @@
             <div class="container">
               Score: {{ game.state.score }}
               <button @click="onRestartButtonClick">↺</button>
-              <on-screen-keyboard-toggle @keypressed="onKeyPress" :showKeyboard="shouldShowKeyboard"/>
+              <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
             </div>
           </div>
         </div>
       </div>
 
-      
-      <div
-          v-if="game.state.gameState === 'Gameover' || game.state.gameState==='Ended'"
-          class="difficulty-selector modal is-active is-clipped"
-      >
+      <div v-if="game.state.gameState === 'Gameover' || game.state.gameState === 'Ended'" class="difficulty-selector modal is-active is-clipped">
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">{{ game.state.gameState }}</header>
           <section class="modal-card-body">
-
             <span> Je score is: {{ game.state.score }} </span>
-            <br/>
+            <br />
             <span>
               <button @click="onRestartButtonClick">↺ Start nieuw spel</button>
             </span>
@@ -44,38 +38,35 @@
         </div>
       </div>
       <div
-          v-if="game.state.activeWord"
-          :style="{
+        v-if="game.state.activeWord"
+        :style="{
           top: game.state.wordTopPosition + 'px',
           left: game.state.wordLeftPosition + 'px',
         }"
-          class="word"
+        class="word"
       >
-        <template
-            v-for="(char, index) in game.state.activeWord?.split('')"
-            :key="index"
-        >
+        <div v-for="(char, index) in game.state.activeWord?.split('')" :key="index">
           <span :class="{ correct: index < game.state.activeIndex }">{{ char }}</span>
-        </template>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {computed, onMounted, ref} from "vue";
-import {useGameStore} from "../store/game";
+import { computed, onMounted, ref } from "vue";
+import { useGameStore } from "../store/game";
 import useTimeoutTimer from "../utils/useTimeoutTime";
-import {formatMilliseconds} from "../utils/helpers";
+import { formatMilliseconds } from "../utils/helpers";
 import OnScreenKeyboardToggle from "./OnScreenKeyboardToggle.vue";
-import {useToggle} from "@vueuse/core";
-import {useGameSettingsStore} from "@/store/gameSettingsStore";
+import { useToggle } from "@vueuse/core";
+import { useGameSettingsStore } from "@/store/gameSettingsStore";
 
 const game = useGameStore();
 const settings = useGameSettingsStore();
-const {timeLeft,  start} = useTimeoutTimer(settings.gameDurationMs, gameEnded);
-const [useOnscreenKeyboard, toggleOnscreenKeyboard] = useToggle()
-const shouldShowKeyboard = computed(() => game.state.gameState === "Running" && useOnscreenKeyboard.value)
+const { timeLeft, start } = useTimeoutTimer(settings.gameDurationMs, gameEnded);
+const [useOnscreenKeyboard, toggleOnscreenKeyboard] = useToggle();
+const shouldShowKeyboard = computed(() => game.state.gameState === "Running" && useOnscreenKeyboard.value);
 
 onMounted(() => {
   start();
@@ -84,12 +75,9 @@ onMounted(() => {
 
 const formattedTime = computed(() => formatMilliseconds(timeLeft.value, false));
 
-
 function gameEnded() {
-  game.gameOver("Ended")
+  game.gameOver("Ended");
 }
-
-
 
 const onRestartButtonClick = () => {
   game.restartGame();
@@ -133,8 +121,6 @@ document.addEventListener("keypress", onKeyPress);
 }
 
 .fullheight-content {
-  min-height: calc(
-      100vh - 10rem
-  ); /* Subtract the navbar height (3.25rem by default in Bulma) */
+  min-height: calc(100vh - 10rem); /* Subtract the navbar height (3.25rem by default in Bulma) */
 }
 </style>

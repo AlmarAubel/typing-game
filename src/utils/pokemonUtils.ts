@@ -36,10 +36,7 @@ export const pokeballChances: { [key in PokeballType]: PokeballChance } = {
   },
 };
 
-export function getRandomPokemonByRarity(
-  pokemons: { [key: string]: Pokemon[] },
-  rarity: string
-): Pokemon {
+export function getRandomPokemonByRarity(pokemons: { [key: string]: Pokemon[] }, rarity: string): Pokemon {
   const pokemonArray = pokemons[rarity];
   return pokemonArray[Math.floor(Math.random() * pokemonArray.length)];
 }
@@ -53,12 +50,7 @@ export function getRandomPokemonByRarity(
 export type RarityLevel = keyof PokeballChance;
 
 export function getRandomRarity(pokeballChance: PokeballChance): RarityLevel {
-  const rarityLevels: RarityLevel[] = [
-    "common",
-    "uncommon",
-    "rare",
-    "legendary",
-  ];
+  const rarityLevels: RarityLevel[] = ["common", "uncommon", "rare", "legendary"];
   const totalChance = Object.values(pokeballChance).reduce((a, b) => a + b, 0);
   const randomValue = Math.random() * totalChance;
   let accumulatedChance = 0;
