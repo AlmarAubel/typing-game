@@ -82,8 +82,14 @@ export const useGameStore = defineStore("game", () => {
     const maxHeight = windowHeight - 100;
     const randomHeight = Math.floor(Math.random() * maxHeight);
     state.wordTopPosition = randomHeight;
-
-    animateWord();
+    if (settings.difficulty !== "easy") {
+      animateWord();
+    } else {
+      const windowWidth = window.innerWidth;
+      const maxWidth = windowWidth - 100;
+      const randomWidth = Math.floor(Math.random() * maxWidth);
+      state.wordLeftPosition = randomWidth;
+    }
   }
 
   function removeWordElement() {

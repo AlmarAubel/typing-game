@@ -33,12 +33,17 @@
           <label class="label"> Moeilijkheid </label>
         </div>
         <div class="field-body">
-          <div class="select is-info">
-            <select v-model="settings.difficulty">
-              <option v-for="(value, key) in settings.difficulties" :key="key" :value="key">
-                {{ key }}
-              </option>
-            </select>
+          <div class="buttons has-addons">
+            <button
+              class="button"
+              v-for="(value, key) in settings.difficulties"
+              :class="{ 'is-selected': settings.difficulty === key, 'is-info': settings.difficulty === key }"
+              @click.prevent="settings.difficulty = key"
+              :key="key"
+              :value="key"
+            >
+              {{ key }}
+            </button>
           </div>
         </div>
       </div>

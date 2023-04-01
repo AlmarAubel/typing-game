@@ -2,24 +2,22 @@
   <div class="fullheight-content">
     <div class="game-container level">
       <div class="level-left">
-        <div class="columns is-vcentered">
+        <div class="columns">
           <div class="column is-narrow">
-            <div class="lpm">LPM: {{ game.calculateLPM }}</div>
-            <div class="lives">Lives: {{ game.state.lives }}</div>
+            <div class="lpm is-size-4">LPM: {{ game.calculateLPM }}</div>
+            <div class="lives is-size-4">Lives: {{ repeatChar("❤️", game.state.lives) }}</div>
           </div>
         </div>
       </div>
-      <div class="timer">
+      <div class="timer is-size-4">
         {{ formattedTime }}
       </div>
-      <div class="score level-right">
-        <div class="columns is-vcentered">
+      <div class="level-right">
+        <div class="columns">
           <div class="column is-narrow">
-            <div class="container">
-              Score: {{ game.state.score }}
-              <button @click="onRestartButtonClick">↺</button>
-              <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
-            </div>
+            <div class="is-size-4">Score: {{ game.state.score }}</div>
+            <button class="button is-danger" @click="onRestartButtonClick">↺</button>
+            <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
           </div>
         </div>
       </div>
@@ -32,7 +30,7 @@
             <span> Je score is: {{ game.state.score }} </span>
             <br />
             <span>
-              <button @click="onRestartButtonClick">↺ Start nieuw spel</button>
+              <button class="button" @click="onRestartButtonClick">↺ Start nieuw spel</button>
             </span>
           </section>
         </div>
@@ -89,6 +87,10 @@ const onKeyPress = (event: KeyboardEvent) => {
   }
 };
 
+function repeatChar(char: string, n: number) {
+  return char.repeat(n);
+}
+
 document.addEventListener("keypress", onKeyPress);
 </script>
 
@@ -113,14 +115,8 @@ document.addEventListener("keypress", onKeyPress);
   cursor: pointer;
 }
 
-.score button {
-  margin-left: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
 .fullheight-content {
+  margin-top: -30px;
   min-height: calc(100vh - 10rem); /* Subtract the navbar height (3.25rem by default in Bulma) */
 }
 </style>

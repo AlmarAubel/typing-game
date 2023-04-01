@@ -10,8 +10,8 @@ export const useGameSettingsStore = defineStore("gameSettings", () => {
 
   const difficulties: Record<string, number> = {
     easy: 0.0005,
-    medium: 0.001,
-    hard: 0.002,
+    medium: 0.0005,
+    hard: 0.001,
     extreme: 0.016,
   };
   type Difficulties = typeof difficulties;
