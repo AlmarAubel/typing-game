@@ -4,18 +4,18 @@
       <div class="container">
         <div class="columns is-vcentered">
           <div class="column is-half">
-            <router-link class="cta-button is-large" :to="{ name: 'NewGame' }">Speel het spel</router-link>
+            <router-link class="button cta-button is-large" :to="{ name: 'NewGame' }">Speel het spel</router-link>
           </div>
           <div class="column is-half has-text-right animate__animated animate__backInRight">
-            <h1 class="title is-1 has-text-white">WoordRazernij</h1>
-            <p class="subtitle is-3 has-text-white">Typen, verzamelen en meester worden met WoordRazernij!</p>
+            <h1 class="title is-1 has-text-white">Woordrazernij</h1>
+            <p class="subtitle is-3 has-text-white">Typen, verzamelen en meester worden met Woordrazernij!</p>
           </div>
         </div>
       </div>
     </div>
   </section>
   <section class="section">
-    <h2 class="title is-3 has-text-centered mb-6">Drie redenen waarom je WoordRazernij écht moet spelen:</h2>
+    <h2 class="title is-3 has-text-centered mb-6">Drie redenen waarom je Woordrazernij écht moet spelen:</h2>
 
     <div class="container">
       <div class="columns">
@@ -37,20 +37,20 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="title is-3 has-text-centered mb-6">Ontdek enkele geweldige functies van WoordRazernij:</h2>
+      <h2 class="title is-3 has-text-centered mb-6">Ontdek enkele geweldige functies van Woordrazernij:</h2>
       <div class="columns">
-        <div class="column is-one-third">
+        <div class="column is-half">
           <h3 class="title is-4"><strong>Meerdere moeilijkheidsgraden</strong></h3>
           <p>Begin als beginner en werk je op naar het expertniveau, terwijl je je typevaardigheden verbetert.</p>
         </div>
-        <div class="column is-one-third">
+        <div class="column is-half">
           <h3 class="title is-4"><strong>Uitgebreide Pokémon-collectie</strong></h3>
           <p>Verzamel en ontdek een breed scala aan Pokémon terwijl je speelt en bouw je eigen unieke verzameling op.</p>
         </div>
-        <div class="column is-one-third">
-          <h3 class="title is-4"><strong>Competitieve ranglijsten</strong></h3>
-          <p>Strijd tegen andere spelers en beklim de ranglijsten om de ultieme WoordRazernij-kampioen te worden!</p>
-        </div>
+        <!--        <div class="column is-one-third">-->
+        <!--          <h3 class="title is-4"><strong>Competitieve ranglijsten</strong></h3>-->
+        <!--          <p>Strijd tegen andere spelers en beklim de ranglijsten om de ultieme WoordRazernij-kampioen te worden!</p>-->
+        <!--        </div>-->
       </div>
     </div>
   </section>
