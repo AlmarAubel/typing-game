@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { usePokemonStore } from "./pokemonStore";
 import { computed, reactive } from "vue";
-import { useGameSettingsStore } from "@/store/gameSettingsStore";
+import { useGameSettingsStore } from "@/woordrazernij/store/gameSettingsStore";
 
 type GameState = "NewGame" | "Running" | "Gameover" | "Ended";
 

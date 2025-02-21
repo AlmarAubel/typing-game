@@ -53,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGameSettingsStore } from "@/store/gameSettingsStore";
+import { useGameSettingsStore } from "@/woordrazernij/store/gameSettingsStore";
 import { useRouter } from "vue-router";
 
 const settings = useGameSettingsStore();

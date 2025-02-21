@@ -47,10 +47,6 @@
           <h3 class="title is-4"><strong>Uitgebreide Pokémon-collectie</strong></h3>
           <p>Verzamel en ontdek een breed scala aan Pokémon terwijl je speelt en bouw je eigen unieke verzameling op.</p>
         </div>
-        <!--        <div class="column is-one-third">-->
-        <!--          <h3 class="title is-4"><strong>Competitieve ranglijsten</strong></h3>-->
-        <!--          <p>Strijd tegen andere spelers en beklim de ranglijsten om de ultieme WoordRazernij-kampioen te worden!</p>-->
-        <!--        </div>-->
       </div>
     </div>
   </section>
@@ -58,24 +54,13 @@
   <footer class="footer has-background-dark">
     <div class="content has-text-centered has-text-white">
       <p class="mb-4">&copy; 2023 WoordRazernij. Alle rechten voorbehouden.</p>
-      <p>
-        <!--        Volg ons op:-->
-        <!--        <a href="#" class="has-text-white">-->
-        <!--          <i class="fab fa-facebook-f"></i>-->
-        <!--        </a>-->
-        <!--        <a href="#" class="has-text-white">-->
-        <!--          <i class="fab fa-twitter"></i>-->
-        <!--        </a>-->
-        <!--        <a href="#" class="has-text-white">-->
-        <!--          <i class="fab fa-instagram"></i>-->
-        <!--        </a>-->
-      </p>
+     
     </div>
   </footer>
 </template>
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-
+const heroImage = '/assets/hero.jpeg';
 const router = useRouter();
 </script>
 <style scoped>
@@ -90,7 +75,8 @@ const router = useRouter();
   flex-direction: column;
 }
 .hero-reasons {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/hero.jpeg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url(v-bind(heroImage)) no-repeat center center;
   background-size: cover;
   color: white;
   padding: 3rem 0;

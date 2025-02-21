@@ -9,7 +9,7 @@ const tables = Array.from({ length: 10 }, (_, i) => i + 1)
 
 const selectTable = (table: number) => {
   router.push({ 
-    name: 'game', 
+    name: 'tafel-game', 
     params: { table },
     query: { 
       type: practiceType.value,

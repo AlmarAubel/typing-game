@@ -62,7 +62,7 @@ import useTimeoutTimer from "../utils/useTimeoutTime";
 import { formatMilliseconds } from "../utils/helpers";
 import OnScreenKeyboardToggle from "./OnScreenKeyboardToggle.vue";
 import { useToggle } from "@vueuse/core";
-import { useGameSettingsStore } from "@/store/gameSettingsStore";
+import { useGameSettingsStore } from "@/woordrazernij/store/gameSettingsStore";
 
 const game = useGameStore();
 const settings = useGameSettingsStore();
