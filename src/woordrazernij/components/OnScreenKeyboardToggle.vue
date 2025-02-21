@@ -1,9 +1,8 @@
 <template>
-  <input type="text" id="hiddenInput" style="position: absolute; opacity: 0" ref="inputElement" @input="handleInput" />
-  <button @click="toggleKeyboard()" class="button is-info">⌨️</button>
+  <button @click="toggleKeyboard()" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors">⌨️</button>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed, ref, watch } from "vue";
 
 const emit = defineEmits(["keypressed"]);

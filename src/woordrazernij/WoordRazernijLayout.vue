@@ -1,12 +1,12 @@
 <template>
   <main-navigation />
-  <div class="section">
-    <div class="pokemon-app container">
+  <div class="py-8">
+    <div class="container mx-auto px-4">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import MainNavigation from "./MainNavigation.vue";
+import MainNavigation from '@/components/MainNavigation.vue';
 </script>

@@ -1,13 +1,15 @@
 <template>
-  <div class="app">
-    <header>
-      <h1>Tafel Razernij</h1>
-    </header>
-    <main>
-      <router-view />
-    </main>
+  <main-navigation />
+  <div class="py-8">
+    <div class="container mx-auto px-4">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import MainNavigation from '@/components/MainNavigation.vue';
+</script>
 
 <style scoped>
 .app {

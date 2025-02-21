@@ -1,45 +1,50 @@
 <template>
-  <section class="section">
-    <div class="difficulty-selector container">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Woorden lijst</label>
-        </div>
-        <div class="field-body">
-          <div class="select is-info">
-            <select v-model="settings.selectedWordList">
-              <option v-for="wordList in Object.keys(settings.wordLists)" :key="wordList" :value="wordList" :selected="settings.selectedWordList === wordList">
-                {{ wordList }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label"> Spel duur in seconden </label>
-        </div>
-        <div class="field-body">
-          <input class="input" v-model="settings.gameDurationInSec" type="number" />
+  <section class="max-w-2xl mx-auto p-6">
+    <div class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <label class="font-medium">Woorden lijst</label>
+        <div class="md:col-span-2">
+          <select 
+            v-model="settings.selectedWordList"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option 
+              v-for="wordList in Object.keys(settings.wordLists)" 
+              :key="wordList" 
+              :value="wordList" 
+              :selected="settings.selectedWordList === wordList"
+            >
+              {{ wordList }}
+            </option>
+          </select>
         </div>
       </div>
-      <!--        <div>-->
-      <!--          <button class="button is-primary" @click="toggleOnscreenKeyboard()">-->
-      <!--            Scherm toetsenboard {{ useOnscreenKeyboard ? "️✔" :"❌"  }}-->
-      <!--          </button>-->
-      <!--        </div>-->
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label"> Moeilijkheid </label>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <label class="font-medium">Spel duur in seconden</label>
+        <div class="md:col-span-2">
+          <input 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            v-model="settings.gameDurationInSec" 
+            type="number" 
+          />
         </div>
-        <div class="field-body">
-          <div class="buttons has-addons">
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+        <label class="font-medium">Moeilijkheid</label>
+        <div class="md:col-span-2">
+          <div class="flex flex-wrap gap-2">
             <button
-              class="button"
               v-for="(value, key) in settings.difficulties"
-              :class="{ 'is-selected': settings.difficulty === key, 'is-info': settings.difficulty === key }"
-              @click.prevent="settings.difficulty = key"
               :key="key"
+              :class="[
+                'px-4 py-2 rounded-md transition-colors',
+                settings.difficulty === key 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-gray-200 hover:bg-gray-300'
+              ]"
+              @click.prevent="settings.difficulty = key"
               :value="key"
             >
               {{ key }}
@@ -48,7 +53,13 @@
         </div>
       </div>
     </div>
-    <button class="button is-primary" @click="onStartButtonClick">Start spel</button>
+
+    <button 
+      class="mt-8 w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors font-medium"
+      @click="onStartButtonClick"
+    >
+      Start spel
+    </button>
   </section>
 </template>
 

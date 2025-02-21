@@ -7,7 +7,8 @@ import TafelRazernijLayout from '@/tafel-razernij/TafelRazernijLayout.vue';
 const routes = [
   {
     path: '/',
-    redirect: '/woordrazernij',
+    name: 'home',
+    component: () => import('@/views/LandingPage.vue'),
   },
   {
     path: '/woordrazernij',

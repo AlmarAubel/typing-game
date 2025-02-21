@@ -1,55 +1,53 @@
 <template>
-  <div class="fullheight-content typegame">
-    <div class="game-container level">
-      <div class="level-left">
-        <div class="columns">
-          <div class="column is-narrow">
-            <div class="lpm is-size-4">LPM: {{ game.calculateLPM }}</div>
-            <div class="lives is-size-4">Lives: {{ repeatChar("❤️", game.state.lives) }}</div>
-          </div>
+  <div class="min-h-screen">
+    <div class="container mx-auto p-4">
+      <div class="flex justify-between items-start">
+        <div class="flex flex-col">
+          <div class="text-2xl mb-2">LPM: {{ game.calculateLPM }}</div>
+          <div class="text-2xl">Lives: {{ repeatChar("❤️", game.state.lives) }}</div>
         </div>
-      </div>
-      <div class="timer is-size-4">
-        {{ formattedTime }}
-      </div>
-      <div class="level-right">
-        <div class="columns">
-          <div class="column is-narrow">
-            <div class="is-size-4">Score: {{ game.state.score }}</div>
-            <div class="buttons">
-              <router-link class="button is-danger" role="button" to="/nieuwspel"> ↺</router-link>
-              <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
-            </div>
+        <div class="text-2xl">{{ formattedTime }}</div>
+        <div class="flex flex-col items-end">
+          <div class="text-2xl mb-2">Score: {{ game.state.score }}</div>
+          <div class="flex gap-2">
+            <router-link class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded" role="button" to="/nieuwspel">↺</router-link>
+            <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
           </div>
         </div>
       </div>
 
-      <div v-if="game.state.gameState === 'Gameover' || game.state.gameState === 'Ended'" class="difficulty-selector modal is-active is-clipped">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">{{ game.state.gameState }}</header>
-          <section class="modal-card-body">
-            <span> Je score is: {{ game.state.score }} </span>
-            <br />
-            <div>
-              <router-link class="button" role="button" to="/nieuwspel">
-                <span>🎮 Nieuw spel starten</span>
-              </router-link>
-            </div>
-          </section>
+      <div v-if="game.state.gameState === 'Gameover' || game.state.gameState === 'Ended'" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+          <div class="bg-gray-100 px-6 py-4 rounded-t-lg font-bold">{{ game.state.gameState }}</div>
+          <div class="p-6">
+            <span class="block mb-4">Je score is: {{ game.state.score }}</span>
+            <router-link class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded" role="button" to="/nieuwspel">
+              <span>🎮 Nieuw spel starten</span>
+            </router-link>
+          </div>
         </div>
       </div>
+
       <div
         v-if="game.state.activeWord"
         :style="{
           top: game.state.wordTopPosition + 'px',
           left: game.state.wordLeftPosition + 'px',
         }"
-        class="word"
+        class="absolute"
       >
-        <template v-for="(char, index) in game.state.activeWord?.split('')" :key="index">
-          <span :class="{ correct: index < game.state.activeIndex }">{{ char }}</span>
-        </template>
+        <div class="word">
+          <span
+            v-for="(char, index) in game.state.activeWord.word"
+            :key="index"
+            :class="{
+              'text-green-500': index < game.state.activeWord.typedCharacters.length && char === game.state.activeWord.typedCharacters[index],
+              'text-red-500': index < game.state.activeWord.typedCharacters.length && char !== game.state.activeWord.typedCharacters[index]
+            }"
+          >
+            {{ char }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -91,31 +89,7 @@ document.addEventListener("keypress", onKeyPress);
 </script>
 
 <style scoped>
-.typegame {
-  background: lightgray;
-}
 .word {
-  position: absolute;
-  font-size: 24px;
-  background-color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  user-select: none;
-  z-index: 99999;
-}
-
-.correct {
-  color: #4caf50;
-}
-
-∫ .difficulty-selector button {
-  margin: 0 10px;
-  padding: 5px 15px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.fullheight-content {
-  min-height: calc(100vh - 52px); /* Subtract the navbar height (3.25rem by default in Bulma) */
+  @apply text-xl font-mono;
 }
 </style>

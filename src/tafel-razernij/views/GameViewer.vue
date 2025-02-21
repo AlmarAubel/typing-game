@@ -184,92 +184,92 @@ const checkAnswer = async (userAnswer: number | string) => {
 </script>
 
 <template>
-  <div class="game-container">
-    <div class="game-main">
-      <div class="top-buttons">
-        <button class="back-button" @click="goBack">
-          <span class="back-icon">←</span>
-          Terug naar tafels
+  <div class="container mx-auto p-4">
+    <div class="flex flex-col">
+      <div class="flex justify-between items-center mb-8">
+        <button class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg flex items-center space-x-2 transition-colors" @click="goBack">
+          <span class="text-xl">←</span>
+          <span>Terug naar tafels</span>
+        </button>
+
+        <button class="p-3 rounded-full hover:bg-gray-200 transition-colors" @click="toggleSound">
+          <span class="text-2xl">{{ soundEnabled ? '🔊' : '🔇' }}</span>
         </button>
       </div>
 
-      <div class="question">
-        {{ currentNumber }} x  {{ selectedTable }} = ?
+      <div class="text-4xl font-bold text-center mb-8">
+        {{ currentNumber }} x {{ selectedTable }} = ?
       </div>
       
-      <div class="game-field">
-        <!-- <div class="pokemon-info" v-if="currentPokemon">
-          <h3>Huidige Pokémon</h3>
-          <p><strong>Naam:</strong> {{ currentPokemon.name }}</p>
-          <p><strong>ID:</strong> {{ currentPokemon.id }}</p>
-          <img :src="currentPokemon.sprite" :alt="currentPokemon.name" class="pokemon-sprite"> 
-        </div> -->
-
+      <div class="relative min-h-[400px] bg-gray-100 rounded-xl p-4">
         <div 
-          class="current-pokemon" 
           v-if="currentPokemon"
+          class="absolute transition-all duration-500"
+          :class="{
+            'animate-bounce': isCatching,
+            'animate-shake': isWrongAnswer
+          }"
           :style="{
             left: `${pokemonPosition.x}%`,
             top: `${pokemonPosition.y}%`
           }"
-          :class="{ 
-            'catching': isCatching,
-            'dodging': isWrongAnswer 
-          }"
         >
-          <img :src="currentPokemon.sprite" :alt="'Pokemon #' + currentPokemon.id">
+          <img 
+            :src="currentPokemon.sprite" 
+            :alt="'Pokemon #' + currentPokemon.id"
+            class="w-24 h-24 object-contain"
+          >
         </div>
         
         <img 
           ref="pokeball" 
           src="/pokeball.png" 
-          class="pokeball" 
-          :class="{ 'is-throwing': isAnimating }"
+          alt="Pokeball"
+          class="w-12 h-12 absolute transition-all duration-300"
+          :class="{ 'animate-spin': isAnimating }"
+          :style="{
+            transform: `rotate(${pokeballRotation}deg)`
+          }"
         >
-        
-        <button class="sound-button" @click="toggleSound">
-          <span class="sound-icon">{{ soundEnabled ? '🔊' : '🔇' }}</span>
-        </button>
-      </div>
 
-      <div class="answer-section">
-        <template v-if="practiceType === 'multiple-choice'">
-          <div class="options">
-            <button
-              v-for="option in options"
-              :key="option"
-              @click="checkAnswer(option)"
-              class="option-button"
-              :disabled="isAnimating"
-            >
-              {{ option }}
-            </button>
-          </div>
-        </template>
-        
-        <template v-else>
-          <div class="open-answer">
-            <input
-              ref="answerInput"
-              type="number"
-              v-model="answer"
-              @keyup.enter="checkAnswer(answer)"
-              :disabled="isAnimating"
-              placeholder="Type je antwoord..."
-            >
-            <button 
-              @click="checkAnswer(answer)"
-              :disabled="isAnimating || !answer"
-              class="submit-button"
-            >
-              Gooi Pokéball
-            </button>
-          </div>
-        </template>
+        <div class="absolute bottom-4 left-0 right-0">
+          <template v-if="practiceType === 'multiple-choice'">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto px-4">
+              <button
+                v-for="option in options"
+                :key="option"
+                @click="checkAnswer(option)"
+                :disabled="isAnimating"
+                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
+              >
+                {{ option }}
+              </button>
+            </div>
+          </template>
+          
+          <template v-else>
+            <div class="flex justify-center space-x-4 max-w-md mx-auto px-4">
+              <input
+                ref="answerInput"
+                type="number"
+                v-model="answer"
+                @keyup.enter="checkAnswer(answer)"
+                :disabled="isAnimating"
+                placeholder="Type je antwoord..."
+                class="w-full px-4 py-3 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              >
+              <button 
+                @click="checkAnswer(answer)"
+                :disabled="isAnimating"
+                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
+              >
+                ✓
+              </button>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
-
-    <PokemonSidebar /> 
   </div>
 </template>
 
@@ -278,6 +278,17 @@ const checkAnswer = async (userAnswer: number | string) => {
 
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
 .back-button {

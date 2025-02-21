@@ -20,43 +20,59 @@ const selectTable = (table: number) => {
 </script>
 
 <template>
-  <div class="table-select">
-    <h2>Kies je Tafel Adventure</h2>
-    
-    <div class="options-panel">
-      <div class="practice-type">
-        <label class="radio-label">
-          <input type="radio" v-model="practiceType" value="multiple-choice">
-          <span class="radio-custom">
-            <i class="radio-icon">🎯</i>
-            Multiple Choice
+  <div class="max-w-4xl mx-auto p-8">
+    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+      Kies een tafel om te oefenen
+    </h2>
+
+    <div class="bg-white rounded-2xl shadow-lg p-6 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <label class="flex items-center p-4 bg-gray-50 rounded-xl cursor-pointer group hover:bg-gray-100 transition-colors">
+          <input 
+            type="radio" 
+            v-model="practiceType" 
+            value="multiple-choice"
+            class="hidden" 
+          >
+          <span class="flex items-center space-x-3">
+            <span class="text-2xl">🎯</span>
+            <span class="font-medium">Multiple Choice</span>
           </span>
         </label>
-        <label class="radio-label">
-          <input type="radio" v-model="practiceType" value="open">
-          <span class="radio-custom">
-            <i class="radio-icon">✏️</i>
-            Open Antwoorden
+
+        <label class="flex items-center p-4 bg-gray-50 rounded-xl cursor-pointer group hover:bg-gray-100 transition-colors">
+          <input 
+            type="radio" 
+            v-model="practiceType" 
+            value="open"
+            class="hidden"
+          >
+          <span class="flex items-center space-x-3">
+            <span class="text-2xl">✏️</span>
+            <span class="font-medium">Open Antwoorden</span>
           </span>
         </label>
       </div>
       
-      <label class="toggle-label">
-        <input type="checkbox" v-model="isRandom">
-        <span class="toggle-custom"></span>
-        Door elkaar
+      <label class="flex items-center space-x-3 p-4">
+        <input 
+          type="checkbox" 
+          v-model="isRandom"
+          class="w-5 h-5 text-purple-600 rounded border-gray-300 focus:ring-purple-500"
+        >
+        <span class="font-medium">Door elkaar</span>
       </label>
     </div>
 
-    <div class="table-grid">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <button
         v-for="table in tables"
         :key="table"
         @click="selectTable(table)"
-        class="table-button"
+        class="aspect-square rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white p-4 hover:from-purple-600 hover:to-purple-800 transition-colors shadow-md hover:shadow-lg flex flex-col items-center justify-center"
       >
-        <span class="table-number">{{ table }}</span>
-        <span class="table-text">Tafel van {{ table }}</span>
+        <span class="text-3xl font-bold mb-2">{{ table }}</span>
+        <span class="text-sm">Tafel van {{ table }}</span>
       </button>
     </div>
   </div>
