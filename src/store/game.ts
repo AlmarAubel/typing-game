@@ -87,7 +87,8 @@ export const useGameStore = defineStore("game", () => {
     } else {
       const windowWidth = window.innerWidth;
       const maxWidth = windowWidth - 100;
-      const randomWidth = Math.floor(Math.random() * maxWidth);
+      const wordWidth = 24 * state.activeWord!.length;
+      const randomWidth = Math.floor(Math.random() * (maxWidth - wordWidth));
       state.wordLeftPosition = randomWidth;
     }
   }

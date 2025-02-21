@@ -72,7 +72,7 @@ const buyPokeball = (pokeballType: PokeballType) => {
 };
 </script>
 
-<style>
+<style scoped>
 .pokemon-app {
   font-family: "Arial", sans-serif;
   max-width: 800px;
@@ -197,50 +197,50 @@ button:focus {
   margin-top: 1rem;
 }
 
-/* ... previous CSS ... */
+/*!* ... previous CSS ... *!*/
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
+/*.header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*  margin-bottom: 2rem;*/
+/*}*/
 
-.points {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
+/*.points {*/
+/*  font-size: 1.25rem;*/
+/*  font-weight: bold;*/
+/*}*/
 
-.pokeball {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 130px;
-}
+/*.pokeball {*/
+/*  background-color: #ffffff;*/
+/*  padding: 1rem;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);*/
+/*  text-align: center;*/
+/*  width: 130px;*/
+/*}*/
 
-.open-btn {
-  background-color: #3b4cca;
-  margin-top: 0.5rem;
-}
+/*.open-btn {*/
+/*  background-color: #3b4cca;*/
+/*  margin-top: 0.5rem;*/
+/*}*/
 
-.buy-btn {
-  background-color: #f44336;
-  margin-top: 0.5rem;
-}
+/*.buy-btn {*/
+/*  background-color: #f44336;*/
+/*  margin-top: 0.5rem;*/
+/*}*/
 
-button.open-btn:hover,
-button.buy-btn:hover {
-  opacity: 0.8;
-}
+/*button.open-btn:hover,*/
+/*button.buy-btn:hover {*/
+/*  opacity: 0.8;*/
+/*}*/
 
-button.open-btn:disabled,
-button.buy-btn:disabled {
-  background-color: #ccc;
-  color: #777;
-  cursor: not-allowed;
-}
+/*button.open-btn:disabled,*/
+/*button.buy-btn:disabled {*/
+/*  background-color: #ccc;*/
+/*  color: #777;*/
+/*  cursor: not-allowed;*/
+/*}*/
 
-/* ... rest of the CSS ... */
+/*!* ... rest of the CSS ... *!*/
 </style>

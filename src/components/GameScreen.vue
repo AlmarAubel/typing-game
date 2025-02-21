@@ -1,5 +1,5 @@
 <template>
-  <div class="fullheight-content">
+  <div class="fullheight-content typegame">
     <div class="game-container level">
       <div class="level-left">
         <div class="columns">
@@ -16,8 +16,10 @@
         <div class="columns">
           <div class="column is-narrow">
             <div class="is-size-4">Score: {{ game.state.score }}</div>
-            <button class="button is-danger" @click="onRestartButtonClick">↺</button>
-            <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
+            <div class="buttons">
+              <router-link class="button is-danger" role="button" to="/nieuwspel"> ↺</router-link>
+              <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
+            </div>
           </div>
         </div>
       </div>
@@ -29,9 +31,11 @@
           <section class="modal-card-body">
             <span> Je score is: {{ game.state.score }} </span>
             <br />
-            <span>
-              <button class="button" @click="onRestartButtonClick">↺ Start nieuw spel</button>
-            </span>
+            <div>
+              <router-link class="button" role="button" to="/nieuwspel">
+                <span>🎮 Nieuw spel starten</span>
+              </router-link>
+            </div>
           </section>
         </div>
       </div>
@@ -62,7 +66,7 @@ import { useGameSettingsStore } from "@/store/gameSettingsStore";
 
 const game = useGameStore();
 const settings = useGameSettingsStore();
-const { timeLeft, start } = useTimeoutTimer(settings.gameDurationMs, gameEnded);
+const { timeLeft, start } = useTimeoutTimer(settings.gameDurationMs, () => game.gameOver("Ended"));
 const [useOnscreenKeyboard, toggleOnscreenKeyboard] = useToggle();
 const shouldShowKeyboard = computed(() => game.state.gameState === "Running" && useOnscreenKeyboard.value);
 
@@ -72,14 +76,6 @@ onMounted(() => {
 });
 
 const formattedTime = computed(() => formatMilliseconds(timeLeft.value, false));
-
-function gameEnded() {
-  game.gameOver("Ended");
-}
-
-const onRestartButtonClick = () => {
-  game.restartGame();
-};
 
 const onKeyPress = (event: KeyboardEvent) => {
   if (game.state.gameStarted) {
@@ -94,7 +90,10 @@ function repeatChar(char: string, n: number) {
 document.addEventListener("keypress", onKeyPress);
 </script>
 
-<style>
+<style scoped>
+.typegame {
+  background: lightgray;
+}
 .word {
   position: absolute;
   font-size: 24px;
@@ -102,6 +101,7 @@ document.addEventListener("keypress", onKeyPress);
   padding: 5px 10px;
   border-radius: 5px;
   user-select: none;
+  z-index: 99999;
 }
 
 .correct {
@@ -116,7 +116,6 @@ document.addEventListener("keypress", onKeyPress);
 }
 
 .fullheight-content {
-  margin-top: -30px;
-  min-height: calc(100vh - 10rem); /* Subtract the navbar height (3.25rem by default in Bulma) */
+  min-height: calc(100vh - 52px); /* Subtract the navbar height (3.25rem by default in Bulma) */
 }
 </style>

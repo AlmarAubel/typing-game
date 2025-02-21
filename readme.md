@@ -4,9 +4,7 @@ This Pokémon Typing Game is a fun and educational game that helps children lear
 
 The game consists of words flying across the screen, and the player must type the words correctly to catch Pokémon. As the player progresses, they can earn various types of Pokéballs, each with different catch rates, and collect Pokémon in their inventory.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3ca38001-5192-4d21-afc2-d97d32503ffa/deploy-status)](https://app.netlify.com/sites/vocal-bienenstitch-4a9c44/deploys)
-
-# GPT-4 Generated
+## GPT-4 Generated
 
 This project was designed and developed with the help of GPT-4, OpenAI's advanced language model. GPT-4 provided guidance on structuring the game, creating the Vue components and Pinia stores, fetching data from the PokeAPI, and implementing the Pokémon catching mechanics. Throughout the conversation, GPT-4 offered suggestions on code improvements, bug fixes, and ideas for expanding the game's features to make it more engaging for children.
 

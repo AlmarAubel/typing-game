@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Browsergame voor kinderen</title>
+  <style>
+    body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #4a4a4a;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+nav {
+  text-align: center;
+  background-color: #1c1c1c;
+}
+
+ul.menu, ul.submenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.menu > li {
+  display: block;
+  position: relative;
+}
+
+ul.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1c1c1c;
+  width: 200px;
+  border: 3px solid #f1c40f;
+}
+
+ul.submenu li {
+  display: block;
+}
+
+ul.menu > li:hover > ul.submenu {
+  display: block;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  padding: 1rem;
+  border-bottom: 2px solid #f1c40f;
+}
+
+a:hover {
+  background-color: #555;
+  color: #f1c40f;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Stoere Game</h1>
+  </header>
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Start</a></li>
+      <li><a href="#">Levels</a>
+        <ul class="submenu">
+          <li><a href="#">Level 1</a></li>
+          <li><a href="#">Level 2</a></li>
+          <li><a href="#">Level 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Instructies</a></li>
+      <li><a href="#">Over</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
