@@ -42,7 +42,7 @@
             :key="index"
             :class="{
               'text-green-500': index < game.state.activeWord.typedCharacters.length && char === game.state.activeWord.typedCharacters[index],
-              'text-red-500': index < game.state.activeWord.typedCharacters.length && char !== game.state.activeWord.typedCharacters[index]
+              'text-red-500': index < game.state.activeWord.typedCharacters.length && char !== game.state.activeWord.typedCharacters[index],
             }"
           >
             {{ char }}
@@ -87,4 +87,3 @@ function repeatChar(char: string, n: number) {
 
 document.addEventListener("keypress", onKeyPress);
 </script>
-

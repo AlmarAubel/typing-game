@@ -51,7 +51,7 @@
 
 .game-button:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .game-button.woord {
@@ -68,7 +68,7 @@
   left: 0;
   right: 0;
   padding: 1.5rem;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
 }
 

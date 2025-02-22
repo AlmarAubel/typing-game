@@ -7,23 +7,19 @@
     </div>
 
     <div class="flex flex-wrap justify-center gap-8">
-      <div 
-        v-for="pokeballType in Object.values(PokeballType)" 
-        :key="pokeballType" 
-        class="bg-white p-4 rounded-xl shadow-md text-center w-[150px]"
-      >
+      <div v-for="pokeballType in Object.values(PokeballType)" :key="pokeballType" class="bg-white p-4 rounded-xl shadow-md text-center w-[150px]">
         <div class="w-20 h-20 mx-auto mb-4">
-          <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" class="max-w-full max-h-full">
+          <img :src="`../assets/${pokeballType}.png`" :alt="pokeballType" class="max-w-full max-h-full" />
         </div>
         <h2 class="text-lg font-semibold mb-2">{{ pokeballType }}</h2>
         <p class="mb-4">Amount: {{ store.state.pokeballs[pokeballType] }}</p>
-        <button 
+        <button
           @click="() => store.openPokeball(pokeballType)"
           class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Open {{ pokeballType }}
         </button>
-        <button 
+        <button
           :disabled="!canBuy(pokeballType)"
           @click="buyPokeball(pokeballType)"
           class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
@@ -33,25 +29,11 @@
       </div>
     </div>
 
-    <div 
-      v-if="obtainedPokemon" 
-      class="fixed inset-0 bg-black/50 flex justify-center items-center z-10"
-      @click="closeOverlay"
-    >
-      <div 
-        class="relative bg-white p-8 rounded-xl shadow-xl text-center w-[300px] max-h-[90vh] overflow-y-auto"
-        @click.stop
-      >
+    <div v-if="obtainedPokemon" class="fixed inset-0 bg-black/50 flex justify-center items-center z-10" @click="closeOverlay">
+      <div class="relative bg-white p-8 rounded-xl shadow-xl text-center w-[300px] max-h-[90vh] overflow-y-auto" @click.stop>
         <h3 class="text-xl font-bold mb-4">{{ obtainedPokemon.name }}</h3>
-        <img 
-          :src="obtainedPokemon.imgUrl" 
-          :alt="obtainedPokemon.name"
-          class="w-[150px] h-[150px] mx-auto mb-4"
-        >
-        <button 
-          @click="closeOverlay"
-          class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
+        <img :src="obtainedPokemon.imgUrl" :alt="obtainedPokemon.name" class="w-[150px] h-[150px] mx-auto mb-4" />
+        <button @click="closeOverlay" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
           Close
         </button>
       </div>

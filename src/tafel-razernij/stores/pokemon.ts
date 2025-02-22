@@ -9,9 +9,7 @@ interface Pokemon {
 
 export const usePokemonStore = defineStore("pokemon", {
   state: () => ({
-    collection: JSON.parse(
-      localStorage.getItem("pokemon-collection") || "[]"
-    ) as Pokemon[],
+    collection: JSON.parse(localStorage.getItem("pokemon-collection") || "[]") as Pokemon[],
   }),
 
   actions: {
@@ -45,10 +43,7 @@ export const usePokemonStore = defineStore("pokemon", {
     },
 
     saveToStorage() {
-      localStorage.setItem(
-        "pokemon-collection",
-        JSON.stringify(this.collection)
-      );
+      localStorage.setItem("pokemon-collection", JSON.stringify(this.collection));
     },
   },
 });

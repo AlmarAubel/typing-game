@@ -30,7 +30,9 @@
         </div>
         <div class="animate__animated animate__fadeInUp" data-animate-delay="400">
           <h3 class="text-2xl font-bold mb-4">3. Uitdagende en verslavende gameplay</h3>
-          <p class="text-gray-600">Met diverse moeilijkheidsgraden, een grote verscheidenheid aan woorden en de mogelijkheid om je verzameling Pokémon uit te breiden, blijf je steeds terugkomen voor meer.</p>
+          <p class="text-gray-600">
+            Met diverse moeilijkheidsgraden, een grote verscheidenheid aan woorden en de mogelijkheid om je verzameling Pokémon uit te breiden, blijf je steeds terugkomen voor meer.
+          </p>
         </div>
       </div>
     </div>
@@ -61,6 +63,6 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-const heroImage = '/assets/hero.jpeg';
+const heroImage = "/assets/hero.jpeg";
 const router = useRouter();
 </script>

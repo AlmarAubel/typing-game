@@ -12,4 +12,9 @@ export const routes = [
     name: "tafel-game",
     component: GameView,
   },
+  {
+    path: "inventory",
+    name: "tafel-inventory",
+    component: () => import("../views/InventoryView.vue"),
+  }
 ];
