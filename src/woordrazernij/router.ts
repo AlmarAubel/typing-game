@@ -1,3 +1,4 @@
+import { createRouter, createWebHistory } from 'vue-router';
 import GameScreen from "@/woordrazernij/components/GameScreen.vue";
 import ObtainedPokemons from "@/woordrazernij/components/ObtainedPokemons.vue";
 import Pokemon from "@/woordrazernij/components/Pokemon.vue";

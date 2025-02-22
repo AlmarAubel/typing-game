@@ -5,8 +5,13 @@ import { useGameSettingsStore } from "@/woordrazernij/store/gameSettingsStore";
 
 type GameState = "NewGame" | "Running" | "Gameover" | "Ended";
 
+interface ActiveWord {
+  word: string;
+  typedCharacters: string;
+}
+
 interface State {
-  activeWord: string | null;
+  activeWord: ActiveWord | null;
   activeIndex: number;
   score: number;
   letterCount: number;
@@ -60,10 +65,11 @@ export const useGameStore = defineStore("game", () => {
   }
 
   function handleKeyPress(key: string) {
-    if (state.activeWord && state.activeWord[state.activeIndex] === key && key.match(/^[a-zA-Z]$/)) {
+    if (state.activeWord && state.activeWord.word[state.activeIndex] === key && key.match(/^[a-zA-Z]$/)) {
+      state.activeWord.typedCharacters = state.activeWord.typedCharacters + key;
       state.activeIndex++;
       state.letterCount++;
-      if (state.activeIndex === state.activeWord.length) {
+      if (state.activeIndex === state.activeWord.word.length) {
         state.score += 1 * 5;
         startNewWord();
       }
@@ -74,10 +80,12 @@ export const useGameStore = defineStore("game", () => {
     if (state.activeWord) {
       removeWordElement();
     }
-
-    state.activeWord = getRandomWord();
+    const word = getRandomWord();
+    state.activeWord = {
+      word,
+      typedCharacters: ''
+    };
     state.activeIndex = 0;
-
     const windowHeight = window.innerHeight;
     const maxHeight = windowHeight - 100;
     const randomHeight = Math.floor(Math.random() * maxHeight);
@@ -87,14 +95,16 @@ export const useGameStore = defineStore("game", () => {
     } else {
       const windowWidth = window.innerWidth;
       const maxWidth = windowWidth - 100;
-      const wordWidth = 24 * state.activeWord!.length;
+      const wordWidth = 24 * state.activeWord.word.length;
       const randomWidth = Math.floor(Math.random() * (maxWidth - wordWidth));
       state.wordLeftPosition = randomWidth;
     }
   }
 
   function removeWordElement() {
-    clearInterval(state.animationInterval!);
+    if (state.animationInterval) {
+      clearInterval(state.animationInterval);
+    }
     state.wordLeftPosition = 0;
   }
 
@@ -106,19 +116,29 @@ export const useGameStore = defineStore("game", () => {
   function animateWord() {
     const screenWidth = window.innerWidth;
     const speed = screenWidth * settings.speed;
-    clearInterval(state.animationInterval!);
+    
+    if (state.animationInterval) {
+      clearInterval(state.animationInterval);
+    }
+
     state.animationInterval = setInterval(() => {
       if (!state.gameStarted) {
-        clearInterval(state.animationInterval!);
+        if (state.animationInterval) {
+          clearInterval(state.animationInterval);
+        }
         return;
       }
-      state.wordLeftPosition += speed;
 
-      const wordWidth = 24 * state.activeWord!.length;
-      if (state.wordLeftPosition >= screenWidth - wordWidth) {
-        clearInterval(state.animationInterval!);
-        decreaseLives();
-        startNewWord();
+      state.wordLeftPosition += speed;
+      if (state.activeWord) {
+        const wordWidth = 24 * state.activeWord.word.length;
+        if (state.wordLeftPosition >= screenWidth - wordWidth) {
+          if (state.animationInterval) {
+            clearInterval(state.animationInterval);
+          }
+          decreaseLives();
+          startNewWord();
+        }
       }
     }, 1000 / 60);
   }
@@ -135,7 +155,9 @@ export const useGameStore = defineStore("game", () => {
   function gameOver(reason: "Gameover" | "Ended") {
     const pokemonStore = usePokemonStore();
     pokemonStore.addPoints(state.score);
-    clearInterval(state.animationInterval!);
+    if (state.animationInterval) {
+      clearInterval(state.animationInterval);
+    }
     state.gameState = reason ?? "Gameover";
     state.gameStarted = false;
   }

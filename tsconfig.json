@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom", "node"],
+    "lib": ["esnext", "dom", ],
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"]
