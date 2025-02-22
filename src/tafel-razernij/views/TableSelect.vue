@@ -6,11 +6,22 @@ const router = useRouter();
 const practiceType = ref("multiple-choice");
 const isRandom = ref(false);
 const tables = Array.from({ length: 10 }, (_, i) => i + 1);
+const selectedTables = ref<number[]>([]);
 
 const selectTable = (table: number) => {
+  const index = selectedTables.value.indexOf(table);
+  if (index === -1) {
+    selectedTables.value.push(table);
+  } else {
+    selectedTables.value.splice(index, 1);
+  }
+};
+
+const startGame = () => {
+  if (selectedTables.value.length === 0) return;
   router.push({
     name: "tafel-game",
-    params: { table },
+    params: { table: selectedTables.value.join(',') },
     query: {
       type: practiceType.value,
       random: isRandom.value ? "1" : "0",
@@ -79,10 +90,25 @@ const selectTable = (table: number) => {
         v-for="table in tables"
         :key="table"
         @click="selectTable(table)"
-        class=" rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white p-4 hover:from-purple-600 hover:to-purple-800 transition-colors shadow-md hover:shadow-lg flex flex-col items-center justify-center transform hover:-translate-y-1 duration-200"
+        :class="[
+          'rounded-xl p-4 transition-colors shadow-md hover:shadow-lg flex flex-col items-center justify-center transform hover:-translate-y-1 duration-200',
+          selectedTables.includes(table)
+            ? 'bg-gradient-to-br from-purple-600 to-purple-800 text-white'
+            : 'bg-gradient-to-br from-gray-100 to-gray-200 text-gray-700 hover:from-gray-200 hover:to-gray-300'
+        ]"
       >
         <span class="text-3xl font-bold mb-2">{{ table }}</span>
         <span class="">Tafel van {{ table }}</span>
+      </button>
+    </div>
+
+    <div class="mt-8 text-center">
+      <button
+        @click="startGame"
+        :disabled="selectedTables.length === 0"
+        class="px-8 py-4 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-xl text-xl font-bold hover:from-purple-600 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+      >
+        Start Oefenen
       </button>
     </div>
   </div>
