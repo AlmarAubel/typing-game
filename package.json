@@ -2,6 +2,7 @@
   "name": "poke-type",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "lint:js": "eslint src --ext .ts,.vue --fix",
@@ -20,6 +21,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.0.8",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "@vitejs/plugin-vue": "^5.2.1",
@@ -33,7 +35,7 @@
     "ftp-deploy": "^2.4.3",
     "postcss": "^8.5.3",
     "prettier": "2.8.4",
-    "tailwindcss": "3.4.17",
+    "tailwindcss": "4.0.8",
     "typescript": "^5.7.3",
     "vite": "^6.1.1",
     "vue-eslint-parser": "^9.1.1",

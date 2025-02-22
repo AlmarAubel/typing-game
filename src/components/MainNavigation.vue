@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-0 w-full bg-gradient-to-r from-gray-800 to-blue-600" role="navigation" aria-label="main navigation">
+  <nav class="fixed top-0 w-full bg-gradient-to-r from-gray-800 to-blue-600 z-10" role="navigation" aria-label="main navigation">
     <div class="flex items-center">
       <router-link to="/" class="px-4 py-2 text-white font-bold">
         Pokemon Leerwereld

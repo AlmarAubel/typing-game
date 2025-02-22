@@ -36,7 +36,7 @@
         }"
         class="absolute"
       >
-        <div class="word">
+        <div class="font-mono text-xl">
           <span
             v-for="(char, index) in game.state.activeWord.word"
             :key="index"
@@ -88,8 +88,3 @@ function repeatChar(char: string, n: number) {
 document.addEventListener("keypress", onKeyPress);
 </script>
 
-<style scoped>
-.word {
-  @apply text-xl font-mono;
-}
-</style>

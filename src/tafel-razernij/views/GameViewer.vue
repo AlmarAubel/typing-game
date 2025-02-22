@@ -15,11 +15,11 @@ const currentNumber = ref(1)
 const selectedTable = parseInt(route.params.table as string)
 const isAnimating = ref(false)
 const pokeball = ref<HTMLElement | null>(null)
-const currentPokemon = ref<{ 
-  id: number; 
-  sprite: string; 
+const currentPokemon = ref<{
+  id: number;
+  sprite: string;
   name: string;
-  cry: string; 
+  cry: string;
   audioElement?: HTMLAudioElement; // Add this
 } | null>(null)
 const pokeballRotation = ref(0)
@@ -32,9 +32,6 @@ const options = computed(() => generateOptions(correctAnswer.value))
 
 const router = useRouter()  // Voeg router instantie toe
 
-const goBack = () => {
-  router.push('/')
-}
 
 function getRandomPosition() {
   // Bereken random positie binnen het speelveld (20% marge van de randen)
@@ -79,28 +76,28 @@ function generateOptions(answer: number) {
 
 const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolean) => {
   if (!pokeball.value) return
-  
+
   isAnimating.value = true
   const ballRect = pokeball.value.getBoundingClientRect()
   const startX = ballRect.left
   const startY = ballRect.top
-  
+
   // Grotere miss bij fout antwoord
   const missOffset = isCorrect ? 0 : (Math.random() > 0.5 ? 200 : -200)
   const missHeight = isCorrect ? 0 : 100 // Extra hoogte bij miss
-  
+
   const animation = pokeball.value.animate([
-    { 
+    {
       transform: 'translate(0, 0) rotate(0deg)',
-      offset: 0 
+      offset: 0
     },
-    { 
-      transform: `translate(${(targetX - startX + missOffset/2)}px, ${(targetY - startY - 200 - missHeight)}px) rotate(${720}deg)`,
-      offset: 0.5 
+    {
+      transform: `translate(${(targetX - startX + missOffset / 2)}px, ${(targetY - startY - 200 - missHeight)}px) rotate(${720}deg)`,
+      offset: 0.5
     },
-    { 
+    {
       transform: `translate(${(targetX - startX + missOffset)}px, ${targetY - startY + 50}px) rotate(${1080}deg)`,
-      offset: 1 
+      offset: 1
     }
   ], {
     duration: 1500,
@@ -108,7 +105,7 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
   })
 
   await animation.finished
-  
+
   if (isCorrect) {
     isCatching.value = true
     await new Promise(resolve => setTimeout(resolve, 1000))
@@ -118,7 +115,7 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
     await new Promise(resolve => setTimeout(resolve, 500))
     isWrongAnswer.value = false
   }
-  
+
   isAnimating.value = false
   return true
 }
@@ -149,20 +146,19 @@ const playCry = () => {
 
 const checkAnswer = async (userAnswer: number | string) => {
   if (isAnimating.value) return
-  
   const numericAnswer = Number(userAnswer)
   const isCorrect = numericAnswer === correctAnswer.value
-  const pokemon = document.querySelector('.current-pokemon') as HTMLElement
+  const pokemon = document.querySelector('.current-pokemon') as HTMLElement  // Changed to select the img element
   if (!pokemon) return
 
   const rect = pokemon.getBoundingClientRect()
-  
+
   if (isCorrect) {
-    playCry() // Start het geluid direct bij een correct antwoord
+    playCry()
   }
-  
+
   await throwPokeball(rect.left + rect.width / 2, rect.top + rect.height / 2, isCorrect)
-  
+
   if (isCorrect && currentPokemon.value) {
     await pokemonStore.catchPokemon({
       id: currentPokemon.value.id,
@@ -174,7 +170,6 @@ const checkAnswer = async (userAnswer: number | string) => {
     await generateRandomPokemon()
     if (practiceType === 'open') {
       answer.value = ''
-      // Focus the input after a short delay to ensure the DOM is updated
       setTimeout(() => {
         answerInput.value?.focus()
       }, 0)
@@ -184,90 +179,70 @@ const checkAnswer = async (userAnswer: number | string) => {
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
-    <div class="flex flex-col">
-      <div class="flex justify-between items-center mb-8">
-        <button class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg flex items-center space-x-2 transition-colors" @click="goBack">
-          <span class="text-xl">←</span>
-          <span>Terug naar tafels</span>
-        </button>
+  <div class="h-[calc(100vh-8rem)]">
+    <!-- <div class="min-h-[calc(100vh-4rem)] grid grid-cols-[1fr_300px] gap-4"> -->
+    <div class="grid grid-cols-[1fr_300px] gap-4">
+      <!-- Main Game Area -->
+      <div class="flex flex-col p-4 h-full overflow-hidden">
+        <!-- Game Screen -->
+        <div class="relative flex-1 bg-gray-100 rounded-xl p-4 overflow-hidden">
+          <!-- Top Bar with Sound and Table -->
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-4xl font-bold">
+              {{ currentNumber }} x {{ selectedTable }} = ?
+            </div>
+            <button class="p-3 rounded-full hover:bg-gray-200 transition-colors" @click="toggleSound">
+              <span class="text-2xl">{{ soundEnabled ? '🔊' : '🔇' }}</span>
+            </button>
+          </div>
 
-        <button class="p-3 rounded-full hover:bg-gray-200 transition-colors" @click="toggleSound">
-          <span class="text-2xl">{{ soundEnabled ? '🔊' : '🔇' }}</span>
-        </button>
-      </div>
-
-      <div class="text-4xl font-bold text-center mb-8">
-        {{ currentNumber }} x {{ selectedTable }} = ?
-      </div>
-      
-      <div class="relative min-h-[400px] bg-gray-100 rounded-xl p-4">
-        <div 
-          v-if="currentPokemon"
-          class="absolute transition-all duration-500"
-          :class="{
-            'animate-bounce': isCatching,
-            'animate-shake': isWrongAnswer
-          }"
-          :style="{
+          <div v-if="currentPokemon" class="absolute z-10" :style="{
             left: `${pokemonPosition.x}%`,
-            top: `${pokemonPosition.y}%`
-          }"
-        >
-          <img 
-            :src="currentPokemon.sprite" 
-            :alt="'Pokemon #' + currentPokemon.id"
-            class="w-24 h-24 object-contain"
-          >
-        </div>
-        
-        <img 
-          ref="pokeball" 
-          src="/pokeball.png" 
-          alt="Pokeball"
-          class="w-12 h-12 absolute transition-all duration-300"
-          :class="{ 'animate-spin': isAnimating }"
-          :style="{
-            transform: `rotate(${pokeballRotation}deg)`
-          }"
-        >
+            top: `${pokemonPosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }">
+            <img :src="currentPokemon.sprite" :alt="'Pokemon #' + currentPokemon.id" class="current-pokemon" :class="{
+              'catching': isCatching,
+              'animate-shake': isWrongAnswer
+            }">
+          </div>
 
-        <div class="absolute bottom-4 left-0 right-0">
-          <template v-if="practiceType === 'multiple-choice'">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto px-4">
-              <button
-                v-for="option in options"
-                :key="option"
-                @click="checkAnswer(option)"
-                :disabled="isAnimating"
-                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
-              >
-                {{ option }}
-              </button>
-            </div>
-          </template>
-          
-          <template v-else>
-            <div class="flex justify-center space-x-4 max-w-md mx-auto px-4">
-              <input
-                ref="answerInput"
-                type="number"
-                v-model="answer"
-                @keyup.enter="checkAnswer(answer)"
-                :disabled="isAnimating"
-                placeholder="Type je antwoord..."
-                class="w-full px-4 py-3 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-              >
-              <button 
-                @click="checkAnswer(answer)"
-                :disabled="isAnimating"
-                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
-              >
-                ✓
-              </button>
-            </div>
-          </template>
+          <img ref="pokeball" src="/pokeball.png" alt="Pokeball"
+            class="w-12 h-12 absolute left-1/2 bottom-8 -translate-x-1/2 transition-all duration-300 z-20"
+            :class="{ 'animate-spin': isAnimating }" :style="{
+              transform: `translateX(-50%) rotate(${pokeballRotation}deg)`
+            }">
+
+          <!-- Answer Options -->
+          <div class="absolute bottom-8 left-0 right-0 z-30">
+            <template v-if="practiceType === 'multiple-choice'">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto px-4">
+                <button v-for="option in options" :key="option" @click="checkAnswer(option)" :disabled="isAnimating"
+                  class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors">
+                  {{ option }}
+                </button>
+              </div>
+            </template>
+
+            <template v-else>
+              <div class="flex justify-center space-x-4 max-w-md mx-auto px-4">
+                <input ref="answerInput" type="number" v-model="answer" @keyup.enter="checkAnswer(answer)"
+                  :disabled="isAnimating" placeholder="Type je antwoord..."
+                  class="w-full px-4 py-3 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button @click="checkAnswer(answer)" :disabled="isAnimating"
+                  class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors">
+                  ✓
+                </button>
+              </div>
+            </template>
+          </div>
         </div>
+      </div>
+
+      <!-- Pokemon Sidebar -->
+
+      <div class="bg-gray-50 p-4 overflow-y-auto border-l h-screen">
+        <PokemonSidebar />
       </div>
     </div>
   </div>
@@ -281,117 +256,81 @@ const checkAnswer = async (userAnswer: number | string) => {
 }
 
 .animate-shake {
-  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
 @keyframes shake {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
-}
 
-.back-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: white;
-  border: none;
-  border-radius: 8px;
-  color: #2c3e50;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-}
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
-.back-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
 
-.back-icon {
-  font-size: 1.2em;
-}
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
 
-.game-main {
-  padding-top: 4rem;
-  padding: 1rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.game-container {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 1rem;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.game-field {
-  width: 100%;
-  height: 40vh; /* Adjust the height to be dynamic */
-  background: linear-gradient(to bottom, #87CEEB, #90EE90);
-  border-radius: 16px;
-  margin: 1rem 0;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.pokemon-info {
-  margin-left: 0.35rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 200px;
-}
-
-.pokemon-sprite {
-  width: 100%;
-  height: auto;
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .current-pokemon {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
+  width: 120px;
+  height: 120px;
+  z-index: 15;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  image-rendering: pixelated;
+  animation: float 3s ease-in-out infinite;
 }
 
 .current-pokemon.catching {
   animation: catch-pokemon 1s ease-in-out;
 }
 
-.current-pokemon.dodging img {
+.current-pokemon.dodging {
   animation: dodge 0.5s ease-in-out;
 }
 
 @keyframes dodge {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  25% { transform: translateX(-20px) rotate(-10deg); }
-  75% { transform: translateX(20px) rotate(10deg); }
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(-20px) rotate(-10deg);
+  }
+
+  75% {
+    transform: translateX(20px) rotate(10deg);
+  }
 }
 
 @keyframes catch-pokemon {
-  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
-  50% { transform: translate(-50%, -50%) scale(0.5) rotate(180deg); opacity: 0.7; }
-  100% { transform: translate(-50%, -50%) scale(0) rotate(360deg); opacity: 0; }
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.5) rotate(180deg);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 .current-pokemon img {
@@ -399,188 +338,30 @@ const checkAnswer = async (userAnswer: number | string) => {
   height: 100px;
   image-rendering: pixelated;
   animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(5deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
 }
 
-.pokeball {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 2;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+/* Add these new styles */
+.main-content {
+  margin-top: 4rem;
+  /* 64px to match the nav height */
 }
 
-.is-throwing {
-  pointer-events: none;
-}
-
-.question {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #2c3e50;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.answer-section {
-  margin: 1rem 0;
-}
-
-.options {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.option-button {
-  padding: 0.75rem;
-  font-size: 1.2rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  min-width: 10rem;
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-.option-button:hover:not(:disabled) {
-  transform: scale(1.05);
-  background: #45a049;
-}
-
-.option-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.pokemon-sidebar {
-  background: rgba(255,255,255,0.95);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow-y: auto;
+/* Update the game container to take remaining height */
+.game-container {
+  min-height: calc(100vh - 4rem);
   height: 100%;
 }
-
-.pokemon-collection {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.5rem;
-}
-
-.pokemon {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.pokemon:hover {
-  transform: translateY(-2px);
-}
-
-.pokemon-image {
-  position: relative;
-  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
-  padding: 0.25rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.pokemon-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.pokemon-name {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  font-size: 0.8rem;
-  padding: 0.25rem;
-  text-align: center;
-  text-transform: capitalize;
-}
-
-.open-answer {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.open-answer input {
-  width: 100px;
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  border: 2px solid #4CAF50;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.submit-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.submit-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.top-buttons {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.sound-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 0.75rem;
-  background: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
-}
-
-.sound-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.sound-icon {
-  font-size: 1.2em;
-}
 </style>
-
-
