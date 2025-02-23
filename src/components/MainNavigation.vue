@@ -19,12 +19,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div v-show="isGamesOpen" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-50"
+            <div v-show="isGamesOpen" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-50 flex flex-col"
               @click="closeGamesMenu">
-              <router-link class="dropdown-item" :to="{ name: 'woord-home' }">Woord Razernij</router-link>
-              <router-link class="dropdown-item" :to="{ name: 'tafel-home' }">Tafel Razernij</router-link>
+              <NavLink :to="{ name: 'woord-home' }">Woord Razernij</NavLink>
+              <NavLink :to="{ name: 'tafel-home' }">Tafel Razernij</NavLink>
               <div class="border-t border-gray-700 my-1"></div>
-              <router-link class="dropdown-item" :to="{ name: 'home' }">Terug naar Start</router-link>
+              <NavLink :to="{ name: 'home' }">Terug naar Start</NavLink>
             </div>
           </div>
         </div>
@@ -49,12 +49,9 @@
           <slot></slot>
 
           <div class="border-t border-gray-700 my-2"></div>
-          <router-link class="mobile-nav-link" :to="{ name: 'woord-home' }" @click="closeMobileMenu">Woord
-            Razernij</router-link>
-          <router-link class="mobile-nav-link" :to="{ name: 'tafel-home' }" @click="closeMobileMenu">Tafel
-            Razernij</router-link>
-          <router-link class="mobile-nav-link" :to="{ name: 'home' }" @click="closeMobileMenu">Terug naar
-            Start</router-link>
+          <NavLink :to="{ name: 'woord-home' }" @click="closeMobileMenu">Woord Razernij</NavLink>
+          <NavLink :to="{ name: 'tafel-home' }" @click="closeMobileMenu">Tafel Razernij</NavLink>
+          <NavLink :to="{ name: 'home' }" @click="closeMobileMenu">Terug naar Start</NavLink>
         </div>
       </div>
     </div>
@@ -63,6 +60,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import NavLink from "./NavLink.vue";
 
 const isMenuOpen = ref(false);
 const isGamesOpen = ref(false);

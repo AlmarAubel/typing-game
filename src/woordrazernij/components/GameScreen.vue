@@ -10,7 +10,10 @@
         <div class="flex flex-col items-end">
           <div class="text-2xl mb-2">Score: {{ game.state.score }}</div>
           <div class="flex gap-2">
-            <router-link class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded" role="button" :to="{ name: 'woord-newgame' }">↺</router-link>
+            <router-link 
+              class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded" 
+              role="button" 
+              :to="{ name: 'woord-newgame' }">↺</router-link>
             <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
           </div>
         </div>

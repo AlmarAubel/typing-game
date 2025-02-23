@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 py-16">
       <div class="flex flex-wrap items-center">
         <div class="w-full lg:w-1/2 text-center lg:text-left">
-          <router-link class="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg text-xl font-bold transition-colors duration-200" :to="{ name: 'NewGame' }">
+          <router-link class="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg text-xl font-bold transition-colors duration-200" :to="{ name: 'woord-newGame' }">
             Speel het spel
           </router-link>
         </div>

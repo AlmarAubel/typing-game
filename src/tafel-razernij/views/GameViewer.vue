@@ -4,7 +4,7 @@ import { useRoute } from "vue-router"; // Voeg useRouter import toe
 import { usePokemonStore } from "../stores/pokemon";
 import PokemonSidebar from "../components/PokemonSidebar.vue"; // Import the new component
 
-const route = useRoute();
+const route = useRoute(); 
 const practiceType = (route.query.type as string) || "multiple-choice";
 const isRandom = route.query.random === "1";
 const answer = ref("");
@@ -14,7 +14,7 @@ const pokemonStore = usePokemonStore();
 const currentNumber = ref(1);
 const selectedTables = computed(() => {
   const tableParam = route.params.table as string;
-  return tableParam.split(',').map(t => parseInt(t));
+  return tableParam.split(",").map((t) => parseInt(t));
 });
 const currentTable = ref(selectedTables.value[0]);
 const isAnimating = ref(false);
@@ -139,14 +139,15 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
 // Voeg deze functie toe voor random getallen
 const getNextNumber = () => {
   if (isRandom) {
-    if (Math.random() < 0.8) { // 20% chance to change table
+    if (Math.random() < 0.8) {
+      // 20% chance to change table
       const currentIndex = selectedTables.value.indexOf(currentTable.value);
       const nextIndex = (currentIndex + 1) % selectedTables.value.length;
       currentTable.value = selectedTables.value[nextIndex];
     }
     return Math.floor(Math.random() * 10) + 1;
   }
-  
+
   if (currentNumber.value >= 10) {
     currentNumber.value = 1;
     const currentIndex = selectedTables.value.indexOf(currentTable.value);
@@ -154,7 +155,7 @@ const getNextNumber = () => {
     currentTable.value = selectedTables.value[nextIndex];
     return 1;
   }
-  
+
   return currentNumber.value + 1;
 };
 
@@ -238,11 +239,13 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
   <div class="h-full grid grid-cols-[1fr_350px] overflow-hidden">
     <!-- Main Game Area -->
     <div class="flex flex-col p-4">
-      <div ref="gameContainer" class="relative flex-1 bg-gray-100 rounded-xl p-4">
+      <div ref="gameContainer"
+class="relative flex-1 bg-gray-100 rounded-xl p-4">
         <!-- Top Bar with Sound and Table -->
         <div class="flex justify-between items-center mb-4">
           <div class="text-4xl font-bold">{{ currentNumber }} x {{ currentTable }} = ?</div>
-          <button class="p-3 rounded-full hover:bg-gray-200 transition-colors" @click="toggleSound">
+          <button class="p-3 rounded-full hover:bg-gray-200 transition-colors"
+@click="toggleSound">
             <span class="text-2xl">{{ soundEnabled ? "🔊" : "🔇" }}</span>
           </button>
         </div>
@@ -426,7 +429,6 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
     transform: translateY(-15px) rotate(5deg);
   }
 }
-
 
 /* Ensure the game container takes available space */
 /* #gameContainer {
