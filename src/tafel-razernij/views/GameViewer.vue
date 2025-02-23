@@ -31,6 +31,7 @@ const pokeballRotation = ref(0);
 const pokemonPosition = ref({ x: 0, y: 0 });
 const isCatching = ref(false);
 const isWrongAnswer = ref(false);
+const isPokeballVisible = ref(false);
 
 const correctAnswer = computed(() => currentTable.value * currentNumber.value);
 const options = computed(() => generateOptions(correctAnswer.value));
@@ -81,6 +82,7 @@ function generateOptions(answer: number) {
 const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolean) => {
   if (!pokeball.value) return;
 
+  isPokeballVisible.value = true;
   isAnimating.value = true;
 
   const startX = clickPosition.value.x;
@@ -133,6 +135,7 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
   }
 
   isAnimating.value = false;
+  isPokeballVisible.value = false;
   return true;
 };
 
@@ -236,17 +239,21 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
 </script>
 
 <template>
-  <div class="h-full grid grid-cols-[1fr_350px] overflow-hidden">
+  <div class="h-[100svh] grid grid-cols-1 lg:grid-cols-[1fr_350px] overflow-hidden">
     <!-- Main Game Area -->
-    <div class="flex flex-col p-4">
-      <div ref="gameContainer"
-class="relative flex-1 bg-gray-100 rounded-xl p-4">
+    <div class="flex flex-col p-4 overflow-hidden">
+      <div 
+        ref="gameContainer"
+        class="relative flex-1 bg-gray-100 rounded-xl p-4 min-h-0"
+      >
         <!-- Top Bar with Sound and Table -->
         <div class="flex justify-between items-center mb-4">
-          <div class="text-4xl font-bold">{{ currentNumber }} x {{ currentTable }} = ?</div>
-          <button class="p-3 rounded-full hover:bg-gray-200 transition-colors"
-@click="toggleSound">
-            <span class="text-2xl">{{ soundEnabled ? "🔊" : "🔇" }}</span>
+          <div class="text-2xl md:text-4xl font-bold">{{ currentNumber }} x {{ currentTable }} = ?</div>
+          <button 
+            class="p-2 md:p-3 rounded-full hover:bg-gray-200 transition-colors"
+            @click="toggleSound"
+          >
+            <span class="text-xl md:text-2xl">{{ soundEnabled ? "🔊" : "🔇" }}</span>
           </button>
         </div>
 
@@ -274,6 +281,7 @@ class="relative flex-1 bg-gray-100 rounded-xl p-4">
           ref="pokeball"
           src="/pokeball.png"
           alt="Pokeball"
+          v-show="isPokeballVisible"
           class="w-12 h-12 absolute left-1/2 bottom-8 -translate-x-1/2 transition-all duration-300 z-20"
           :class="{ 'animate-spin': isAnimating }"
           :style="{
@@ -282,15 +290,15 @@ class="relative flex-1 bg-gray-100 rounded-xl p-4">
         />
 
         <!-- Answer Options -->
-        <div class="absolute bottom-8 left-0 right-0 z-30">
+        <div class="absolute bottom-4 md:bottom-8 left-0 right-0 z-30">
           <template v-if="practiceType === 'multiple-choice'">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto px-4">
+            <div class="grid grid-cols-2 gap-2 md:gap-4 max-w-2xl mx-auto px-2 md:px-4">
               <button
                 v-for="option in options"
                 :key="option"
                 @click="(e: MouseEvent) => checkAnswer(option, e)"
                 :disabled="isAnimating"
-                class="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
+                class="px-4 md:px-6 py-2 md:py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-lg md:text-xl font-bold transition-colors"
               >
                 {{ option }}
               </button>
@@ -298,20 +306,22 @@ class="relative flex-1 bg-gray-100 rounded-xl p-4">
           </template>
 
           <template v-else>
-            <div class="flex justify-center space-x-4 max-w-md mx-auto px-4">
+            <div class="flex justify-center space-x-2 md:space-x-4 max-w-md mx-auto px-2 md:px-4">
               <input
                 ref="answerInput"
                 type="number"
+                inputmode="numeric"
+                pattern="[0-9]*"
                 v-model="answer"
                 @keyup.enter="checkAnswer(answer, null)"
                 :disabled="isAnimating"
                 placeholder="Type je antwoord..."
-                class="w-full px-4 py-3 text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                class="w-full px-3 md:px-4 py-2 md:py-3 text-lg md:text-xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
               <button
                 @click="(e: MouseEvent) => checkAnswer(answer, e)"
                 :disabled="isAnimating"
-                class="submit-button px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-xl font-bold transition-colors"
+                class="submit-button px-4 md:px-6 py-2 md:py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white rounded-lg text-lg md:text-xl font-bold transition-colors"
               >
                 ✓
               </button>
@@ -322,7 +332,7 @@ class="relative flex-1 bg-gray-100 rounded-xl p-4">
     </div>
 
     <!-- Pokemon Sidebar -->
-    <div class="bg-gray-50 p-4 overflow-y-auto border-l">
+    <div class="hidden lg:block bg-gray-50 p-4 overflow-y-auto border-l">
       <PokemonSidebar />
     </div>
   </div>
@@ -363,12 +373,19 @@ class="relative flex-1 bg-gray-100 rounded-xl p-4">
 }
 
 .current-pokemon {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   z-index: 15;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   image-rendering: pixelated;
   animation: float 3s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .current-pokemon {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 .current-pokemon.catching {
