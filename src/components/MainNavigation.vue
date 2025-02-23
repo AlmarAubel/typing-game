@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <!-- Logo/Home link -->
-        <router-link to="/" class="text-white font-bold text-xl hover:text-gray-200">
+        <router-link :to="{ name: 'home' }" class="text-white font-bold text-xl hover:text-gray-200">
           Pokemon Leerwereld
         </router-link>
 
@@ -11,14 +11,14 @@
         <div class="hidden lg:flex items-center space-x-4">
           <!-- Game specific items -->
           <template v-if="currentGame === 'woordrazernij'">
-            <router-link class="nav-link" to="/woordrazernij/nieuwspel">🎮 Nieuw spel</router-link>
-            <router-link class="nav-link" to="/woordrazernij/shop">🏪 Pokeball Shop</router-link>
-            <router-link class="nav-link" to="/woordrazernij/inventory">🐾 Mijn Pokemons</router-link>
+            <router-link class="nav-link" :to="{ name: 'woord-newgame' }">🎮 Nieuw spel</router-link>
+            <router-link class="nav-link" :to="{ name: 'woord-shop' }">🏪 Pokeball Shop</router-link>
+            <router-link class="nav-link" :to="{ name: 'woord-obtainedpokemons' }">🐾 Mijn Pokemons</router-link>
           </template>
 
           <template v-if="currentGame === 'tafelrazernij'">
-            <router-link class="nav-link" to="/tafel-razernij">🎲 Kies Tafel</router-link>
-            <router-link class="nav-link" to="/tafel-razernij/inventory">🐾 Mijn Pokemons</router-link>
+            <router-link class="nav-link" :to="{ name: 'tafel-home' }">🎲 Kies Tafel</router-link>
+            <router-link class="nav-link" :to="{ name: 'tafel-inventory' }">🐾 Mijn Pokemons</router-link>
           </template>
 
           <!-- Games dropdown -->
@@ -38,10 +38,10 @@
               class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-50"
               @click="closeGamesMenu"
             >
-              <router-link class="dropdown-item" to="/woordrazernij">Woord Razernij</router-link>
-              <router-link class="dropdown-item" to="/tafel-razernij">Tafel Razernij</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'woord-home' }">Woord Razernij</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'tafel-home' }">Tafel Razernij</router-link>
               <div class="border-t border-gray-700 my-1"></div>
-              <router-link class="dropdown-item" to="/">Terug naar Start</router-link>
+              <router-link class="dropdown-item" :to="{ name: 'home' }">Terug naar Start</router-link>
             </div>
           </div>
         </div>
@@ -80,20 +80,20 @@
       >
         <div class="px-2 pt-2 pb-3 space-y-1">
           <template v-if="currentGame === 'woordrazernij'">
-            <router-link class="mobile-nav-link" to="/woordrazernij/nieuwspel" @click="closeMobileMenu">🎮 Nieuw spel</router-link>
-            <router-link class="mobile-nav-link" to="/woordrazernij/shop" @click="closeMobileMenu">🏪 Pokeball Shop</router-link>
-            <router-link class="mobile-nav-link" to="/woordrazernij/inventory" @click="closeMobileMenu">🐾 Mijn Pokemons</router-link>
+            <router-link class="mobile-nav-link" :to="{ name: 'woord-newgame' }" @click="closeMobileMenu">🎮 Nieuw spel</router-link>
+            <router-link class="mobile-nav-link" :to="{ name: 'woord-shop' }" @click="closeMobileMenu">🏪 Pokeball Shop</router-link>
+            <router-link class="mobile-nav-link" :to="{ name: 'woord-obtainedpokemons' }" @click="closeMobileMenu">🐾 Mijn Pokemons</router-link>
           </template>
 
           <template v-if="currentGame === 'tafelrazernij'">
-            <router-link class="mobile-nav-link" to="/tafel-razernij" @click="closeMobileMenu">🎲 Kies Tafel</router-link>
-            <router-link class="mobile-nav-link" to="/tafel-razernij/inventory" @click="closeMobileMenu">🐾 Mijn Pokemons</router-link>
+            <router-link class="mobile-nav-link" :to="{ name: 'tafel-home' }" @click="closeMobileMenu">🎲 Kies Tafel</router-link>
+            <router-link class="mobile-nav-link" :to="{ name: 'tafel-inventory' }" @click="closeMobileMenu">🐾 Mijn Pokemons</router-link>
           </template>
 
           <div class="border-t border-gray-700 my-2"></div>
-          <router-link class="mobile-nav-link" to="/woordrazernij" @click="closeMobileMenu">Woord Razernij</router-link>
-          <router-link class="mobile-nav-link" to="/tafel-razernij" @click="closeMobileMenu">Tafel Razernij</router-link>
-          <router-link class="mobile-nav-link" to="/" @click="closeMobileMenu">Terug naar Start</router-link>
+          <router-link class="mobile-nav-link" :to="{ name: 'woord-home' }" @click="closeMobileMenu">Woord Razernij</router-link>
+          <router-link class="mobile-nav-link" :to="{ name: 'tafel-home' }" @click="closeMobileMenu">Tafel Razernij</router-link>
+          <router-link class="mobile-nav-link" :to="{ name: 'home' }" @click="closeMobileMenu">Terug naar Start</router-link>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
         <div class="flex flex-col items-end">
           <div class="text-2xl mb-2">Score: {{ game.state.score }}</div>
           <div class="flex gap-2">
-            <router-link class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded" role="button" to="/nieuwspel">↺</router-link>
+            <router-link class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded" role="button" :to="{ name: 'woord-newgame' }">↺</router-link>
             <on-screen-keyboard-toggle @keypressed="onKeyPress" :show-keyboard="shouldShowKeyboard" />
           </div>
         </div>
@@ -21,7 +21,7 @@
           <div class="bg-gray-100 px-6 py-4 rounded-t-lg font-bold">{{ game.state.gameState }}</div>
           <div class="p-6">
             <span class="block mb-4">Je score is: {{ game.state.score }}</span>
-            <router-link class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded" role="button" to="/nieuwspel">
+            <router-link class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded" role="button" :to="{ name: 'woord-newgame' }">
               <span>🎮 Nieuw spel starten</span>
             </router-link>
           </div>

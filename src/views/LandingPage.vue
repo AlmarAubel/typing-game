@@ -2,13 +2,13 @@
   <div class="min-h-screen flex flex-col items-center justify-center p-8">
     <h1 class="text-4xl md:text-5xl font-bold text-center mb-8">Welkom bij de Pokemon Leerwereld!</h1>
     <div class="flex flex-col md:flex-row gap-6 max-w-4xl w-full">
-      <router-link to="/woordrazernij" class="flex-1 p-6 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+      <router-link :to="{ name: 'woord-home' }" class="flex-1 p-6 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
         <div class="text-white">
           <h2 class="text-2xl font-bold mb-2">Woord Razernij</h2>
           <p>Train je typesnelheid en vang Pokemons!</p>
         </div>
       </router-link>
-      <router-link to="/tafel-razernij" class="flex-1 p-6 bg-gradient-to-r from-purple-500 to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+      <router-link :to="{ name: 'tafel-home' }" class="flex-1 p-6 bg-gradient-to-r from-purple-500 to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
         <div class="text-white">
           <h2 class="text-2xl font-bold mb-2">Tafel Razernij</h2>
           <p>Oefen tafels en verzamel Pokemons!</p>

@@ -48,7 +48,7 @@ import { useRouter } from "vue-router";
 const settings = useGameSettingsStore();
 const router = useRouter();
 const onStartButtonClick = () => {
-  router.push({ name: "GameScreen" });
+  router.push({ name: "woord-gamescreen" });
 };
 </script>
 
