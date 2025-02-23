@@ -32,6 +32,7 @@ const props = defineProps<{
         'animate-shake': isWrongAnswer,
       }"
     />
+    <div v-if="isWrongAnswer" class="pulse-effect"></div>
   </div>
 </template>
 
@@ -43,14 +44,28 @@ const props = defineProps<{
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   image-rendering: pixelated;
   animation: float 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 .current-pokemon.catching {
-  animation: catch-pokemon 1s ease-in-out;
+  animation: catch-pokemon 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .current-pokemon.animate-shake {
   animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.pulse-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.2) 0%, rgba(255, 0, 0, 0) 70%);
+  border-radius: 50%;
+  z-index: 14;
+  animation: pulse 0.5s cubic-bezier(0.2, 0.8, 0.4, 1) both;
 }
 
 @keyframes float {
@@ -58,7 +73,7 @@ const props = defineProps<{
     transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-15px) rotate(5deg);
+    transform: translateY(-15px) rotate(3deg);
   }
 }
 
@@ -67,20 +82,42 @@ const props = defineProps<{
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
-  50% {
-    transform: scale(0.5) rotate(180deg);
-    opacity: 0.7;
+  40% {
+    transform: scale(0.7) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(0.4) rotate(360deg);
+    opacity: 0.4;
   }
   100% {
-    transform: scale(0) rotate(360deg);
+    transform: scale(0) rotate(540deg);
     opacity: 0;
   }
 }
 
 @keyframes shake {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  15% { transform: translate3d(-3px, -2px, 0) rotate(-2deg); }
+  30% { transform: translate3d(5px, 1px, 0) rotate(3deg); }
+  45% { transform: translate3d(-4px, -1px, 0) rotate(-1deg); }
+  60% { transform: translate3d(3px, 2px, 0) rotate(2deg); }
+  75% { transform: translate3d(-2px, -1px, 0) rotate(-1deg); }
+  90% { transform: translate3d(1px, 1px, 0) rotate(1deg); }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
 }
 </style>

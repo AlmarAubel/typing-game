@@ -82,7 +82,7 @@ const getNextNumber = () => {
     }
     return Math.floor(Math.random() * 10) + 1;
   }
-  
+
   if (currentNumber.value >= 10) {
     currentNumber.value = 1;
     const currentIndex = selectedTables.value.indexOf(currentTable.value);
@@ -90,7 +90,7 @@ const getNextNumber = () => {
     currentTable.value = selectedTables.value[nextIndex];
     return 1;
   }
-  
+
   return currentNumber.value + 1;
 };
 
@@ -112,19 +112,41 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
 
   isAnimating.value = true;
 
-  const distance = Math.sqrt(Math.pow(targetX - clickPosition.value.x, 2) + Math.pow(targetY - clickPosition.value.y, 2));
-  const arcHeight = isCorrect ? -distance * 0.5 : -distance * 0.7;
-  const missOffset = isCorrect ? 0 : Math.random() > 0.5 ? distance * 0.3 : -distance * 0.3;
+  const containerRect = container.getBoundingClientRect();
+  const pokemonElement = container.querySelector(".current-pokemon") as HTMLElement;
+  if (!pokemonElement) return;
 
-  await new Promise(resolve => setTimeout(resolve, isCorrect ? 1000 : 800));
+  const pokemonRect = pokemonElement.getBoundingClientRect();
+
+  // Start positie onderaan
+  const startY = containerRect.height - 100;
+  // Eind positie bij de Pokemon
+  const endY = pokemonRect.top - containerRect.top + (pokemonRect.height / 2);
+
+  // Bereken de afstand die de Pokeball moet afleggen
+  const distance = startY - endY;
+
+  clickPosition.value = {
+    x: pokemonRect.left + (pokemonRect.width / 2) - containerRect.left,
+    y: startY
+  };
+
+  // Update de CSS variabele voor de werpafstand
+  const pokeballElement = container.querySelector(".pokeball") as HTMLElement;
+  if (pokeballElement) {
+    pokeballElement.style.setProperty('--throw-height', `${-distance}px`);
+  }
+
+  // Wacht tot de Pokeball bijna de Pokemon raakt (ongeveer 70% van de animatie)
+  await new Promise(resolve => setTimeout(resolve, isCorrect ? 245 : 350)); // 0.35s * 0.7 voor correct, 0.5s * 0.7 voor miss
 
   if (isCorrect) {
     isCatching.value = true;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 105)); // Resterende 30% van de animatie
     isCatching.value = false;
   } else {
     isWrongAnswer.value = true;
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 150));
     isWrongAnswer.value = false;
   }
 
@@ -138,31 +160,15 @@ const checkAnswer = async (userAnswer: number, event?: MouseEvent | null) => {
   const container = gameContainer.value;
   if (!container) return;
 
-  const containerRect = container.getBoundingClientRect();
-
-  if (event) {
-    clickPosition.value = {
-      x: event.clientX - containerRect.left,
-      y: event.clientY - containerRect.top,
-    };
-  } else {
-    const submitButton = document.querySelector(".submit-button") as HTMLElement;
-    if (submitButton) {
-      const buttonRect = submitButton.getBoundingClientRect();
-      clickPosition.value = {
-        x: buttonRect.left + buttonRect.width / 2 - containerRect.left,
-        y: buttonRect.top + buttonRect.height / 2 - containerRect.top,
-      };
-    }
-  }
-
   const isCorrect = userAnswer === correctAnswer.value;
-  const pokemon = container.querySelector(".current-pokemon") as HTMLElement;
-  if (!pokemon) return;
+  const containerRect = container.getBoundingClientRect();
+  const pokemonElement = container.querySelector(".current-pokemon") as HTMLElement;
 
-  const pokemonRect = pokemon.getBoundingClientRect();
-  const targetX = pokemonRect.left + pokemonRect.width / 2 - containerRect.left;
-  const targetY = pokemonRect.top + pokemonRect.height / 2 - containerRect.top;
+  if (!pokemonElement) return;
+
+  const pokemonRect = pokemonElement.getBoundingClientRect();
+  const targetX = pokemonRect.left + (pokemonRect.width / 2);
+  const targetY = pokemonRect.top + (pokemonRect.height / 2);
 
   if (isCorrect) {
     playCry();
@@ -198,25 +204,13 @@ onMounted(() => {
           </button>
         </div>
 
-        <GamePokemon
-          v-if="currentPokemon"
-          :pokemon="currentPokemon"
-          :position="pokemonPosition"
-          :is-catching="isCatching"
-          :is-wrong-answer="isWrongAnswer"
-        />
+        <GamePokemon v-if="currentPokemon" :pokemon="currentPokemon" :position="pokemonPosition"
+          :is-catching="isCatching" :is-wrong-answer="isWrongAnswer" />
 
-        <GamePokeball
-          :is-animating="isAnimating"
-          :click-position="clickPosition"
-        />
+        <GamePokeball :is-animating="isAnimating" :click-position="clickPosition" :is-wrong-answer="isWrongAnswer" />
 
-        <AnswerInput
-          :options="options"
-          :is-animating="isAnimating"
-          :practice-type="practiceType"
-          @check-answer="checkAnswer"
-        />
+        <AnswerInput :options="options" :is-animating="isAnimating" :practice-type="practiceType"
+          @check-answer="checkAnswer" />
       </div>
     </div>
 
