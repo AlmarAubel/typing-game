@@ -48,7 +48,7 @@ const props = defineProps<{
 }
 
 .current-pokemon.catching {
-  animation: catch-pokemon 0.45s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: catch-pokemon 0.85s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 .current-pokemon.animate-shake {

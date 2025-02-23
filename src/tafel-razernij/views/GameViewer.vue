@@ -15,11 +15,12 @@ const pokemonStore = usePokemonStore();
 const currentNumber = ref(1);
 const selectedTables = computed(() => {
   const tableParam = route.params.table as string;
-  return tableParam.split(',').map(t => parseInt(t));
+  return tableParam.split(",").map((t) => parseInt(t));
 });
 const currentTable = ref(selectedTables.value[0]);
 const isAnimating = ref(false);
 const clickPosition = ref({ x: 0, y: 0 });
+const targetPosition = ref({ x: 0, y: 0 }); // added targetPosition
 const currentPokemon = ref<{
   id: number;
   sprite: string;
@@ -40,7 +41,7 @@ const soundEnabled = ref(localStorage.getItem("pokemon-sound-enabled") !== "fals
 function getRandomPosition() {
   return {
     x: Math.random() * 60 + 20,
-    y: Math.random() * 40 + 30
+    y: Math.random() * 40 + 30,
   };
 }
 
@@ -49,7 +50,9 @@ async function generateRandomPokemon() {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const data = await response.json();
 
-  const audio = new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`);
+  const audio = new Audio(
+    `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`
+  );
   await audio.load();
 
   currentPokemon.value = {
@@ -121,24 +124,26 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
   // Start positie onderaan
   const startY = containerRect.height - 100;
   // Eind positie bij de Pokemon
-  const endY = pokemonRect.top - containerRect.top + (pokemonRect.height / 2);
+  const endY = pokemonRect.top - containerRect.top + pokemonRect.height / 2;
 
   // Bereken de afstand die de Pokeball moet afleggen
   const distance = startY - endY;
 
   clickPosition.value = {
-    x: pokemonRect.left + (pokemonRect.width / 2) - containerRect.left,
-    y: startY
+    x: pokemonRect.left + pokemonRect.width / 2 - containerRect.left,
+    y: startY,
   };
 
   // Update de CSS variabele voor de werpafstand
   const pokeballElement = container.querySelector(".pokeball") as HTMLElement;
   if (pokeballElement) {
-    pokeballElement.style.setProperty('--throw-height', `${-distance}px`);
+    pokeballElement.style.setProperty("--throw-height", `${-distance}px`);
   }
 
   // Wacht tot de Pokeball bijna de Pokemon raakt (ongeveer 70% van de animatie)
-  await new Promise(resolve => setTimeout(resolve, isCorrect ? 245 : 350)); // 0.35s * 0.7 voor correct, 0.5s * 0.7 voor miss
+  await new Promise((resolve) =>
+    setTimeout(resolve, isCorrect ? 245 : 350)
+  ); // 0.35s * 0.7 voor correct, 0.5s * 0.7 voor miss
 
   if (isCorrect) {
     isCatching.value = true;
@@ -167,8 +172,13 @@ const checkAnswer = async (userAnswer: number, event?: MouseEvent | null) => {
   if (!pokemonElement) return;
 
   const pokemonRect = pokemonElement.getBoundingClientRect();
-  const targetX = pokemonRect.left + (pokemonRect.width / 2);
-  const targetY = pokemonRect.top + (pokemonRect.height / 2);
+  // Compute target position relative to container
+  const targetX = pokemonRect.left + pokemonRect.width / 2;
+  const targetY = pokemonRect.top + pokemonRect.height / 2;
+  targetPosition.value = {
+    x: targetX - containerRect.left,
+    y: targetY - containerRect.top,
+  };
 
   if (isCorrect) {
     playCry();
@@ -207,7 +217,8 @@ onMounted(() => {
         <GamePokemon v-if="currentPokemon" :pokemon="currentPokemon" :position="pokemonPosition"
           :is-catching="isCatching" :is-wrong-answer="isWrongAnswer" />
 
-        <GamePokeball :is-animating="isAnimating" :click-position="clickPosition" :is-wrong-answer="isWrongAnswer" />
+        <GamePokeball :is-animating="isAnimating" :click-position="clickPosition" :target-position="targetPosition"
+          :is-wrong-answer="isWrongAnswer" />
 
         <AnswerInput :options="options" :is-animating="isAnimating" :practice-type="practiceType"
           @check-answer="checkAnswer" />

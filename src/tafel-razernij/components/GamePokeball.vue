@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { withDefaults, ref, watch } from "vue";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   isAnimating: boolean;
   clickPosition: { x: number; y: number };
+  targetPosition: { x: number; y: number };
   isWrongAnswer?: boolean;
-}>();
+}>(), {
+  targetPosition: () => ({ x: 0, y: 0 })
+});
 
 const pokeball = ref<HTMLElement | null>(null);
 
@@ -16,7 +19,10 @@ watch(
       pokeball.value.style.left = `${newPos.x}px`;
       pokeball.value.style.top = `${newPos.y}px`;
       pokeball.value.style.transform = "translate(-50%, -50%)";
-      pokeball.value.style.setProperty("--throw-height", `${-newPos.y}px`);
+      const deltaX = props.targetPosition.x - newPos.x;
+      const deltaY = props.targetPosition.y - newPos.y;
+      pokeball.value.style.setProperty("--delta-x", `${deltaX}px`);
+      pokeball.value.style.setProperty("--delta-y", `${deltaY}px`);
     }
   },
   { immediate: true }
@@ -46,7 +52,9 @@ watch(
   transform-origin: center center;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   will-change: transform;
-  --throw-height: 0px;
+  /* CSS variables for dynamic animation */
+  --delta-x: 0px;
+  --delta-y: 0px;
 }
 
 .pokeball-throw {
@@ -60,38 +68,25 @@ watch(
 
 @keyframes throw {
   0% {
-    transform: scale(1) translateY(0) rotate(0deg);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
   }
-  40% {
-    transform: scale(0.9) translateY(calc(var(--throw-height) * 0.6)) rotate(240deg);
-    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
-  }
-  70% {
-    transform: scale(0.8) translateY(calc(var(--throw-height) * 0.9)) rotate(480deg);
-    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.1));
+  50% {
+    transform: translate(calc(-50% + (var(--delta-x) / 2)), calc(-50% + (var(--delta-y) / 2) - 50px)) scale(1) rotate(0deg);
   }
   100% {
-    transform: scale(0.6) translateY(var(--throw-height)) rotate(720deg);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transform: translate(calc(-50% + var(--delta-x)), calc(-50% + var(--delta-y))) scale(1) rotate(0deg);
   }
 }
 
 @keyframes throw-miss {
   0% {
-    transform: scale(1) translate(0, 0) rotate(0deg);
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
   }
-  40% {
-    transform: scale(0.9) translate(-40px, calc(var(--throw-height) * 0.8)) rotate(360deg);
-  }
-  60% {
-    transform: scale(0.8) translate(-30px, calc(var(--throw-height) * 0.6)) rotate(540deg);
-  }
-  80% {
-    transform: scale(0.75) translate(-15px, calc(var(--throw-height) * 0.2)) rotate(630deg);
+  50% {
+    transform: translate(calc(-50% + (var(--delta-x) / 2) - 20px), calc(-50% + (var(--delta-y) / 2) - 50px)) scale(0.95) rotate(20deg);
   }
   100% {
-    transform: scale(0.7) translate(0, 0) rotate(720deg);
+    transform: translate(calc(-50% + var(--delta-x)), calc(-50% + var(--delta-y))) scale(0.9) rotate(40deg);
   }
 }
 </style>
