@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": [
+    "src/main.ts",
+    "src/**/*.vue"
+  ],
+  "project": ["src/**/*.{js,ts,vue}"],
+  "ignoreDependencies": ["@vitejs/plugin-vue"],
+  "ignore": ["**/*.d.ts"]
+}
