@@ -3,6 +3,8 @@ import { routes as tafelRazernijRoutes } from "@/tafel-razernij/router/index";
 import { routes as woordRazernijRoutes } from "@/woordrazernij/router";
 import WoordRazernijLayout from "@/woordrazernij/WoordRazernijLayout.vue";
 import TafelRazernijLayout from "@/tafel-razernij/TafelRazernijLayout.vue";
+import WoordNavigation from "@/woordrazernij/components/WoordNavigation.vue";
+import TafelNavigation from "@/tafel-razernij/components/TafelNavigation.vue";
 
 const routes = [
   {
@@ -12,13 +14,19 @@ const routes = [
   },
   {
     path: "/woordrazernij",
-    component: WoordRazernijLayout,
     children: woordRazernijRoutes,
+    components: {
+      default: WoordRazernijLayout,
+      navigation: WoordNavigation,
+    },
   },
   {
     path: "/tafel-razernij",
-    component: TafelRazernijLayout,
     children: tafelRazernijRoutes,
+    components: {
+      default: TafelRazernijLayout,
+      navigation: TafelNavigation,
+    },
   },
 ];
 

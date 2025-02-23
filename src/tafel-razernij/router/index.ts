@@ -16,5 +16,5 @@ export const routes = [
     path: "inventory",
     name: "tafel-inventory",
     component: () => import("../views/InventoryView.vue"),
-  }
+  },
 ];
