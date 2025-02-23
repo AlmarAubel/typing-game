@@ -8,7 +8,7 @@
     "plugin:vue/strongly-recommended",
     "eslint:recommended",
     "@vue/typescript/recommended",
-    "prettier"
+    // "prettier"
   ],
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {

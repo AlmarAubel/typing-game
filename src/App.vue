@@ -8,7 +8,7 @@
       <router-view></router-view>
     </main>
   </div>
-</template>
+</template> 
 
 <script setup lang="ts">
 import { RouterView, useRoute } from "vue-router";

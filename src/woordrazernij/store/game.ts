@@ -83,7 +83,7 @@ export const useGameStore = defineStore("game", () => {
     const word = getRandomWord();
     state.activeWord = {
       word,
-      typedCharacters: ''
+      typedCharacters: '' 
     };
     state.activeIndex = 0;
     const windowHeight = window.innerHeight;
