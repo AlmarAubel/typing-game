@@ -1,0 +1,42 @@
+
+> soccerwiki-scraper@1.0.0 scrape
+> tsx src/scrape.ts
+
+Scraping clubId=180...
+Found section boundary at position 58408, limiting scope to main squad areas
+Found 35 player links in main squad section
+Processing: Remko Pasveer (ID: 3102) from link: /player.php?pid=3102
+Found player: Remko Pasveer (ID: 3102) - Jersey: 22, Pos: K, Rating: 42
+Processing: Steven Berghuis (ID: 51625) from link: /player.php?pid=51625
+Found player: Steven Berghuis (ID: 51625) - Jersey: 23, Pos: M(C),AM(RC), Rating: 34
+Processing: Davy Klaassen (ID: 54268) from link: /player.php?pid=54268
+Found player: Davy Klaassen (ID: 54268) - Jersey: 18, Pos: M,AM(C), Rating: 32
+Processing: Wout Weghorst (ID: 61859) from link: /player.php?pid=61859
+Found player: Wout Weghorst (ID: 61859) - Jersey: 25, Pos: A(C), Rating: 33
+Processing: Branco van Den Boomen (ID: 71591) from link: /player.php?pid=71591
+Found player: Branco van Den Boomen (ID: 71591) - Jersey: 21, Pos: M, Rating: 30
+Processing: Kasper Dolberg (ID: 82386) from link: /player.php?pid=82386
+Found player: Kasper Dolberg (ID: 82386) - Jersey: 9, Pos: A(C), Rating: 87
+Processing: Takehiro Tomiyasu (ID: 85867) from link: /player.php?pid=85867
+Found player: Takehiro Tomiyasu (ID: 85867) - Jersey: 32, Pos: V(RLC), Rating: 32
+Processing: Ko Itakura (ID: 85887) from link: /player.php?pid=85887
+Found player: Ko Itakura (ID: 85887) - Jersey: 4, Pos: V,VM(C), Rating: 88
+Processing: Owen Wijndal (ID: 89698) from link: /player.php?pid=89698
+Found player: Owen Wijndal (ID: 89698) - Jersey: 5, Pos: M(L), Rating: 83
+Processing: Kenneth Taylor (ID: 100917) from link: /player.php?pid=100917
+Found player: Kenneth Taylor (ID: 100917) - Jersey: 8, Pos: M, Rating: 88
+Processing: Josip Šutalo (ID: 102693) from link: /player.php?pid=102693
+Found player: Josip Šutalo (ID: 102693) - Jersey: 37, Pos: V(C), Rating: 37
+Processing: Oliver Edvardsen (ID: 102753) from link: /player.php?pid=102753
+Found player: Oliver Edvardsen (ID: 102753) - Jersey: 17, Pos: A(RLC), Rating: 84
+Processing: Lucas Rosa (ID: 102757) from link: /player.php?pid=102757
+Found player: Lucas Rosa (ID: 102757) - Jersey: 2, Pos: M(RL), Rating: 84
+Processing: Gastón Ávila (ID: 104681) from link: /player.php?pid=104681
+Found player: Gastón Ávila (ID: 104681) - Jersey: 24, Pos: V(LC), Rating: 83
+Processing: Raúl Moro (ID: 107027) from link: /player.php?pid=107027
+Found player: Raúl Moro (ID: 107027) - Jersey: 7, Pos: A(RL), Rating: 85
+Processing: Vitezslav Jaros (ID: 109271) from link: /player.php?pid=109271
+Found player: Vitezslav Jaros (ID: 109271) - Jersey: 1, Pos: undefined, Rating: undefined
+Parsed 16 unique players and 16 memberships
+Done clubId=180: players=16, memberships=16
+✅ Outputs written to ./output

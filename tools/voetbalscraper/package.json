@@ -1,0 +1,30 @@
+{
+  "name": "soccerwiki-scraper",
+  "version": "1.0.0",
+  "description": "TypeScript/Node scraper for soccerwiki.org",
+  "type": "module",
+  "main": "dist/scrape.js",
+  "scripts": {
+    "scrape": "tsx src/scrape.ts",
+    "build": "tsc",
+    "dev": "tsx --watch src/scrape.ts"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "p-limit": "^5.0.0",
+    "csv-stringify": "^6.4.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "@types/node": "^20.11.5"
+  },
+  "keywords": [
+    "scraper",
+    "soccerwiki",
+    "football",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT"
+}
