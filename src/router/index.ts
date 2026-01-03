@@ -64,7 +64,7 @@ router.beforeEach((to) => {
     if (typeof to.meta.title === "function") {
       title = to.meta.title(to);
     } else {
-      title = to.meta.title;
+      title = to.meta.title as string;
     }
   }
 
