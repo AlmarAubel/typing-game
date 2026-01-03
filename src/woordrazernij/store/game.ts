@@ -21,7 +21,7 @@ interface State {
   gameStarted: boolean;
   wordTopPosition: number;
   wordLeftPosition: number;
-  animationInterval: number | null;
+  animationInterval: NodeJS.Timeout | null;
 }
 
 export const useGameStore = defineStore("game", () => {

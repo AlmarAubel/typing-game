@@ -14,7 +14,7 @@ function useTimeoutTimer(
   const timespanRef = ref(timespan);
   const timeLeft = ref(timespanRef.value);
   const isTimeout = ref(false);
-  let intervalId: number;
+  let intervalId: NodeJS.Timeout;
   const updateInterval = 200;
   let startTime: number;
 
