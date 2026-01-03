@@ -43,7 +43,10 @@ export const useGameStore = defineStore("game", () => {
     if (!state.startTime) return 0;
 
     const currentTime = new Date();
-    const minutes = Math.max((currentTime.getTime() - state.startTime.getTime()) / 1000 / 60, 1);
+    const minutes = Math.max(
+      (currentTime.getTime() - state.startTime.getTime()) / 1000 / 60,
+      1,
+    );
     const lpm = Math.round(state.letterCount / minutes);
     return lpm;
   });
@@ -65,7 +68,11 @@ export const useGameStore = defineStore("game", () => {
   }
 
   function handleKeyPress(key: string) {
-    if (state.activeWord && state.activeWord.word[state.activeIndex] === key && key.match(/^[a-zA-Z]$/)) {
+    if (
+      state.activeWord &&
+      state.activeWord.word[state.activeIndex] === key &&
+      key.match(/^[a-zA-Z]$/)
+    ) {
       state.activeWord.typedCharacters = state.activeWord.typedCharacters + key;
       state.activeIndex++;
       state.letterCount++;
@@ -83,7 +90,7 @@ export const useGameStore = defineStore("game", () => {
     const word = getRandomWord();
     state.activeWord = {
       word,
-      typedCharacters: '' 
+      typedCharacters: "",
     };
     state.activeIndex = 0;
     const windowHeight = window.innerHeight;
@@ -116,7 +123,7 @@ export const useGameStore = defineStore("game", () => {
   function animateWord() {
     const screenWidth = window.innerWidth;
     const speed = screenWidth * settings.speed;
-    
+
     if (state.animationInterval) {
       clearInterval(state.animationInterval);
     }

@@ -20,7 +20,9 @@ export const useGameSettingsStore = defineStore("gameSettings", () => {
   const difficulty = ref<Difficulty>("easy");
   const speed = computed(() => difficulties[difficulty.value]);
 
-  const wordList = computed(() => (wordLists.value ? wordLists.value[selectedWordList.value] : []));
+  const wordList = computed(() =>
+    wordLists.value ? wordLists.value[selectedWordList.value] : [],
+  );
 
   return {
     difficulty,

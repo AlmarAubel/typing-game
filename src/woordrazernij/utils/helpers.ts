@@ -1,4 +1,7 @@
-export function formatMilliseconds(milliseconds: number, includeMs: boolean): string {
+export function formatMilliseconds(
+  milliseconds: number,
+  includeMs: boolean,
+): string {
   const minutes = Math.floor(milliseconds / 60000);
   const seconds = Math.floor((milliseconds % 60000) / 1000);
   const ms = milliseconds % 1000;
@@ -7,5 +10,7 @@ export function formatMilliseconds(milliseconds: number, includeMs: boolean): st
   const second = seconds.toString().padStart(2, "0");
   const millisecond = ms.toString().padStart(3, "0");
 
-  return includeMs ? `${minute}:${second}:${millisecond}` : `${minute}:${second}`;
+  return includeMs
+    ? `${minute}:${second}:${millisecond}`
+    : `${minute}:${second}`;
 }

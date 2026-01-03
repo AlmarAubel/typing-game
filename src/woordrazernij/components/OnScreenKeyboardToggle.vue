@@ -1,5 +1,10 @@
 <template>
-  <button @click="toggleKeyboard()" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors">⌨️</button>
+  <button
+    @click="toggleKeyboard()"
+    class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors"
+  >
+    ⌨️
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -12,15 +17,14 @@ const props = defineProps({
 
 watch(
   () => props.showKeyboard,
-  (v) => (v ? toggleKeyboard() : showKeyboard())
+  (v) => (v ? toggleKeyboard() : showKeyboard()),
 );
 
 const inputElement = ref<HTMLInputElement>();
-const keyBoardisShowed = computed(() => inputElement.value === document.activeElement);
+const keyBoardisShowed = computed(
+  () => inputElement.value === document.activeElement,
+);
 
-function handleInput(event: any) {
-  emit("keypressed", event);
-}
 
 function toggleKeyboard() {
   if (keyBoardisShowed.value) return hideKeyboard();

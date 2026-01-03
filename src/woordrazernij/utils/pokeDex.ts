@@ -1,4 +1,3 @@
-import { gql, request } from "graphql-request";
 import pokemonsRaw from "../assets/pokemons.json";
 import { RarityLevel } from "./pokemonUtils";
 export interface RarityLevelRange {
@@ -12,18 +11,6 @@ export interface Pokemon {
   imgUrl: string;
   rarity?: RarityLevel;
 }
-
-const query = gql`
-  query {
-    pokemon_v2_pokemon {
-      id
-      name
-      pokemon_v2_pokemonspecy {
-        capture_rate
-      }
-    }
-  }
-`;
 
 const rarityLevels: RarityLevelRange[] = [
   { name: "common", range: [200, 255] },

@@ -3,12 +3,12 @@
     <main-navigation>
       <router-view name="navigation"></router-view>
     </main-navigation>
-   
+
     <main class="flex-1 pt-16" :class="{ 'overflow-hidden': isTafelGame }">
       <router-view></router-view>
     </main>
   </div>
-</template> 
+</template>
 
 <script setup lang="ts">
 import { RouterView, useRoute } from "vue-router";

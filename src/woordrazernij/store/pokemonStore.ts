@@ -1,5 +1,11 @@
 import { defineStore } from "pinia";
-import { PokeballType, PokeballChance, pokeballChances, getRandomRarity, getRandomPokemonByRarity } from "../utils/pokemonUtils";
+import {
+  PokeballType,
+  PokeballChance,
+  pokeballChances,
+  getRandomRarity,
+  getRandomPokemonByRarity,
+} from "../utils/pokemonUtils";
 import { Pokemon, getPokemon } from "../utils/pokeDex";
 import { reactive } from "vue";
 
@@ -59,7 +65,10 @@ export const usePokemonStore = defineStore(
         state.pokeballs[pokeballType]--;
         const pokeballChance: PokeballChance = pokeballChances[pokeballType];
         const rarity: string = getRandomRarity(pokeballChance);
-        const pokemon: Pokemon = getRandomPokemonByRarity(state.pokemons, rarity);
+        const pokemon: Pokemon = getRandomPokemonByRarity(
+          state.pokemons,
+          rarity,
+        );
         obtainPokemon(pokemon);
       }
     }
@@ -76,5 +85,5 @@ export const usePokemonStore = defineStore(
   },
   {
     persist: { key: "xxxx" },
-  }
+  },
 );

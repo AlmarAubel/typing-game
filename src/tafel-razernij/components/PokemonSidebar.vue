@@ -25,7 +25,9 @@ function playPokemonCry(pokemon: { cry?: string }) {
 
 <template>
   <div class="bg-white/95 p-4 rounded-xl shadow-lg overflow-y-auto mb-4">
-    <h3 class="text-lg font-semibold text-gray-800">Gevangen Pokemon ({{ pokemonStore.collection.length }})</h3>
+    <h3 class="text-lg font-semibold text-gray-800">
+      Gevangen Pokemon ({{ pokemonStore.collection.length }})
+    </h3>
     <div class="grid gap-2 mt-4 p-2 pb-8" :class="gridColumns">
       <div
         v-for="pokemon in sortedPokemons"
@@ -33,11 +35,19 @@ function playPokemonCry(pokemon: { cry?: string }) {
         class="relative rounded-lg overflow-hidden transform hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer"
         @click="playPokemonCry(pokemon)"
       >
-        <div class="relative bg-gradient-to-b from-gray-100 to-white p-1 rounded-lg shadow-sm">
+        <div
+          class="relative bg-gradient-to-b from-gray-100 to-white p-1 rounded-lg shadow-sm"
+        >
           <div class="w-32 h-32 mx-auto">
-            <img :src="pokemon.sprite" :alt="pokemon.name" class="w-full h-full object-contain block" />
+            <img
+              :src="pokemon.sprite"
+              :alt="pokemon.name"
+              class="w-full h-full object-contain block"
+            />
           </div>
-          <span class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[10px] py-0.5 px-1 text-center capitalize">
+          <span
+            class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[10px] py-0.5 px-1 text-center capitalize"
+          >
             {{ pokemon.name }}
           </span>
         </div>

@@ -4,7 +4,7 @@ import { useRoute } from "vue-router"; // Voeg useRouter import toe
 import { usePokemonStore } from "../stores/pokemon";
 import PokemonSidebar from "../components/PokemonSidebar.vue"; // Import the new component
 
-const route = useRoute(); 
+const route = useRoute();
 const practiceType = (route.query.type as string) || "multiple-choice";
 const isRandom = route.query.random === "1";
 const answer = ref("");
@@ -51,7 +51,9 @@ async function generateRandomPokemon() {
   const data = await response.json();
 
   // Create and pre-load the audio
-  const audio = new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`);
+  const audio = new Audio(
+    `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`,
+  );
   await audio.load(); // Pre-load the audio
 
   currentPokemon.value = {
@@ -79,7 +81,11 @@ function generateOptions(answer: number) {
   return opts.sort(() => Math.random() - 0.5);
 }
 
-const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolean) => {
+const throwPokeball = async (
+  targetX: number,
+  targetY: number,
+  isCorrect: boolean,
+) => {
   if (!pokeball.value) return;
 
   isPokeballVisible.value = true;
@@ -94,11 +100,17 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
   pokeball.value.style.transform = "translate(-50%, -50%)";
 
   // Bereken de afstand voor de boog
-  const distance = Math.sqrt(Math.pow(targetX - startX, 2) + Math.pow(targetY - startY, 2));
+  const distance = Math.sqrt(
+    Math.pow(targetX - startX, 2) + Math.pow(targetY - startY, 2),
+  );
   const arcHeight = isCorrect ? -distance * 0.5 : -distance * 0.7; // Hogere boog bij miss
 
   // Bereken miss offset gebaseerd op afstand
-  const missOffset = isCorrect ? 0 : Math.random() > 0.5 ? distance * 0.3 : -distance * 0.3;
+  const missOffset = isCorrect
+    ? 0
+    : Math.random() > 0.5
+      ? distance * 0.3
+      : -distance * 0.3;
 
   const animation = pokeball.value.animate(
     [
@@ -119,7 +131,7 @@ const throwPokeball = async (targetX: number, targetY: number, isCorrect: boolea
     {
       duration: isCorrect ? 1000 : 800,
       easing: "cubic-bezier(.37,0,.63,1)", // Custom easing for more natuurlijke boog
-    }
+    },
   );
 
   await animation.finished;
@@ -164,7 +176,9 @@ const getNextNumber = () => {
 
 const answerInput = ref<HTMLInputElement | null>(null);
 
-const soundEnabled = ref(localStorage.getItem("pokemon-sound-enabled") !== "false");
+const soundEnabled = ref(
+  localStorage.getItem("pokemon-sound-enabled") !== "false",
+);
 
 const toggleSound = () => {
   soundEnabled.value = !soundEnabled.value;
@@ -178,7 +192,10 @@ const playCry = () => {
   }
 };
 
-const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | null) => {
+const checkAnswer = async (
+  userAnswer: number | string,
+  event?: MouseEvent | null,
+) => {
   if (isAnimating.value) return;
 
   const container = gameContainer.value;
@@ -194,7 +211,9 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
     };
   } else {
     // For enter key, use the submit button position
-    const submitButton = document.querySelector(".submit-button") as HTMLElement;
+    const submitButton = document.querySelector(
+      ".submit-button",
+    ) as HTMLElement;
     if (submitButton) {
       const buttonRect = submitButton.getBoundingClientRect();
       clickPosition.value = {
@@ -239,21 +258,27 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
 </script>
 
 <template>
-  <div class="h-[100svh] grid grid-cols-1 lg:grid-cols-[1fr_350px] overflow-hidden">
+  <div
+    class="h-[100svh] grid grid-cols-1 lg:grid-cols-[1fr_350px] overflow-hidden"
+  >
     <!-- Main Game Area -->
     <div class="flex flex-col p-4 overflow-hidden">
-      <div 
+      <div
         ref="gameContainer"
         class="relative flex-1 bg-gray-100 rounded-xl p-4 min-h-0"
       >
         <!-- Top Bar with Sound and Table -->
         <div class="flex justify-between items-center mb-4">
-          <div class="text-2xl md:text-4xl font-bold">{{ currentNumber }} x {{ currentTable }} = ?</div>
-          <button 
+          <div class="text-2xl md:text-4xl font-bold">
+            {{ currentNumber }} x {{ currentTable }} = ?
+          </div>
+          <button
             class="p-2 md:p-3 rounded-full hover:bg-gray-200 transition-colors"
             @click="toggleSound"
           >
-            <span class="text-xl md:text-2xl">{{ soundEnabled ? "🔊" : "🔇" }}</span>
+            <span class="text-xl md:text-2xl">{{
+              soundEnabled ? "🔊" : "🔇"
+            }}</span>
           </button>
         </div>
 
@@ -292,7 +317,9 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
         <!-- Answer Options -->
         <div class="absolute bottom-4 md:bottom-8 left-0 right-0 z-30">
           <template v-if="practiceType === 'multiple-choice'">
-            <div class="grid grid-cols-2 gap-2 md:gap-4 max-w-2xl mx-auto px-2 md:px-4">
+            <div
+              class="grid grid-cols-2 gap-2 md:gap-4 max-w-2xl mx-auto px-2 md:px-4"
+            >
               <button
                 v-for="option in options"
                 :key="option"
@@ -306,7 +333,9 @@ const checkAnswer = async (userAnswer: number | string, event?: MouseEvent | nul
           </template>
 
           <template v-else>
-            <div class="flex justify-center space-x-2 md:space-x-4 max-w-md mx-auto px-2 md:px-4">
+            <div
+              class="flex justify-center space-x-2 md:space-x-4 max-w-md mx-auto px-2 md:px-4"
+            >
               <input
                 ref="answerInput"
                 type="number"
