@@ -1,15 +1,12 @@
 import pokemonsRaw from "../assets/pokemons.json";
 import { type RarityLevel } from "./pokemonUtils";
+import type { Pokemon } from "../../stores/sharedPokemonStore";
+
+export type { Pokemon };
+
 export interface RarityLevelRange {
   name: RarityLevel;
   range: [number, number];
-}
-
-export interface Pokemon {
-  id: number;
-  name: string;
-  imgUrl: string;
-  rarity?: RarityLevel;
 }
 
 const rarityLevels: RarityLevelRange[] = [
@@ -65,7 +62,7 @@ export async function getPokemon() {
   const categorizedPokemons: Pokemon[] = pokemons.map((p) => ({
     id: p.id,
     name: p.name,
-    imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`,
+    sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`,
     rarity: determineRarity(p.pokemon_v2_pokemonspecy.capture_rate),
   }));
 

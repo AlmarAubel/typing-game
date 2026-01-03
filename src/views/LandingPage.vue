@@ -14,13 +14,23 @@
         </div>
       </router-link>
       <router-link
-        :to="{ name: 'tafel-home' }"
+        :to="{ name: 'tafel-home-v2' }"
         class="flex-1 p-6 bg-gradient-to-r from-purple-500 to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
       >
         <div class="text-white">
           <h2 class="text-2xl font-bold mb-2">Tafel Razernij</h2>
           <p>Oefen tafels en verzamel Pokemons!</p>
         </div>
+      </router-link>
+    </div>
+
+    <!-- Parent Dashboard Link -->
+    <div class="mt-8">
+      <router-link
+        :to="{ name: 'parent-dashboard' }"
+        class="inline-flex items-center px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors text-sm"
+      >
+        👨‍👩‍👧‍👦 Ouder Dashboard
       </router-link>
     </div>
   </div>
