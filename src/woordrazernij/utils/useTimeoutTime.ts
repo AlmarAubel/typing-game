@@ -1,5 +1,5 @@
-import { ref, watch, onMounted, onUnmounted, computed, Ref } from "vue";
-import { MaybeRef } from "@vueuse/core";
+import { ref, onUnmounted, computed, type Ref } from "vue";
+import { type MaybeRef } from "@vueuse/core";
 
 interface TimeoutTimer {
   timeLeft: Ref<number>;
@@ -7,11 +7,14 @@ interface TimeoutTimer {
   start: () => void;
 }
 
-function useTimeoutTimer(timespan: MaybeRef<number>, onTimeout: () => void): TimeoutTimer {
+function useTimeoutTimer(
+  timespan: MaybeRef<number>,
+  onTimeout: () => void,
+): TimeoutTimer {
   const timespanRef = ref(timespan);
   const timeLeft = ref(timespanRef.value);
   const isTimeout = ref(false);
-  let intervalId: number;
+  let intervalId: NodeJS.Timeout;
   const updateInterval = 200;
   let startTime: number;
 

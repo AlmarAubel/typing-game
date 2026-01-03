@@ -3,15 +3,23 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom", ],
+    "lib": ["esnext", "dom"],
     "skipLibCheck": true,
+
+    // <https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#verbatimmodulesyntax>
+    // Any imports or exports without a type modifier are left around. This is important for `<script setup>`.
+    // Anything that uses the type modifier is dropped entirely.
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "libReplacement": false,
+    // See <https://github.com/vuejs/vue-cli/pull/5688>
     "paths": {
       "@/*": ["./src/*"]
     }
