@@ -1,21 +1,21 @@
 <template>
   <div class="p-8">
     <h1 class="text-3xl font-bold mb-8">
-      Obtained Pokemons ({{ store.state.obtainedPokemons.length }})
+      Obtained Pokemons ({{ pokemonStore.state.obtainedPokemons.length }})
     </h1>
     <div
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4"
     >
       <div
-        v-for="pokemon in store.state.obtainedPokemons"
+        v-for="pokemon in pokemonStore.state.obtainedPokemons.toReversed()"
         :key="pokemon.id"
         class="bg-gray-50 rounded-xl p-4 text-center shadow-md hover:shadow-lg transition-shadow"
       >
-        <h2 class="text-lg font-semibold mb-2">{{ pokemon.name }}</h2>
+        <h2 class="text-lg font-semibold mb-2 capitalize">{{ pokemon.name }}</h2>
         <img
-          :src="pokemon.imgUrl"
+          :src="pokemon.sprite"
           :alt="pokemon.name"
-          class="w-full h-auto mb-2"
+          class="w-full h-auto mb-2 pixelated"
         />
         <span
           class="inline-block px-2 py-1 rounded text-sm"
@@ -34,6 +34,20 @@
 </template>
 
 <script setup lang="ts">
-import { usePokemonStore } from "../store/pokemonStore";
-const store = usePokemonStore();
+import { useSharedPokemonStore } from "../../stores/sharedPokemonStore";
+import { onMounted } from "vue";
+
+const pokemonStore = useSharedPokemonStore();
+
+onMounted(async () => {
+  await pokemonStore.init();
+});
 </script>
+
+<style scoped>
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+</style>

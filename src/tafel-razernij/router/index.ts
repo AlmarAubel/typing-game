@@ -1,5 +1,7 @@
 import TableSelect from "../views/TableSelect.vue";
 import GameView from "../views/GameViewer.vue";
+import TableSelectV2 from "../views/TableSelectV2.vue";
+import GameViewerV2 from "../components/GameViewerV2.vue";
 
 export const routes = [
   {
@@ -13,8 +15,13 @@ export const routes = [
     component: GameView,
   },
   {
-    path: "inventory",
-    name: "tafel-inventory",
-    component: () => import("../views/InventoryView.vue"),
+    path: "v2",
+    name: "tafel-home-v2",
+    component: TableSelectV2,
+  },
+  {
+    path: "v2/game/:table",
+    name: "tafel-game-v2",
+    component: GameViewerV2,
   },
 ];

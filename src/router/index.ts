@@ -13,6 +13,16 @@ const routes = [
     component: () => import("@/views/LandingPage.vue"),
   },
   {
+    path: "/shop",
+    name: "shared-shop",
+    component: () => import("@/components/SharedShop.vue"),
+  },
+  {
+    path: "/inventory",
+    name: "shared-inventory",
+    component: () => import("@/woordrazernij/components/ObtainedPokemons.vue"),
+  },
+  {
     path: "/woordrazernij",
     children: woordRazernijRoutes,
     components: {
@@ -27,6 +37,11 @@ const routes = [
       default: TafelRazernijLayout,
       navigation: TafelNavigation,
     },
+  },
+  {
+    path: "/parent-dashboard",
+    name: "parent-dashboard",
+    component: () => import("@/components/ParentDashboard.vue"),
   },
 ];
 

@@ -1,5 +1,4 @@
 import GameScreen from "@/woordrazernij/components/GameScreen.vue";
-import ObtainedPokemons from "@/woordrazernij/components/ObtainedPokemons.vue";
 import Pokemon from "@/woordrazernij/components/Pokemon.vue";
 import NewGame from "@/woordrazernij/components/NewGame.vue";
 
@@ -20,13 +19,8 @@ export const routes = [
     component: GameScreen,
   },
   {
-    path: "shop",
-    name: "woord-shop",
+    path: "shop-legacy",
+    name: "woord-shop-legacy",
     component: Pokemon,
-  },
-  {
-    path: "inventory",
-    name: "woord-obtainedpokemons",
-    component: ObtainedPokemons,
   },
 ];

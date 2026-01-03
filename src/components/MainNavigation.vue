@@ -17,6 +17,11 @@
           <!-- Game specific navigation -->
           <slot></slot>
 
+          <!-- Direct links -->
+          <NavLink :to="{ name: 'shared-shop' }" class="text-yellow-400 hover:text-yellow-300">💰 Shop</NavLink>
+          <NavLink :to="{ name: 'shared-inventory' }" class="text-green-400 hover:text-green-300">🐾 Collectie</NavLink>
+          <NavLink :to="{ name: 'parent-dashboard' }" class="text-blue-400 hover:text-blue-300">👨‍👩‍👧‍👦 Ouderportaal</NavLink>
+
           <!-- Games dropdown -->
           <div class="relative group">
             <button
@@ -45,7 +50,7 @@
               @click="closeGamesMenu"
             >
               <NavLink :to="{ name: 'woord-home' }">Woord Razernij</NavLink>
-              <NavLink :to="{ name: 'tafel-home' }">Tafel Razernij</NavLink>
+              <NavLink :to="{ name: 'tafel-home-v2' }">Tafel Razernij</NavLink>
               <div class="border-t border-gray-700 my-1"></div>
               <NavLink :to="{ name: 'home' }">Terug naar Start</NavLink>
             </div>
@@ -98,10 +103,17 @@
           <slot></slot>
 
           <div class="border-t border-gray-700 my-2"></div>
+
+          <!-- Direct links -->
+          <NavLink :to="{ name: 'shared-shop' }" class="block text-yellow-400 hover:text-yellow-300">💰 Shop</NavLink>
+          <NavLink :to="{ name: 'shared-inventory' }" class="block text-green-400 hover:text-green-300">🐾 Collectie</NavLink>
+          <NavLink :to="{ name: 'parent-dashboard' }" class="block text-blue-400 hover:text-blue-300">👨‍👩‍👧‍👦 Ouderportaal</NavLink>
+
+          <div class="border-t border-gray-700 my-2"></div>
           <NavLink :to="{ name: 'woord-home' }" @click="closeMobileMenu"
             >Woord Razernij</NavLink
           >
-          <NavLink :to="{ name: 'tafel-home' }" @click="closeMobileMenu"
+          <NavLink :to="{ name: 'tafel-home-v2' }" @click="closeMobileMenu"
             >Tafel Razernij</NavLink
           >
           <NavLink :to="{ name: 'home' }" @click="closeMobileMenu"

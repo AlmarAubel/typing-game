@@ -49,7 +49,7 @@
       >
         <h3 class="text-xl font-bold mb-4">{{ obtainedPokemon.name }}</h3>
         <img
-          :src="obtainedPokemon.imgUrl"
+          :src="obtainedPokemon.imageUrl"
           :alt="obtainedPokemon.name"
           class="w-[150px] h-[150px] mx-auto mb-4"
         />
