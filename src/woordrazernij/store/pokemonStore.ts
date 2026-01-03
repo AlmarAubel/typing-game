@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 import {
   PokeballType,
-  PokeballChance,
+  type PokeballChance,
   pokeballChances,
   getRandomRarity,
   getRandomPokemonByRarity,
 } from "../utils/pokemonUtils";
-import { Pokemon, getPokemon } from "../utils/pokeDex";
+import { type Pokemon, getPokemon } from "../utils/pokeDex";
 import { reactive } from "vue";
 
 interface PokemonState {

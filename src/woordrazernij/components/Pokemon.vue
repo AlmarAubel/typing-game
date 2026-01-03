@@ -69,7 +69,7 @@ import { ref, watch } from "vue";
 import { usePokemonStore } from "../store/pokemonStore";
 import { PokeballType } from "../utils/pokemonUtils";
 
-import { Pokemon } from "../utils/pokeDex";
+import { type Pokemon } from "../utils/pokeDex";
 const getImgUrl = (pokeballType: string) =>
   `/assets/${pokeballType.toLowerCase()}.png`;
 const store = usePokemonStore();

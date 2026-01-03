@@ -8,9 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 
-import { RouterLinkProps } from "vue-router";
+import { type RouterLinkProps } from "vue-router";
 
 const props = defineProps<Pick<RouterLinkProps, "to">>();
 </script>

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "lint": "eslint . --fix",
+    "types": "vue-tsc --noEmit",
     "build": "vue-tsc --noEmit && vite build",
     "deploy": "node deploy",
     "builddeploy": "npm run build && npm run deploy ",

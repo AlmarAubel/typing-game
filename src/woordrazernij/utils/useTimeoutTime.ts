@@ -1,5 +1,5 @@
-import { ref, onUnmounted, computed, Ref } from "vue";
-import { MaybeRef } from "@vueuse/core";
+import { ref, onUnmounted, computed, type Ref } from "vue";
+import { type MaybeRef } from "@vueuse/core";
 
 interface TimeoutTimer {
   timeLeft: Ref<number>;

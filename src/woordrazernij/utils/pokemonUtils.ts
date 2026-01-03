@@ -1,4 +1,4 @@
-import { Pokemon } from "./pokeDex";
+import { type Pokemon } from "./pokeDex";
 
 export enum PokeballType {
   POKEBALL = "Pokeball",

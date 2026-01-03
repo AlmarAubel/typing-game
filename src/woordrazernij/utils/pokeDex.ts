@@ -1,5 +1,5 @@
 import pokemonsRaw from "../assets/pokemons.json";
-import { RarityLevel } from "./pokemonUtils";
+import { type RarityLevel } from "./pokemonUtils";
 export interface RarityLevelRange {
   name: RarityLevel;
   range: [number, number];
