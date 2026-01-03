@@ -82,7 +82,7 @@ const closeOverlay = () => {
 
 watch(
   () => store.state.obtainedPokemons,
-  (newPokemons, oldPokemons) => {
+  (newPokemons) => {
     obtainedPokemon.value = newPokemons[newPokemons.length - 1];
   },
   { deep: true },

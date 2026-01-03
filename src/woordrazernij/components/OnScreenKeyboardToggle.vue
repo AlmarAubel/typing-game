@@ -10,14 +10,13 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 
-const emit = defineEmits(["keypressed"]);
-const props = defineProps({
-  showKeyboard: Boolean,
-});
+const props = defineProps<{
+  showKeyboard?: boolean;
+}>();
 
 watch(
   () => props.showKeyboard,
-  (v) => (v ? toggleKeyboard() : showKeyboard()),
+  (v) => (v ? toggleKeyboard() : showKeyboardFn()),
 );
 
 const inputElement = ref<HTMLInputElement>();
@@ -28,10 +27,10 @@ const keyBoardisShowed = computed(
 
 function toggleKeyboard() {
   if (keyBoardisShowed.value) return hideKeyboard();
-  return showKeyboard();
+  return showKeyboardFn();
 }
 
-function showKeyboard() {
+function showKeyboardFn() {
   inputElement.value?.focus();
 }
 

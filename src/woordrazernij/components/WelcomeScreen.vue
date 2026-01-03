@@ -97,7 +97,5 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
-const heroImage = "/assets/hero.jpeg";
-const router = useRouter();
+
 </script>
