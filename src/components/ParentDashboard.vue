@@ -184,6 +184,7 @@
 
     <!-- Action buttons -->
     <div class="mt-8 text-center space-x-4">
+
       <button
         @click="exportData"
         class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
@@ -234,8 +235,12 @@ onMounted(() => {
 });
 
 const loadAnalytics = () => {
+  console.log('Loading analytics...');
   analytics.value = parentAnalytics.getDetailedAnalytics();
   progressSummary.value = parentAnalytics.getProgressSummary();
+  console.log('Analytics loaded:', analytics.value);
+  console.log('Progress summary:', progressSummary.value);
+  console.log('Recent sessions:', analytics.value.weeklyProgress);
 };
 
 // Computed properties
@@ -301,7 +306,6 @@ const getTablePerformanceClass = (table: number) => {
   }
 };
 
-// Actions
 const exportData = () => {
   const data = {
     analytics: analytics.value,

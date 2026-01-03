@@ -172,9 +172,44 @@ export class ParentAnalyticsManager {
     },
   ) {
     try {
+      console.log("Ending session:", sessionId, results);
       const sessionData = localStorage.getItem(`session-${sessionId}`);
+
       if (!sessionData) {
         console.warn(`Session ${sessionId} not found in localStorage`);
+        // Create a new session data if not found
+        const session: SessionData = {
+          startTime: new Date(),
+          endTime: new Date(),
+          totalProblems: results.totalProblems,
+          correctAnswers: results.correctAnswers,
+          totalPoints: results.totalPoints,
+          averageTime: results.averageTime,
+          tablesUsed: results.tablesUsed,
+          gameMode: "open-input", // default value
+        };
+
+        console.log("Created new session data:", session);
+
+        // Add to weekly progress (keep last 30 sessions)
+        this.analytics.weeklyProgress.push(session);
+        if (this.analytics.weeklyProgress.length > 30) {
+          this.analytics.weeklyProgress.shift();
+        }
+
+        console.log(
+          "Weekly progress updated, total sessions:",
+          this.analytics.weeklyProgress.length,
+        );
+
+        // Check for achievements
+        this.checkAchievements(session);
+
+        // Update recommendations
+        this.updateRecommendations();
+
+        // Save analytics
+        this.saveAnalytics();
         return;
       }
 
@@ -436,10 +471,14 @@ export class ParentAnalyticsManager {
   }
 
   private loadAnalytics(): ParentAnalytics {
+    console.log("Loading analytics from localStorage...");
     const stored = localStorage.getItem(STORAGE_KEY);
+    console.log("Stored data:", stored);
+
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
+        console.log("Parsed data:", parsed);
 
         // Convert date strings back to Date objects
         if (parsed.weeklyProgress) {
@@ -467,12 +506,14 @@ export class ParentAnalyticsManager {
           }));
         }
 
+        console.log("Returning parsed analytics:", parsed);
         return parsed;
       } catch (error) {
         console.error("Error parsing stored analytics:", error);
       }
     }
 
+    console.log("No stored data found, returning default analytics");
     // Return default analytics
     return {
       tableStats: {},

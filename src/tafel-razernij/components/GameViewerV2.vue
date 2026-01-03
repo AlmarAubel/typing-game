@@ -288,9 +288,10 @@ onUnmounted(() => {
   endGame();
 });
 
-// Watch for route changes to end session
-watch(() => route.path, () => {
-  if (!route.path.includes('tafel-razernij/v2/game')) {
+// Watch for route changes to end session when leaving game
+watch(() => route.path, (newPath) => {
+  // End game if navigating away from the current game
+  if (!newPath.includes('tafel-razernij/v2/game')) {
     endGame();
   }
 });

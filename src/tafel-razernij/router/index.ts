@@ -8,20 +8,26 @@ export const routes = [
     path: "",
     name: "tafel-home",
     component: TableSelect,
+    meta: { title: "Tafel Razernij" },
   },
   {
     path: "game/:table",
     name: "tafel-game",
     component: GameView,
+    meta: { title: "Tafel Razernij Spel" },
   },
   {
     path: "v2",
     name: "tafel-home-v2",
     component: TableSelectV2,
+    meta: { title: "Tafel Razernij" },
   },
   {
     path: "v2/game/:table",
     name: "tafel-game-v2",
     component: GameViewerV2,
+    meta: {
+      title: (route: any) => `Tafel van ${route.params.table}`,
+    },
   },
 ];
