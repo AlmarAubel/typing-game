@@ -11,7 +11,10 @@
     "deploy": "node deploy",
     "builddeploy": "npm run build && npm run deploy ",
     "preview": "vite preview",
-    "knip": "knip"
+    "knip": "knip",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@vueuse/core": "^12.7.0",
@@ -27,17 +30,21 @@
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
     "@vitejs/plugin-vue": "6.0.3",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.6.0",
     "dotenv": "^16.0.3",
     "eslint": "^9.18.0",
     "eslint-plugin-vue": "^9.33.0",
     "ftp-deploy": "^2.4.7",
+    "happy-dom": "^20.0.11",
     "knip": "^5.44.5",
     "prettier": "^3.4.2",
     "tailwindcss": "4.0.8",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
+    "vitest": "^4.0.16",
     "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.5.0",
     "vue-tsc": "3.2.1"

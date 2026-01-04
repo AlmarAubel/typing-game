@@ -150,7 +150,7 @@
       </p>
       <div class="club-shops-grid">
         <div
-          v-for="club in clubs.slice(0, 6)"
+          v-for="club in clubs.slice(0, 10)"
           :key="club.id"
           class="club-shop-card"
           @click="openClubStore(club.id)"
