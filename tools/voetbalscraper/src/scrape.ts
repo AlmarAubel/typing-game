@@ -24,6 +24,8 @@ type PlayerClubMembership = {
   position?: string;
   rating?: number; // "Be"
   shirtNumber?: number;
+  nationality?: string;
+  age?: number;
 };
 
 type ScrapeResult = {
@@ -133,8 +135,8 @@ function parseClubNameFromPage($: ReturnType<typeof load>): string | undefined {
 /**
  * Parse the squad from soccerwiki.org structure.
  *
- * The nl.soccerwiki squad pages use a non-standard table structure.
- * Players are listed in tables with specific patterns that we need to parse.
+ * The nl.soccerwiki squad pages now use a DataTable structure.
+ * We need to parse each row to extract player information.
  */
 function parseSquad(
   html: string,
@@ -143,6 +145,201 @@ function parseSquad(
 ): ScrapeResult {
   const $ = load(html);
 
+  const clubName = parseClubNameFromPage($);
+
+  const club: Club = {
+    clubId,
+    name: clubName,
+    sourceUrl,
+  };
+
+  const players: Player[] = [];
+  const memberships: PlayerClubMembership[] = [];
+
+  // Target the DataTable specifically - look for table with id "datatable" or class "dataTable"
+  const dataTable = $('#datatable, .dataTable, table[role="grid"]').first();
+
+  if (dataTable.length === 0) {
+    console.log("No DataTable found, using fallback parser");
+    return fallbackParseSquad(html, clubId, sourceUrl, $);
+  }
+
+  console.log("Found DataTable, parsing structured data...");
+
+  // Find all data rows (not header rows) - try multiple approaches
+  let playerRows = dataTable.find('tbody tr[role="row"]');
+
+  // If no rows with role="row", use all tbody rows
+  if (playerRows.length === 0) {
+    playerRows = dataTable.find("tbody tr");
+  }
+
+  console.log(`Processing ${playerRows.length} player rows...`);
+
+  playerRows.each((_, row) => {
+    const $row = $(row);
+    const cells = $row.find("td");
+
+    if (cells.length < 4) {
+      console.log("Skipping row with insufficient cells");
+      return;
+    }
+
+    try {
+      // Parse each column based on the structure shown in the HTML
+      // Columns: #, Nat, Photo, Speler, Pos, Leeftijd, Be
+
+      // Column 0: Shirt number
+      const shirtNumberText = $(cells[0]).text().trim();
+      const shirtNumber = parseIntSafe(shirtNumberText);
+
+      // Column 1: Nationality (flag)
+      let nationality: string | undefined;
+      const flagElement = $(cells[1]).find(".flag-icon");
+      if (flagElement.length > 0) {
+        const flagClass = flagElement.attr("class") || "";
+        // Extract country code from flag-icon-XX class
+        const flagMatch = flagClass.match(/flag-icon-([a-z]{2})/);
+        if (flagMatch) {
+          nationality = flagMatch[1].toUpperCase();
+        }
+
+        // Also try to get nationality from data-sort or tooltip
+        const dataSortNat = $(cells[1]).attr("data-sort");
+        const tooltipNat = $(cells[1])
+          .find("[data-original-title]")
+          .attr("data-original-title");
+        if (dataSortNat && !nationality) nationality = dataSortNat;
+        if (tooltipNat && !nationality) nationality = tooltipNat;
+      }
+
+      // Column 2: Photo and player link
+      let playerId: number | undefined;
+      const playerLink = $(cells[2]).find('a[href*="player.php"]').first();
+
+      if (playerLink.length > 0) {
+        const href = playerLink.attr("href");
+        if (href) {
+          playerId = parsePlayerIdFromHref(href);
+        }
+      }
+
+      // Column 3: Player name
+      let playerName: string | undefined;
+      const playerNameLink = $(cells[3]).find("a").first();
+      if (playerNameLink.length > 0) {
+        playerName = playerNameLink.text().trim();
+
+        // If we haven't found playerId yet, try to get it from this link
+        if (!playerId) {
+          const href = playerNameLink.attr("href");
+          if (href) {
+            playerId = parsePlayerIdFromHref(href);
+          }
+        }
+      }
+
+      // Fallback to cell text if no link found
+      if (!playerName) {
+        playerName = $(cells[3]).text().trim();
+      }
+
+      // Column 4: Position
+      let position: string | undefined;
+      const positionCell = $(cells[4]);
+      const positionSpan = positionCell
+        .find("span[data-original-title]")
+        .first();
+      if (positionSpan.length > 0) {
+        // Get the tooltip text which has the full position description
+        const tooltip = positionSpan.attr("data-original-title");
+        const shortPos = positionSpan.text().trim();
+        position = shortPos; // Use short version for consistency
+
+        console.log(`Position for ${playerName}: ${shortPos} (${tooltip})`);
+      } else {
+        position = positionCell.text().trim();
+      }
+
+      // Column 5: Age
+      let age: number | undefined;
+      if (cells.length > 5) {
+        const ageText = $(cells[5]).text().trim();
+        age = parseIntSafe(ageText);
+      }
+
+      // Column 6: Rating (Be)
+      let rating: number | undefined;
+      if (cells.length > 6) {
+        const ratingText = $(cells[6]).text().trim();
+        rating = parseIntSafe(ratingText);
+      }
+
+      // Validate required fields
+      if (!playerId) {
+        console.log(`Skipping row: no playerId found for ${playerName}`);
+        return;
+      }
+
+      if (!playerName || playerName.length < 2) {
+        console.log(
+          `Skipping row: invalid player name "${playerName}" for ID ${playerId}`,
+        );
+        return;
+      }
+
+      // Skip duplicates
+      if (players.some((p) => p.playerId === playerId)) {
+        console.log(`Skipping duplicate player: ${playerName} (${playerId})`);
+        return;
+      }
+
+      console.log(
+        `Found player: ${playerName} (ID: ${playerId}) - Jersey: ${shirtNumber}, Pos: ${position}, Rating: ${rating}, Age: ${age}, Nationality: ${nationality}`,
+      );
+
+      // Construct player URL
+      const playerUrl = `${BASE_URL}/player.php?pid=${playerId}`;
+
+      players.push({
+        playerId,
+        name: playerName,
+        sourceUrl: playerUrl,
+      });
+
+      memberships.push({
+        clubId,
+        playerId,
+        playerName,
+        position,
+        rating,
+        shirtNumber,
+        nationality,
+        age,
+      });
+    } catch (error) {
+      console.log(`Error parsing row: ${error}`);
+    }
+  });
+
+  console.log(`Successfully parsed ${players.length} players from DataTable`);
+
+  return {
+    club,
+    players,
+    memberships,
+  };
+}
+
+/**
+ * Fallback parsing function for when DataTable is not found
+ */
+function fallbackParseSquad(
+  html: string,
+  clubId: number,
+  sourceUrl: string,
+  $: ReturnType<typeof load>,
+): ScrapeResult {
   const clubName = parseClubNameFromPage($);
 
   const club: Club = {
@@ -535,8 +732,7 @@ async function writeOutputs(results: ScrapeResult[]) {
 }
 
 async function main() {
-  // Voorbeeld: Ajax (clubid=180)
-  // Je kunt hier meerdere clubIds zetten
+  // Alle clubs voor de voetbal game
   const clubIds = [
     180, // Ajax tafel: 8
     391, // Bayern Munchen tafel: 7
@@ -566,6 +762,16 @@ async function main() {
   await writeOutputs(results);
 
   console.log("✅ Outputs written to ./output");
+
+  // Print summary
+  const totalPlayers = results.reduce((sum, r) => sum + r.players.length, 0);
+  const totalMemberships = results.reduce(
+    (sum, r) => sum + r.memberships.length,
+    0,
+  );
+  console.log(
+    `\nSummary: scraped ${totalPlayers} players and ${totalMemberships} memberships from ${results.length} clubs`,
+  );
 }
 
 main().catch((err) => {
