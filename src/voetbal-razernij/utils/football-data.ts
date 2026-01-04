@@ -184,6 +184,14 @@ class FootballDataService {
     return [...this.players];
   }
 
+  static getAllClubs(): Club[] {
+    if (!this.initialized) {
+      console.warn("FootballDataService not initialized yet");
+      return [];
+    }
+    return [...this.clubs];
+  }
+
   static isInitialized(): boolean {
     return this.initialized;
   }
