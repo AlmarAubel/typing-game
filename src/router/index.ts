@@ -56,7 +56,6 @@ const routes = [
     meta: { title: "Voetbal Razernij" },
   },
   {
-
     path: "/parent-dashboard",
     name: "parent-dashboard",
     component: () => import("@/components/ParentDashboard.vue"),
@@ -71,7 +70,7 @@ const router = createRouter({
 
 // Update document title based on route
 router.beforeEach((to) => {
-  let title = "Pokemon Leerwereld";
+  let title = "Spel Razernij";
 
   if (to.meta.title) {
     if (typeof to.meta.title === "function") {
@@ -81,7 +80,7 @@ router.beforeEach((to) => {
     }
   }
 
-  document.title = "Pokemon Leerwereld - " + title;
+  document.title = "Spel Razernij - " + title;
 });
 
 export default router;

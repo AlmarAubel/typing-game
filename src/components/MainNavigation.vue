@@ -9,7 +9,7 @@
         <router-link
           :to="{ name: 'home' }"
           class="text-white font-bold text-xl hover:text-gray-200"
-          >Pokemon Leerwereld</router-link
+          >Spel Razernij</router-link
         >
 
         <!-- Desktop menu -->
@@ -34,7 +34,6 @@
             class="text-blue-400 hover:text-blue-300"
             >👨‍👩‍👧‍👦 Ouderportaal</NavLink
           >
-
 
           <!-- Games dropdown -->
           <div class="relative group">
