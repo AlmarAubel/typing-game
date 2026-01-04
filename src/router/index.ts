@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { routes as tafelRazernijRoutes } from "@/tafel-razernij/router/index";
 import { routes as woordRazernijRoutes } from "@/woordrazernij/router";
+import voetbalRazernijRoutes from "@/voetbal-razernij/router/index";
 import WoordRazernijLayout from "@/woordrazernij/WoordRazernijLayout.vue";
 import TafelRazernijLayout from "@/tafel-razernij/TafelRazernijLayout.vue";
+import VoetbalRazernijLayout from "@/voetbal-razernij/VoetbalRazernijLayout.vue";
 import WoordNavigation from "@/woordrazernij/components/WoordNavigation.vue";
 import TafelNavigation from "@/tafel-razernij/components/TafelNavigation.vue";
+import VoetbalNavigation from "@/voetbal-razernij/components/VoetbalNavigation.vue";
 
 const routes = [
   {
@@ -44,6 +47,16 @@ const routes = [
     meta: { title: "Tafel Razernij" },
   },
   {
+    path: "/voetbal-razernij",
+    children: voetbalRazernijRoutes,
+    components: {
+      default: VoetbalRazernijLayout,
+      navigation: VoetbalNavigation,
+    },
+    meta: { title: "Voetbal Razernij" },
+  },
+  {
+
     path: "/parent-dashboard",
     name: "parent-dashboard",
     component: () => import("@/components/ParentDashboard.vue"),

@@ -1,0 +1,52 @@
+[
+  {
+    "clubId": 180,
+    "name": "Ajax",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=180"
+  },
+  {
+    "clubId": 391,
+    "name": "Bayern München",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=391"
+  },
+  {
+    "clubId": 140,
+    "name": "Barcelona",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=140"
+  },
+  {
+    "clubId": 163,
+    "name": "Real Madrid",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=163"
+  },
+  {
+    "clubId": 208,
+    "name": "Telstar",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=208"
+  },
+  {
+    "clubId": 179,
+    "name": "AZ Alkmaar",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=179"
+  },
+  {
+    "clubId": 115,
+    "name": "AC Milan",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=115"
+  },
+  {
+    "clubId": 47,
+    "name": "Manchester City",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=47"
+  },
+  {
+    "clubId": 44,
+    "name": "Liverpool",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=44"
+  },
+  {
+    "clubId": 27,
+    "name": "Crystal Palace",
+    "sourceUrl": "https://nl.soccerwiki.org/squad.php?clubid=27"
+  }
+]

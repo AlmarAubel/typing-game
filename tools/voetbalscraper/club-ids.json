@@ -1,0 +1,32 @@
+{
+  "description": "Veelgebruikte Nederlandse club IDs voor soccerwiki.org",
+  "clubs": {
+    "eredivisie": {
+      "Ajax": 180,
+      "PSV": 174,
+      "Feyenoord": 171,
+      "AZ": 182,
+      "FC Utrecht": 188,
+      "FC Twente": 192,
+      "Vitesse": 194,
+      "SC Heerenveen": 185,
+      "FC Groningen": 184,
+      "PEC Zwolle": 191,
+      "Heracles Almelo": 186,
+      "Willem II": 195,
+      "Fortuna Sittard": 183,
+      "Go Ahead Eagles": 11575,
+      "NEC": 189,
+      "RKC Waalwijk": 190,
+      "Sparta Rotterdam": 193,
+      "Almere City": 11576
+    },
+    "keuken_kampioen_divisie": {
+      "FC Volendam": 1234,
+      "FC Den Bosch": 5678,
+      "Jong Ajax": 9012,
+      "Jong PSV": 3456
+    }
+  },
+  "usage": "Vervang de clubIds array in src/scrape.ts met gewenste IDs uit dit bestand"
+}

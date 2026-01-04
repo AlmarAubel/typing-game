@@ -267,7 +267,7 @@ const endGame = () => {
     console.log('Ending session with results:', endResults);
     parentAnalytics.endSession(sessionId.value, endResults);
   }
-  router.push('/tafel-razernij/v2');
+  //router.push('/tafel-razernij/v2');
 };
 
 // Lifecycle
