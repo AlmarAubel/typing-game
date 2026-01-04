@@ -56,7 +56,6 @@ const routes = [
     meta: { title: "Voetbal Razernij" },
   },
   {
-
     path: "/parent-dashboard",
     name: "parent-dashboard",
     component: () => import("@/components/ParentDashboard.vue"),
