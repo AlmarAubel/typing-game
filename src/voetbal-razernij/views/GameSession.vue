@@ -296,6 +296,7 @@ const showMotivation = ref<boolean>(false);
 const motivationMessage = ref({ icon: "", text: "" });
 const showSessionEnd = ref<boolean>(false);
 const sessionResults = ref<any>(null);
+const sessionClubId = ref<number | null>(null);
 
 // Session timer
 let sessionTimer: ReturnType<typeof setInterval> | null = null;
@@ -318,8 +319,10 @@ const accuracy = computed(() => {
 });
 
 const club = computed(() => {
-  if (!currentSession.value) return null;
-  return FootballDataService.getClubById(currentSession.value.clubId);
+  // Use sessionClubId if session is ended, otherwise use current session
+  const clubId = sessionClubId.value || currentSession.value?.clubId;
+  if (!clubId) return null;
+  return FootballDataService.getClubById(clubId);
 });
 
 const hintText = computed(() => {
@@ -483,6 +486,11 @@ function cleanupTimers() {
 }
 
 function endSession() {
+  // Save club ID before ending session
+  if (currentSession.value?.clubId) {
+    sessionClubId.value = currentSession.value.clubId;
+  }
+  
   const results = gameStore.endSession();
   if (results) {
     sessionResults.value = results;
@@ -504,12 +512,14 @@ function closeSessionEnd() {
 
 function playAgain() {
   showSessionEnd.value = false;
+  sessionClubId.value = null; // Reset for new session
   startSession();
   setupSessionTimer();
   generateNewQuestion();
 }
 
 function openClubStore() {
+  console.log("Navigating to Club Store for club:", club.value);
   if (club.value && club.value.id) {
     router.push({
       name: "VoetbalClubStore",
@@ -524,6 +534,7 @@ function openClubStore() {
 
 function backToSelection() {
   showSessionEnd.value = false;
+  sessionClubId.value = null; // Reset when leaving
   router.push({ name: "VoetbalTableSelect" });
 }
 

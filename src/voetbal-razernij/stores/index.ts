@@ -55,6 +55,7 @@ export const useVoetbalGameStore = defineStore(
     // Session state
     const currentSession = ref<GameSession | null>(null);
     const sessionHistory = ref<GameSession[]>([]);
+    const currentTime = ref<number>(Date.now()); // Reactive time reference for timer updates
 
     // Game statistics
     const totalCoins = ref(0);
@@ -65,6 +66,23 @@ export const useVoetbalGameStore = defineStore(
       bestOverallStreak: 0,
       totalTimePlayedMinutes: 0,
     });
+
+    // Timer interval
+    let timerInterval: ReturnType<typeof setInterval> | null = null;
+    
+    function startTimer() {
+      stopTimer(); // Clear any existing timer
+      timerInterval = setInterval(() => {
+        currentTime.value = Date.now();
+      }, 1000);
+    }
+    
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
 
     // Session management
     function startSession(tableNumber: number): GameSession {
@@ -89,6 +107,7 @@ export const useVoetbalGameStore = defineStore(
       };
 
       currentSession.value = session;
+      startTimer(); // Start the timer for reactive updates
       return session;
     }
 
@@ -98,6 +117,8 @@ export const useVoetbalGameStore = defineStore(
       const session = currentSession.value;
       session.endTime = new Date();
       session.isActive = false;
+      
+      stopTimer(); // Stop the timer when session ends
 
       // Calculate session-end bonuses
       const { sessionEndBonus } = BALANCE_CONFIG.tokens;
@@ -200,8 +221,12 @@ export const useVoetbalGameStore = defineStore(
     );
     const sessionTimeRemaining = computed(() => {
       if (!currentSession.value) return 0;
-      const elapsed =
-        (Date.now() - currentSession.value.startTime.getTime()) / 1000;
+      // Use currentTime.value to make this reactive
+      // Ensure startTime is a Date object (handle deserialization from localStorage)
+      const startTime = currentSession.value.startTime instanceof Date 
+        ? currentSession.value.startTime 
+        : new Date(currentSession.value.startTime);
+      const elapsed = (currentTime.value - startTime.getTime()) / 1000;
       const totalTime = BALANCE_CONFIG.session.durationMinutes * 60;
       return Math.max(0, totalTime - elapsed);
     });

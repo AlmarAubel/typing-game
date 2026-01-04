@@ -48,14 +48,14 @@
       <!-- Quick Stats -->
       <div class="ml-auto flex items-center gap-4">
         <!-- Coins -->
-        <div
+        <!-- <div
           class="flex items-center gap-1 bg-yellow-500/20 px-3 py-1 rounded-full"
         >
           <span class="text-lg">🪙</span>
           <span class="font-bold text-yellow-200">{{
             gameStore.totalCoins
           }}</span>
-        </div>
+        </div> -->
 
         <!-- Active Session Indicator -->
         <div
