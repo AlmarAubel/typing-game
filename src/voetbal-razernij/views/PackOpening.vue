@@ -92,10 +92,10 @@
       <div class="cards-grid">
         <div
           v-for="(card, index) in obtainedCards"
-          :key="card.player.id"
+          :key="`card-${card.player.id}-${index}`"
           class="player-card"
           :class="[card.player.rarity, { 'card-duplicate': card.isDuplicate }]"
-          :style="{ '--delay': index * 0.2 + 's' }"
+          :style="{ '--delay': index * 0.1 + 's' }"
         >
           <!-- Card Front -->
           <div class="card-front">
@@ -593,12 +593,13 @@ function backToStore() {
 }
 
 .card-results {
-  @apply container mx-auto px-4 py-8 relative;
+  @apply container mx-auto px-4 py-8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   z-index: 10;
+  overflow: visible;
 }
 
 .results-header {
@@ -606,22 +607,26 @@ function backToStore() {
 }
 
 .cards-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12;
+  @apply flex flex-wrap gap-8 mb-12 justify-center;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
 }
 
 .player-card {
-  @apply relative bg-white rounded-3xl shadow-2xl overflow-hidden transform cursor-default;
-  animation: card-appear 0.8s ease-out forwards;
+  @apply bg-white rounded-3xl shadow-2xl overflow-hidden cursor-default;
+  animation: card-appear 0.6s ease-out forwards;
   animation-delay: var(--delay);
-  opacity: 0;
-  transform: translateY(50px) rotateX(15deg);
+  opacity: 1;
+  transform: translateY(30px) rotateX(10deg);
   width: 220px;
   height: 330px;
-  transition: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .player-card:hover {
-  transform: translateY(50px) rotateX(15deg) scale(1.02);
+  transform: translateY(-5px) scale(1.05);
 }
 
 .player-card.common {
@@ -852,6 +857,10 @@ function backToStore() {
 }
 
 @keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotateX(10deg);
+  }
   to {
     opacity: 1;
     transform: translateY(0) rotateX(0);

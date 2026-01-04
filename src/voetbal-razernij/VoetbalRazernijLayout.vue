@@ -45,6 +45,7 @@
 
       <!-- Global Game Stats Bar -->
       <div
+        v-if="false"
         class="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6"
       >
         <div

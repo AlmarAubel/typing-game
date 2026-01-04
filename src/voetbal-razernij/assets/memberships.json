@@ -5,7 +5,9 @@
     "playerName": "Remko Pasveer",
     "position": "K",
     "rating": 85,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "NL",
+    "age": 42
   },
   {
     "clubId": 180,
@@ -13,7 +15,9 @@
     "playerName": "Steven Berghuis",
     "position": "M(C),AM(RC)",
     "rating": 85,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "NL",
+    "age": 34
   },
   {
     "clubId": 180,
@@ -21,23 +25,29 @@
     "playerName": "Davy Klaassen",
     "position": "M,AM(C)",
     "rating": 87,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "NL",
+    "age": 32
   },
   {
     "clubId": 180,
     "playerId": 61859,
     "playerName": "Wout Weghorst",
-    "position": "A(C)",
+    "position": "AM,A(C)",
     "rating": 88,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "NL",
+    "age": 33
   },
   {
     "clubId": 180,
     "playerId": 71591,
-    "playerName": "Branco",
-    "position": "M",
+    "playerName": "Branco van Den Boomen",
+    "position": "VM,M,AM(C)",
     "rating": 85,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 180,
@@ -45,7 +55,9 @@
     "playerName": "Kasper Dolberg",
     "position": "A(C)",
     "rating": 87,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "DK",
+    "age": 28
   },
   {
     "clubId": 180,
@@ -53,7 +65,9 @@
     "playerName": "Takehiro Tomiyasu",
     "position": "V(RLC)",
     "rating": 88,
-    "shirtNumber": 32
+    "shirtNumber": 32,
+    "nationality": "JP",
+    "age": 27
   },
   {
     "clubId": 180,
@@ -61,63 +75,79 @@
     "playerName": "Ko Itakura",
     "position": "V,VM(C)",
     "rating": 88,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "JP",
+    "age": 28
   },
   {
     "clubId": 180,
     "playerId": 89698,
     "playerName": "Owen Wijndal",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 83,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "NL",
+    "age": 26
   },
   {
     "clubId": 180,
     "playerId": 100917,
     "playerName": "Kenneth Taylor",
-    "position": "M",
+    "position": "VM(C),M,AM(LC)",
     "rating": 88,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "NL",
+    "age": 23
   },
   {
     "clubId": 180,
     "playerId": 102693,
-    "playerName": "Josip",
+    "playerName": "Josip Šutalo",
     "position": "V(C)",
     "rating": 88,
-    "shirtNumber": 37
+    "shirtNumber": 37,
+    "nationality": "HR",
+    "age": 25
   },
   {
     "clubId": 180,
     "playerId": 102753,
     "playerName": "Oliver Edvardsen",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 84,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "NO",
+    "age": 26
   },
   {
     "clubId": 180,
     "playerId": 102757,
     "playerName": "Lucas Rosa",
-    "position": "M(RL)",
+    "position": "V,VM,M(RL)",
     "rating": 84,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "BR",
+    "age": 25
   },
   {
     "clubId": 180,
     "playerId": 104681,
-    "playerName": "Gast",
+    "playerName": "Gastón Ávila",
     "position": "V(LC)",
     "rating": 83,
-    "shirtNumber": 24
+    "shirtNumber": 0,
+    "nationality": "AR",
+    "age": 24
   },
   {
     "clubId": 180,
     "playerId": 107027,
-    "playerName": "Ra",
-    "position": "A(RL)",
+    "playerName": "Raúl Moro",
+    "position": "AM,A(RL)",
     "rating": 85,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "ES",
+    "age": 23
   },
   {
     "clubId": 180,
@@ -125,39 +155,49 @@
     "playerName": "Vitezslav Jaros",
     "position": "K",
     "rating": 83,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "CZ",
+    "age": 24
   },
   {
     "clubId": 180,
     "playerId": 110415,
     "playerName": "Youri Regeer",
-    "position": "M(RLC)",
+    "position": "V(RL),VM,M(RLC)",
     "rating": 84,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 180,
     "playerId": 116188,
-    "playerName": "Kian Fitz",
-    "position": "M",
+    "playerName": "Kian Fitz-Jim",
+    "position": "VM,M,AM(C)",
     "rating": 83,
-    "shirtNumber": 28
+    "shirtNumber": 28,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 180,
     "playerId": 116344,
     "playerName": "Youri Baas",
-    "position": "M(L)",
+    "position": "V(LC),VM,M(L)",
     "rating": 85,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 180,
     "playerId": 122463,
     "playerName": "Anton Gaaei",
-    "position": "M",
+    "position": "V,VM,M,AM(R)",
     "rating": 84,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "DK",
+    "age": 23
   },
   {
     "clubId": 180,
@@ -165,7 +205,9 @@
     "playerName": "Oscar Gloukh",
     "position": "M(C),AM(RLC)",
     "rating": 86,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "IL",
+    "age": 21
   },
   {
     "clubId": 180,
@@ -173,7 +215,9 @@
     "playerName": "Mika Godts",
     "position": "M(C),AM(RLC)",
     "rating": 84,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "BE",
+    "age": 20
   },
   {
     "clubId": 180,
@@ -181,39 +225,49 @@
     "playerName": "Rayane Bounida",
     "position": "AM(RLC)",
     "rating": 78,
-    "shirtNumber": 43
+    "shirtNumber": 43,
+    "nationality": "BE",
+    "age": 19
   },
   {
     "clubId": 180,
     "playerId": 135600,
     "playerName": "Gerald Alders",
-    "position": "M(RC)",
+    "position": "V(R),VM,M(RC)",
     "rating": 73,
-    "shirtNumber": 41
+    "shirtNumber": 41,
+    "nationality": "NL",
+    "age": 20
   },
   {
     "clubId": 180,
     "playerId": 140157,
     "playerName": "James Mcconnell",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 78,
-    "shirtNumber": 16
+    "shirtNumber": 16,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 180,
     "playerId": 141436,
-    "playerName": "Don",
-    "position": "A(C)",
+    "playerName": "Don-Angelo Konadu",
+    "position": "AM,A(C)",
     "rating": 77,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 180,
     "playerId": 145886,
     "playerName": "Jorthy Mokio",
-    "position": "M(C)",
+    "position": "V(LC),VM,M(C)",
     "rating": 77,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "BE",
+    "age": 17
   },
   {
     "clubId": 180,
@@ -221,7 +275,9 @@
     "playerName": "Aaron Bouwman",
     "position": "V(C)",
     "rating": 70,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "NL",
+    "age": 18
   },
   {
     "clubId": 180,
@@ -229,7 +285,9 @@
     "playerName": "Sean Steur",
     "position": "M,AM(C)",
     "rating": 73,
-    "shirtNumber": 48
+    "shirtNumber": 48,
+    "nationality": "NL",
+    "age": 17
   },
   {
     "clubId": 180,
@@ -237,37 +295,9 @@
     "playerName": "Joeri Heerkens",
     "position": "K",
     "rating": 76,
-    "shirtNumber": 12
-  },
-  {
-    "clubId": 180,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 180,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 180,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 180,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 180,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 180,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 12,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 391,
@@ -275,7 +305,9 @@
     "playerName": "Manuel Neuer",
     "position": "K",
     "rating": 93,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "DE",
+    "age": 39
   },
   {
     "clubId": 391,
@@ -283,39 +315,49 @@
     "playerName": "Sven Ulreich",
     "position": "K",
     "rating": 83,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "DE",
+    "age": 37
   },
   {
     "clubId": 391,
     "playerId": 49590,
     "playerName": "Harry Kane",
-    "position": "A(C)",
+    "position": "AM,A(C)",
     "rating": 96,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "GB",
+    "age": 32
   },
   {
     "clubId": 391,
     "playerId": 58668,
     "playerName": "Leon Goretzka",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 91,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "DE",
+    "age": 30
   },
   {
     "clubId": 391,
     "playerId": 59500,
-    "playerName": "Rapha",
-    "position": "M(RLC)",
+    "playerName": "Raphaël Guerreiro",
+    "position": "V,VM(RL),M(RLC)",
     "rating": 90,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "PT",
+    "age": 32
   },
   {
     "clubId": 391,
     "playerId": 61101,
     "playerName": "Serge Gnabry",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 91,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "DE",
+    "age": 30
   },
   {
     "clubId": 391,
@@ -323,23 +365,29 @@
     "playerName": "Jonathan Tah",
     "position": "V(C)",
     "rating": 92,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "DE",
+    "age": 29
   },
   {
     "clubId": 391,
     "playerId": 70860,
     "playerName": "Joshua Kimmich",
-    "position": "M(RC)",
+    "position": "V(R),VM,M(RC)",
     "rating": 94,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "DE",
+    "age": 30
   },
   {
     "clubId": 391,
     "playerId": 76629,
     "playerName": "Konrad Laimer",
-    "position": "M(RLC)",
+    "position": "V(RL),VM,M(RLC)",
     "rating": 91,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "AT",
+    "age": 28
   },
   {
     "clubId": 391,
@@ -347,15 +395,19 @@
     "playerName": "Dayot Upamecano",
     "position": "V(C)",
     "rating": 92,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "FR",
+    "age": 27
   },
   {
     "clubId": 391,
     "playerId": 85954,
     "playerName": "Alphonso Davies",
-    "position": "M",
+    "position": "V,VM,M,AM(L)",
     "rating": 92,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "CA",
+    "age": 25
   },
   {
     "clubId": 391,
@@ -363,39 +415,49 @@
     "playerName": "Hiroki Ito",
     "position": "V(LC)",
     "rating": 90,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "JP",
+    "age": 26
   },
   {
     "clubId": 391,
     "playerId": 90167,
-    "playerName": "Min",
-    "position": "Min-Jae Kim",
+    "playerName": "Min-Jae Kim",
+    "position": "V(C)",
     "rating": 92,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "KR",
+    "age": 29
   },
   {
     "clubId": 391,
     "playerId": 95525,
-    "playerName": "Luis",
-    "position": "A(LC)",
+    "playerName": "Luis Díaz",
+    "position": "AM(L),A(LC)",
     "rating": 92,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "CO",
+    "age": 28
   },
   {
     "clubId": 391,
     "playerId": 101350,
     "playerName": "Sacha Boey",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 88,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "FR",
+    "age": 25
   },
   {
     "clubId": 391,
     "playerId": 101780,
     "playerName": "Michael Olise",
-    "position": "A(R)",
+    "position": "AM(RC),A(R)",
     "rating": 93,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "FR",
+    "age": 24
   },
   {
     "clubId": 391,
@@ -403,7 +465,9 @@
     "playerName": "Jamal Musiala",
     "position": "M(C),AM(RLC)",
     "rating": 94,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "DE",
+    "age": 22
   },
   {
     "clubId": 391,
@@ -411,15 +475,19 @@
     "playerName": "Nicolas Jackson",
     "position": "A(C)",
     "rating": 91,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "SN",
+    "age": 24
   },
   {
     "clubId": 391,
     "playerId": 110673,
-    "playerName": "Josip Stani",
-    "position": "V",
+    "playerName": "Josip Stanišić",
+    "position": "V(RLC),VM(RL)",
     "rating": 90,
-    "shirtNumber": 44
+    "shirtNumber": 44,
+    "nationality": "HR",
+    "age": 25
   },
   {
     "clubId": 391,
@@ -427,23 +495,29 @@
     "playerName": "Jonas Urbig",
     "position": "K",
     "rating": 85,
-    "shirtNumber": 40
+    "shirtNumber": 40,
+    "nationality": "DE",
+    "age": 22
   },
   {
     "clubId": 391,
     "playerId": 114277,
     "playerName": "Tom Bischof",
-    "position": "M",
+    "position": "V,VM(L),M,AM(RLC)",
     "rating": 88,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "DE",
+    "age": 20
   },
   {
     "clubId": 391,
     "playerId": 135567,
     "playerName": "Aleksandar Pavlovic",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 90,
-    "shirtNumber": 45
+    "shirtNumber": 45,
+    "nationality": "DE",
+    "age": 21
   },
   {
     "clubId": 391,
@@ -451,45 +525,19 @@
     "playerName": "Lennart Karl",
     "position": "AM(RLC)",
     "rating": 80,
-    "shirtNumber": 42
+    "shirtNumber": 42,
+    "nationality": "DE",
+    "age": 17
   },
   {
     "clubId": 391,
     "playerId": 158343,
     "playerName": "Wisdom Mike",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 73,
-    "shirtNumber": 36
-  },
-  {
-    "clubId": 391,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 391,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 391,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 391,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 391,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 391,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 36,
+    "nationality": "DE",
+    "age": 17
   },
   {
     "clubId": 140,
@@ -497,23 +545,29 @@
     "playerName": "Robert Lewandowski",
     "position": "A(C)",
     "rating": 94,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "PL",
+    "age": 37
   },
   {
     "clubId": 140,
     "playerId": 41634,
-    "playerName": "Wojciech Szcz",
+    "playerName": "Wojciech Szczęsny",
     "position": "K",
     "rating": 90,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "PL",
+    "age": 35
   },
   {
     "clubId": 140,
     "playerId": 47215,
-    "playerName": "Marc",
+    "playerName": "Marc-André Ter Stegen",
     "position": "K",
     "rating": 91,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "DE",
+    "age": 33
   },
   {
     "clubId": 140,
@@ -521,7 +575,9 @@
     "playerName": "Andreas Christensen",
     "position": "V,VM(C)",
     "rating": 89,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "DK",
+    "age": 29
   },
   {
     "clubId": 140,
@@ -529,63 +585,79 @@
     "playerName": "Dani Olmo",
     "position": "M(C),AM(RLC)",
     "rating": 92,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "ES",
+    "age": 27
   },
   {
     "clubId": 140,
     "playerId": 82275,
-    "playerName": "Frenkie",
-    "position": "M(C)",
+    "playerName": "Frenkie de Jong",
+    "position": "VM,M(C)",
     "rating": 93,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "NL",
+    "age": 28
   },
   {
     "clubId": 140,
     "playerId": 84384,
     "playerName": "Marcus Rashford",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 92,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "GB",
+    "age": 28
   },
   {
     "clubId": 140,
     "playerId": 87870,
     "playerName": "Belloli Raphinha",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 94,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "BR",
+    "age": 29
   },
   {
     "clubId": 140,
     "playerId": 93445,
-    "playerName": "Ferr",
-    "position": "A(RLC)",
+    "playerName": "Ferrán Torres",
+    "position": "AM(RL),A(RLC)",
     "rating": 91,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "ES",
+    "age": 25
   },
   {
     "clubId": 140,
     "playerId": 94977,
-    "playerName": "Ronald Ara",
+    "playerName": "Ronald Araújo",
     "position": "V(RC)",
     "rating": 91,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "UY",
+    "age": 26
   },
   {
     "clubId": 140,
     "playerId": 95157,
-    "playerName": "Jules Kound",
-    "position": "V",
+    "playerName": "Jules Koundé",
+    "position": "V(RC),VM(R)",
     "rating": 92,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "FR",
+    "age": 27
   },
   {
     "clubId": 140,
     "playerId": 98009,
-    "playerName": "Eric Garc",
+    "playerName": "Eric García",
     "position": "V(RC),VM(C)",
     "rating": 89,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "ES",
+    "age": 24
   },
   {
     "clubId": 140,
@@ -593,15 +665,19 @@
     "playerName": "Gonzalez Pedri",
     "position": "M,AM(C)",
     "rating": 94,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "ES",
+    "age": 23
   },
   {
     "clubId": 140,
     "playerId": 110049,
     "playerName": "Alejandro Balde",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 91,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "ES",
+    "age": 22
   },
   {
     "clubId": 140,
@@ -609,47 +685,59 @@
     "playerName": "Pablo Gavi",
     "position": "M(C),AM(LC)",
     "rating": 91,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "ES",
+    "age": 21
   },
   {
     "clubId": 140,
     "playerId": 117085,
     "playerName": "Roony Bardghji",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 83,
-    "shirtNumber": 28
+    "shirtNumber": 28,
+    "nationality": "SE",
+    "age": 20
   },
   {
     "clubId": 140,
     "playerId": 118586,
-    "playerName": "Joan Garc",
+    "playerName": "Joan García",
     "position": "K",
     "rating": 90,
-    "shirtNumber": 13
+    "shirtNumber": 13,
+    "nationality": "ES",
+    "age": 24
   },
   {
     "clubId": 140,
     "playerId": 124685,
-    "playerName": "Marc Casad",
-    "position": "M(C)",
+    "playerName": "Marc Casadó",
+    "position": "VM,M(C)",
     "rating": 87,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "ES",
+    "age": 22
   },
   {
     "clubId": 140,
     "playerId": 126898,
     "playerName": "Lamine Yamal",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 95,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "ES",
+    "age": 18
   },
   {
     "clubId": 140,
     "playerId": 137578,
-    "playerName": "Ferm",
+    "playerName": "Fermín López",
     "position": "M(C),AM(RLC)",
     "rating": 90,
-    "shirtNumber": 16
+    "shirtNumber": 16,
+    "nationality": "ES",
+    "age": 22
   },
   {
     "clubId": 140,
@@ -657,69 +745,49 @@
     "playerName": "Gerard Martin",
     "position": "V(LC),VM(L)",
     "rating": 87,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "ES",
+    "age": 23
   },
   {
     "clubId": 140,
     "playerId": 139611,
     "playerName": "Marc Bernal",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 80,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "ES",
+    "age": 18
   },
   {
     "clubId": 140,
     "playerId": 139751,
-    "playerName": "Pau Cubars",
+    "playerName": "Pau Cubarsí",
     "position": "V(C)",
     "rating": 91,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "ES",
+    "age": 18
   },
   {
     "clubId": 140,
     "playerId": 155055,
-    "playerName": "Dro Fern",
-    "position": "A(L)",
+    "playerName": "Dro Fernández",
+    "position": "AM(LC),A(L)",
     "rating": 76,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "ES",
+    "age": 17
   },
   {
     "clubId": 140,
     "playerId": 155056,
     "playerName": "Jofre Torrents",
-    "position": "M",
+    "position": "V,VM,M,AM(L)",
     "rating": 76,
-    "shirtNumber": 26
-  },
-  {
-    "clubId": 140,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 140,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 140,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 140,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 140,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 140,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 26,
+    "nationality": "ES",
+    "age": 18
   },
   {
     "clubId": 163,
@@ -727,7 +795,9 @@
     "playerName": "Thibaut Courtois",
     "position": "K",
     "rating": 95,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "BE",
+    "age": 33
   },
   {
     "clubId": 163,
@@ -735,23 +805,29 @@
     "playerName": "David Alaba",
     "position": "V(LC)",
     "rating": 89,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "AT",
+    "age": 33
   },
   {
     "clubId": 163,
     "playerId": 46587,
     "playerName": "Daniel Carvajal",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 92,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "ES",
+    "age": 33
   },
   {
     "clubId": 163,
     "playerId": 53792,
-    "playerName": "Antonio",
-    "position": "Antonio Rüdiger",
+    "playerName": "Antonio Rüdiger",
+    "position": "V(C)",
     "rating": 93,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "DE",
+    "age": 32
   },
   {
     "clubId": 163,
@@ -759,55 +835,69 @@
     "playerName": "Dani Ceballos",
     "position": "M,AM(C)",
     "rating": 89,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "ES",
+    "age": 29
   },
   {
     "clubId": 163,
     "playerId": 81249,
     "playerName": "Federico Valverde",
-    "position": "M",
+    "position": "V(R),VM,M,AM(RC)",
     "rating": 94,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "UY",
+    "age": 27
   },
   {
     "clubId": 163,
     "playerId": 82337,
     "playerName": "Ferland Mendy",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 89,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "FR",
+    "age": 30
   },
   {
     "clubId": 163,
     "playerId": 85260,
-    "playerName": "Kylian Mbapp",
-    "position": "A(LC)",
+    "playerName": "Kylian Mbappé",
+    "position": "AM(L),A(LC)",
     "rating": 96,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "FR",
+    "age": 27
   },
   {
     "clubId": 163,
     "playerId": 87941,
-    "playerName": "Brahim",
-    "position": "A(RLC)",
+    "playerName": "Brahim Díaz",
+    "position": "AM,A(RLC)",
     "rating": 90,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "MA",
+    "age": 26
   },
   {
     "clubId": 163,
     "playerId": 88385,
-    "playerName": "Trent Alexander",
-    "position": "M(R)",
+    "playerName": "Trent Alexander-Arnold",
+    "position": "V,VM,M(R)",
     "rating": 94,
-    "shirtNumber": 12
+    "shirtNumber": 12,
+    "nationality": "GB",
+    "age": 27
   },
   {
     "clubId": 163,
     "playerId": 90068,
-    "playerName": "Vin",
-    "position": "A(LC)",
+    "playerName": "Vinícius Júnior",
+    "position": "AM(L),A(LC)",
     "rating": 95,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "BR",
+    "age": 25
   },
   {
     "clubId": 163,
@@ -815,47 +905,59 @@
     "playerName": "Andriy Lunin",
     "position": "K",
     "rating": 88,
-    "shirtNumber": 13
+    "shirtNumber": 13,
+    "nationality": "UA",
+    "age": 26
   },
   {
     "clubId": 163,
     "playerId": 93823,
     "playerName": "Goes Rodrygo",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 93,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "BR",
+    "age": 24
   },
   {
     "clubId": 163,
     "playerId": 94241,
-    "playerName": "Milit",
+    "playerName": "Éder Militão",
     "position": "V(RC)",
     "rating": 93,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "BR",
+    "age": 27
   },
   {
     "clubId": 163,
     "playerId": 97514,
-    "playerName": "Aur",
-    "position": "M(C)",
+    "playerName": "Aurélien Tchouameni",
+    "position": "V,VM,M(C)",
     "rating": 93,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "FR",
+    "age": 25
   },
   {
     "clubId": 163,
     "playerId": 99307,
-    "playerName": "Fran Garc",
-    "position": "M(L)",
+    "playerName": "Fran García",
+    "position": "V,VM,M(L)",
     "rating": 89,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "ES",
+    "age": 26
   },
   {
     "clubId": 163,
     "playerId": 101125,
     "playerName": "Eduardo Camavinga",
-    "position": "M(LC)",
+    "position": "V(L),VM,M(LC)",
     "rating": 92,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "FR",
+    "age": 23
   },
   {
     "clubId": 163,
@@ -863,23 +965,29 @@
     "playerName": "Jude Bellingham",
     "position": "M,AM(LC)",
     "rating": 95,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 163,
     "playerId": 114505,
-    "playerName": "Arda",
-    "position": "Arda Güler",
+    "playerName": "Arda Güler",
+    "position": "M(C),AM(RLC)",
     "rating": 90,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "TR",
+    "age": 20
   },
   {
     "clubId": 163,
     "playerId": 118048,
-    "playerName": "Carreras",
-    "position": "M(L)",
+    "playerName": "Álvaro Carreras",
+    "position": "V(LC),VM,M(L)",
     "rating": 90,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "ES",
+    "age": 22
   },
   {
     "clubId": 163,
@@ -887,15 +995,19 @@
     "playerName": "Dean Huijsen",
     "position": "V(C)",
     "rating": 90,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "ES",
+    "age": 20
   },
   {
     "clubId": 163,
     "playerId": 133514,
-    "playerName": "Gonzalo Garc",
-    "position": "A(RLC)",
+    "playerName": "Gonzalo García",
+    "position": "AM,A(RLC)",
     "rating": 82,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "ES",
+    "age": 21
   },
   {
     "clubId": 163,
@@ -903,23 +1015,29 @@
     "playerName": "Sergio Mestre",
     "position": "K",
     "rating": 70,
-    "shirtNumber": 43
+    "shirtNumber": 43,
+    "nationality": "ES",
+    "age": 20
   },
   {
     "clubId": 163,
     "playerId": 137675,
-    "playerName": "Ra",
+    "playerName": "Raúl Asencio",
     "position": "V(RC)",
     "rating": 88,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "ES",
+    "age": 22
   },
   {
     "clubId": 163,
     "playerId": 143202,
     "playerName": "Franco Mastantuono",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 87,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "AR",
+    "age": 18
   },
   {
     "clubId": 163,
@@ -927,37 +1045,9 @@
     "playerName": "Thiago Pitarch",
     "position": "M,AM(C)",
     "rating": 76,
-    "shirtNumber": 45
-  },
-  {
-    "clubId": 163,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 163,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 163,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 163,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 163,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 163,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 45,
+    "nationality": "ES",
+    "age": 18
   },
   {
     "clubId": 208,
@@ -965,47 +1055,59 @@
     "playerName": "Dion Malone",
     "position": "V(RC),VM(C)",
     "rating": 78,
-    "shirtNumber": 29
+    "shirtNumber": 29,
+    "nationality": "SR",
+    "age": 36
   },
   {
     "clubId": 208,
     "playerId": 69789,
     "playerName": "Danny Bakker",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 76,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 208,
     "playerId": 74433,
     "playerName": "Mohamed Hamdaoui",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 76,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "NL",
+    "age": 32
   },
   {
     "clubId": 208,
     "playerId": 81179,
     "playerName": "Jeff Hardeveld",
-    "position": "M(L)",
+    "position": "V(LC),VM,M(L)",
     "rating": 78,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 208,
     "playerId": 86621,
     "playerName": "Dylan Mertens",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 78,
-    "shirtNumber": 16
+    "shirtNumber": 16,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 208,
     "playerId": 96154,
-    "playerName": "Ronald Koeman",
+    "playerName": "Ronald Koeman Jr.",
     "position": "K",
     "rating": 78,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 208,
@@ -1013,7 +1115,9 @@
     "playerName": "Tyrick Bodak",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 13
+    "shirtNumber": 13,
+    "nationality": "CW",
+    "age": 23
   },
   {
     "clubId": 208,
@@ -1021,15 +1125,19 @@
     "playerName": "Daan Reiziger",
     "position": "K",
     "rating": 75,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "NL",
+    "age": 24
   },
   {
     "clubId": 208,
     "playerId": 116719,
     "playerName": "Kay Tejan",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 78,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "NL",
+    "age": 28
   },
   {
     "clubId": 208,
@@ -1037,7 +1145,9 @@
     "playerName": "Devon Koswal",
     "position": "V(C)",
     "rating": 77,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "SR",
+    "age": 22
   },
   {
     "clubId": 208,
@@ -1045,7 +1155,9 @@
     "playerName": "Milan Zonneveld",
     "position": "A(C)",
     "rating": 68,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 208,
@@ -1053,39 +1165,49 @@
     "playerName": "Patrick Brouwer",
     "position": "M(C),AM(RLC)",
     "rating": 72,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "NL",
+    "age": 24
   },
   {
     "clubId": 208,
     "playerId": 126457,
     "playerName": "Achraf Oughcha",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 65,
-    "shirtNumber": 21
+    "shirtNumber": 0,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 208,
     "playerId": 126463,
-    "playerName": "Jochem Ritmeester",
-    "position": "M",
+    "playerName": "Jochem Ritmeester van de Kamp",
+    "position": "V(R),VM,M,AM(RC)",
     "rating": 80,
-    "shirtNumber": 39
+    "shirtNumber": 39,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 208,
     "playerId": 129641,
     "playerName": "Nils Rossen",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 78,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 208,
     "playerId": 155412,
     "playerName": "Tyrese Noslin",
-    "position": "M(RL)",
+    "position": "V(RLC),VM,M(RL)",
     "rating": 77,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "CW",
+    "age": 23
   },
   {
     "clubId": 208,
@@ -1093,47 +1215,59 @@
     "playerName": "Abdelraffie Benzzine",
     "position": "V(C)",
     "rating": 60,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 208,
     "playerId": 155603,
-    "playerName": "Jaylan",
+    "playerName": "Jaylan van Schooneveld",
     "position": "V,VM(C)",
     "rating": 63,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "NL",
+    "age": 20
   },
   {
     "clubId": 208,
     "playerId": 155604,
     "playerName": "Guus Offerhaus",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 78,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "NL",
+    "age": 25
   },
   {
     "clubId": 208,
     "playerId": 155605,
     "playerName": "Adil Lechkar",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 63,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "NL",
+    "age": 24
   },
   {
     "clubId": 208,
     "playerId": 155607,
     "playerName": "Tyrone Owusu",
-    "position": "M(RC)",
+    "position": "V(R),VM,M(RC)",
     "rating": 78,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "NL",
+    "age": 26
   },
   {
     "clubId": 208,
     "playerId": 155608,
     "playerName": "Soufiane Hetli",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 76,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "NL",
+    "age": 24
   },
   {
     "clubId": 208,
@@ -1141,15 +1275,19 @@
     "playerName": "Sebastiaan Hagedoorn",
     "position": "A(C)",
     "rating": 63,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 208,
     "playerId": 160755,
-    "playerName": "Nigel Ogidi",
-    "position": "M(L)",
+    "playerName": "Nigel Ogidi Nwankwo",
+    "position": "V,VM,M(L)",
     "rating": 67,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "NL",
+    "age": 27
   },
   {
     "clubId": 208,
@@ -1157,15 +1295,19 @@
     "playerName": "Yamano Olfers",
     "position": "V(C)",
     "rating": 63,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "SR",
+    "age": 19
   },
   {
     "clubId": 208,
     "playerId": 163706,
-    "playerName": "Neville Ogidi",
+    "playerName": "Neville Ogidi Nwankwo",
     "position": "V(C)",
     "rating": 65,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "NL",
+    "age": 23
   },
   {
     "clubId": 208,
@@ -1173,7 +1315,9 @@
     "playerName": "Rojendro Oudsten",
     "position": "M(C)",
     "rating": 65,
-    "shirtNumber": 28
+    "shirtNumber": 28,
+    "nationality": "SR",
+    "age": 18
   },
   {
     "clubId": 208,
@@ -1181,53 +1325,19 @@
     "playerName": "Rayyan Koubini",
     "position": "M(C)",
     "rating": 65,
-    "shirtNumber": 23
-  },
-  {
-    "clubId": 208,
-    "playerId": 125070,
-    "playerName": "Remi",
-    "position": "M",
-    "rating": 70,
-    "shirtNumber": 23
-  },
-  {
-    "clubId": 208,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 208,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 208,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 208,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 208,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 208,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 23,
+    "nationality": "NL",
+    "age": 20
   },
   {
     "clubId": 179,
     "playerId": 46118,
     "playerName": "Jordy Clasie",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 86,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "NL",
+    "age": 34
   },
   {
     "clubId": 179,
@@ -1235,7 +1345,9 @@
     "playerName": "Jeroen Zoet",
     "position": "K",
     "rating": 82,
-    "shirtNumber": 41
+    "shirtNumber": 41,
+    "nationality": "NL",
+    "age": 34
   },
   {
     "clubId": 179,
@@ -1243,23 +1355,29 @@
     "playerName": "Hobie Verhulst",
     "position": "K",
     "rating": 78,
-    "shirtNumber": 12
+    "shirtNumber": 12,
+    "nationality": "NL",
+    "age": 32
   },
   {
     "clubId": 179,
     "playerId": 97377,
-    "playerName": "Mees",
-    "position": "M",
+    "playerName": "Mees de Wit",
+    "position": "V,VM,M,AM(L)",
     "rating": 82,
-    "shirtNumber": 34
+    "shirtNumber": 34,
+    "nationality": "NL",
+    "age": 27
   },
   {
     "clubId": 179,
     "playerId": 97862,
     "playerName": "Ibrahim Sadiq",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 83,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "GH",
+    "age": 25
   },
   {
     "clubId": 179,
@@ -1267,7 +1385,9 @@
     "playerName": "Troy Parrott",
     "position": "A(C)",
     "rating": 86,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "IE",
+    "age": 23
   },
   {
     "clubId": 179,
@@ -1275,7 +1395,9 @@
     "playerName": "Alexandre Penetra",
     "position": "V(RC)",
     "rating": 85,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "PT",
+    "age": 24
   },
   {
     "clubId": 179,
@@ -1283,15 +1405,19 @@
     "playerName": "Sven Mijnans",
     "position": "M(C),AM(RLC)",
     "rating": 86,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "NL",
+    "age": 25
   },
   {
     "clubId": 179,
     "playerId": 111580,
     "playerName": "Peer Koopmeiners",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 86,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "NL",
+    "age": 25
   },
   {
     "clubId": 179,
@@ -1299,23 +1425,29 @@
     "playerName": "Isak Jensen",
     "position": "M,AM(L)",
     "rating": 82,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "DK",
+    "age": 22
   },
   {
     "clubId": 179,
     "playerId": 116018,
     "playerName": "Seiya Maikuma",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 84,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "JP",
+    "age": 28
   },
   {
     "clubId": 179,
     "playerId": 116531,
-    "playerName": "Dani",
+    "playerName": "Daniël Virginio Deen",
     "position": "K",
     "rating": 70,
-    "shirtNumber": 31
+    "shirtNumber": 31,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 179,
@@ -1323,7 +1455,9 @@
     "playerName": "Maxim Dekker",
     "position": "V(LC)",
     "rating": 80,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
@@ -1331,15 +1465,19 @@
     "playerName": "Lequincio Zeefuik",
     "position": "A(C)",
     "rating": 78,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 116638,
     "playerName": "Denso Kasius",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 82,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "NL",
+    "age": 23
   },
   {
     "clubId": 179,
@@ -1347,23 +1485,29 @@
     "playerName": "Matej Sin",
     "position": "M(C),AM(RLC)",
     "rating": 82,
-    "shirtNumber": 33
+    "shirtNumber": 33,
+    "nationality": "CZ",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 122926,
-    "playerName": "Rome Jayden",
+    "playerName": "Rome Jayden Owusu-Oduro",
     "position": "K",
     "rating": 84,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 122928,
-    "playerName": "Ro",
-    "position": "A(RL)",
+    "playerName": "Ro-Zangelo Daal",
+    "position": "AM,A(RL)",
     "rating": 77,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
@@ -1371,7 +1515,9 @@
     "playerName": "Mexx Meerdink",
     "position": "A(C)",
     "rating": 82,
-    "shirtNumber": 35
+    "shirtNumber": 35,
+    "nationality": "NL",
+    "age": 22
   },
   {
     "clubId": 179,
@@ -1379,109 +1525,99 @@
     "playerName": "Wouter Goes",
     "position": "V(C)",
     "rating": 85,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 125023,
-    "playerName": "Billy",
+    "playerName": "Billy van Duijl",
     "position": "V(C)",
     "rating": 73,
-    "shirtNumber": 52
+    "shirtNumber": 52,
+    "nationality": "NL",
+    "age": 20
   },
   {
     "clubId": 179,
     "playerId": 126587,
     "playerName": "Dave Kwakman",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 78,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "NL",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 128169,
     "playerName": "Weslley Patati",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 80,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "BR",
+    "age": 22
   },
   {
     "clubId": 179,
     "playerId": 130091,
     "playerName": "Kees Smit",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 82,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 179,
     "playerId": 145446,
-    "playerName": "Mateo Ch",
-    "position": "M(L)",
+    "playerName": "Mateo Chávez",
+    "position": "V,VM,M(L)",
     "rating": 80,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "MX",
+    "age": 21
   },
   {
     "clubId": 179,
     "playerId": 152415,
     "playerName": "Elijah Dijkstra",
-    "position": "M(RL)",
+    "position": "V,VM,M(RL)",
     "rating": 78,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 179,
     "playerId": 153198,
     "playerName": "Ayoub Oufkir",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 70,
-    "shirtNumber": 24
-  },
-  {
-    "clubId": 179,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 179,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 179,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 179,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 179,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 179,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 24,
+    "nationality": "NL",
+    "age": 20
   },
   {
     "clubId": 115,
     "playerId": 4336,
-    "playerName": "Luka Modri",
-    "position": "M",
+    "playerName": "Luka Modrić",
+    "position": "M,AM(C)",
     "rating": 92,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "HR",
+    "age": 40
   },
   {
     "clubId": 115,
     "playerId": 53473,
-    "playerName": "Niclas",
+    "playerName": "Niclas Füllkrug",
     "position": "A(C)",
     "rating": 89,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "DE",
+    "age": 32
   },
   {
     "clubId": 115,
@@ -1489,15 +1625,19 @@
     "playerName": "Pietro Terracciano",
     "position": "K",
     "rating": 87,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "IT",
+    "age": 35
   },
   {
     "clubId": 115,
     "playerId": 57953,
     "playerName": "Adrien Rabiot",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 92,
-    "shirtNumber": 12
+    "shirtNumber": 12,
+    "nationality": "FR",
+    "age": 30
   },
   {
     "clubId": 115,
@@ -1505,39 +1645,49 @@
     "playerName": "Mike Maignan",
     "position": "K",
     "rating": 92,
-    "shirtNumber": 16
+    "shirtNumber": 16,
+    "nationality": "FR",
+    "age": 30
   },
   {
     "clubId": 115,
     "playerId": 78753,
-    "playerName": "Ruben Loftus",
-    "position": "M",
+    "playerName": "Ruben Loftus-Cheek",
+    "position": "VM,M,AM(C)",
     "rating": 88,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "GB",
+    "age": 29
   },
   {
     "clubId": 115,
     "playerId": 80987,
-    "playerName": "Pervis Estupi",
-    "position": "M(L)",
+    "playerName": "Pervis Estupiñán",
+    "position": "V,VM,M(L)",
     "rating": 90,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "EC",
+    "age": 27
   },
   {
     "clubId": 115,
     "playerId": 85046,
     "playerName": "Christian Pulisic",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 92,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "US",
+    "age": 27
   },
   {
     "clubId": 115,
     "playerId": 85984,
     "playerName": "Christopher Nkunku",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 91,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "FR",
+    "age": 28
   },
   {
     "clubId": 115,
@@ -1545,7 +1695,9 @@
     "playerName": "Fikayo Tomori",
     "position": "V(C)",
     "rating": 90,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "GB",
+    "age": 28
   },
   {
     "clubId": 115,
@@ -1553,15 +1705,19 @@
     "playerName": "Matteo Gabbia",
     "position": "V(C)",
     "rating": 89,
-    "shirtNumber": 46
+    "shirtNumber": 46,
+    "nationality": "IT",
+    "age": 26
   },
   {
     "clubId": 115,
     "playerId": 93302,
-    "playerName": "Rafael Le",
-    "position": "A(LC)",
+    "playerName": "Rafael Leão",
+    "position": "AM,A(LC)",
     "rating": 93,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "PT",
+    "age": 26
   },
   {
     "clubId": 115,
@@ -1569,71 +1725,89 @@
     "playerName": "Alexis Saelemaekers",
     "position": "M,AM(RL)",
     "rating": 90,
-    "shirtNumber": 56
+    "shirtNumber": 56,
+    "nationality": "BE",
+    "age": 26
   },
   {
     "clubId": 115,
     "playerId": 97982,
-    "playerName": "Koni",
-    "position": "Koni de Winter",
+    "playerName": "Koni de Winter",
+    "position": "V(RC),VM(C)",
     "rating": 87,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "BE",
+    "age": 23
   },
   {
     "clubId": 115,
     "playerId": 99560,
     "playerName": "Youssouf Fofana",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 90,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "FR",
+    "age": 26
   },
   {
     "clubId": 115,
     "playerId": 99895,
-    "playerName": "Strahinja Pavlovi",
+    "playerName": "Strahinja Pavlović",
     "position": "V(C)",
     "rating": 89,
-    "shirtNumber": 31
+    "shirtNumber": 31,
+    "nationality": "RS",
+    "age": 24
   },
   {
     "clubId": 115,
     "playerId": 102542,
-    "playerName": "Santiago Gim",
+    "playerName": "Santiago Giménez",
     "position": "A(C)",
     "rating": 89,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "MX",
+    "age": 24
   },
   {
     "clubId": 115,
     "playerId": 104880,
     "playerName": "Samuele Ricci",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 89,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "IT",
+    "age": 24
   },
   {
     "clubId": 115,
     "playerId": 121869,
     "playerName": "Davide Bartesaghi",
-    "position": "M(L)",
+    "position": "V(LC),VM,M(L)",
     "rating": 83,
-    "shirtNumber": 33
+    "shirtNumber": 33,
+    "nationality": "IT",
+    "age": 20
   },
   {
     "clubId": 115,
     "playerId": 122437,
     "playerName": "Ardon Jashari",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 88,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "CH",
+    "age": 23
   },
   {
     "clubId": 115,
     "playerId": 131245,
     "playerName": "Zachary Athekame",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 82,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "CH",
+    "age": 21
   },
   {
     "clubId": 115,
@@ -1641,7 +1815,9 @@
     "playerName": "David Odogu",
     "position": "V(C)",
     "rating": 73,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "DE",
+    "age": 19
   },
   {
     "clubId": 115,
@@ -1649,53 +1825,29 @@
     "playerName": "Lorenzo Torriani",
     "position": "K",
     "rating": 75,
-    "shirtNumber": 96
+    "shirtNumber": 96,
+    "nationality": "IT",
+    "age": 20
   },
   {
     "clubId": 115,
     "playerId": 164769,
     "playerName": "Cheveyo Balentien",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 73,
-    "shirtNumber": 25
-  },
-  {
-    "clubId": 115,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 115,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 115,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 115,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 115,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 115,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 25,
+    "nationality": "NL",
+    "age": 19
   },
   {
     "clubId": 47,
     "playerId": 47427,
-    "playerName": "Mateo Kova",
-    "position": "M(C)",
+    "playerName": "Mateo Kovačić",
+    "position": "VM,M(C)",
     "rating": 91,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "HR",
+    "age": 31
   },
   {
     "clubId": 47,
@@ -1703,7 +1855,9 @@
     "playerName": "Stefan Ortega",
     "position": "K",
     "rating": 88,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "DE",
+    "age": 33
   },
   {
     "clubId": 47,
@@ -1711,7 +1865,9 @@
     "playerName": "John Stones",
     "position": "V(RC),VM(C)",
     "rating": 92,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "GB",
+    "age": 31
   },
   {
     "clubId": 47,
@@ -1719,15 +1875,19 @@
     "playerName": "Marcus Bettinelli",
     "position": "K",
     "rating": 80,
-    "shirtNumber": 13
+    "shirtNumber": 13,
+    "nationality": "GB",
+    "age": 33
   },
   {
     "clubId": 47,
     "playerId": 64626,
-    "playerName": "Nathan Ak",
+    "playerName": "Nathan Aké",
     "position": "V(LC)",
     "rating": 91,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "NL",
+    "age": 30
   },
   {
     "clubId": 47,
@@ -1735,23 +1895,29 @@
     "playerName": "Bernardo Silva",
     "position": "M,AM(RC)",
     "rating": 93,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "PT",
+    "age": 31
   },
   {
     "clubId": 47,
     "playerId": 80933,
     "playerName": "Kalvin Phillips",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 87,
-    "shirtNumber": 44
+    "shirtNumber": 44,
+    "nationality": "GB",
+    "age": 30
   },
   {
     "clubId": 47,
     "playerId": 82178,
-    "playerName": "Hern",
-    "position": "M(C)",
+    "playerName": "Hernández Rodri",
+    "position": "VM,M(C)",
     "rating": 95,
-    "shirtNumber": 16
+    "shirtNumber": 16,
+    "nationality": "ES",
+    "age": 29
   },
   {
     "clubId": 47,
@@ -1759,15 +1925,19 @@
     "playerName": "Gianluigi Donnarumma",
     "position": "K",
     "rating": 93,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "IT",
+    "age": 26
   },
   {
     "clubId": 47,
     "playerId": 85994,
-    "playerName": "Dias",
+    "playerName": "Rúben Dias",
     "position": "V(C)",
     "rating": 94,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "PT",
+    "age": 28
   },
   {
     "clubId": 47,
@@ -1775,87 +1945,109 @@
     "playerName": "Erling Haaland",
     "position": "A(C)",
     "rating": 96,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "NO",
+    "age": 25
   },
   {
     "clubId": 47,
     "playerId": 89018,
     "playerName": "Phil Foden",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 93,
-    "shirtNumber": 47
+    "shirtNumber": 47,
+    "nationality": "GB",
+    "age": 25
   },
   {
     "clubId": 47,
     "playerId": 92649,
     "playerName": "Tijjani Reijnders",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 92,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "NL",
+    "age": 27
   },
   {
     "clubId": 47,
     "playerId": 97458,
-    "playerName": "Jo",
+    "playerName": "Joško Gvardiol",
     "position": "V(LC),VM(L)",
     "rating": 93,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "HR",
+    "age": 23
   },
   {
     "clubId": 47,
     "playerId": 99465,
-    "playerName": "Rayan",
-    "position": "A",
+    "playerName": "Rayan Aït-Nouri",
+    "position": "V,VM,M(L)",
     "rating": 89,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "DZ",
+    "age": 24
   },
   {
     "clubId": 47,
     "playerId": 99575,
-    "playerName": "Doku",
-    "position": "A(RL)",
+    "playerName": "Jérémy Doku",
+    "position": "AM,A(RL)",
     "rating": 92,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "BE",
+    "age": 23
   },
   {
     "clubId": 47,
     "playerId": 102316,
     "playerName": "Matheus Nunes",
-    "position": "M",
+    "position": "V,VM(R),M,AM(RLC)",
     "rating": 89,
-    "shirtNumber": 27
+    "shirtNumber": 27,
+    "nationality": "PT",
+    "age": 27
   },
   {
     "clubId": 47,
     "playerId": 102637,
     "playerName": "Rayan Cherki",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 90,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "FR",
+    "age": 22
   },
   {
     "clubId": 47,
     "playerId": 103484,
-    "playerName": "Nico Gonz",
-    "position": "M(C)",
+    "playerName": "Nico González",
+    "position": "VM,M(C)",
     "rating": 90,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "ES",
+    "age": 24
   },
   {
     "clubId": 47,
     "playerId": 104825,
     "playerName": "Omar Marmoush",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 92,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "EG",
+    "age": 26
   },
   {
     "clubId": 47,
     "playerId": 106407,
     "playerName": "Moreira Savinho",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 89,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "BR",
+    "age": 21
   },
   {
     "clubId": 47,
@@ -1863,7 +2055,9 @@
     "playerName": "James Trafford",
     "position": "K",
     "rating": 85,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "GB",
+    "age": 23
   },
   {
     "clubId": 47,
@@ -1871,31 +2065,39 @@
     "playerName": "Luke Mbete",
     "position": "V(C)",
     "rating": 77,
-    "shirtNumber": 79
+    "shirtNumber": 79,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 47,
     "playerId": 119442,
     "playerName": "Oscar Bobb",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 85,
-    "shirtNumber": 52
+    "shirtNumber": 52,
+    "nationality": "NO",
+    "age": 22
   },
   {
     "clubId": 47,
     "playerId": 125045,
     "playerName": "Rico Lewis",
-    "position": "M(RLC)",
+    "position": "V(RL),VM,M(RLC)",
     "rating": 88,
-    "shirtNumber": 82
+    "shirtNumber": 82,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 47,
     "playerId": 125479,
     "playerName": "Christian Mcfarlane",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 73,
-    "shirtNumber": 46
+    "shirtNumber": 46,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
@@ -1903,23 +2105,29 @@
     "playerName": "Abdukodir Khusanov",
     "position": "V(RC)",
     "rating": 85,
-    "shirtNumber": 45
+    "shirtNumber": 45,
+    "nationality": "UZ",
+    "age": 21
   },
   {
     "clubId": 47,
     "playerId": 132296,
     "playerName": "Claudio Echeverri",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 85,
-    "shirtNumber": 20
+    "shirtNumber": 0,
+    "nationality": "AR",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 137177,
     "playerName": "Kian Breckin",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 68,
-    "shirtNumber": 50
+    "shirtNumber": 50,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 47,
@@ -1927,15 +2135,19 @@
     "playerName": "Emilio Lawrence",
     "position": "AM(RLC)",
     "rating": 70,
-    "shirtNumber": 99
+    "shirtNumber": 99,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 137501,
     "playerName": "Jaden Heskey",
-    "position": "A(C)",
+    "position": "M,AM,A(C)",
     "rating": 65,
-    "shirtNumber": 81
+    "shirtNumber": 81,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
@@ -1943,31 +2155,39 @@
     "playerName": "Jadel Katongo",
     "position": "V(C)",
     "rating": 77,
-    "shirtNumber": 70
+    "shirtNumber": 70,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 47,
     "playerId": 137512,
     "playerName": "Ezra Carrington",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 70,
-    "shirtNumber": 53
+    "shirtNumber": 53,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 137513,
-    "playerName": "Nico",
-    "position": "M",
+    "playerName": "Nico O'Reilly",
+    "position": "V,VM(L),M,AM(LC)",
     "rating": 87,
-    "shirtNumber": 33
+    "shirtNumber": 33,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 137523,
     "playerName": "Justin Oboavwoduo",
-    "position": "A(RC)",
+    "position": "AM,A(RC)",
     "rating": 70,
-    "shirtNumber": 77
+    "shirtNumber": 77,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
@@ -1975,15 +2195,19 @@
     "playerName": "Finlay Gorman",
     "position": "AM(RLC)",
     "rating": 65,
-    "shirtNumber": 17
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 47,
     "playerId": 149210,
-    "playerName": "Mahamadou Sangar",
+    "playerName": "Mahamadou Sangaré",
     "position": "A(C)",
     "rating": 70,
-    "shirtNumber": 71
+    "shirtNumber": 71,
+    "nationality": "FR",
+    "age": 18
   },
   {
     "clubId": 47,
@@ -1991,47 +2215,59 @@
     "playerName": "Isaac Smith",
     "position": "V(C)",
     "rating": 67,
-    "shirtNumber": 51
+    "shirtNumber": 51,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 150075,
-    "playerName": "Isaiah Dada",
+    "playerName": "Isaiah Dada-Mascoll",
     "position": "V,VM(C)",
     "rating": 67,
-    "shirtNumber": 64
+    "shirtNumber": 64,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
     "playerId": 150076,
     "playerName": "Seb Naylor",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 65,
-    "shirtNumber": 54
+    "shirtNumber": 54,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 150077,
     "playerName": "Charlie Gray",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 65,
-    "shirtNumber": 59
+    "shirtNumber": 59,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
     "playerId": 150079,
     "playerName": "Ashton Muir",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 67,
-    "shirtNumber": 62
+    "shirtNumber": 62,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 47,
     "playerId": 150151,
     "playerName": "Matty Warhurst",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 67,
-    "shirtNumber": 98
+    "shirtNumber": 98,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
@@ -2039,7 +2275,9 @@
     "playerName": "Leke Drake",
     "position": "V(C)",
     "rating": 65,
-    "shirtNumber": 18
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
@@ -2047,7 +2285,9 @@
     "playerName": "Harrison Parker",
     "position": "V,VM(C)",
     "rating": 65,
-    "shirtNumber": 55
+    "shirtNumber": 55,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
@@ -2055,7 +2295,9 @@
     "playerName": "Kaden Braithwaite",
     "position": "V(LC)",
     "rating": 70,
-    "shirtNumber": 61
+    "shirtNumber": 61,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 47,
@@ -2063,15 +2305,19 @@
     "playerName": "Max Hudson",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 69
+    "shirtNumber": 69,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
     "playerId": 156553,
     "playerName": "Ryan Mcaidoo",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 65,
-    "shirtNumber": 56
+    "shirtNumber": 56,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 47,
@@ -2079,7 +2325,9 @@
     "playerName": "Spike Brits",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 80
+    "shirtNumber": 80,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
@@ -2087,15 +2335,19 @@
     "playerName": "Divine Mukasa",
     "position": "M,AM(C)",
     "rating": 70,
-    "shirtNumber": 63
+    "shirtNumber": 63,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
     "playerId": 157613,
     "playerName": "Reigan Heskey",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 65,
-    "shirtNumber": 92
+    "shirtNumber": 92,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 47,
@@ -2103,7 +2355,9 @@
     "playerName": "Stephen Mfuni",
     "position": "V(LC)",
     "rating": 70,
-    "shirtNumber": 91
+    "shirtNumber": 91,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 47,
@@ -2111,15 +2365,19 @@
     "playerName": "Kian Noble",
     "position": "V(C)",
     "rating": 65,
-    "shirtNumber": 90
+    "shirtNumber": 90,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
     "playerId": 163102,
-    "playerName": "Matty Henderson",
-    "position": "M",
+    "playerName": "Matty Henderson-Hall",
+    "position": "V,VM,M,AM(R)",
     "rating": 65,
-    "shirtNumber": 89
+    "shirtNumber": 89,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
@@ -2127,93 +2385,79 @@
     "playerName": "Jack Wint",
     "position": "K",
     "rating": 70,
-    "shirtNumber": 84
+    "shirtNumber": 84,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 47,
     "playerId": 166728,
     "playerName": "Femi Fapetu",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 70,
-    "shirtNumber": 60
+    "shirtNumber": 60,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 47,
     "playerId": 166729,
     "playerName": "Floyd Samba",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 70,
-    "shirtNumber": 75
-  },
-  {
-    "clubId": 47,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 47,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 47,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 47,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 47,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 47,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 75,
+    "nationality": "GB",
+    "age": 16
   },
   {
     "clubId": 44,
     "playerId": 36734,
     "playerName": "Jay Spearing",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 70,
-    "shirtNumber": 71
+    "shirtNumber": 71,
+    "nationality": "GB",
+    "age": 37
   },
   {
     "clubId": 44,
     "playerId": 46883,
     "playerName": "Wataru Endo",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 88,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "JP",
+    "age": 32
   },
   {
     "clubId": 44,
     "playerId": 52690,
     "playerName": "Mohamed Salah",
-    "position": "A(RC)",
+    "position": "AM(R),A(RC)",
     "rating": 95,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "EG",
+    "age": 33
   },
   {
     "clubId": 44,
     "playerId": 53468,
-    "playerName": "Virgil",
-    "position": "Virgil van Dijk",
+    "playerName": "Virgil van Dijk",
+    "position": "V(C)",
     "rating": 95,
-    "shirtNumber": 4
+    "shirtNumber": 4,
+    "nationality": "NL",
+    "age": 34
   },
   {
     "clubId": 44,
     "playerId": 65977,
     "playerName": "Andy Robertson",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 91,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "GB",
+    "age": 31
   },
   {
     "clubId": 44,
@@ -2221,7 +2465,9 @@
     "playerName": "Becker Alisson",
     "position": "K",
     "rating": 94,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "BR",
+    "age": 33
   },
   {
     "clubId": 44,
@@ -2229,7 +2475,9 @@
     "playerName": "Joe Gomez",
     "position": "V(RLC)",
     "rating": 89,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "GB",
+    "age": 28
   },
   {
     "clubId": 44,
@@ -2237,95 +2485,119 @@
     "playerName": "Freddie Woodman",
     "position": "K",
     "rating": 82,
-    "shirtNumber": 28
+    "shirtNumber": 28,
+    "nationality": "GB",
+    "age": 28
   },
   {
     "clubId": 44,
     "playerId": 83844,
     "playerName": "Alexander Isak",
-    "position": "A(LC)",
+    "position": "AM(L),A(LC)",
     "rating": 94,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "SE",
+    "age": 26
   },
   {
     "clubId": 44,
     "playerId": 87638,
     "playerName": "Federico Chiesa",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 90,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "IT",
+    "age": 28
   },
   {
     "clubId": 44,
     "playerId": 90287,
     "playerName": "Dominik Szoboszlai",
-    "position": "M",
+    "position": "V,VM(R),M,AM(RLC)",
     "rating": 92,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "HU",
+    "age": 25
   },
   {
     "clubId": 44,
     "playerId": 91084,
-    "playerName": "Ibrahima Konat",
+    "playerName": "Ibrahima Konaté",
     "position": "V(C)",
     "rating": 92,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "FR",
+    "age": 26
   },
   {
     "clubId": 44,
     "playerId": 95236,
-    "playerName": "Alexis Mac",
-    "position": "M",
+    "playerName": "Alexis Mac Allister",
+    "position": "VM,M,AM(C)",
     "rating": 94,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "AR",
+    "age": 27
   },
   {
     "clubId": 44,
     "playerId": 97322,
     "playerName": "Cody Gakpo",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 92,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "NL",
+    "age": 26
   },
   {
     "clubId": 44,
     "playerId": 97934,
     "playerName": "Curtis Jones",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 91,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "GB",
+    "age": 24
   },
   {
     "clubId": 44,
     "playerId": 98514,
     "playerName": "Ryan Gravenberch",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 92,
-    "shirtNumber": 38
+    "shirtNumber": 38,
+    "nationality": "NL",
+    "age": 23
   },
   {
     "clubId": 44,
     "playerId": 102385,
     "playerName": "Jeremie Frimpong",
-    "position": "M",
+    "position": "V,VM,M,AM(R)",
     "rating": 92,
-    "shirtNumber": 30
+    "shirtNumber": 30,
+    "nationality": "NL",
+    "age": 25
   },
   {
     "clubId": 44,
     "playerId": 104514,
     "playerName": "Florian Wirtz",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 94,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "DE",
+    "age": 22
   },
   {
     "clubId": 44,
     "playerId": 104580,
-    "playerName": "Hugo Ekitik",
+    "playerName": "Hugo Ekitiké",
     "position": "A(C)",
     "rating": 91,
-    "shirtNumber": 22
+    "shirtNumber": 22,
+    "nationality": "FR",
+    "age": 23
   },
   {
     "clubId": 44,
@@ -2333,7 +2605,9 @@
     "playerName": "Rhys Williams",
     "position": "V(C)",
     "rating": 78,
-    "shirtNumber": 46
+    "shirtNumber": 46,
+    "nationality": "GB",
+    "age": 24
   },
   {
     "clubId": 44,
@@ -2341,15 +2615,19 @@
     "playerName": "Kaide Gordon",
     "position": "AM(RLC)",
     "rating": 75,
-    "shirtNumber": 49
+    "shirtNumber": 49,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 44,
     "playerId": 113207,
     "playerName": "Calvin Ramsay",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 78,
-    "shirtNumber": 47
+    "shirtNumber": 47,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 44,
@@ -2357,23 +2635,29 @@
     "playerName": "Giorgi Mamardashvili",
     "position": "K",
     "rating": 91,
-    "shirtNumber": 25
+    "shirtNumber": 25,
+    "nationality": "GE",
+    "age": 25
   },
   {
     "clubId": 44,
     "playerId": 115745,
     "playerName": "Conor Bradley",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 88,
-    "shirtNumber": 12
+    "shirtNumber": 12,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 44,
     "playerId": 119476,
     "playerName": "Milos Kerkez",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 89,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "HU",
+    "age": 22
   },
   {
     "clubId": 44,
@@ -2381,23 +2665,29 @@
     "playerName": "Oakley Cannonier",
     "position": "A(C)",
     "rating": 70,
-    "shirtNumber": 87
+    "shirtNumber": 87,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 44,
     "playerId": 124644,
     "playerName": "Stefan Bajcetic",
-    "position": "M(C)",
+    "position": "V(RC),VM,M(C)",
     "rating": 84,
-    "shirtNumber": 43
+    "shirtNumber": 43,
+    "nationality": "ES",
+    "age": 21
   },
   {
     "clubId": 44,
     "playerId": 127807,
     "playerName": "Luke Chambers",
-    "position": "M(L)",
+    "position": "V(LC),VM,M(L)",
     "rating": 78,
-    "shirtNumber": 21
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 44,
@@ -2405,31 +2695,39 @@
     "playerName": "Ármin Pécsi",
     "position": "K",
     "rating": 78,
-    "shirtNumber": 41
+    "shirtNumber": 41,
+    "nationality": "HU",
+    "age": 20
   },
   {
     "clubId": 44,
     "playerId": 137348,
     "playerName": "Keyrol Figueroa",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 67,
-    "shirtNumber": 64
+    "shirtNumber": 64,
+    "nationality": "US",
+    "age": 19
   },
   {
     "clubId": 44,
     "playerId": 140535,
     "playerName": "Calum Scanlon",
-    "position": "M",
+    "position": "V,VM,M,AM(L)",
     "rating": 76,
-    "shirtNumber": 20
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 44,
     "playerId": 141340,
     "playerName": "Trey Nyoni",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 76,
-    "shirtNumber": 42
+    "shirtNumber": 42,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 44,
@@ -2437,23 +2735,29 @@
     "playerName": "Carter Pinnington",
     "position": "V,VM(C)",
     "rating": 65,
-    "shirtNumber": 57
+    "shirtNumber": 57,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 44,
     "playerId": 142090,
     "playerName": "Josh Davidson",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 67,
-    "shirtNumber": 69
+    "shirtNumber": 69,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 44,
     "playerId": 143683,
     "playerName": "Jayden Danns",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 76,
-    "shirtNumber": 76
+    "shirtNumber": 76,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2461,7 +2765,9 @@
     "playerName": "Giovanni Leoni",
     "position": "V(C)",
     "rating": 83,
-    "shirtNumber": 15
+    "shirtNumber": 15,
+    "nationality": "IT",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2469,7 +2775,9 @@
     "playerName": "Amara Nallo",
     "position": "V(C)",
     "rating": 73,
-    "shirtNumber": 65
+    "shirtNumber": 65,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2477,7 +2785,9 @@
     "playerName": "Fabian Mrozek",
     "position": "K",
     "rating": 73,
-    "shirtNumber": 93
+    "shirtNumber": 93,
+    "nationality": "PL",
+    "age": 22
   },
   {
     "clubId": 44,
@@ -2485,15 +2795,19 @@
     "playerName": "Terence Miles",
     "position": "V(RC)",
     "rating": 65,
-    "shirtNumber": 59
+    "shirtNumber": 59,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 44,
     "playerId": 150040,
     "playerName": "Tommy Pilling",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 65,
-    "shirtNumber": 70
+    "shirtNumber": 70,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 44,
@@ -2501,7 +2815,9 @@
     "playerName": "Nathan Morana",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 20
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 44,
@@ -2509,7 +2825,9 @@
     "playerName": "Kornel Misciur",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 74
+    "shirtNumber": 74,
+    "nationality": "PL",
+    "age": 18
   },
   {
     "clubId": 44,
@@ -2517,7 +2835,9 @@
     "playerName": "Wellity Lucky",
     "position": "V(RC)",
     "rating": 70,
-    "shirtNumber": 92
+    "shirtNumber": 92,
+    "nationality": "ES",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2525,7 +2845,9 @@
     "playerName": "Lucas Pitt",
     "position": "V(RC)",
     "rating": 65,
-    "shirtNumber": 88
+    "shirtNumber": 88,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2533,23 +2855,29 @@
     "playerName": "Kyle Kelly",
     "position": "M,AM(C)",
     "rating": 65,
-    "shirtNumber": 61
+    "shirtNumber": 61,
+    "nationality": "KN",
+    "age": 20
   },
   {
     "clubId": 44,
     "playerId": 150053,
     "playerName": "Michael Laffey",
-    "position": "M(RC)",
+    "position": "V(R),VM,M(RC)",
     "rating": 65,
-    "shirtNumber": 94
+    "shirtNumber": 94,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 44,
     "playerId": 150055,
     "playerName": "Fola Onanuga",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 65,
-    "shirtNumber": 99
+    "shirtNumber": 99,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2557,15 +2885,19 @@
     "playerName": "Emmanuel Airoboma",
     "position": "M,AM(R)",
     "rating": 65,
-    "shirtNumber": 90
+    "shirtNumber": 90,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 44,
     "playerId": 150057,
     "playerName": "Ben Trueman",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 65,
-    "shirtNumber": 91
+    "shirtNumber": 91,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
@@ -2573,47 +2905,59 @@
     "playerName": "Kieran Morrison",
     "position": "M(C),AM(RC)",
     "rating": 65,
-    "shirtNumber": 68
+    "shirtNumber": 68,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
     "playerId": 150059,
     "playerName": "Clae Ewing",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 65,
-    "shirtNumber": 19
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 44,
     "playerId": 150061,
-    "playerName": "Trent Kone",
-    "position": "A(RL)",
+    "playerName": "Trent Kone-Doherty",
+    "position": "AM,A(RL)",
     "rating": 70,
-    "shirtNumber": 51
+    "shirtNumber": 51,
+    "nationality": "IE",
+    "age": 19
   },
   {
     "clubId": 44,
     "playerId": 150062,
     "playerName": "Kareem Ahmed",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 65,
-    "shirtNumber": 81
+    "shirtNumber": 81,
+    "nationality": "EG",
+    "age": 18
   },
   {
     "clubId": 44,
     "playerId": 155330,
     "playerName": "Rio Ngumoha",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 77,
-    "shirtNumber": 73
+    "shirtNumber": 73,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 44,
     "playerId": 163108,
     "playerName": "Joe Bradshaw",
-    "position": "A(RL)",
+    "position": "AM,A(RL)",
     "rating": 65,
-    "shirtNumber": 62
+    "shirtNumber": 62,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 44,
@@ -2621,45 +2965,19 @@
     "playerName": "Will Wright",
     "position": "A(C)",
     "rating": 65,
-    "shirtNumber": 79
+    "shirtNumber": 79,
+    "nationality": "GB",
+    "age": 17
   },
   {
     "clubId": 44,
     "playerId": 168760,
-    "playerName": "Joshua Sonni",
+    "playerName": "Joshua Sonni-Lambie",
     "position": "A(C)",
     "rating": 65,
-    "shirtNumber": 82
-  },
-  {
-    "clubId": 44,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 44,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 44,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 44,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 44,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 44,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 82,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 27,
@@ -2667,39 +2985,49 @@
     "playerName": "Nathaniel Clyne",
     "position": "V(RLC),VM(RL)",
     "rating": 85,
-    "shirtNumber": 17
+    "shirtNumber": 17,
+    "nationality": "GB",
+    "age": 34
   },
   {
     "clubId": 27,
     "playerId": 55066,
     "playerName": "Will Hughes",
-    "position": "M",
+    "position": "VM,M,AM(C)",
     "rating": 87,
-    "shirtNumber": 19
+    "shirtNumber": 19,
+    "nationality": "GB",
+    "age": 30
   },
   {
     "clubId": 27,
     "playerId": 67300,
     "playerName": "Jefferson Lerma",
-    "position": "M(C)",
+    "position": "V,VM,M(C)",
     "rating": 88,
-    "shirtNumber": 8
+    "shirtNumber": 8,
+    "nationality": "CO",
+    "age": 31
   },
   {
     "clubId": 27,
     "playerId": 73508,
-    "playerName": "Walter Ben",
+    "playerName": "Walter Benítez",
     "position": "K",
     "rating": 88,
-    "shirtNumber": 44
+    "shirtNumber": 44,
+    "nationality": "AR",
+    "age": 32
   },
   {
     "clubId": 27,
     "playerId": 80189,
     "playerName": "Borna Sosa",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 87,
-    "shirtNumber": 24
+    "shirtNumber": 24,
+    "nationality": "HR",
+    "age": 27
   },
   {
     "clubId": 27,
@@ -2707,7 +3035,9 @@
     "playerName": "Remi Matthews",
     "position": "K",
     "rating": 77,
-    "shirtNumber": 31
+    "shirtNumber": 31,
+    "nationality": "GB",
+    "age": 31
   },
   {
     "clubId": 27,
@@ -2715,15 +3045,19 @@
     "playerName": "Daichi Kamada",
     "position": "M,AM(C)",
     "rating": 88,
-    "shirtNumber": 18
+    "shirtNumber": 18,
+    "nationality": "JP",
+    "age": 29
   },
   {
     "clubId": 27,
     "playerId": 87576,
-    "playerName": "Isma",
-    "position": "A(RLC)",
+    "playerName": "Ismaïla Sarr",
+    "position": "AM,A(RLC)",
     "rating": 89,
-    "shirtNumber": 7
+    "shirtNumber": 7,
+    "nationality": "SN",
+    "age": 27
   },
   {
     "clubId": 27,
@@ -2731,15 +3065,19 @@
     "playerName": "Dean Henderson",
     "position": "K",
     "rating": 89,
-    "shirtNumber": 1
+    "shirtNumber": 1,
+    "nationality": "GB",
+    "age": 28
   },
   {
     "clubId": 27,
     "playerId": 87889,
-    "playerName": "Jean",
+    "playerName": "Jean-Philippe Mateta",
     "position": "A(C)",
     "rating": 91,
-    "shirtNumber": 14
+    "shirtNumber": 14,
+    "nationality": "FR",
+    "age": 28
   },
   {
     "clubId": 27,
@@ -2747,15 +3085,19 @@
     "playerName": "Eddie Nketiah",
     "position": "A(C)",
     "rating": 88,
-    "shirtNumber": 9
+    "shirtNumber": 9,
+    "nationality": "GB",
+    "age": 26
   },
   {
     "clubId": 27,
     "playerId": 95517,
-    "playerName": "Daniel Mu",
-    "position": "M(R)",
+    "playerName": "Daniel Muñoz",
+    "position": "V,VM,M(R)",
     "rating": 90,
-    "shirtNumber": 2
+    "shirtNumber": 2,
+    "nationality": "CO",
+    "age": 29
   },
   {
     "clubId": 27,
@@ -2763,7 +3105,9 @@
     "playerName": "Chris Richards",
     "position": "V,VM(C)",
     "rating": 88,
-    "shirtNumber": 26
+    "shirtNumber": 26,
+    "nationality": "US",
+    "age": 25
   },
   {
     "clubId": 27,
@@ -2771,15 +3115,19 @@
     "playerName": "Maxence Lacroix",
     "position": "V(C)",
     "rating": 89,
-    "shirtNumber": 5
+    "shirtNumber": 5,
+    "nationality": "FR",
+    "age": 25
   },
   {
     "clubId": 27,
     "playerId": 98429,
-    "playerName": "Cheick Doucour",
-    "position": "M(C)",
+    "playerName": "Cheick Doucouré",
+    "position": "VM,M(C)",
     "rating": 87,
-    "shirtNumber": 28
+    "shirtNumber": 28,
+    "nationality": "ML",
+    "age": 25
   },
   {
     "clubId": 27,
@@ -2787,63 +3135,79 @@
     "playerName": "Marc Guehi",
     "position": "V(C)",
     "rating": 91,
-    "shirtNumber": 6
+    "shirtNumber": 6,
+    "nationality": "GB",
+    "age": 25
   },
   {
     "clubId": 27,
     "playerId": 105338,
     "playerName": "Tyrick Mitchell",
-    "position": "M(L)",
+    "position": "V,VM,M(L)",
     "rating": 88,
-    "shirtNumber": 3
+    "shirtNumber": 3,
+    "nationality": "GB",
+    "age": 26
   },
   {
     "clubId": 27,
     "playerId": 105666,
     "playerName": "Brennan Johnson",
-    "position": "A(RLC)",
+    "position": "AM,A(RLC)",
     "rating": 89,
-    "shirtNumber": 11
+    "shirtNumber": 11,
+    "nationality": "GB",
+    "age": 24
   },
   {
     "clubId": 27,
     "playerId": 106052,
     "playerName": "Naouirou Ahamada",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 82,
-    "shirtNumber": 29
+    "shirtNumber": 29,
+    "nationality": "FR",
+    "age": 23
   },
   {
     "clubId": 27,
     "playerId": 106765,
-    "playerName": "Pino",
-    "position": "A(RL)",
+    "playerName": "Yéremy Pino",
+    "position": "AM(RLC),A(RL)",
     "rating": 90,
-    "shirtNumber": 10
+    "shirtNumber": 10,
+    "nationality": "ES",
+    "age": 23
   },
   {
     "clubId": 27,
     "playerId": 114796,
     "playerName": "Dylan Reid",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 70,
-    "shirtNumber": 45
+    "shirtNumber": 45,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 27,
     "playerId": 116512,
-    "playerName": "Matheus Fran",
-    "position": "Matheus França",
+    "playerName": "Matheus França",
+    "position": "M(C),AM(RLC)",
     "rating": 80,
-    "shirtNumber": 21
+    "shirtNumber": 0,
+    "nationality": "BR",
+    "age": 21
   },
   {
     "clubId": 27,
     "playerId": 120160,
     "playerName": "Justin Devenny",
-    "position": "M",
+    "position": "VM,M(C),AM(RC)",
     "rating": 82,
-    "shirtNumber": 55
+    "shirtNumber": 55,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 27,
@@ -2851,7 +3215,9 @@
     "playerName": "Chadi Riad",
     "position": "V(C)",
     "rating": 86,
-    "shirtNumber": 34
+    "shirtNumber": 34,
+    "nationality": "MA",
+    "age": 22
   },
   {
     "clubId": 27,
@@ -2859,15 +3225,19 @@
     "playerName": "Harry Lee",
     "position": "K",
     "rating": 65,
-    "shirtNumber": 41
+    "shirtNumber": 41,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 27,
     "playerId": 127251,
     "playerName": "Adam Wharton",
-    "position": "M(C)",
+    "position": "VM,M(C)",
     "rating": 89,
-    "shirtNumber": 20
+    "shirtNumber": 20,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 27,
@@ -2875,7 +3245,9 @@
     "playerName": "Romain Esse",
     "position": "AM(RLC)",
     "rating": 82,
-    "shirtNumber": 21
+    "shirtNumber": 21,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 27,
@@ -2883,7 +3255,9 @@
     "playerName": "Luke Browne",
     "position": "V(C)",
     "rating": 67,
-    "shirtNumber": 40
+    "shirtNumber": 40,
+    "nationality": "IE",
+    "age": 20
   },
   {
     "clubId": 27,
@@ -2891,7 +3265,9 @@
     "playerName": "Kaden Rodney",
     "position": "V(RC),VM(C)",
     "rating": 70,
-    "shirtNumber": 42
+    "shirtNumber": 42,
+    "nationality": "GB",
+    "age": 21
   },
   {
     "clubId": 27,
@@ -2899,7 +3275,9 @@
     "playerName": "Rylan Brownlie",
     "position": "A(C)",
     "rating": 66,
-    "shirtNumber": 61
+    "shirtNumber": 61,
+    "nationality": "AU",
+    "age": 18
   },
   {
     "clubId": 27,
@@ -2907,23 +3285,29 @@
     "playerName": "Craig Farquhar",
     "position": "V(C)",
     "rating": 70,
-    "shirtNumber": 22
+    "shirtNumber": 0,
+    "nationality": "GB",
+    "age": 22
   },
   {
     "clubId": 27,
     "playerId": 147507,
     "playerName": "Christantus Uche",
-    "position": "A(C)",
+    "position": "AM,A(C)",
     "rating": 85,
-    "shirtNumber": 12
+    "shirtNumber": 12,
+    "nationality": "NG",
+    "age": 22
   },
   {
     "clubId": 27,
     "playerId": 152212,
     "playerName": "Asher Agbinone",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 67,
-    "shirtNumber": 64
+    "shirtNumber": 64,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 27,
@@ -2931,31 +3315,39 @@
     "playerName": "Jaydee Canvot",
     "position": "V,VM(C)",
     "rating": 82,
-    "shirtNumber": 23
+    "shirtNumber": 23,
+    "nationality": "FR",
+    "age": 19
   },
   {
     "clubId": 27,
     "playerId": 153806,
     "playerName": "Caleb Kporha",
-    "position": "M(R)",
+    "position": "V,VM,M(R)",
     "rating": 73,
-    "shirtNumber": 58
+    "shirtNumber": 58,
+    "nationality": "GB",
+    "age": 19
   },
   {
     "clubId": 27,
     "playerId": 154958,
     "playerName": "Zach Marsh",
-    "position": "A(RLC)",
+    "position": "AM(RL),A(RLC)",
     "rating": 70,
-    "shirtNumber": 63
+    "shirtNumber": 63,
+    "nationality": "GB",
+    "age": 20
   },
   {
     "clubId": 27,
     "playerId": 161682,
     "playerName": "Rio Cardines",
-    "position": "M(RL)",
+    "position": "V,VM,M(RL)",
     "rating": 73,
-    "shirtNumber": 59
+    "shirtNumber": 59,
+    "nationality": "TT",
+    "age": 19
   },
   {
     "clubId": 27,
@@ -2963,15 +3355,19 @@
     "playerName": "Matteo Dashi",
     "position": "M(C),AM(RLC)",
     "rating": 65,
-    "shirtNumber": 18
+    "shirtNumber": 0,
+    "nationality": "AL",
+    "age": 18
   },
   {
     "clubId": 27,
     "playerId": 166736,
     "playerName": "Adler Nascimento",
-    "position": "A(RL)",
+    "position": "AM(RLC),A(RL)",
     "rating": 70,
-    "shirtNumber": 47
+    "shirtNumber": 47,
+    "nationality": "PT",
+    "age": 21
   },
   {
     "clubId": 27,
@@ -2979,44 +3375,18 @@
     "playerName": "Ben Casey",
     "position": "A(C)",
     "rating": 70,
-    "shirtNumber": 73
+    "shirtNumber": 73,
+    "nationality": "GB",
+    "age": 18
   },
   {
     "clubId": 27,
     "playerId": 169216,
-    "playerName": "Jo",
+    "playerName": "Joél Drakes-Thomas",
     "position": "AM(RLC)",
     "rating": 70,
-    "shirtNumber": 86
-  },
-  {
-    "clubId": 27,
-    "playerId": 169442,
-    "playerName": "Lee Chipolina"
-  },
-  {
-    "clubId": 27,
-    "playerId": 169441,
-    "playerName": "Oliver Joe"
-  },
-  {
-    "clubId": 27,
-    "playerId": 169440,
-    "playerName": "Kyle Clinton"
-  },
-  {
-    "clubId": 27,
-    "playerId": 169439,
-    "playerName": "Tayler Carrington"
-  },
-  {
-    "clubId": 27,
-    "playerId": 169438,
-    "playerName": "Jesús Toscano"
-  },
-  {
-    "clubId": 27,
-    "playerId": 169437,
-    "playerName": "Francisco Curro"
+    "shirtNumber": 86,
+    "nationality": "GB",
+    "age": 16
   }
 ]
