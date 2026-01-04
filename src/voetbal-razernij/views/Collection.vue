@@ -104,51 +104,51 @@
         <!-- Player Avatar -->
         <div class="player-avatar-container">
           <PlayerAvatar :player="card" size="medium" :showShirtNumber="true" />
+        </div>
 
-          <!-- Player Info -->
-          <div class="player-info">
-            <h3 class="player-name">{{ card.name }}</h3>
-            <div class="player-club">{{ getClubName(card.clubId) }}</div>
-            <div class="player-rating">
-              <span class="rating-value">{{ card.rating }}</span>
-              <div class="rating-stars">
-                <span
-                  v-for="star in getRatingStars(card.rating)"
-                  :key="star"
-                  class="star"
-                  >⭐</span
-                >
-              </div>
+        <!-- Player Info -->
+        <div class="player-info">
+          <h3 class="player-name">{{ card.name }}</h3>
+          <div class="player-club">{{ getClubName(card.clubId) }}</div>
+          <div class="player-rating">
+            <span class="rating-value">{{ card.rating }}</span>
+            <div class="rating-stars">
+              <span
+                v-for="star in getRatingStars(card.rating)"
+                :key="star"
+                class="star"
+                >⭐</span
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Rarity Banner -->
-          <div class="rarity-banner" :class="card.rarity">
-            <span class="rarity-text">{{ formatRarity(card.rarity) }}</span>
-          </div>
+        <!-- Rarity Banner -->
+        <div class="rarity-banner" :class="card.rarity">
+          <span class="rarity-text">{{ formatRarity(card.rarity) }}</span>
+        </div>
 
-          <!-- Card Actions -->
-          <div class="card-actions">
-            <button
-              @click="addToTeam(card)"
-              class="action-btn"
-              :disabled="isInTeam(card.id)"
-            >
-              {{ isInTeam(card.id) ? "✅ In Team" : "➕ Aan Team" }}
-            </button>
-          </div>
+        <!-- Card Actions -->
+        <div class="card-actions">
+          <button
+            @click="addToTeam(card)"
+            class="action-btn"
+            :disabled="isInTeam(card.id)"
+          >
+            {{ isInTeam(card.id) ? "✅ In Team" : "➕ Aan Team" }}
+          </button>
         </div>
       </div>
+    </div>
 
-      <!-- Bottom Actions -->
-      <div class="bottom-actions">
-        <button @click="goToTeamBuilder" class="main-btn">
-          ⚽ Team Samenstellen
-        </button>
-        <button @click="goToTableSelect" class="main-btn secondary">
-          🏠 Meer Spelers Verzamelen
-        </button>
-      </div>
+    <!-- Bottom Actions -->
+    <div class="bottom-actions">
+      <button @click="goToTeamBuilder" class="main-btn">
+        ⚽ Team Samenstellen
+      </button>
+      <button @click="goToTableSelect" class="main-btn secondary">
+        🏠 Meer Spelers Verzamelen
+      </button>
     </div>
   </div>
 </template>
@@ -367,7 +367,7 @@ function goToTableSelect() {
 }
 
 .player-avatar-container {
-  @apply text-center py-4;
+  @apply flex items-center justify-center py-4;
 }
 
 .player-info {

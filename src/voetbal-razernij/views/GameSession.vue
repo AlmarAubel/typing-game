@@ -2,15 +2,28 @@
   <div class="game-session">
     <!-- Session Header -->
     <div class="session-header mb-6">
-      <div class="flex items-center justify-between backdrop-blur-sm rounded-2xl p-4" style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
+      <div
+        class="flex items-center justify-between backdrop-blur-sm rounded-2xl p-4"
+        style="
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        "
+      >
         <!-- Club Info -->
         <div class="flex items-center gap-4">
-          <div class="club-badge" :style="{ '--club-color': club?.primaryColor || '#1976D2' }">
+          <div
+            class="club-badge"
+            :style="{ '--club-color': club?.primaryColor || '#1976D2' }"
+          >
             <span class="text-3xl">🏆</span>
           </div>
           <div>
-            <h2 class="text-2xl font-bold text-white">{{ club?.name || 'Eredivisie' }}</h2>
-            <p style="color: rgba(255, 255, 255, 0.8);">Tafel van {{ table }} • Sessie {{ sessionMinutes }} minuten</p>
+            <h2 class="text-2xl font-bold text-white">
+              {{ club?.name || "Eredivisie" }}
+            </h2>
+            <p style="color: rgba(255, 255, 255, 0.8)">
+              Tafel van {{ table }} • Sessie {{ sessionMinutes }} minuten
+            </p>
           </div>
         </div>
 
@@ -21,12 +34,7 @@
         </div>
 
         <!-- Exit Button -->
-        <button
-          @click="confirmExit"
-          class="exit-btn"
-        >
-          ❌
-        </button>
+        <button @click="confirmExit" class="exit-btn">❌</button>
       </div>
     </div>
 
@@ -63,19 +71,32 @@
           </div>
 
           <!-- Answer Feedback -->
-          <div v-if="isAnswerFeedbackShowing" class="answer-feedback" :class="{ 'correct': lastAnswerCorrect, 'incorrect': !lastAnswerCorrect }">
+          <div
+            v-if="isAnswerFeedbackShowing"
+            class="answer-feedback"
+            :class="{
+              correct: lastAnswerCorrect,
+              incorrect: !lastAnswerCorrect,
+            }"
+          >
             <div class="feedback-icon">
               <span v-if="lastAnswerCorrect" class="text-4xl">✅</span>
               <span v-else class="text-4xl">❌</span>
             </div>
             <div class="feedback-text">
-              <span v-if="lastAnswerCorrect" class="text-xl font-bold">Goed!</span>
-              <span v-else class="text-xl font-bold">Het juiste antwoord was {{ correctAnswer }}</span>
+              <span v-if="lastAnswerCorrect" class="text-xl font-bold"
+                >Goed!</span
+              >
+              <span v-else class="text-xl font-bold"
+                >Het juiste antwoord was {{ correctAnswer }}</span
+              >
             </div>
             <div class="rewards-earned">
               <span class="reward">+{{ lastRewards.coins }} 🪙</span>
               <span class="reward">+{{ lastRewards.xp }} XP</span>
-              <span v-if="lastRewards.tokens > 0" class="reward special">+{{ lastRewards.tokens }} 🎟️</span>
+              <span v-if="lastRewards.tokens > 0" class="reward special"
+                >+{{ lastRewards.tokens }} 🎟️</span
+              >
             </div>
           </div>
         </div>
@@ -92,7 +113,10 @@
           </div>
 
           <!-- Streak -->
-          <div class="stat-item" :class="{ 'stat-hot': currentSession.currentStreak >= 3 }">
+          <div
+            class="stat-item"
+            :class="{ 'stat-hot': currentSession.currentStreak >= 3 }"
+          >
             <div class="stat-icon">🔥</div>
             <div class="stat-value">{{ currentSession.currentStreak }}</div>
             <div class="stat-label">Streak</div>
@@ -143,7 +167,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="text-3xl font-bold">🎉 Sessie Voltooid!</h2>
-          <p class="text-lg text-gray-600">{{ club?.name || 'Eredivisie' }} • Tafel van {{ table }}</p>
+          <p class="text-lg text-gray-600">
+            {{ club?.name || "Eredivisie" }} • Tafel van {{ table }}
+          </p>
         </div>
 
         <div class="session-results">
@@ -153,19 +179,27 @@
             <div class="results-grid">
               <div class="result-item">
                 <span class="result-label">Vragen beantwoord:</span>
-                <span class="result-value">{{ sessionResults?.questionsAnswered || 0 }}</span>
+                <span class="result-value">{{
+                  sessionResults?.questionsAnswered || 0
+                }}</span>
               </div>
               <div class="result-item">
                 <span class="result-label">Correct:</span>
-                <span class="result-value correct">{{ sessionResults?.correctAnswers || 0 }}</span>
+                <span class="result-value correct">{{
+                  sessionResults?.correctAnswers || 0
+                }}</span>
               </div>
               <div class="result-item">
                 <span class="result-label">Fout:</span>
-                <span class="result-value incorrect">{{ sessionResults?.incorrectAnswers || 0 }}</span>
+                <span class="result-value incorrect">{{
+                  sessionResults?.incorrectAnswers || 0
+                }}</span>
               </div>
               <div class="result-item">
                 <span class="result-label">Beste streak:</span>
-                <span class="result-value">{{ sessionResults?.bestStreak || 0 }}</span>
+                <span class="result-value">{{
+                  sessionResults?.bestStreak || 0
+                }}</span>
               </div>
             </div>
           </div>
@@ -176,17 +210,23 @@
             <div class="rewards-grid">
               <div class="reward-item">
                 <span class="text-2xl">🪙</span>
-                <span class="reward-amount">{{ sessionResults?.coinsEarned || 0 }}</span>
+                <span class="reward-amount">{{
+                  sessionResults?.coinsEarned || 0
+                }}</span>
                 <span class="reward-type">Coins</span>
               </div>
               <div class="reward-item">
                 <span class="text-2xl">⭐</span>
-                <span class="reward-amount">{{ sessionResults?.xpEarned || 0 }}</span>
+                <span class="reward-amount">{{
+                  sessionResults?.xpEarned || 0
+                }}</span>
                 <span class="reward-type">XP</span>
               </div>
               <div class="reward-item">
                 <span class="text-2xl">🎟️</span>
-                <span class="reward-amount">{{ sessionResults?.tokensEarned || 0 }}</span>
+                <span class="reward-amount">{{
+                  sessionResults?.tokensEarned || 0
+                }}</span>
                 <span class="reward-type">Club Tokens</span>
               </div>
             </div>
@@ -198,7 +238,11 @@
           <button @click="playAgain" class="action-btn primary">
             🔄 Nogmaals Spelen
           </button>
-          <button @click="openClubStore" class="action-btn secondary">
+          <button
+            @click="openClubStore"
+            class="action-btn secondary"
+            :disabled="!club"
+          >
             🏪 Club Winkel
           </button>
           <button @click="backToSelection" class="action-btn tertiary">
@@ -211,11 +255,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useVoetbalGameStore } from '../stores';
-import { FootballDataService } from '../utils/football-data';
-import { BALANCE_CONFIG } from '../utils/balance-config';
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useVoetbalGameStore } from "../stores";
+import { FootballDataService } from "../utils/football-data";
+import { BALANCE_CONFIG } from "../utils/balance-config";
 
 const route = useRoute();
 const router = useRouter();
@@ -226,7 +270,7 @@ const table = ref<number>(parseInt(route.params.table as string) || 1);
 
 // Refs
 const answerInput = ref<HTMLInputElement>();
-const userAnswer = ref<string>('');
+const userAnswer = ref<string>("");
 const currentQuestion = ref({ factor1: table.value, factor2: 1 });
 const correctAnswer = ref<number>(0);
 const lastAnswerCorrect = ref<boolean>(false);
@@ -235,7 +279,7 @@ const lastRewards = ref({ coins: 0, xp: 0, tokens: 0 });
 const consecutiveWrong = ref<number>(0);
 const showHint = ref<boolean>(false);
 const showMotivation = ref<boolean>(false);
-const motivationMessage = ref({ icon: '', text: '' });
+const motivationMessage = ref({ icon: "", text: "" });
 const showSessionEnd = ref<boolean>(false);
 const sessionResults = ref<any>(null);
 
@@ -245,11 +289,18 @@ let motivationTimer: number | null = null;
 
 // Computed
 const currentSession = computed(() => gameStore.currentSession);
-const timeRemaining = computed(() => Math.max(0, gameStore.sessionTimeRemaining));
+const timeRemaining = computed(() =>
+  Math.max(0, gameStore.sessionTimeRemaining),
+);
 const sessionMinutes = computed(() => BALANCE_CONFIG.session.durationMinutes);
 const accuracy = computed(() => {
-  if (!currentSession.value || currentSession.value.questionsAnswered === 0) return 0;
-  return (currentSession.value.correctAnswers / currentSession.value.questionsAnswered) * 100;
+  if (!currentSession.value || currentSession.value.questionsAnswered === 0)
+    return 0;
+  return (
+    (currentSession.value.correctAnswers /
+      currentSession.value.questionsAnswered) *
+    100
+  );
 });
 
 const club = computed(() => {
@@ -295,8 +346,8 @@ function startSession() {
   try {
     gameStore.startSession(table.value);
   } catch (error) {
-    console.error('Failed to start session:', error);
-    router.push({ name: 'VoetbalTableSelect' });
+    console.error("Failed to start session:", error);
+    router.push({ name: "VoetbalTableSelect" });
   }
 }
 
@@ -307,7 +358,7 @@ function generateNewQuestion() {
     factor2: factor2,
   };
   correctAnswer.value = table.value * factor2;
-  userAnswer.value = '';
+  userAnswer.value = "";
 
   // Focus input after feedback
   if (!isAnswerFeedbackShowing.value) {
@@ -333,7 +384,9 @@ function submitAnswer() {
   // Calculate rewards earned this question
   lastRewards.value = {
     coins: (currentSession.value?.coinsEarned || 0) - prevCoins,
-    xp: isCorrect ? BALANCE_CONFIG.scoring.correctAnswerXP : BALANCE_CONFIG.scoring.incorrectAnswerXP,
+    xp: isCorrect
+      ? BALANCE_CONFIG.scoring.correctAnswerXP
+      : BALANCE_CONFIG.scoring.incorrectAnswerXP,
     tokens: (currentSession.value?.tokensEarned || 0) - prevTokens,
   };
 
@@ -345,7 +398,7 @@ function submitAnswer() {
   if (isCorrect) {
     consecutiveWrong.value = 0;
     showHint.value = false;
-    showMotivationMessage('🎉', 'Goed gedaan!');
+    showMotivationMessage("🎉", "Goed gedaan!");
   } else {
     consecutiveWrong.value++;
     if (consecutiveWrong.value >= 2) {
@@ -405,14 +458,14 @@ function endSession() {
 }
 
 function confirmExit() {
-  if (confirm('Weet je zeker dat je de sessie wilt beëindigen?')) {
+  if (confirm("Weet je zeker dat je de sessie wilt beëindigen?")) {
     endSession();
   }
 }
 
 function closeSessionEnd() {
   showSessionEnd.value = false;
-  router.push({ name: 'VoetbalTableSelect' });
+  router.push({ name: "VoetbalTableSelect" });
 }
 
 function playAgain() {
@@ -423,20 +476,27 @@ function playAgain() {
 }
 
 function openClubStore() {
-  if (club.value) {
-    router.push({ name: 'VoetbalClubStore', params: { clubId: club.value.id } });
+  if (club.value && club.value.id) {
+    router.push({
+      name: "VoetbalClubStore",
+      params: { clubId: club.value.id },
+    });
+  } else {
+    console.error("Club niet beschikbaar voor ClubStore navigatie");
+    // Fallback: ga terug naar tafel selectie
+    router.push({ name: "VoetbalTableSelect" });
   }
 }
 
 function backToSelection() {
   showSessionEnd.value = false;
-  router.push({ name: 'VoetbalTableSelect' });
+  router.push({ name: "VoetbalTableSelect" });
 }
 
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 </script>
 
@@ -451,7 +511,7 @@ function formatTime(seconds: number): string {
 
 .club-badge {
   @apply w-12 h-12 rounded-full flex items-center justify-center;
-  background: var(--club-color, #1976D2);
+  background: var(--club-color, #1976d2);
   box-shadow: 0 4px 16px var(--club-color);
 }
 
@@ -488,7 +548,7 @@ function formatTime(seconds: number): string {
 
 .question-display {
   @apply mb-6;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .answer-input {

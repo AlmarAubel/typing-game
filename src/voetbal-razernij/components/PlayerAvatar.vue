@@ -42,13 +42,20 @@ function handleImageError(event: Event) {
 <style scoped>
 @reference "tailwindcss";
 .player-avatar {
-  @apply relative rounded-full overflow-hidden flex items-center justify-center;
+  @apply relative rounded-full flex items-center justify-center;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0.05)
   );
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+  /* Add margin to prevent shirt number clipping */
+  margin: 12px;
+}
+
+.player-avatar .player-photo,
+.player-avatar .player-fallback {
+  border-radius: 50%;
 }
 
 .player-avatar.small {
@@ -65,6 +72,8 @@ function handleImageError(event: Event) {
 
 .player-photo {
   @apply w-full h-full object-cover;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .player-fallback {
@@ -95,20 +104,20 @@ function handleImageError(event: Event) {
 }
 
 .player-avatar.small .shirt-number {
-  @apply w-5 h-5 text-xs;
-  top: -6px;
-  right: -6px;
+  @apply w-6 h-6 text-xs;
+  top: -2px;
+  right: -2px;
 }
 
 .player-avatar.medium .shirt-number {
-  @apply w-6 h-6 text-xs;
-  top: -8px;
-  right: -8px;
+  @apply w-8 h-8 text-sm;
+  top: -4px;
+  right: -4px;
 }
 
 .player-avatar.large .shirt-number {
-  @apply w-8 h-8 text-sm;
-  top: -10px;
-  right: -10px;
+  @apply w-10 h-10 text-base;
+  top: -6px;
+  right: -6px;
 }
 </style>

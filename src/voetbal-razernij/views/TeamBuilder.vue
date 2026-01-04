@@ -227,7 +227,7 @@
             <div class="stat-value">
               {{ teamStore.teamStrengthByPosition.K }}
             </div>
-            <div class="stat-label">Keepers</div>
+            <div class="stat-label">Keeper</div>
           </div>
           <div class="stat-card">
             <div class="stat-icon">🛡️</div>
@@ -604,7 +604,7 @@ function goToCollection() {
 }
 
 .player-avatar-mini-container {
-  @apply text-center mb-2;
+  @apply flex items-center justify-center mb-2;
 }
 
 .player-info-mini {

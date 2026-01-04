@@ -2,12 +2,15 @@
   <div class="club-store">
     <!-- Club Header -->
     <div class="club-header mb-8">
-      <div class="club-banner" :style="{ '--club-color': club?.primaryColor || '#1976D2' }">
+      <div
+        class="club-banner"
+        :style="{ '--club-color': club?.primaryColor || '#1976D2' }"
+      >
         <div class="club-badge-large">
           <span class="text-6xl">🏆</span>
         </div>
         <div class="club-info">
-          <h1 class="club-name">{{ club?.name || 'Eredivisie Club' }}</h1>
+          <h1 class="club-name">{{ club?.name || "Eredivisie Club" }}</h1>
           <p class="club-subtitle">Officiële Club Winkel</p>
         </div>
         <div class="club-stats">
@@ -33,12 +36,19 @@
     <div v-else class="pack-store">
       <h2 class="store-title">🎁 Spelerspakketten</h2>
       <p class="store-subtitle">
-        Gebruik je {{ club?.name || 'club' }} tokens om pakketten te kopen en spelers te verzamelen!
+        Gebruik je {{ club?.name || "club" }} tokens om pakketten te kopen en
+        spelers te verzamelen!
       </p>
 
       <div class="packs-grid">
         <!-- Bronze Pack -->
-        <div class="pack-card bronze" :class="{ 'available': isPackAvailable('bronze'), 'locked': !isPackAvailable('bronze') }">
+        <div
+          class="pack-card bronze"
+          :class="{
+            available: isPackAvailable('bronze'),
+            locked: !isPackAvailable('bronze'),
+          }"
+        >
           <div class="pack-header">
             <div class="pack-icon">🥉</div>
             <h3 class="pack-name">Bronze Pack</h3>
@@ -61,7 +71,9 @@
           </div>
 
           <div class="pack-cost">
-            <span class="cost-amount">{{ BALANCE_CONFIG.packs.bronze.cost }}</span>
+            <span class="cost-amount">{{
+              BALANCE_CONFIG.packs.bronze.cost
+            }}</span>
             <span class="cost-currency">🎟️</span>
           </div>
 
@@ -69,14 +81,26 @@
             @click="openPack('bronze')"
             :disabled="!canAffordPack('bronze')"
             class="pack-buy-btn"
-            :class="{ 'affordable': canAffordPack('bronze') }"
+            :class="{ affordable: canAffordPack('bronze') }"
           >
-            {{ !isPackAvailable('bronze') ? '🔒 Vergrendeld' : !canAffordPack('bronze') ? '💰 Te duur' : '🎁 Kopen & Openen' }}
+            {{
+              !isPackAvailable("bronze")
+                ? "🔒 Vergrendeld"
+                : !canAffordPack("bronze")
+                  ? "💰 Te duur"
+                  : "🎁 Kopen & Openen"
+            }}
           </button>
         </div>
 
         <!-- Silver Pack -->
-        <div class="pack-card silver" :class="{ 'available': isPackAvailable('silver'), 'locked': !isPackAvailable('silver') }">
+        <div
+          class="pack-card silver"
+          :class="{
+            available: isPackAvailable('silver'),
+            locked: !isPackAvailable('silver'),
+          }"
+        >
           <div class="pack-header">
             <div class="pack-icon">🥈</div>
             <h3 class="pack-name">Silver Pack</h3>
@@ -103,20 +127,30 @@
           </div>
 
           <div class="pack-cost">
-            <span class="cost-amount">{{ BALANCE_CONFIG.packs.silver.cost }}</span>
+            <span class="cost-amount">{{
+              BALANCE_CONFIG.packs.silver.cost
+            }}</span>
             <span class="cost-currency">🎟️</span>
           </div>
 
           <div v-if="!isPackAvailable('silver')" class="unlock-requirement">
-            <span class="unlock-text">Ontgrendel met {{ BALANCE_CONFIG.packs.silver.unlockXP }} XP</span>
+            <span class="unlock-text"
+              >Ontgrendel met
+              {{ BALANCE_CONFIG.packs.silver.unlockXP }} XP</span
+            >
             <div class="unlock-progress">
               <div class="progress-bar">
                 <div
                   class="progress-fill"
-                  :style="{ width: `${Math.min(100, ((clubProgress?.totalXP || 0) / BALANCE_CONFIG.packs.silver.unlockXP) * 100)}%` }"
+                  :style="{
+                    width: `${Math.min(100, ((clubProgress?.totalXP || 0) / BALANCE_CONFIG.packs.silver.unlockXP) * 100)}%`,
+                  }"
                 ></div>
               </div>
-              <span class="progress-text">{{ clubProgress?.totalXP || 0 }} / {{ BALANCE_CONFIG.packs.silver.unlockXP }}</span>
+              <span class="progress-text"
+                >{{ clubProgress?.totalXP || 0 }} /
+                {{ BALANCE_CONFIG.packs.silver.unlockXP }}</span
+              >
             </div>
           </div>
 
@@ -124,14 +158,26 @@
             @click="openPack('silver')"
             :disabled="!canAffordPack('silver')"
             class="pack-buy-btn"
-            :class="{ 'affordable': canAffordPack('silver') }"
+            :class="{ affordable: canAffordPack('silver') }"
           >
-            {{ !isPackAvailable('silver') ? '🔒 Vergrendeld' : !canAffordPack('silver') ? '💰 Te duur' : '🎁 Kopen & Openen' }}
+            {{
+              !isPackAvailable("silver")
+                ? "🔒 Vergrendeld"
+                : !canAffordPack("silver")
+                  ? "💰 Te duur"
+                  : "🎁 Kopen & Openen"
+            }}
           </button>
         </div>
 
         <!-- Gold Pack -->
-        <div class="pack-card gold" :class="{ 'available': isPackAvailable('gold'), 'locked': !isPackAvailable('gold') }">
+        <div
+          class="pack-card gold"
+          :class="{
+            available: isPackAvailable('gold'),
+            locked: !isPackAvailable('gold'),
+          }"
+        >
           <div class="pack-header">
             <div class="pack-icon">🥇</div>
             <h3 class="pack-name">Gold Pack</h3>
@@ -162,20 +208,29 @@
           </div>
 
           <div class="pack-cost">
-            <span class="cost-amount">{{ BALANCE_CONFIG.packs.gold.cost }}</span>
+            <span class="cost-amount">{{
+              BALANCE_CONFIG.packs.gold.cost
+            }}</span>
             <span class="cost-currency">🎟️</span>
           </div>
 
           <div v-if="!isPackAvailable('gold')" class="unlock-requirement">
-            <span class="unlock-text">Ontgrendel met {{ BALANCE_CONFIG.packs.gold.unlockXP }} XP</span>
+            <span class="unlock-text"
+              >Ontgrendel met {{ BALANCE_CONFIG.packs.gold.unlockXP }} XP</span
+            >
             <div class="unlock-progress">
               <div class="progress-bar">
                 <div
                   class="progress-fill"
-                  :style="{ width: `${Math.min(100, ((clubProgress?.totalXP || 0) / BALANCE_CONFIG.packs.gold.unlockXP) * 100)}%` }"
+                  :style="{
+                    width: `${Math.min(100, ((clubProgress?.totalXP || 0) / BALANCE_CONFIG.packs.gold.unlockXP) * 100)}%`,
+                  }"
                 ></div>
               </div>
-              <span class="progress-text">{{ clubProgress?.totalXP || 0 }} / {{ BALANCE_CONFIG.packs.gold.unlockXP }}</span>
+              <span class="progress-text"
+                >{{ clubProgress?.totalXP || 0 }} /
+                {{ BALANCE_CONFIG.packs.gold.unlockXP }}</span
+              >
             </div>
           </div>
 
@@ -183,16 +238,22 @@
             @click="openPack('gold')"
             :disabled="!canAffordPack('gold')"
             class="pack-buy-btn"
-            :class="{ 'affordable': canAffordPack('gold') }"
+            :class="{ affordable: canAffordPack('gold') }"
           >
-            {{ !isPackAvailable('gold') ? '🔒 Vergrendeld' : !canAffordPack('gold') ? '💰 Te duur' : '🎁 Kopen & Openen' }}
+            {{
+              !isPackAvailable("gold")
+                ? "🔒 Vergrendeld"
+                : !canAffordPack("gold")
+                  ? "💰 Te duur"
+                  : "🎁 Kopen & Openen"
+            }}
           </button>
         </div>
       </div>
 
       <!-- Club Collection Preview -->
       <div class="club-collection-preview mt-12">
-        <h3 class="preview-title">🎴 {{ club?.name || 'Club' }} Collectie</h3>
+        <h3 class="preview-title">🎴 {{ club?.name || "Club" }} Collectie</h3>
         <div class="collection-stats">
           <div class="stat-card">
             <div class="stat-icon">👥</div>
@@ -276,19 +337,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useClubProgressStore, useCollectionStore } from '../stores';
-import { FootballDataService } from '../utils/football-data';
-import { BALANCE_CONFIG } from '../utils/balance-config';
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useClubProgressStore, useCollectionStore } from "../stores";
+import { FootballDataService } from "../utils/football-data";
+import { BALANCE_CONFIG } from "../utils/balance-config";
 
 const route = useRoute();
 const router = useRouter();
 const clubProgressStore = useClubProgressStore();
 const collectionStore = useCollectionStore();
 
-const clubId = ref<number>(parseInt(route.params.clubId as string));
+const clubId = ref<number>();
 const isLoading = ref(true);
+
+// Parse clubId from route params
+const parseClubId = () => {
+  const paramClubId = route.params.clubId as string;
+  const parsedId = parseInt(paramClubId);
+
+  if (isNaN(parsedId) || parsedId <= 0) {
+    console.error("Invalid clubId in route params:", paramClubId);
+    router.push({ name: "VoetbalTableSelect" });
+    return null;
+  }
+
+  return parsedId;
+};
+
+// Initialize clubId
+const initializeClubId = () => {
+  const id = parseClubId();
+  if (id) {
+    clubId.value = id;
+  }
+};
 
 // Debug state
 const showDebugPanel = ref(false);
@@ -297,30 +380,38 @@ const debugXpAmount = ref(50);
 
 // Computed
 const club = computed(() => {
-  if (!isLoading.value) {
+  if (!isLoading.value && clubId.value) {
     return FootballDataService.getClubById(clubId.value);
   }
   return null;
 });
-const clubProgress = computed(() => clubProgressStore.getClubProgress(clubId.value));
+const clubProgress = computed(() =>
+  clubId.value ? clubProgressStore.getClubProgress(clubId.value) : null,
+);
 
 const clubPlayerCards = computed(() => {
-  if (!isLoading.value) {
+  if (!isLoading.value && clubId.value) {
     return collectionStore.getPlayersByClub(clubId.value);
   }
   return [];
 });
 
 const collectionCompletion = computed(() => {
-  if (isLoading.value || clubPlayerCards.value.length === 0) return 0;
-  const totalClubPlayers = FootballDataService.getPlayersByClub(clubId.value).length;
+  if (isLoading.value || clubPlayerCards.value.length === 0 || !clubId.value)
+    return 0;
+  const totalClubPlayers = FootballDataService.getPlayersByClub(
+    clubId.value,
+  ).length;
   if (totalClubPlayers === 0) return 0;
   return Math.round((clubPlayerCards.value.length / totalClubPlayers) * 100);
 });
 
 const averageRating = computed(() => {
   if (isLoading.value || clubPlayerCards.value.length === 0) return 0;
-  const totalRating = clubPlayerCards.value.reduce((sum, card) => sum + card.rating, 0);
+  const totalRating = clubPlayerCards.value.reduce(
+    (sum, card) => sum + card.rating,
+    0,
+  );
   return Math.round(totalRating / clubPlayerCards.value.length);
 });
 
@@ -330,23 +421,23 @@ async function initializeData() {
     await FootballDataService.initialize();
     isLoading.value = false;
   } catch (error) {
-    console.error('Failed to load club data:', error);
+    console.error("Failed to load club data:", error);
     isLoading.value = false;
   }
 }
 
-function isPackAvailable(packType: 'bronze' | 'silver' | 'gold'): boolean {
+function isPackAvailable(packType: "bronze" | "silver" | "gold"): boolean {
   return clubProgress.value.unlockedPacks.includes(packType);
 }
 
-function canAffordPack(packType: 'bronze' | 'silver' | 'gold'): boolean {
+function canAffordPack(packType: "bronze" | "silver" | "gold"): boolean {
   if (!isPackAvailable(packType)) return false;
   const cost = BALANCE_CONFIG.packs[packType].cost;
   return (clubProgress.value?.totalTokens || 0) >= cost;
 }
 
-async function openPack(packType: 'bronze' | 'silver' | 'gold') {
-  if (!canAffordPack(packType)) return;
+async function openPack(packType: "bronze" | "silver" | "gold") {
+  if (!canAffordPack(packType) || !clubId.value) return;
 
   const cost = BALANCE_CONFIG.packs[packType].cost;
   const success = clubProgressStore.spendTokens(clubId.value, cost);
@@ -354,30 +445,31 @@ async function openPack(packType: 'bronze' | 'silver' | 'gold') {
   if (success) {
     // Navigate to pack opening screen
     router.push({
-      name: 'VoetbalPackOpening',
+      name: "VoetbalPackOpening",
       params: {
         clubId: clubId.value.toString(),
-        packType
-      }
+        packType,
+      },
     });
   }
 }
 
 function viewFullCollection() {
-  router.push({ name: 'VoetbalCollection' });
+  router.push({ name: "VoetbalCollection" });
 }
 
 function buildTeam() {
-  router.push({ name: 'VoetbalTeamBuilder' });
+  router.push({ name: "VoetbalTeamBuilder" });
 }
 
 function backToTables() {
-  router.push({ name: 'VoetbalTableSelect' });
+  router.push({ name: "VoetbalTableSelect" });
 }
 
 // Debug functions
 function addDebugTokens() {
-  if (!debugTokenAmount.value || debugTokenAmount.value <= 0) return;
+  if (!debugTokenAmount.value || debugTokenAmount.value <= 0 || !clubId.value)
+    return;
 
   const progress = clubProgressStore.getClubProgress(clubId.value);
   progress.totalTokens += debugTokenAmount.value;
@@ -386,7 +478,7 @@ function addDebugTokens() {
 }
 
 function addDebugXp() {
-  if (!debugXpAmount.value || debugXpAmount.value <= 0) return;
+  if (!debugXpAmount.value || debugXpAmount.value <= 0 || !clubId.value) return;
 
   const progress = clubProgressStore.getClubProgress(clubId.value);
   progress.totalXP += debugXpAmount.value;
@@ -397,41 +489,46 @@ function addDebugXp() {
 
   if (
     progress.totalXP >= packs.silver.unlockXP &&
-    !unlockedPacks.includes('silver')
+    !unlockedPacks.includes("silver")
   ) {
-    progress.unlockedPacks.push('silver');
+    progress.unlockedPacks.push("silver");
   }
   if (
     progress.totalXP >= packs.gold.unlockXP &&
-    !unlockedPacks.includes('gold')
+    !unlockedPacks.includes("gold")
   ) {
-    progress.unlockedPacks.push('gold');
+    progress.unlockedPacks.push("gold");
   }
 
   console.log(`Added ${debugXpAmount.value} XP to club ${clubId.value}`);
 }
 
 function unlockAllPacks() {
+  if (!clubId.value) return;
+
   const progress = clubProgressStore.getClubProgress(clubId.value);
-  progress.unlockedPacks = ['bronze', 'silver', 'gold'];
+  progress.unlockedPacks = ["bronze", "silver", "gold"];
   console.log(`Unlocked all packs for club ${clubId.value}`);
 }
 
 // Keyboard shortcuts
 function handleKeyDown(event: KeyboardEvent) {
-  if (event.ctrlKey && event.shiftKey && event.key === 'D') {
+  if (event.ctrlKey && event.shiftKey && event.key === "D") {
     event.preventDefault();
     showDebugPanel.value = !showDebugPanel.value;
   }
 }
 
 onMounted(() => {
-  initializeData();
-  document.addEventListener('keydown', handleKeyDown);
+  initializeClubId();
+  if (clubId.value) {
+    initializeData();
+  }
+  document.addEventListener("keydown", handleKeyDown);
 });
 
 onUnmounted(() => {
-  document.removeEventListener('keydown', handleKeyDown);
+  document.removeEventListener("keydown", handleKeyDown);
 });
 </script>
 
@@ -440,19 +537,19 @@ onUnmounted(() => {
 
 .club-banner {
   @apply bg-gradient-to-r text-white rounded-3xl p-8 flex items-center justify-between;
-  background: linear-gradient(135deg, var(--club-color), rgba(0,0,0,0.2));
+  background: linear-gradient(135deg, var(--club-color), rgba(0, 0, 0, 0.2));
   box-shadow: 0 12px 48px var(--club-color);
 }
 
 .club-badge-large {
   @apply w-20 h-20 rounded-full flex items-center justify-center;
   background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .club-name {
   @apply text-4xl font-black mb-2;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .club-subtitle {
@@ -491,7 +588,7 @@ onUnmounted(() => {
 .pack-card {
   @apply backdrop-blur-sm rounded-3xl p-6 border-2 transition-all duration-300;
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .pack-card.bronze {
@@ -508,7 +605,7 @@ onUnmounted(() => {
 
 .pack-card.available:hover {
   @apply transform scale-105;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
 }
 
 .pack-card.locked {
@@ -640,7 +737,11 @@ onUnmounted(() => {
 /* Debug Panel Styles */
 .debug-panel {
   @apply mt-8 p-6 rounded-xl border-2 border-dashed border-yellow-400;
-  background: linear-gradient(135deg, rgba(255, 255, 0, 0.1), rgba(255, 165, 0, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 0, 0.1),
+    rgba(255, 165, 0, 0.1)
+  );
   backdrop-filter: blur(10px);
 }
 
@@ -675,7 +776,11 @@ onUnmounted(() => {
 
 .debug-btn {
   @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.8),
+    rgba(22, 163, 74, 0.8)
+  );
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -686,7 +791,11 @@ onUnmounted(() => {
 }
 
 .debug-btn.unlock-all {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(139, 69, 219, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.8),
+    rgba(139, 69, 219, 0.8)
+  );
 }
 
 .debug-btn.unlock-all:hover {
