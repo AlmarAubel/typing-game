@@ -324,6 +324,10 @@ const availablePlayersForPosition = computed(() => {
 });
 
 // Methods
+function retryInitialization() {
+  window.location.reload();
+}
+
 onMounted(async () => {
   // Wait for data initialization from parent
   if (!isDataInitialized.value) {

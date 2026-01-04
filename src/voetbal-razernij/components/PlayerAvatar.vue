@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import type { PlayerCard } from "../utils/football-data";
+import type { Player } from "../utils/football-data";
 
 interface Props {
-  player: PlayerCard;
+  player: Player;
   size?: "small" | "medium" | "large";
   showShirtNumber?: boolean;
 }

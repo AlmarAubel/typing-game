@@ -429,7 +429,7 @@ function loadClubData() {
 }
 
 function isPackAvailable(packType: "bronze" | "silver" | "gold"): boolean {
-  return clubProgress.value.unlockedPacks.includes(packType);
+  return clubProgress.value?.unlockedPacks.includes(packType) || false;
 }
 
 function canAffordPack(packType: "bronze" | "silver" | "gold"): boolean {

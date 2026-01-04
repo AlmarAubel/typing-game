@@ -298,8 +298,8 @@ const showSessionEnd = ref<boolean>(false);
 const sessionResults = ref<any>(null);
 
 // Session timer
-let sessionTimer: number | null = null;
-let motivationTimer: number | null = null;
+let sessionTimer: ReturnType<typeof setInterval> | null = null;
+let motivationTimer: ReturnType<typeof setTimeout> | null = null;
 
 // Computed
 const currentSession = computed(() => gameStore.currentSession);
