@@ -8,41 +8,47 @@
       @error="handleImageError($event)"
     />
     <span v-else class="player-fallback">👤</span>
-    <div v-if="showShirtNumber" class="shirt-number">#{{ player.shirtNumber }}</div>
+    <div v-if="showShirtNumber" class="shirt-number">
+      #{{ player.shirtNumber }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { PlayerCard } from '../utils/football-data';
+import type { PlayerCard } from "../utils/football-data";
 
 interface Props {
   player: PlayerCard;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   showShirtNumber?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
-  size: 'medium',
-  showShirtNumber: true
+  size: "medium",
+  showShirtNumber: true,
 });
 
 function handleImageError(event: Event) {
   const img = event.target as HTMLImageElement;
-  img.style.display = 'none';
+  img.style.display = "none";
   // Show fallback icon
   const fallback = img.nextElementSibling;
   if (fallback) {
-    (fallback as HTMLElement).style.display = 'block';
+    (fallback as HTMLElement).style.display = "block";
   }
 }
 </script>
 
 <style scoped>
-  @reference "tailwindcss";
+@reference "tailwindcss";
 .player-avatar {
   @apply relative rounded-full overflow-hidden flex items-center justify-center;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .player-avatar.small {

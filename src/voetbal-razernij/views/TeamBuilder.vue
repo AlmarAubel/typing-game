@@ -1,239 +1,356 @@
 <template>
   <div class="team-builder">
-    <!-- Header -->
-    <div class="team-builder-header mb-8">
-      <h1 class="text-4xl font-bold text-white text-center mb-4">
-        ⚽ Team Samenstellen
-      </h1>
-      <div class="team-info">
-        <input
-          v-model="teamName"
-          @blur="updateTeamName"
-          class="team-name-input"
-          placeholder="Team naam"
-        />
-        <div class="team-rating" v-if="teamStore.currentTeam">
-          <span class="rating-label">Team Rating:</span>
-          <span class="rating-value">{{ teamStore.currentTeam.totalRating }}</span>
+    <!-- Loading State -->
+    <div v-if="!isDataLoaded" class="loading-state">
+      <div class="flex items-center justify-center min-h-64">
+        <div class="text-center text-white">
+          <div class="animate-spin text-6xl mb-4">⚽</div>
+          <p class="text-xl">Voetbaldata wordt geladen...</p>
         </div>
       </div>
     </div>
 
-    <!-- Formation Display -->
-    <div class="formation-display mb-8">
-      <div class="football-pitch">
-        <!-- Attackers -->
-        <div class="formation-line attackers">
-          <div
-            v-for="slot in attackerSlots"
-            :key="slot.slotNumber"
-            class="player-slot attacker"
-            @click="selectSlot(slot)"
-            :class="{ 'filled': slot.playerId, 'selected': selectedSlot?.slotNumber === slot.slotNumber }"
+    <!-- Error State -->
+    <div v-else-if="initializationError" class="error-state">
+      <div class="bg-red-500/20 border border-red-500 rounded-lg p-6 mx-4">
+        <div class="text-center text-white">
+          <div class="text-6xl mb-4">⚠️</div>
+          <h2 class="text-2xl font-bold mb-2">Oops! Er ging iets mis</h2>
+          <p class="mb-4">{{ initializationError }}</p>
+          <button
+            @click="retryInitialization"
+            class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            <div v-if="slot.playerId" class="slot-player">
-              <div class="player-name">{{ getPlayerName(slot.playerId) }}</div>
-              <div class="player-rating">{{ getPlayerRating(slot.playerId) }}</div>
-            </div>
-            <div v-else class="empty-slot">
-              <span class="position-label">A</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Midfielders -->
-        <div class="formation-line midfielders">
-          <div
-            v-for="slot in midfielderSlots"
-            :key="slot.slotNumber"
-            class="player-slot midfielder"
-            @click="selectSlot(slot)"
-            :class="{ 'filled': slot.playerId, 'selected': selectedSlot?.slotNumber === slot.slotNumber }"
-          >
-            <div v-if="slot.playerId" class="slot-player">
-              <div class="player-name">{{ getPlayerName(slot.playerId) }}</div>
-              <div class="player-rating">{{ getPlayerRating(slot.playerId) }}</div>
-            </div>
-            <div v-else class="empty-slot">
-              <span class="position-label">M</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Defenders -->
-        <div class="formation-line defenders">
-          <div
-            v-for="slot in defenderSlots"
-            :key="slot.slotNumber"
-            class="player-slot defender"
-            @click="selectSlot(slot)"
-            :class="{ 'filled': slot.playerId, 'selected': selectedSlot?.slotNumber === slot.slotNumber }"
-          >
-            <div v-if="slot.playerId" class="slot-player">
-              <div class="player-name">{{ getPlayerName(slot.playerId) }}</div>
-              <div class="player-rating">{{ getPlayerRating(slot.playerId) }}</div>
-            </div>
-            <div v-else class="empty-slot">
-              <span class="position-label">V</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Goalkeeper -->
-        <div class="formation-line goalkeeper">
-          <div
-            v-for="slot in keeperSlots"
-            :key="slot.slotNumber"
-            class="player-slot keeper"
-            @click="selectSlot(slot)"
-            :class="{ 'filled': slot.playerId, 'selected': selectedSlot?.slotNumber === slot.slotNumber }"
-          >
-            <div v-if="slot.playerId" class="slot-player">
-              <div class="player-name">{{ getPlayerName(slot.playerId) }}</div>
-              <div class="player-rating">{{ getPlayerRating(slot.playerId) }}</div>
-            </div>
-            <div v-else class="empty-slot">
-              <span class="position-label">K</span>
-            </div>
-          </div>
+            🔄 Opnieuw proberen
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Player Selection Panel -->
-    <div class="player-selection-panel" v-if="selectedSlot">
-      <div class="panel-header">
-        <h3 class="panel-title">
-          Kies een {{ formatPosition(selectedSlot.position) }}
-        </h3>
-        <button @click="clearSlot" class="clear-btn" v-if="selectedSlot.playerId">
-          🗑️ Verwijderen
-        </button>
+    <!-- Main Content -->
+    <div v-else>
+      <!-- Header -->
+      <div class="team-builder-header mb-8">
+        <h1 class="text-4xl font-bold text-white text-center mb-4">
+          ⚽ Team Samenstellen
+        </h1>
+        <div class="team-info">
+          <input
+            v-model="teamName"
+            @blur="updateTeamName"
+            class="team-name-input"
+            placeholder="Team naam"
+          />
+          <div class="team-rating" v-if="teamStore.currentTeam">
+            <span class="rating-label">Team Rating:</span>
+            <span class="rating-value">{{
+              teamStore.currentTeam.totalRating
+            }}</span>
+          </div>
+        </div>
       </div>
 
-      <div class="available-players">
-        <div v-if="availablePlayersForPosition.length === 0" class="no-players">
-          <span class="text-4xl">😔</span>
-          <p>Je hebt nog geen {{ formatPosition(selectedSlot.position).toLowerCase() }}s verzameld.</p>
-          <button @click="goToCollection" class="collect-btn">
-            🎴 Ga Spelers Verzamelen
+      <!-- Formation Display -->
+      <div class="formation-display mb-8">
+        <div class="football-pitch">
+          <!-- Attackers -->
+          <div class="formation-line attackers">
+            <div
+              v-for="slot in attackerSlots"
+              :key="slot.slotNumber"
+              class="player-slot attacker"
+              @click="selectSlot(slot)"
+              :class="{
+                filled: slot.playerId,
+                selected: selectedSlot?.slotNumber === slot.slotNumber,
+              }"
+            >
+              <div v-if="slot.playerId" class="slot-player">
+                <div class="player-name">
+                  {{ getPlayerName(slot.playerId) }}
+                </div>
+                <div class="player-rating">
+                  {{ getPlayerRating(slot.playerId) }}
+                </div>
+              </div>
+              <div v-else class="empty-slot">
+                <span class="position-label">A</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Midfielders -->
+          <div class="formation-line midfielders">
+            <div
+              v-for="slot in midfielderSlots"
+              :key="slot.slotNumber"
+              class="player-slot midfielder"
+              @click="selectSlot(slot)"
+              :class="{
+                filled: slot.playerId,
+                selected: selectedSlot?.slotNumber === slot.slotNumber,
+              }"
+            >
+              <div v-if="slot.playerId" class="slot-player">
+                <div class="player-name">
+                  {{ getPlayerName(slot.playerId) }}
+                </div>
+                <div class="player-rating">
+                  {{ getPlayerRating(slot.playerId) }}
+                </div>
+              </div>
+              <div v-else class="empty-slot">
+                <span class="position-label">M</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Defenders -->
+          <div class="formation-line defenders">
+            <div
+              v-for="slot in defenderSlots"
+              :key="slot.slotNumber"
+              class="player-slot defender"
+              @click="selectSlot(slot)"
+              :class="{
+                filled: slot.playerId,
+                selected: selectedSlot?.slotNumber === slot.slotNumber,
+              }"
+            >
+              <div v-if="slot.playerId" class="slot-player">
+                <div class="player-name">
+                  {{ getPlayerName(slot.playerId) }}
+                </div>
+                <div class="player-rating">
+                  {{ getPlayerRating(slot.playerId) }}
+                </div>
+              </div>
+              <div v-else class="empty-slot">
+                <span class="position-label">V</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goalkeeper -->
+          <div class="formation-line goalkeeper">
+            <div
+              v-for="slot in keeperSlots"
+              :key="slot.slotNumber"
+              class="player-slot keeper"
+              @click="selectSlot(slot)"
+              :class="{
+                filled: slot.playerId,
+                selected: selectedSlot?.slotNumber === slot.slotNumber,
+              }"
+            >
+              <div v-if="slot.playerId" class="slot-player">
+                <div class="player-name">
+                  {{ getPlayerName(slot.playerId) }}
+                </div>
+                <div class="player-rating">
+                  {{ getPlayerRating(slot.playerId) }}
+                </div>
+              </div>
+              <div v-else class="empty-slot">
+                <span class="position-label">K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Player Selection Panel -->
+      <div class="player-selection-panel" v-if="selectedSlot">
+        <div class="panel-header">
+          <h3 class="panel-title">
+            Kies een {{ formatPosition(selectedSlot.position) }}
+          </h3>
+          <button
+            @click="clearSlot"
+            class="clear-btn"
+            v-if="selectedSlot.playerId"
+          >
+            🗑️ Verwijderen
           </button>
         </div>
 
-        <div
-          v-for="player in availablePlayersForPosition"
-          :key="player.id"
-          class="available-player"
-          @click="setPlayer(player)"
-          :class="{ 'in-team': isPlayerInTeam(player.id) }"
-        >
-          <div class="player-card-mini">
-            <div class="player-avatar-mini-container">
-              <PlayerAvatar :player="player" size="small" :showShirtNumber="true" />
+        <div class="available-players">
+          <div
+            v-if="availablePlayersForPosition.length === 0"
+            class="no-players"
+          >
+            <span class="text-4xl">😔</span>
+            <p>
+              Je hebt nog geen
+              {{ formatPosition(selectedSlot.position).toLowerCase() }}s
+              verzameld.
+            </p>
+            <button @click="goToCollection" class="collect-btn">
+              🎴 Ga Spelers Verzamelen
+            </button>
+          </div>
+
+          <div
+            v-for="player in availablePlayersForPosition"
+            :key="player.id"
+            class="available-player"
+            @click="setPlayer(player)"
+            :class="{ 'in-team': isPlayerInTeam(player.id) }"
+          >
+            <div class="player-card-mini">
+              <div class="player-avatar-mini-container">
+                <PlayerAvatar
+                  :player="player"
+                  size="small"
+                  :showShirtNumber="true"
+                />
+              </div>
+              <div class="player-info-mini">
+                <div class="player-name-mini">{{ player.name }}</div>
+                <div class="player-club-mini">
+                  {{ getClubName(player.clubId) }}
+                </div>
+                <div class="player-rating-mini">{{ player.rating }} ⭐</div>
+              </div>
+              <div class="rarity-indicator" :class="player.rarity"></div>
             </div>
-            <div class="player-info-mini">
-              <div class="player-name-mini">{{ player.name }}</div>
-              <div class="player-club-mini">{{ getClubName(player.clubId) }}</div>
-              <div class="player-rating-mini">{{ player.rating }} ⭐</div>
-            </div>
-            <div class="rarity-indicator" :class="player.rarity"></div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Team Stats -->
-    <div class="team-stats" v-if="teamStore.currentTeam">
-      <h3 class="stats-title">📊 Team Statistieken</h3>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">🥅</div>
-          <div class="stat-value">{{ teamStore.teamStrengthByPosition.K }}</div>
-          <div class="stat-label">Keepers</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🛡️</div>
-          <div class="stat-value">{{ teamStore.teamStrengthByPosition.D }}</div>
-          <div class="stat-label">Verdediging</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">⚙️</div>
-          <div class="stat-value">{{ teamStore.teamStrengthByPosition.M }}</div>
-          <div class="stat-label">Middenveld</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">⚽</div>
-          <div class="stat-value">{{ teamStore.teamStrengthByPosition.A }}</div>
-          <div class="stat-label">Aanval</div>
+      <!-- Team Stats -->
+      <div class="team-stats" v-if="teamStore.currentTeam">
+        <h3 class="stats-title">📊 Team Statistieken</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🥅</div>
+            <div class="stat-value">
+              {{ teamStore.teamStrengthByPosition.K }}
+            </div>
+            <div class="stat-label">Keepers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🛡️</div>
+            <div class="stat-value">
+              {{ teamStore.teamStrengthByPosition.D }}
+            </div>
+            <div class="stat-label">Verdediging</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⚙️</div>
+            <div class="stat-value">
+              {{ teamStore.teamStrengthByPosition.M }}
+            </div>
+            <div class="stat-label">Middenveld</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⚽</div>
+            <div class="stat-value">
+              {{ teamStore.teamStrengthByPosition.A }}
+            </div>
+            <div class="stat-label">Aanval</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Actions -->
-    <div class="team-actions">
-      <button @click="saveTeam" class="action-btn primary" :disabled="!teamStore.isTeamComplete">
-        💾 Team Opslaan
-      </button>
-      <button @click="clearTeam" class="action-btn secondary">
-        🔄 Team Wissen
-      </button>
-      <button @click="goToCollection" class="action-btn tertiary">
-        🎴 Collectie
-      </button>
+      <!-- Actions -->
+      <div class="team-actions">
+        <button
+          @click="saveTeam"
+          class="action-btn primary"
+          :disabled="!teamStore.isTeamComplete"
+        >
+          💾 Team Opslaan
+        </button>
+        <button @click="clearTeam" class="action-btn secondary">
+          🔄 Team Wissen
+        </button>
+        <button @click="goToCollection" class="action-btn tertiary">
+          🎴 Collectie
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useTeamStore, useCollectionStore } from '../stores';
-import { FootballDataService, type PlayerCard, type TeamSlot } from '../utils/football-data';
-import PlayerAvatar from '../components/PlayerAvatar.vue';
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { useTeamStore, useCollectionStore } from "../stores";
+import {
+  FootballDataService,
+  type PlayerCard,
+  type TeamSlot,
+} from "../utils/football-data";
+import PlayerAvatar from "../components/PlayerAvatar.vue";
 
 const router = useRouter();
 const teamStore = useTeamStore();
 const collectionStore = useCollectionStore();
 
-const teamName = ref('Mijn Team');
+const teamName = ref("Mijn Team");
 const selectedSlot = ref<TeamSlot | null>(null);
 const isDataLoaded = ref(false);
+const initializationError = ref<string>("");
 
 // Computed
-const keeperSlots = computed(() =>
-  teamStore.currentTeam?.slots.filter(slot => slot.position === 'K') || []
+const keeperSlots = computed(
+  () =>
+    teamStore.currentTeam?.slots.filter((slot) => slot.position === "K") || [],
 );
 
-const defenderSlots = computed(() =>
-  teamStore.currentTeam?.slots.filter(slot => slot.position === 'D') || []
+const defenderSlots = computed(
+  () =>
+    teamStore.currentTeam?.slots.filter((slot) => slot.position === "D") || [],
 );
 
-const midfielderSlots = computed(() =>
-  teamStore.currentTeam?.slots.filter(slot => slot.position === 'M') || []
+const midfielderSlots = computed(
+  () =>
+    teamStore.currentTeam?.slots.filter((slot) => slot.position === "M") || [],
 );
 
-const attackerSlots = computed(() =>
-  teamStore.currentTeam?.slots.filter(slot => slot.position === 'A') || []
+const attackerSlots = computed(
+  () =>
+    teamStore.currentTeam?.slots.filter((slot) => slot.position === "A") || [],
 );
 
 const availablePlayersForPosition = computed(() => {
-  if (!selectedSlot.value) return [];
-  return collectionStore.getPlayersByPosition(selectedSlot.value.position)
-    .filter(player => !isPlayerInTeam(player.id))
+  if (!selectedSlot.value || !isDataLoaded.value) return [];
+  return collectionStore
+    .getPlayersByPosition(selectedSlot.value.position)
+    .filter((player) => !isPlayerInTeam(player.id))
     .sort((a, b) => b.rating - a.rating);
 });
 
 // Methods
 onMounted(async () => {
-  await FootballDataService.initialize();
-  isDataLoaded.value = true;
-
-  if (!teamStore.currentTeam) {
-    teamStore.createNewTeam(teamName.value);
-  } else {
-    teamName.value = teamStore.currentTeam.name;
-  }
+  await initializeData();
 });
+
+async function initializeData() {
+  try {
+    isDataLoaded.value = false;
+    initializationError.value = "";
+
+    await FootballDataService.initialize();
+    isDataLoaded.value = true;
+
+    if (!teamStore.currentTeam) {
+      teamStore.createNewTeam(teamName.value);
+    } else {
+      teamName.value = teamStore.currentTeam.name;
+    }
+  } catch (error) {
+    console.error("Failed to initialize football data:", error);
+    initializationError.value =
+      "Kon de voetbaldata niet laden. Controleer je internetverbinding en probeer opnieuw.";
+    isDataLoaded.value = false;
+  }
+}
+
+async function retryInitialization() {
+  await initializeData();
+}
 
 function selectSlot(slot: TeamSlot) {
   selectedSlot.value = slot;
@@ -242,7 +359,10 @@ function selectSlot(slot: TeamSlot) {
 function setPlayer(player: PlayerCard) {
   if (!selectedSlot.value) return;
 
-  const success = teamStore.setPlayerInSlot(selectedSlot.value.slotNumber, player.id);
+  const success = teamStore.setPlayerInSlot(
+    selectedSlot.value.slotNumber,
+    player.id,
+  );
   if (success) {
     selectedSlot.value = null;
   }
@@ -256,7 +376,7 @@ function clearSlot() {
 }
 
 function clearTeam() {
-  if (confirm('Weet je zeker dat je het hele team wilt wissen?')) {
+  if (confirm("Weet je zeker dat je het hele team wilt wissen?")) {
     teamStore.createNewTeam(teamName.value);
     selectedSlot.value = null;
   }
@@ -264,7 +384,7 @@ function clearTeam() {
 
 function saveTeam() {
   teamStore.saveCurrentTeam();
-  alert('Team opgeslagen!');
+  alert("Team opgeslagen!");
 }
 
 function updateTeamName() {
@@ -274,9 +394,9 @@ function updateTeamName() {
 }
 
 function getPlayerName(playerId: number): string {
-  if (!isDataLoaded.value) return '...';
+  if (!isDataLoaded.value) return "...";
   const player = FootballDataService.getPlayerById(playerId);
-  return player?.name.split(' ').slice(-1)[0] || '???'; // Last name only
+  return player?.name.split(" ").slice(-1)[0] || "???"; // Last name only
 }
 
 function getPlayerRating(playerId: number): number {
@@ -286,33 +406,41 @@ function getPlayerRating(playerId: number): number {
 }
 
 function getClubName(clubId: number): string {
-  if (!isDataLoaded.value) return '...';
+  if (!isDataLoaded.value) return "...";
   const club = FootballDataService.getClubById(clubId);
-  return club?.shortName || 'Club';
+  return club?.shortName || "Club";
 }
 
 function formatPosition(position: string): string {
   const positions = {
-    'K': 'Keeper',
-    'D': 'Verdediger',
-    'M': 'Middenvelder',
-    'A': 'Aanvaller'
+    K: "Keeper",
+    D: "Verdediger",
+    M: "Middenvelder",
+    A: "Aanvaller",
   };
   return positions[position as keyof typeof positions] || position;
 }
 
 function isPlayerInTeam(playerId: number): boolean {
   if (!teamStore.currentTeam) return false;
-  return teamStore.currentTeam.slots.some(slot => slot.playerId === playerId);
+  return teamStore.currentTeam.slots.some((slot) => slot.playerId === playerId);
 }
 
 function goToCollection() {
-  router.push({ name: 'VoetbalCollection' });
+  router.push({ name: "VoetbalCollection" });
 }
 </script>
 
 <style scoped>
 @reference "tailwindcss";
+
+.loading-state {
+  @apply min-h-screen flex items-center justify-center;
+}
+
+.error-state {
+  @apply min-h-screen flex items-center justify-center;
+}
 
 .team-builder-header {
   @apply text-center;
@@ -347,10 +475,10 @@ function goToCollection() {
 }
 
 .formation-display {
-  @apply bg-gradient-to-b from-green-400 to-green-600 rounded-3xl p-8 border-4 border-white;
+  @apply bg-gradient-to-b from-green-500 to-green-700 rounded-3xl p-8 border-4 border-white;
   background-image:
-    linear-gradient(90deg, rgba(255,255,255,0.1) 50%, transparent 50%),
-    linear-gradient(rgba(255,255,255,0.1) 50%, transparent 50%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.08) 50%, transparent 50%);
   background-size: 20px 20px;
 }
 

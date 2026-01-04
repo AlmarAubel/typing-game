@@ -350,23 +350,26 @@ export const useCollectionStore = defineStore(
       // Check for completed clubs (all players from a club collected)
       const clubCounts = new Map<number, { owned: number; total: number }>();
 
-      FootballDataService.getAllClubs().forEach((club) => {
-        const clubPlayers = FootballDataService.getPlayersByClub(club.id);
-        const ownedPlayers = cards.filter(
-          (card) => card.clubId === club.id,
-        ).length;
+      // Only update club completion if FootballDataService is initialized
+      if (FootballDataService.isInitialized()) {
+        FootballDataService.getAllClubs().forEach((club) => {
+          const clubPlayers = FootballDataService.getPlayersByClub(club.id);
+          const ownedPlayers = cards.filter(
+            (card) => card.clubId === club.id,
+          ).length;
 
-        clubCounts.set(club.id, {
-          owned: ownedPlayers,
-          total: clubPlayers.length,
-        });
+          clubCounts.set(club.id, {
+            owned: ownedPlayers,
+            total: clubPlayers.length,
+          });
 
-        if (ownedPlayers === clubPlayers.length && clubPlayers.length > 0) {
-          if (!collectionStats.value.completedClubs.includes(club.id)) {
-            collectionStats.value.completedClubs.push(club.id);
+          if (ownedPlayers === clubPlayers.length && clubPlayers.length > 0) {
+            if (!collectionStats.value.completedClubs.includes(club.id)) {
+              collectionStats.value.completedClubs.push(club.id);
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     function getPlayersByClub(clubId: number): PlayerCard[] {
@@ -389,10 +392,14 @@ export const useCollectionStore = defineStore(
 
     const allPlayerCards = computed(() => Object.values(playerCards.value));
     const collectionCompletion = computed(() => {
+      if (!FootballDataService.isInitialized()) {
+        return 0;
+      }
       const totalPossiblePlayers = FootballDataService.getAllPlayers().length;
-      return (
-        (collectionStats.value.totalUniquePlayers / totalPossiblePlayers) * 100
-      );
+      return totalPossiblePlayers > 0
+        ? (collectionStats.value.totalUniquePlayers / totalPossiblePlayers) *
+            100
+        : 0;
     });
 
     return {
@@ -450,7 +457,8 @@ export const useTeamStore = defineStore(
     }
 
     function setPlayerInSlot(slotNumber: number, playerId: number): boolean {
-      if (!currentTeam.value) return false;
+      if (!currentTeam.value || !FootballDataService.isInitialized())
+        return false;
 
       const slot = currentTeam.value.slots.find(
         (s) => s.slotNumber === slotNumber,
@@ -484,7 +492,7 @@ export const useTeamStore = defineStore(
     }
 
     function calculateTeamRating(): void {
-      if (!currentTeam.value) return;
+      if (!currentTeam.value || !FootballDataService.isInitialized()) return;
 
       let totalRating = 0;
       let playersCount = 0;

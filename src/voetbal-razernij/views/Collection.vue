@@ -8,17 +8,23 @@
       <div class="collection-stats-bar">
         <div class="stat">
           <span class="stat-icon">👥</span>
-          <span class="stat-value">{{ collectionStore.collectionStats.totalUniquePlayers }}</span>
+          <span class="stat-value">{{
+            collectionStore.collectionStats.totalUniquePlayers
+          }}</span>
           <span class="stat-label">Unieke Spelers</span>
         </div>
         <div class="stat">
           <span class="stat-icon">🎴</span>
-          <span class="stat-value">{{ collectionStore.collectionStats.totalCardsOwned }}</span>
+          <span class="stat-value">{{
+            collectionStore.collectionStats.totalCardsOwned
+          }}</span>
           <span class="stat-label">Totaal Kaarten</span>
         </div>
         <div class="stat">
           <span class="stat-icon">📊</span>
-          <span class="stat-value">{{ Math.round(collectionStore.collectionCompletion) }}%</span>
+          <span class="stat-value"
+            >{{ Math.round(collectionStore.collectionCompletion) }}%</span
+          >
           <span class="stat-label">Volledigheid</span>
         </div>
       </div>
@@ -62,11 +68,17 @@
       <div class="empty-icon">📭</div>
       <h3 class="empty-title">Geen kaarten gevonden</h3>
       <p class="empty-text">
-        {{ collectionStore.allPlayerCards.length === 0
-          ? 'Je hebt nog geen spelers verzameld. Speel sessies en open pakketten om je collectie te starten!'
-          : 'Geen kaarten voldoen aan je filters. Probeer andere filtercriteria.' }}
+        {{
+          collectionStore.allPlayerCards.length === 0
+            ? "Je hebt nog geen spelers verzameld. Speel sessies en open pakketten om je collectie te starten!"
+            : "Geen kaarten voldoen aan je filters. Probeer andere filtercriteria."
+        }}
       </p>
-      <button v-if="collectionStore.allPlayerCards.length === 0" @click="goToTableSelect" class="empty-action">
+      <button
+        v-if="collectionStore.allPlayerCards.length === 0"
+        @click="goToTableSelect"
+        class="empty-action"
+      >
         🏠 Start met Oefenen
       </button>
     </div>
@@ -93,58 +105,68 @@
         <div class="player-avatar-container">
           <PlayerAvatar :player="card" size="medium" :showShirtNumber="true" />
 
-        <!-- Player Info -->
-        <div class="player-info">
-          <h3 class="player-name">{{ card.name }}</h3>
-          <div class="player-club">{{ getClubName(card.clubId) }}</div>
-          <div class="player-rating">
-            <span class="rating-value">{{ card.rating }}</span>
-            <div class="rating-stars">
-              <span v-for="star in getRatingStars(card.rating)" :key="star" class="star">⭐</span>
+          <!-- Player Info -->
+          <div class="player-info">
+            <h3 class="player-name">{{ card.name }}</h3>
+            <div class="player-club">{{ getClubName(card.clubId) }}</div>
+            <div class="player-rating">
+              <span class="rating-value">{{ card.rating }}</span>
+              <div class="rating-stars">
+                <span
+                  v-for="star in getRatingStars(card.rating)"
+                  :key="star"
+                  class="star"
+                  >⭐</span
+                >
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Rarity Banner -->
-        <div class="rarity-banner" :class="card.rarity">
-          <span class="rarity-text">{{ formatRarity(card.rarity) }}</span>
-        </div>
+          <!-- Rarity Banner -->
+          <div class="rarity-banner" :class="card.rarity">
+            <span class="rarity-text">{{ formatRarity(card.rarity) }}</span>
+          </div>
 
-        <!-- Card Actions -->
-        <div class="card-actions">
-          <button @click="addToTeam(card)" class="action-btn" :disabled="isInTeam(card.id)">
-            {{ isInTeam(card.id) ? '✅ In Team' : '➕ Aan Team' }}
-          </button>
+          <!-- Card Actions -->
+          <div class="card-actions">
+            <button
+              @click="addToTeam(card)"
+              class="action-btn"
+              :disabled="isInTeam(card.id)"
+            >
+              {{ isInTeam(card.id) ? "✅ In Team" : "➕ Aan Team" }}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Bottom Actions -->
-    <div class="bottom-actions">
-      <button @click="goToTeamBuilder" class="main-btn">
-        ⚽ Team Samenstellen
-      </button>
-      <button @click="goToTableSelect" class="main-btn secondary">
-        🏠 Meer Spelers Verzamelen
-      </button>
+      <!-- Bottom Actions -->
+      <div class="bottom-actions">
+        <button @click="goToTeamBuilder" class="main-btn">
+          ⚽ Team Samenstellen
+        </button>
+        <button @click="goToTableSelect" class="main-btn secondary">
+          🏠 Meer Spelers Verzamelen
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useCollectionStore, useTeamStore } from '../stores';
-import { FootballDataService, type PlayerCard } from '../utils/football-data';
-import PlayerAvatar from '../components/PlayerAvatar.vue';
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { useCollectionStore, useTeamStore } from "../stores";
+import { FootballDataService, type PlayerCard } from "../utils/football-data";
+import PlayerAvatar from "../components/PlayerAvatar.vue";
 
 const router = useRouter();
 const collectionStore = useCollectionStore();
 const teamStore = useTeamStore();
 
-const selectedClub = ref<number | string>('');
-const selectedPosition = ref<string>('');
-const selectedRarity = ref<string>('');
+const selectedClub = ref<number | string>("");
+const selectedPosition = ref<string>("");
+const selectedRarity = ref<string>("");
 
 const clubs = computed(() => FootballDataService.getAllClubs());
 
@@ -152,15 +174,15 @@ const filteredCards = computed(() => {
   let cards = collectionStore.allPlayerCards;
 
   if (selectedClub.value) {
-    cards = cards.filter(card => card.clubId === selectedClub.value);
+    cards = cards.filter((card) => card.clubId === selectedClub.value);
   }
 
   if (selectedPosition.value) {
-    cards = cards.filter(card => card.position === selectedPosition.value);
+    cards = cards.filter((card) => card.position === selectedPosition.value);
   }
 
   if (selectedRarity.value) {
-    cards = cards.filter(card => card.rarity === selectedRarity.value);
+    cards = cards.filter((card) => card.rarity === selectedRarity.value);
   }
 
   return cards.sort((a, b) => b.rating - a.rating);
@@ -172,27 +194,27 @@ onMounted(async () => {
 
 function formatPosition(position: string): string {
   const positions = {
-    'K': 'K',
-    'D': 'V',
-    'M': 'M',
-    'A': 'A'
+    K: "K",
+    D: "V",
+    M: "M",
+    A: "A",
   };
   return positions[position as keyof typeof positions] || position;
 }
 
 function formatRarity(rarity: string): string {
   const rarities = {
-    'common': 'Gewoon',
-    'uncommon': 'Ongewoon',
-    'rare': 'Zeldzaam',
-    'legendary': 'Legendarisch'
+    common: "Gewoon",
+    uncommon: "Ongewoon",
+    rare: "Zeldzaam",
+    legendary: "Legendarisch",
   };
   return rarities[rarity as keyof typeof rarities] || rarity;
 }
 
 function getClubName(clubId: number): string {
   const club = FootballDataService.getClubById(clubId);
-  return club?.shortName || 'Club';
+  return club?.shortName || "Club";
 }
 
 function getRatingStars(rating: number): number {
@@ -201,17 +223,17 @@ function getRatingStars(rating: number): number {
 
 function isInTeam(playerId: number): boolean {
   if (!teamStore.currentTeam) return false;
-  return teamStore.currentTeam.slots.some(slot => slot.playerId === playerId);
+  return teamStore.currentTeam.slots.some((slot) => slot.playerId === playerId);
 }
 
 function addToTeam(card: PlayerCard) {
   if (!teamStore.currentTeam) {
-    teamStore.createNewTeam('Mijn Team');
+    teamStore.createNewTeam("Mijn Team");
   }
 
   // Find available slot for this position
-  const availableSlot = teamStore.currentTeam!.slots.find(slot =>
-    slot.position === card.position && !slot.playerId
+  const availableSlot = teamStore.currentTeam!.slots.find(
+    (slot) => slot.position === card.position && !slot.playerId,
   );
 
   if (availableSlot) {
@@ -220,11 +242,11 @@ function addToTeam(card: PlayerCard) {
 }
 
 function goToTeamBuilder() {
-  router.push({ name: 'VoetbalTeamBuilder' });
+  router.push({ name: "VoetbalTeamBuilder" });
 }
 
 function goToTableSelect() {
-  router.push({ name: 'VoetbalTableSelect' });
+  router.push({ name: "VoetbalTableSelect" });
 }
 </script>
 
@@ -236,7 +258,7 @@ function goToTableSelect() {
 }
 
 .collection-stats-bar {
-  @apply flex justify-center gap-8 bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 border border-white border-opacity-20;
+  @apply flex justify-center gap-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20;
 }
 
 .stat {
@@ -256,7 +278,7 @@ function goToTableSelect() {
 }
 
 .collection-filters {
-  @apply flex flex-wrap gap-4 justify-center bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-6;
+  @apply flex flex-wrap gap-4 justify-center bg-white/5 backdrop-blur-sm rounded-2xl p-6;
 }
 
 .filter-group {
@@ -284,7 +306,7 @@ function goToTableSelect() {
 }
 
 .empty-text {
-  @apply text-white text-opacity-80 mb-8 max-w-md mx-auto;
+  @apply text-white/80 mb-8 max-w-md mx-auto;
 }
 
 .empty-action {

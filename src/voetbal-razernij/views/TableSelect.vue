@@ -216,9 +216,9 @@ function openClubStores() {
 
 function openClubStore(clubId?: number) {
   if (!clubId) return;
-  router.push({ 
-    name: 'VoetbalClubStore', 
-    params: { clubId: clubId.toString() } 
+  router.push({
+    name: 'VoetbalClubStore',
+    params: { clubId: clubId.toString() }
   });
 }
 
