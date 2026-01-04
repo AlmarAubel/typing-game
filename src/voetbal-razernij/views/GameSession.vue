@@ -386,7 +386,7 @@ function startSession() {
 }
 
 function generateNewQuestion() {
-  const factor2 = Math.floor(Math.random() * 12) + 1; // 1-12
+  const factor2 = Math.floor(Math.random() * 10) + 1; // 1-10
   currentQuestion.value = {
     factor1: table.value,
     factor2: factor2,

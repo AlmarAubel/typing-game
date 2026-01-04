@@ -1,6 +1,5 @@
 // Football data transformation and types
 import clubsData from "../assets/clubs.json";
-import playersData from "../assets/players.json";
 import membershipsData from "../assets/memberships.json";
 
 export interface Club {
@@ -140,14 +139,6 @@ class FootballDataService {
   }
 
   // Public API methods
-  static getAllClubs(): Club[] {
-    if (!this.initialized) {
-      console.warn("FootballDataService not initialized yet");
-      return [];
-    }
-    return [...this.clubs];
-  }
-
   static getClubById(id: number): Club | undefined {
     if (!this.initialized) {
       console.warn("FootballDataService not initialized yet");
@@ -165,11 +156,6 @@ class FootballDataService {
     const clubPlayers = this.players.filter(
       (player) => player.clubId === clubId,
     );
-
-    if (clubPlayers.length === 0) {
-      // Debug: show all available club IDs
-      const availableClubIds = [...new Set(this.players.map((p) => p.clubId))];
-    }
 
     return clubPlayers;
   }
