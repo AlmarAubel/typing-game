@@ -351,7 +351,7 @@ function backToStore() {
 @reference "tailwindcss";
 
 .pack-opening {
-  @apply min-h-screen relative;
+  /* @apply min-h-screen relative; */
   overflow-x: hidden;
   overflow-y: auto;
 }
