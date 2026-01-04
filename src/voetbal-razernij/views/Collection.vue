@@ -141,6 +141,42 @@
       </div>
     </div>
 
+    <!-- Club Shops Section -->
+    <div v-if="clubs.length > 0" class="club-shops-section">
+      <h2 class="section-title">🏪 Club Winkels</h2>
+      <p class="section-subtitle">
+        Bezoek de club winkels om nieuwe spelers pakketten te kopen met je
+        verdiende tokens!
+      </p>
+      <div class="club-shops-grid">
+        <div
+          v-for="club in clubs.slice(0, 6)"
+          :key="club.id"
+          class="club-shop-card"
+          @click="openClubStore(club.id)"
+          :style="{ '--club-color': club.primaryColor || '#1976D2' }"
+        >
+          <div class="club-badge">
+            <span class="text-3xl">🏆</span>
+          </div>
+          <div class="club-name">{{ club.shortName }}</div>
+          <div class="club-full-name">{{ club.name }}</div>
+          <div class="shop-action">
+            <span>🏪 Bezoek Winkel</span>
+          </div>
+        </div>
+        <div class="club-shop-card see-all-card" @click="goToTableSelect">
+          <div class="club-badge">
+            <span class="text-3xl">➕</span>
+          </div>
+          <div class="club-name">Alle Clubs</div>
+          <div class="shop-action">
+            <span>🏠 Bekijk Alle Clubs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bottom Actions -->
     <div class="bottom-actions">
       <button @click="goToTeamBuilder" class="main-btn">
@@ -247,6 +283,13 @@ function goToTeamBuilder() {
 
 function goToTableSelect() {
   router.push({ name: "VoetbalTableSelect" });
+}
+
+function openClubStore(clubId: number) {
+  router.push({
+    name: "VoetbalClubStore",
+    params: { clubId: clubId.toString() },
+  });
 }
 </script>
 
@@ -436,5 +479,59 @@ function goToTableSelect() {
 
 .main-btn.secondary {
   @apply from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700;
+}
+
+/* Club Shops Section */
+.club-shops-section {
+  @apply max-w-6xl mx-auto mb-8 p-6 bg-white/5 backdrop-blur-sm rounded-2xl;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  @apply text-3xl font-bold text-white text-center mb-2;
+}
+
+.section-subtitle {
+  @apply text-center text-gray-300 mb-6;
+}
+
+.club-shops-grid {
+  @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4;
+}
+
+.club-shop-card {
+  @apply relative backdrop-blur-sm rounded-xl p-4 transition-all duration-300 hover:scale-105 cursor-pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--club-color, #1976d2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.club-shop-card:hover {
+  box-shadow: 0 8px 32px var(--club-color);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.see-all-card {
+  --club-color: #6b7280;
+}
+
+.club-badge {
+  @apply text-center mb-2;
+}
+
+.club-name {
+  @apply text-center font-bold text-white text-sm mb-1;
+}
+
+.club-full-name {
+  @apply text-center text-xs text-gray-300 mb-3;
+}
+
+.shop-action {
+  @apply text-center;
+}
+
+.shop-action span {
+  @apply text-xs text-white/80 font-medium;
 }
 </style>

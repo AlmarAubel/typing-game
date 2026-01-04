@@ -3,11 +3,16 @@
     <!-- Background -->
     <div class="pack-opening-bg">
       <div class="bg-particles">
-        <div v-for="i in 20" :key="i" class="particle" :style="{
-          '--delay': Math.random() * 2 + 's',
-          '--x': Math.random() * 100 + '%',
-          '--y': Math.random() * 100 + '%'
-        }"></div>
+        <div
+          v-for="i in 20"
+          :key="i"
+          class="particle"
+          :style="{
+            '--delay': Math.random() * 2 + 's',
+            '--x': Math.random() * 100 + '%',
+            '--y': Math.random() * 100 + '%',
+          }"
+        ></div>
       </div>
     </div>
 
@@ -27,7 +32,7 @@
               <span v-if="packType === 'gold'">🥇</span>
             </div>
             <div class="pack-title">{{ packTitle }}</div>
-            <div class="club-name">{{ club?.name || 'Club' }}</div>
+            <div class="club-name">{{ club?.name || "Club" }}</div>
             <div v-if="!isOpening" class="pack-prompt">
               👆 Tik om te openen!
             </div>
@@ -35,7 +40,14 @@
           <div class="pack-face pack-back">
             <div class="pack-contents-preview">
               <div class="cards-flying">
-                <div v-for="i in cardCount" :key="i" class="card-mini" :style="{ '--delay': i * 0.1 + 's' }">🎴</div>
+                <div
+                  v-for="i in cardCount"
+                  :key="i"
+                  class="card-mini"
+                  :style="{ '--delay': i * 0.1 + 's' }"
+                >
+                  🎴
+                </div>
               </div>
             </div>
           </div>
@@ -45,10 +57,10 @@
       <!-- Opening Instructions -->
       <div v-if="!isOpening" class="opening-instructions">
         <h2 class="text-3xl font-bold text-white mb-4">🎁 {{ packTitle }}</h2>
-        <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.9);">
-          Bevat {{ cardCount }} spelers van {{ club?.name || 'de club' }}
+        <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.9)">
+          Bevat {{ cardCount }} spelers van {{ club?.name || "de club" }}
         </p>
-        <p style="color: rgba(255, 255, 255, 0.8);">
+        <p style="color: rgba(255, 255, 255, 0.8)">
           Tik op het pakket om het te openen en je nieuwe spelers te ontdekken!
         </p>
       </div>
@@ -72,7 +84,9 @@
     <div v-if="showCards" class="card-results">
       <div class="results-header mb-8">
         <h2 class="text-4xl font-bold text-white mb-2">🎉 Nieuwe Spelers!</h2>
-        <p class="text-xl" style="color: rgba(255, 255, 255, 0.9);">{{ club?.name || 'Club' }} • {{ packTitle }}</p>
+        <p class="text-xl" style="color: rgba(255, 255, 255, 0.9)">
+          {{ club?.name || "Club" }} • {{ packTitle }}
+        </p>
       </div>
 
       <div class="cards-grid">
@@ -90,8 +104,14 @@
 
             <!-- Player Image Area -->
             <div class="player-image-area">
-              <div class="position-badge">{{ formatPosition(card.player.position) }}</div>
-              <PlayerAvatar :player="card.player" size="large" :showShirtNumber="true" />
+              <div class="position-badge">
+                {{ formatPosition(card.player.position) }}
+              </div>
+              <PlayerAvatar
+                :player="card.player"
+                size="large"
+                :showShirtNumber="true"
+              />
             </div>
 
             <!-- Player Info -->
@@ -100,14 +120,21 @@
               <div class="player-rating">
                 <span class="rating-value">{{ card.player.rating }}</span>
                 <div class="rating-stars">
-                  <span v-for="star in getRatingStars(card.player.rating)" :key="star" class="star">⭐</span>
+                  <span
+                    v-for="star in getRatingStars(card.player.rating)"
+                    :key="star"
+                    class="star"
+                    >⭐</span
+                  >
                 </div>
               </div>
             </div>
 
             <!-- Rarity Banner -->
             <div class="rarity-banner" :class="card.player.rarity">
-              <span class="rarity-text">{{ formatRarity(card.player.rarity) }}</span>
+              <span class="rarity-text">{{
+                formatRarity(card.player.rarity)
+              }}</span>
               <span class="rarity-icon">
                 <span v-if="card.player.rarity === 'common'">⚪</span>
                 <span v-if="card.player.rarity === 'uncommon'">🟢</span>
@@ -146,7 +173,11 @@
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button @click="openAnotherPack" class="action-btn primary" :disabled="!canAffordAnother">
+          <button
+            @click="openAnotherPack"
+            class="action-btn primary"
+            :disabled="!canAffordAnother"
+          >
             🎁 Nog een pakket ({{ packCost }} 🎟️)
           </button>
           <button @click="viewCollection" class="action-btn secondary">
@@ -165,47 +196,86 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { useClubProgressStore, useCollectionStore } from '../stores';
-import { FootballDataService, type Player, type PlayerCard } from '../utils/football-data';
-import { BALANCE_CONFIG } from '../utils/balance-config';
-import PlayerAvatar from '../components/PlayerAvatar.vue';
+import { ref, computed, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useClubProgressStore, useCollectionStore } from "../stores";
+import {
+  FootballDataService,
+  type Player,
+  type PlayerCard,
+} from "../utils/football-data";
+import { BALANCE_CONFIG } from "../utils/balance-config";
+import PlayerAvatar from "../components/PlayerAvatar.vue";
 
 const route = useRoute();
 const router = useRouter();
 const clubProgressStore = useClubProgressStore();
 const collectionStore = useCollectionStore();
 
-// Props from route
-const clubId = ref<number>(parseInt(route.params.clubId as string));
-const packType = ref<'bronze' | 'silver' | 'gold'>(route.params.packType as 'bronze' | 'silver' | 'gold');
+// Props from route - with validation
+const validateRouteParams = () => {
+  const paramClubId = route.params.clubId as string;
+  const paramPackType = route.params.packType as string;
+
+  const parsedClubId = parseInt(paramClubId);
+  if (isNaN(parsedClubId) || parsedClubId <= 0) {
+    console.error("Invalid clubId:", paramClubId);
+    router.push({ name: "VoetbalTableSelect" });
+    return { clubId: null, packType: null };
+  }
+
+  if (!["bronze", "silver", "gold"].includes(paramPackType)) {
+    console.error("Invalid packType:", paramPackType);
+    router.push({ name: "VoetbalTableSelect" });
+    return { clubId: null, packType: null };
+  }
+
+  return {
+    clubId: parsedClubId,
+    packType: paramPackType as "bronze" | "silver" | "gold",
+  };
+};
+
+const routeParams = validateRouteParams();
+const clubId = ref<number>(routeParams.clubId!);
+const packType = ref<"bronze" | "silver" | "gold">(routeParams.packType!);
 
 // State
 const isOpening = ref(false);
 const showCards = ref(false);
 const isComplete = ref(false);
-const obtainedCards = ref<Array<{ player: Player; isDuplicate: boolean; copyNumber: number }>>([]);
+const obtainedCards = ref<
+  Array<{ player: Player; isDuplicate: boolean; copyNumber: number }>
+>([]);
 
 // Computed
 const club = computed(() => FootballDataService.getClubById(clubId.value));
-const clubProgress = computed(() => clubProgressStore.getClubProgress(clubId.value));
+const clubProgress = computed(() =>
+  clubProgressStore.getClubProgress(clubId.value),
+);
 
 const packTitle = computed(() => {
   const titles = {
-    bronze: '🥉 Bronze Pack',
-    silver: '🥈 Silver Pack',
-    gold: '🥇 Gold Pack'
+    bronze: "🥉 Bronze Pack",
+    silver: "🥈 Silver Pack",
+    gold: "🥇 Gold Pack",
   };
   return titles[packType.value];
 });
 
-const cardCount = computed(() => BALANCE_CONFIG.packs[packType.value].cardCount);
+const cardCount = computed(
+  () => BALANCE_CONFIG.packs[packType.value].cardCount,
+);
 const packCost = computed(() => BALANCE_CONFIG.packs[packType.value].cost);
 
-const duplicateCount = computed(() => obtainedCards.value.filter(card => card.isDuplicate).length);
-const rareOrBetterCount = computed(() =>
-  obtainedCards.value.filter(card => ['rare', 'legendary'].includes(card.player.rarity)).length
+const duplicateCount = computed(
+  () => obtainedCards.value.filter((card) => card.isDuplicate).length,
+);
+const rareOrBetterCount = computed(
+  () =>
+    obtainedCards.value.filter((card) =>
+      ["rare", "legendary"].includes(card.player.rarity),
+    ).length,
 );
 
 const canAffordAnother = computed(() => {
@@ -214,11 +284,21 @@ const canAffordAnother = computed(() => {
 
 // Methods
 onMounted(() => {
-  initializePackOpening();
+  // Only initialize if we have valid route parameters
+  if (routeParams.clubId && routeParams.packType) {
+    initializePackOpening();
+  }
 });
 
 async function initializePackOpening() {
   await FootballDataService.initialize();
+
+  // Additional safety check: verify club exists
+  const clubData = FootballDataService.getClubById(clubId.value);
+  if (!clubData) {
+    console.error("Club not found:", clubId.value);
+    router.push({ name: "VoetbalTableSelect" });
+  }
 }
 
 function startOpening() {
@@ -226,23 +306,27 @@ function startOpening() {
 
   isOpening.value = true;
 
-  // Start pack opening animation
+  // Start pack opening animation - show cards after pack disappears
   setTimeout(() => {
     showCards.value = true;
     try {
       generatePackContents();
     } catch (error) {
-      console.error('Failed to generate pack contents:', error);
+      console.error("Failed to generate pack contents:", error);
       // Reset state on error
       isOpening.value = false;
       showCards.value = false;
     }
-  }, 3000);
+  }, 2500); // Reduced from 3000ms to match animation timing
 }
 
 function generatePackContents() {
   const clubPlayers = FootballDataService.getPlayersByClub(clubId.value);
-  const cards: Array<{ player: Player; isDuplicate: boolean; copyNumber: number }> = [];
+  const cards: Array<{
+    player: Player;
+    isDuplicate: boolean;
+    copyNumber: number;
+  }> = [];
 
   // Safety check: ensure we have players for this club
   if (!clubPlayers || clubPlayers.length === 0) {
@@ -252,7 +336,7 @@ function generatePackContents() {
 
   for (let i = 0; i < cardCount.value; i++) {
     const rarity = generateRarity();
-    const availablePlayers = clubPlayers.filter(p => p.rarity === rarity);
+    const availablePlayers = clubPlayers.filter((p) => p.rarity === rarity);
 
     let player: Player;
 
@@ -260,12 +344,13 @@ function generatePackContents() {
       // Fallback to any rarity if none available
       player = clubPlayers[Math.floor(Math.random() * clubPlayers.length)];
     } else {
-      player = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
+      player =
+        availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
     }
 
     // Safety check: ensure player is valid
     if (!player || !player.id) {
-      console.error('Generated invalid player:', player);
+      console.error("Generated invalid player:", player);
       continue;
     }
 
@@ -273,7 +358,7 @@ function generatePackContents() {
     cards.push({
       player,
       isDuplicate: cardResult.copies > 1,
-      copyNumber: cardResult.copies
+      copyNumber: cardResult.copies,
     });
   }
 
@@ -293,7 +378,7 @@ function generateRarity(): string {
     }
   }
 
-  return 'common'; // Fallback
+  return "common"; // Fallback
 }
 
 function getRatingStars(rating: number): number {
@@ -302,47 +387,55 @@ function getRatingStars(rating: number): number {
 
 function formatPosition(position: string): string {
   const positions = {
-    'K': 'Keeper',
-    'D': 'Verdediger',
-    'M': 'Middenvelder',
-    'A': 'Aanvaller'
+    K: "Keeper",
+    D: "Verdediger",
+    M: "Middenvelder",
+    A: "Aanvaller",
   };
   return positions[position as keyof typeof positions] || position;
 }
 
 function formatRarity(rarity: string): string {
   const rarities = {
-    'common': 'Gewoon',
-    'uncommon': 'Ongewoon',
-    'rare': 'Zeldzaam',
-    'legendary': 'Legendarisch'
+    common: "Gewoon",
+    uncommon: "Ongewoon",
+    rare: "Zeldzaam",
+    legendary: "Legendarisch",
   };
   return rarities[rarity as keyof typeof rarities] || rarity;
 }
 
 function openAnotherPack() {
-  if (!canAffordAnother.value) return;
+  if (!canAffordAnother.value || !clubId.value) return;
 
   const success = clubProgressStore.spendTokens(clubId.value, packCost.value);
   if (success) {
     // Go back to store to open another pack
     router.push({
-      name: 'VoetbalClubStore',
-      params: { clubId: clubId.value.toString() }
+      name: "VoetbalClubStore",
+      params: { clubId: clubId.value.toString() },
     });
   }
 }
 
 function viewCollection() {
-  router.push({ name: 'VoetbalCollection' });
+  router.push({ name: "VoetbalCollection" });
 }
 
 function buildTeam() {
-  router.push({ name: 'VoetbalTeamBuilder' });
+  router.push({ name: "VoetbalTeamBuilder" });
 }
 
 function backToStore() {
-  router.push({ name: 'VoetbalClubStore', params: { clubId: clubId.value.toString() } });
+  if (!clubId.value) {
+    // Fallback to table selection if no club
+    router.push({ name: "VoetbalTableSelect" });
+    return;
+  }
+  router.push({
+    name: "VoetbalClubStore",
+    params: { clubId: clubId.value.toString() },
+  });
 }
 </script>
 
@@ -350,13 +443,21 @@ function backToStore() {
 @reference "tailwindcss";
 
 .pack-opening {
-  @apply min-h-screen relative overflow-hidden;
+  @apply min-h-screen relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .pack-opening-bg {
   @apply absolute inset-0;
-  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.2), transparent),
-              linear-gradient(135deg, #1e293b, #0f172a);
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(139, 92, 246, 0.3),
+      rgba(59, 130, 246, 0.2),
+      transparent
+    ),
+    linear-gradient(135deg, #1e293b, #0f172a);
 }
 
 .bg-particles {
@@ -381,9 +482,10 @@ function backToStore() {
 }
 
 .pack-3d {
-  @apply relative w-64 h-80 cursor-pointer;
+  @apply relative w-64 h-80 mx-auto cursor-pointer;
   transform-style: preserve-3d;
   transition: transform 0.6s ease-in-out;
+  aspect-ratio: 3/4;
 }
 
 .pack-3d:hover {
@@ -391,7 +493,9 @@ function backToStore() {
 }
 
 .pack-3d.pack-opening {
-  animation: pack-shake 0.5s ease-in-out, pack-explode 0.5s ease-in-out 2.5s;
+  animation:
+    pack-shake 0.5s ease-in-out,
+    pack-explode 0.8s ease-in-out 1.5s forwards;
 }
 
 .pack-face {
@@ -401,7 +505,11 @@ function backToStore() {
 }
 
 .pack-front {
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
+  );
   border: 4px solid #gold;
 }
 
@@ -476,7 +584,12 @@ function backToStore() {
 }
 
 .card-results {
-  @apply container mx-auto px-4 py-8;
+  @apply container mx-auto px-4 py-8 relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 10;
 }
 
 .results-header {
@@ -493,8 +606,8 @@ function backToStore() {
   animation-delay: var(--delay);
   opacity: 0;
   transform: translateY(50px) rotateX(15deg);
-  width: 200px;
-  height: 280px;
+  width: 220px;
+  height: 330px;
   transition: none;
 }
 
@@ -545,7 +658,7 @@ function backToStore() {
 }
 
 .player-image-area {
-  @apply relative flex-1 flex items-center justify-center mb-4;
+  @apply relative flex-1 flex items-center justify-center;
 }
 
 .position-badge {
@@ -554,10 +667,11 @@ function backToStore() {
 
 .player-info {
   @apply text-center;
+  margin-bottom: 16px;
 }
 
 .player-name {
-  @apply text-xl font-bold mb-3 text-gray-800;
+  @apply text-xl font-bold  text-gray-800;
 }
 
 .player-rating {
@@ -597,11 +711,18 @@ function backToStore() {
 }
 
 .duplicate-badge {
-  @apply absolute top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold;
+  @apply absolute top-1 right-1 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .results-summary {
-  @apply text-center;
+  @apply text-center pb-8 relative;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 2rem;
 }
 
 .summary-stats {
@@ -626,11 +747,13 @@ function backToStore() {
 }
 
 .action-buttons {
-  @apply flex flex-wrap gap-4 justify-center;
+  @apply flex flex-wrap gap-4 justify-center mt-8 mb-8 relative;
+  z-index: 20;
 }
 
 .action-btn {
-  @apply px-6 py-3 font-bold rounded-xl transition-all duration-300 transform hover:scale-105;
+  @apply px-6 py-3 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 min-w-40 text-center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .action-btn.primary {
@@ -652,32 +775,71 @@ function backToStore() {
 
 /* Animations */
 @keyframes particle-float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
 }
 
 @keyframes pack-shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px) rotateZ(-5deg); }
-  75% { transform: translateX(10px) rotateZ(5deg); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px) rotateZ(-5deg);
+  }
+  75% {
+    transform: translateX(10px) rotateZ(5deg);
+  }
 }
 
 @keyframes pack-explode {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2) rotateY(180deg); }
-  100% { transform: scale(0) rotateY(360deg); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1) rotateY(20deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8) rotateY(0deg);
+    opacity: 0;
+  }
 }
 
 @keyframes card-fly {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(15deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-20px); }
-  60% { transform: translateY(-10px); }
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes card-appear {
@@ -688,12 +850,21 @@ function backToStore() {
 }
 
 @keyframes legendary-glow {
-  from { box-shadow: 0 20px 60px rgba(251, 191, 36, 0.6); }
-  to { box-shadow: 0 25px 80px rgba(251, 191, 36, 0.9); }
+  from {
+    box-shadow: 0 20px 60px rgba(251, 191, 36, 0.6);
+  }
+  to {
+    box-shadow: 0 25px 80px rgba(251, 191, 36, 0.9);
+  }
 }
 
 @keyframes legendary-pulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 </style>

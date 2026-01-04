@@ -35,18 +35,33 @@
         >
           ⚽ Team
         </RouterLink>
+
+        <RouterLink
+          to="/voetbal-razernij/collection"
+          class="nav-link shop-link"
+          active-class="nav-link-active"
+        >
+          🏪 Shop
+        </RouterLink>
       </div>
 
       <!-- Quick Stats -->
       <div class="ml-auto flex items-center gap-4">
         <!-- Coins -->
-        <div class="flex items-center gap-1 bg-yellow-500/20 px-3 py-1 rounded-full">
+        <div
+          class="flex items-center gap-1 bg-yellow-500/20 px-3 py-1 rounded-full"
+        >
           <span class="text-lg">🪙</span>
-          <span class="font-bold text-yellow-200">{{ gameStore.totalCoins }}</span>
+          <span class="font-bold text-yellow-200">{{
+            gameStore.totalCoins
+          }}</span>
         </div>
 
         <!-- Active Session Indicator -->
-        <div v-if="gameStore.isSessionActive" class="flex items-center gap-2 bg-green-500/20 px-3 py-1 rounded-full">
+        <div
+          v-if="gameStore.isSessionActive"
+          class="flex items-center gap-2 bg-green-500/20 px-3 py-1 rounded-full"
+        >
           <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           <span class="text-sm text-green-200 font-medium">
             ⏱️ {{ formatTime(gameStore.sessionTimeRemaining) }}
@@ -58,14 +73,14 @@
 </template>
 
 <script setup lang="ts">
-import { useVoetbalGameStore } from '../stores';
+import { useVoetbalGameStore } from "../stores";
 
 const gameStore = useVoetbalGameStore();
 
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 </script>
 
@@ -86,6 +101,25 @@ function formatTime(seconds: number): string {
 .nav-link-active {
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shop-link {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.2),
+    rgba(34, 197, 94, 0.1)
+  );
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.shop-link:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.3),
+    rgba(34, 197, 94, 0.2)
+  );
 }
 </style>

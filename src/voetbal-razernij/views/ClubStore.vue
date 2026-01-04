@@ -7,7 +7,14 @@
         :style="{ '--club-color': club?.primaryColor || '#1976D2' }"
       >
         <div class="club-badge-large">
-          <span class="text-6xl">🏆</span>
+          <img
+            v-if="club?.id"
+            :src="getClubLogoUrl(club.id)"
+            :alt="`${club.name} logo`"
+            class="club-logo"
+            @error="onLogoError"
+          />
+          <span class="text-6xl logo-fallback">🏆</span>
         </div>
         <div class="club-info">
           <h1 class="club-name">{{ club?.name || "Eredivisie Club" }}</h1>
@@ -511,6 +518,23 @@ function unlockAllPacks() {
   console.log(`Unlocked all packs for club ${clubId.value}`);
 }
 
+// Club logo functions
+function getClubLogoUrl(clubId: number): string {
+  return `https://cdn.soccerwiki.org/images/logos/clubs/${clubId}.png`;
+}
+
+function onLogoError(event: Event) {
+  const img = event.target as HTMLImageElement;
+  // Hide the broken image and show fallback
+  img.style.display = "none";
+  const fallback = img.parentElement?.querySelector(
+    ".logo-fallback",
+  ) as HTMLElement;
+  if (fallback) {
+    fallback.style.display = "block";
+  }
+}
+
 // Keyboard shortcuts
 function handleKeyDown(event: KeyboardEvent) {
   if (event.ctrlKey && event.shiftKey && event.key === "D") {
@@ -545,6 +569,20 @@ onUnmounted(() => {
   @apply w-20 h-20 rounded-full flex items-center justify-center;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.club-logo {
+  @apply w-full h-full object-contain rounded-full;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px;
+}
+
+.logo-fallback {
+  display: none;
+}
+
+.club-badge-large:has(.club-logo[style*="display: none"]) .logo-fallback {
+  display: block;
 }
 
 .club-name {
