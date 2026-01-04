@@ -2,6 +2,7 @@ import TableSelect from "../views/TableSelect.vue";
 import GameView from "../views/GameViewer.vue";
 import TableSelectV2 from "../views/TableSelectV2.vue";
 import GameViewerV2 from "../components/GameViewerV2.vue";
+import type { RouteLocationNormalizedGeneric } from "vue-router";
 
 export const routes = [
   {
@@ -27,7 +28,7 @@ export const routes = [
     name: "tafel-game-v2",
     component: GameViewerV2,
     meta: {
-      title: (route: any) => `Tafel van ${route.params.table}`,
+      title: (route: RouteLocationNormalizedGeneric) => `Tafel van ${route.params.table}`,
     },
   },
 ];

@@ -53,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import type { Player } from "../utils/football-data";
 import PlayerAvatar from "./PlayerAvatar.vue";
 
@@ -64,7 +63,7 @@ interface Props {
   animationDelay: string;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 function getRatingStars(rating: number): number {
   return Math.min(5, Math.ceil(rating / 20));

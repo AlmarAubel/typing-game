@@ -348,7 +348,7 @@ function fallbackParseSquad(
   console.log(`Found ${allPlayerLinks.length} total player links on page`);
 
   // Filter out links that are clearly in the "Verhuurd" section by checking surrounding text
-  const validPlayerLinks: any[] = [];
+  const validPlayerLinks: { href: string; text: string }[] = [];
   allPlayerLinks.each((_, linkEl) => {
     const link = $(linkEl);
     const href = link.attr("href");

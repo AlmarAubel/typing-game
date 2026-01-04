@@ -53,7 +53,7 @@ export async function getPokemon() {
     id: number;
     name: string;
     pokemon_v2_pokemonspecy: { capture_rate: number };
-    pokemon_v2_pokemonsprites: any;
+    pokemon_v2_pokemonsprites: { sprites: string };
   }[] = pokemonsRaw;
   // await request("https://beta.pokeapi.co/graphql/v1beta", query).then(
   //   (data: any) => data.pokemon_v2_pokemon

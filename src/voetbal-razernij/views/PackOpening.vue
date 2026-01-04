@@ -123,10 +123,8 @@ import { useClubProgressStore, useCollectionStore } from "../stores";
 import {
   FootballDataService,
   type Player,
-  type PlayerCard,
 } from "../utils/football-data";
 import { BALANCE_CONFIG } from "../utils/balance-config";
-import PlayerAvatar from "../components/PlayerAvatar.vue";
 import PlayerCardComponent from "../components/PlayerCard.vue";
 import PackResults from "../components/PackResults.vue";
 

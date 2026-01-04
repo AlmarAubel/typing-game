@@ -45,6 +45,23 @@ export interface TeamSlot {
   slotNumber: number;
 }
 
+// Raw data types from JSON files
+interface RawClub {
+  clubId: number;
+  name: string;
+  sourceUrl: string;
+}
+
+interface RawMembership {
+  playerId: number;
+  playerName: string;
+  clubId: number;
+  position: string;
+  rating: number;
+  shirtNumber: number;
+  sourceUrl?: string;
+}
+
 // Transform raw scraped data into game-ready structures
 class FootballDataService {
   private static clubs: Club[] = [];
@@ -72,7 +89,7 @@ class FootballDataService {
     }
   }
 
-  private static transformClubs(rawClubs: any[]): Club[] {
+  private static transformClubs(rawClubs: RawClub[]): Club[] {
     const clubColors: Record<
       number,
       { primary: string; secondary: string; short: string }
@@ -100,7 +117,7 @@ class FootballDataService {
     }));
   }
 
-  private static transformPlayers(rawMemberships: any[]): Player[] {
+  private static transformPlayers(rawMemberships: RawMembership[]): Player[] {
     return rawMemberships.map((membership) => {
       // Generate image URL from sourceUrl if available
       let imageUrl: string | undefined;

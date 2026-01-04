@@ -1,4 +1,4 @@
-import { useSharedPokemonStore } from "../stores/sharedPokemonStore";
+import { useSharedPokemonStore, type Pokemon } from "../stores/sharedPokemonStore";
 
 /**
  * Migrates data from old pokemon stores to the new shared store
@@ -43,7 +43,7 @@ export function migrateToSharedStore() {
         }
 
         if (parsed.obtainedPokemons && Array.isArray(parsed.obtainedPokemons)) {
-          parsed.obtainedPokemons.forEach((pokemon: any) => {
+          parsed.obtainedPokemons.forEach((pokemon: Pokemon) => {
             // Add cry if not present
             if (!pokemon.cry && pokemon.id) {
               pokemon.cry = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokemon.id}.ogg`;
@@ -65,7 +65,7 @@ export function migrateToSharedStore() {
         console.log("Migrating tafel razernij data:", parsed);
 
         if (Array.isArray(parsed)) {
-          parsed.forEach((pokemon: any) => {
+          parsed.forEach((pokemon: Pokemon) => {
             // Add cry if not present
             if (!pokemon.cry && pokemon.id) {
               pokemon.cry = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokemon.id}.ogg`;
