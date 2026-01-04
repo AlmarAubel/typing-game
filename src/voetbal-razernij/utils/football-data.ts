@@ -124,10 +124,27 @@ class FootballDataService {
   }
 
   private static normalizePosition(position?: string): PlayerPosition {
-    if (position?.includes("K")) return "K";
-    if (position?.includes("D") || position?.includes("B")) return "D";
-    if (position?.includes("M")) return "M";
-    if (position?.includes("A")) return "A";
+    if (!position) return "M"; // Default to midfielder
+
+    // Check for goalkeeper first
+    if (position.includes("K")) return "K";
+
+    // Check for defenders (V = Verdediger in Dutch)
+    // Important: Check for pure defenders before VM (Verdedigende Midfielder)
+    if (position.includes("V(") || position.startsWith("V")) {
+      // V(C), V(L), V(R), V(LC), V(RC), V(RLC) are defenders
+      // But VM (Verdedigende Midfielder) should be midfielder
+      if (!position.includes("VM")) return "D";
+    }
+
+    // Check for defenders with English notation
+    if (position.includes("D") || position.includes("B")) return "D";
+    if (position.startsWith("M")) return "M";
+    // Check for attackers before midfielders (since AM contains both A and M)
+    if (position.startsWith("A(") || position.startsWith("A,")) return "A";
+    // Check for remaining attackers
+    if (position.includes("A")) return "A";
+
     return "M"; // Default to midfielder
   }
 
@@ -186,14 +203,6 @@ class FootballDataService {
 
   static isInitialized(): boolean {
     return this.initialized;
-  }
-
-  private static ensureInitialized(): void {
-    if (!this.initialized) {
-      throw new Error(
-        "FootballDataService not initialized. Call initialize() first.",
-      );
-    }
   }
 }
 
