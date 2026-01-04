@@ -90,107 +90,28 @@
       </div>
 
       <div class="cards-grid">
-        <div
+        <PlayerCardComponent
           v-for="(card, index) in obtainedCards"
           :key="`card-${card.player.id}-${index}`"
-          class="player-card"
-          :class="[card.player.rarity, { 'card-duplicate': card.isDuplicate }]"
-          :style="{ '--delay': index * 0.1 + 's' }"
-        >
-          <!-- Card Front -->
-          <div class="card-front">
-            <!-- Rarity Glow -->
-            <div class="rarity-glow" :class="card.player.rarity"></div>
-
-            <!-- Player Image Area -->
-            <div class="player-image-area">
-              <div class="position-badge">
-                {{ formatPosition(card.player.position) }}
-              </div>
-              <PlayerAvatar
-                :player="card.player"
-                size="large"
-                :showShirtNumber="true"
-              />
-            </div>
-
-            <!-- Player Info -->
-            <div class="player-info">
-              <h3 class="player-name">{{ card.player.name }}</h3>
-              <div class="player-rating">
-                <span class="rating-value">{{ card.player.rating }}</span>
-                <div class="rating-stars">
-                  <span
-                    v-for="star in getRatingStars(card.player.rating)"
-                    :key="star"
-                    class="star"
-                    >⭐</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Rarity Banner -->
-            <div class="rarity-banner" :class="card.player.rarity">
-              <span class="rarity-text">{{
-                formatRarity(card.player.rarity)
-              }}</span>
-              <span class="rarity-icon">
-                <span v-if="card.player.rarity === 'common'">⚪</span>
-                <span v-if="card.player.rarity === 'uncommon'">🟢</span>
-                <span v-if="card.player.rarity === 'rare'">🔵</span>
-                <span v-if="card.player.rarity === 'legendary'">🟡</span>
-              </span>
-            </div>
-
-            <!-- Duplicate Indicator -->
-            <div v-if="card.isDuplicate" class="duplicate-badge">
-              <span>🔄 Kopie #{{ card.copyNumber }}</span>
-            </div>
-          </div>
-        </div>
+          :player="card.player"
+          :is-duplicate="card.isDuplicate"
+          :copy-number="card.copyNumber"
+          :animation-delay="`${index * 0.1}s`"
+        />
       </div>
 
       <!-- Results Summary -->
-      <div class="results-summary">
-        <div class="summary-stats">
-          <div class="summary-stat">
-            <div class="stat-icon">🎴</div>
-            <div class="stat-value">{{ obtainedCards.length }}</div>
-            <div class="stat-label">Nieuwe kaarten</div>
-          </div>
-          <div class="summary-stat">
-            <div class="stat-icon">🔄</div>
-            <div class="stat-value">{{ duplicateCount }}</div>
-            <div class="stat-label">Duplicaten</div>
-          </div>
-          <div class="summary-stat">
-            <div class="stat-icon">💎</div>
-            <div class="stat-value">{{ rareOrBetterCount }}</div>
-            <div class="stat-label">Zeldzaam+</div>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="action-buttons">
-          <button
-            @click="openAnotherPack"
-            class="action-btn primary"
-            :disabled="!canAffordAnother"
-          >
-            🎁 Nog een pakket ({{ packCost }} 🎟️)
-          </button>
-          <button @click="viewCollection" class="action-btn secondary">
-            📚 Bekijk Collectie
-          </button>
-          <button @click="buildTeam" class="action-btn secondary">
-            ⚽ Team Samenstellen
-          </button>
-          <button @click="backToStore" class="action-btn tertiary">
-            🏪 Terug naar Winkel
-          </button>
-        </div>
-      </div>
+      <PackResults
+        :total-cards="obtainedCards.length"
+        :duplicate-count="duplicateCount"
+        :rare-or-better-count="rareOrBetterCount"
+        :can-afford-another="canAffordAnother"
+        :pack-cost="packCost"
+        @open-another="openAnotherPack"
+        @view-collection="viewCollection"
+        @build-team="buildTeam"
+        @back-to-store="backToStore"
+      />
     </div>
   </div>
 </template>
@@ -206,6 +127,8 @@ import {
 } from "../utils/football-data";
 import { BALANCE_CONFIG } from "../utils/balance-config";
 import PlayerAvatar from "../components/PlayerAvatar.vue";
+import PlayerCardComponent from "../components/PlayerCard.vue";
+import PackResults from "../components/PackResults.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -390,30 +313,6 @@ function generateRarity(): string {
   return "common"; // Fallback
 }
 
-function getRatingStars(rating: number): number {
-  return Math.min(5, Math.ceil(rating / 20));
-}
-
-function formatPosition(position: string): string {
-  const positions = {
-    K: "Keeper",
-    D: "Verdediger",
-    M: "Middenvelder",
-    A: "Aanvaller",
-  };
-  return positions[position as keyof typeof positions] || position;
-}
-
-function formatRarity(rarity: string): string {
-  const rarities = {
-    common: "Gewoon",
-    uncommon: "Ongewoon",
-    rare: "Zeldzaam",
-    legendary: "Legendarisch",
-  };
-  return rarities[rarity as keyof typeof rarities] || rarity;
-}
-
 function openAnotherPack() {
   if (!canAffordAnother.value || !clubId.value) return;
 
@@ -497,7 +396,7 @@ function backToStore() {
   aspect-ratio: 3/4;
 }
 
-.pack-3d:hover {
+.pack-3d:hover:not(.pack-opening) {
   transform: rotateY(10deg) rotateX(5deg) scale(1.05);
 }
 
@@ -819,11 +718,11 @@ function backToStore() {
     opacity: 1;
   }
   50% {
-    transform: scale(1.1) rotateY(20deg);
-    opacity: 0.8;
+    transform: scale(1) rotateY(10deg);
+    opacity: 0.6;
   }
   100% {
-    transform: scale(0.8) rotateY(0deg);
+    transform: scale(0.95) rotateY(0deg);
     opacity: 0;
   }
 }
@@ -853,36 +752,6 @@ function backToStore() {
   }
   60% {
     transform: translateY(-10px);
-  }
-}
-
-@keyframes card-appear {
-  from {
-    opacity: 0;
-    transform: translateY(30px) rotateX(10deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-  }
-}
-
-@keyframes legendary-glow {
-  from {
-    box-shadow: 0 20px 60px rgba(251, 191, 36, 0.6);
-  }
-  to {
-    box-shadow: 0 25px 80px rgba(251, 191, 36, 0.9);
-  }
-}
-
-@keyframes legendary-pulse {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.4;
   }
 }
 </style>

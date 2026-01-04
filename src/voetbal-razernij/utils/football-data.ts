@@ -60,17 +60,11 @@ class FootballDataService {
       const rawClubs = clubsData;
       const rawMemberships = membershipsData;
 
-      console.log("Loading football data...");
-      console.log(`Raw clubs: ${rawClubs.length}`);
-      console.log(`Raw memberships: ${rawMemberships.length}`);
-
       // Transform clubs with styling
       this.clubs = this.transformClubs(rawClubs);
-      console.log(`Transformed clubs: ${this.clubs.length}`);
 
       // Transform players with rarity and position mapping
       this.players = this.transformPlayers(rawMemberships);
-      console.log(`Transformed players: ${this.players.length}`);
 
       this.initialized = true;
     } catch (error) {
@@ -139,9 +133,9 @@ class FootballDataService {
   }
 
   private static calculateRarity(rating: number): PlayerRarity {
-    if (rating >= 80) return "legendary";
-    if (rating >= 60) return "rare";
-    if (rating >= 40) return "uncommon";
+    if (rating >= 90) return "legendary";
+    if (rating >= 85) return "rare";
+    if (rating >= 80) return "uncommon";
     return "common";
   }
 
@@ -167,18 +161,14 @@ class FootballDataService {
       console.warn("FootballDataService not initialized yet");
       return [];
     }
-    console.log(`Looking for players for club ${clubId}`);
-    console.log(`Total players loaded: ${this.players.length}`);
 
     const clubPlayers = this.players.filter(
       (player) => player.clubId === clubId,
     );
-    console.log(`Found ${clubPlayers.length} players for club ${clubId}`);
 
     if (clubPlayers.length === 0) {
       // Debug: show all available club IDs
       const availableClubIds = [...new Set(this.players.map((p) => p.clubId))];
-      console.log("Available club IDs:", availableClubIds);
     }
 
     return clubPlayers;
