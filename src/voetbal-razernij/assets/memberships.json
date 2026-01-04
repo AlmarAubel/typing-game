@@ -1,0 +1,322 @@
+[
+  {
+    "clubId": 180,
+    "playerId": 3102,
+    "playerName": "Remko Pasveer",
+    "position": "K",
+    "rating": 42,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 180,
+    "playerId": 51625,
+    "playerName": "Steven Berghuis",
+    "position": "M(C),AM(RC)",
+    "rating": 34,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 180,
+    "playerId": 54268,
+    "playerName": "Davy Klaassen",
+    "position": "M,AM(C)",
+    "rating": 32,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 180,
+    "playerId": 61859,
+    "playerName": "Wout Weghorst",
+    "position": "A(C)",
+    "rating": 33,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 180,
+    "playerId": 71591,
+    "playerName": "Branco",
+    "position": "M",
+    "rating": 30,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 180,
+    "playerId": 82386,
+    "playerName": "Kasper Dolberg",
+    "position": "A(C)",
+    "rating": 87,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 180,
+    "playerId": 85867,
+    "playerName": "Takehiro Tomiyasu",
+    "position": "V(RLC)",
+    "rating": 32,
+    "shirtNumber": 32
+  },
+  {
+    "clubId": 180,
+    "playerId": 85887,
+    "playerName": "Ko Itakura",
+    "position": "V,VM(C)",
+    "rating": 88,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 180,
+    "playerId": 89698,
+    "playerName": "Owen Wijndal",
+    "position": "M(L)",
+    "rating": 83,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 180,
+    "playerId": 100917,
+    "playerName": "Kenneth Taylor",
+    "position": "M",
+    "rating": 88,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 180,
+    "playerId": 102693,
+    "playerName": "Josip",
+    "position": "V(C)",
+    "rating": 37,
+    "shirtNumber": 37
+  },
+  {
+    "clubId": 180,
+    "playerId": 102753,
+    "playerName": "Oliver Edvardsen",
+    "position": "A(RLC)",
+    "rating": 84,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 180,
+    "playerId": 102757,
+    "playerName": "Lucas Rosa",
+    "position": "M(RL)",
+    "rating": 84,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 180,
+    "playerId": 104681,
+    "playerName": "Gast",
+    "position": "V(LC)",
+    "rating": 83,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 180,
+    "playerId": 107027,
+    "playerName": "Ra",
+    "position": "A(RL)",
+    "rating": 85,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 180,
+    "playerId": 109271,
+    "playerName": "Vitezslav Jaros",
+    "position": "K",
+    "rating": 83,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 180,
+    "playerId": 110415,
+    "playerName": "Youri Regeer",
+    "position": "M(RLC)",
+    "rating": 84,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 180,
+    "playerId": 116188,
+    "playerName": "Kian Fitz",
+    "position": "M",
+    "rating": 83,
+    "shirtNumber": 28
+  },
+  {
+    "clubId": 180,
+    "playerId": 116344,
+    "playerName": "Youri Baas",
+    "position": "M(L)",
+    "rating": 85,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 180,
+    "playerId": 122463,
+    "playerName": "Anton Gaaei",
+    "position": "M",
+    "rating": 84,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 180,
+    "playerId": 122854,
+    "playerName": "Oscar Gloukh",
+    "position": "M(C),AM(RLC)",
+    "rating": 86,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 180,
+    "playerId": 124293,
+    "playerName": "Mika Godts",
+    "position": "M(C),AM(RLC)",
+    "rating": 84,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 180,
+    "playerId": 135599,
+    "playerName": "Rayane Bounida",
+    "position": "AM(RLC)",
+    "rating": 43,
+    "shirtNumber": 43
+  },
+  {
+    "clubId": 180,
+    "playerId": 135600,
+    "playerName": "Gerald Alders",
+    "position": "M(RC)",
+    "rating": 41,
+    "shirtNumber": 41
+  },
+  {
+    "clubId": 180,
+    "playerId": 140157,
+    "playerName": "James Mcconnell",
+    "position": "M(C)",
+    "rating": 78,
+    "shirtNumber": 16
+  },
+  {
+    "clubId": 180,
+    "playerId": 141436,
+    "playerName": "Don",
+    "position": "A(C)",
+    "rating": 77,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 180,
+    "playerId": 145886,
+    "playerName": "Jorthy Mokio",
+    "position": "M(C)",
+    "rating": 77,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 180,
+    "playerId": 149881,
+    "playerName": "Aaron Bouwman",
+    "position": "V(C)",
+    "rating": 30,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 180,
+    "playerId": 149883,
+    "playerName": "Sean Steur",
+    "position": "M,AM(C)",
+    "rating": 48,
+    "shirtNumber": 48
+  },
+  {
+    "clubId": 180,
+    "playerId": 155895,
+    "playerName": "Joeri Heerkens",
+    "position": "K",
+    "rating": 76,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 180,
+    "playerId": 112312,
+    "playerName": "Amourricho Van",
+    "position": "A(RL)",
+    "rating": 75,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 180,
+    "playerId": 148340,
+    "playerName": "Don",
+    "position": "M(C),AM(RLC)",
+    "rating": 65,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 180,
+    "playerId": 149885,
+    "playerName": "Damian",
+    "position": "M(C),AM(RLC)",
+    "rating": 63,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 180,
+    "playerId": 149886,
+    "playerName": "Emre",
+    "position": "A(C)",
+    "rating": 65,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 180,
+    "playerId": 153212,
+    "playerName": "Aymean",
+    "position": "Aymean el Hani",
+    "rating": 65,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 180,
+    "playerId": 153213,
+    "playerName": "Mylo",
+    "position": "Mylo van der Lans",
+    "rating": 65,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 180,
+    "playerId": 155583,
+    "playerName": "Ryan",
+    "position": "M(R)",
+    "rating": 73,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 180,
+    "playerId": 165420,
+    "playerName": "Leroy Fr",
+    "position": "V(RC),VM(R)",
+    "rating": 65,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 180,
+    "playerId": 167648,
+    "playerName": "Sinclair",
+    "position": "V(LC),VM(L)",
+    "rating": 65,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 180,
+    "playerId": 167649,
+    "playerName": "Marley",
+    "position": "M(R)",
+    "rating": 65,
+    "shirtNumber": 17
+  }
+]

@@ -51,6 +51,7 @@
             >
               <NavLink :to="{ name: 'woord-home' }">Woord Razernij</NavLink>
               <NavLink :to="{ name: 'tafel-home-v2' }">Tafel Razernij</NavLink>
+              <NavLink :to="{ name: 'VoetbalTableSelect' }">⚽ Voetbal Razernij</NavLink>
               <div class="border-t border-gray-700 my-1"></div>
               <NavLink :to="{ name: 'home' }">Terug naar Start</NavLink>
             </div>
@@ -115,6 +116,9 @@
           >
           <NavLink :to="{ name: 'tafel-home-v2' }" @click="closeMobileMenu"
             >Tafel Razernij</NavLink
+          >
+          <NavLink :to="{ name: 'VoetbalTableSelect' }" @click="closeMobileMenu"
+            >⚽ Voetbal Razernij</NavLink
           >
           <NavLink :to="{ name: 'home' }" @click="closeMobileMenu"
             >Terug naar Start</NavLink
