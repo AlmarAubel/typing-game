@@ -141,14 +141,14 @@ export const BALANCE_CONFIG: BalanceConfig = {
 
 // Table to club mapping configuration
 export const TABLE_TO_CLUB_MAPPING: Record<number, number> = {
-  1: 180, // Ajax
-  2: 204, // PSV
-  3: 177, // Feyenoord
-  4: 182, // AZ
-  5: 194, // FC Utrecht
-  6: 200, // FC Twente
-  7: 195, // Vitesse
-  8: 185, // sc Heerenveen
-  9: 186, // FC Groningen
-  10: 188, // Heracles Almelo
+  1: 208, // Telstar
+  2: 140, // Barcelona
+  3: 163, // Real Madrid
+  4: 115, // AC Milan
+  5: 47, // Manchester City
+  6: 179, // AZ Alkmaar
+  7: 391, // Bayern München
+  8: 180, // Ajax
+  9: 44, // Liverpool
+  10: 27, // Crystal Palace
 };

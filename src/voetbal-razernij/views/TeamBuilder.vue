@@ -274,7 +274,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, inject, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useTeamStore, useCollectionStore } from "../stores";
 import {
@@ -287,6 +287,7 @@ import PlayerAvatar from "../components/PlayerAvatar.vue";
 const router = useRouter();
 const teamStore = useTeamStore();
 const collectionStore = useCollectionStore();
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 const teamName = ref("Mijn Team");
 const selectedSlot = ref<TeamSlot | null>(null);
@@ -324,32 +325,31 @@ const availablePlayersForPosition = computed(() => {
 
 // Methods
 onMounted(async () => {
-  await initializeData();
+  // Wait for data initialization from parent
+  if (!isDataInitialized.value) {
+    const unwatch = watch(isDataInitialized, (initialized) => {
+      if (initialized) {
+        loadUserPlayers();
+        loadTeam();
+        unwatch();
+      }
+    });
+  } else {
+    loadUserPlayers();
+    loadTeam();
+  }
 });
 
-async function initializeData() {
-  try {
-    isDataLoaded.value = false;
-    initializationError.value = "";
-
-    await FootballDataService.initialize();
-    isDataLoaded.value = true;
-
-    if (!teamStore.currentTeam) {
-      teamStore.createNewTeam(teamName.value);
-    } else {
-      teamName.value = teamStore.currentTeam.name;
-    }
-  } catch (error) {
-    console.error("Failed to initialize football data:", error);
-    initializationError.value =
-      "Kon de voetbaldata niet laden. Controleer je internetverbinding en probeer opnieuw.";
-    isDataLoaded.value = false;
-  }
+function loadUserPlayers() {
+  isDataLoaded.value = true;
 }
 
-async function retryInitialization() {
-  await initializeData();
+function loadTeam() {
+  if (!teamStore.currentTeam) {
+    teamStore.createNewTeam(teamName.value);
+  } else {
+    teamName.value = teamStore.currentTeam.name;
+  }
 }
 
 function selectSlot(slot: TeamSlot) {

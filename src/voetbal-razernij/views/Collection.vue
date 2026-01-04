@@ -190,7 +190,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, inject, watch } from "vue";
 import { useRouter } from "vue-router";
 import { useCollectionStore, useTeamStore } from "../stores";
 import { FootballDataService, type PlayerCard } from "../utils/football-data";
@@ -199,6 +199,7 @@ import PlayerAvatar from "../components/PlayerAvatar.vue";
 const router = useRouter();
 const collectionStore = useCollectionStore();
 const teamStore = useTeamStore();
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 const selectedClub = ref<number | string>("");
 const selectedPosition = ref<string>("");
@@ -225,8 +226,22 @@ const filteredCards = computed(() => {
 });
 
 onMounted(async () => {
-  await FootballDataService.initialize();
+  // Wait for data initialization from parent
+  if (!isDataInitialized.value) {
+    const unwatch = watch(isDataInitialized, (initialized) => {
+      if (initialized) {
+        loadData();
+        unwatch();
+      }
+    });
+  } else {
+    loadData();
+  }
 });
+
+function loadData() {
+  // Data loading logic can go here if needed
+}
 
 function formatPosition(position: string): string {
   const positions = {

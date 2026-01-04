@@ -344,7 +344,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useClubProgressStore, useCollectionStore } from "../stores";
 import { FootballDataService } from "../utils/football-data";
@@ -354,6 +354,7 @@ const route = useRoute();
 const router = useRouter();
 const clubProgressStore = useClubProgressStore();
 const collectionStore = useCollectionStore();
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 const clubId = ref<number>();
 const isLoading = ref(true);
@@ -423,14 +424,8 @@ const averageRating = computed(() => {
 });
 
 // Methods
-async function initializeData() {
-  try {
-    await FootballDataService.initialize();
-    isLoading.value = false;
-  } catch (error) {
-    console.error("Failed to load club data:", error);
-    isLoading.value = false;
-  }
+function loadClubData() {
+  isLoading.value = false;
 }
 
 function isPackAvailable(packType: "bronze" | "silver" | "gold"): boolean {
@@ -546,7 +541,17 @@ function handleKeyDown(event: KeyboardEvent) {
 onMounted(() => {
   initializeClubId();
   if (clubId.value) {
-    initializeData();
+    // Wait for data initialization from parent
+    if (!isDataInitialized.value) {
+      const unwatch = watch(isDataInitialized, (initialized) => {
+        if (initialized) {
+          loadClubData();
+          unwatch();
+        }
+      });
+    } else {
+      loadClubData();
+    }
   }
   document.addEventListener("keydown", handleKeyDown);
 });

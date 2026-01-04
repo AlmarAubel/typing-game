@@ -273,12 +273,34 @@ function parseSquad(
       }
 
       // Try to extract rating (usually a number at the end, like "85")
-      const ratingMatch = rowText.match(/\s(\d{2,3})\s*$/);
-      if (ratingMatch) {
-        const possibleRating = parseInt(ratingMatch[1], 10);
-        // Ratings are typically between 30-99
-        if (possibleRating >= 30 && possibleRating <= 99) {
-          rating = possibleRating;
+      // Look for multiple numbers and use better heuristics to distinguish rating from age
+      const allNumbers = rowText.match(/\b(\d{2,3})\b/g);
+      if (allNumbers) {
+        for (const numStr of allNumbers.reverse()) {
+          // Check from end first
+          const num = parseInt(numStr, 10);
+          // Ratings are typically between 50-99, ages are typically 16-45
+          // If we find a number >= 50, it's more likely a rating
+          // If we find numbers in 30-49 range, prefer the higher one as rating
+          if (num >= 50 && num <= 99) {
+            rating = num;
+            break;
+          } else if (num >= 30 && num <= 49 && !rating) {
+            // Could be rating, but check if there's a better candidate
+            rating = num;
+          }
+        }
+      }
+
+      // Fallback to original logic if no good rating found
+      if (!rating) {
+        const ratingMatch = rowText.match(/\s(\d{2,3})\s*$/);
+        if (ratingMatch) {
+          const possibleRating = parseInt(ratingMatch[1], 10);
+          // Ratings are typically between 30-99
+          if (possibleRating >= 30 && possibleRating <= 99) {
+            rating = possibleRating;
+          }
         }
       }
 
@@ -325,10 +347,14 @@ function parseSquad(
           }
         }
 
-        // Look for ratings (typically 30-99)
-        if (/^\d{2}$/.test(cellText)) {
+        // Look for ratings (prefer higher numbers that are likely ratings vs ages)
+        if (/^\d{2,3}$/.test(cellText)) {
           const num = parseInt(cellText, 10);
-          if (num >= 30 && num <= 99 && !rating) {
+          if (num >= 50 && num <= 99) {
+            // Definitely a rating
+            rating = num;
+          } else if (num >= 30 && num <= 49 && (!rating || num > rating)) {
+            // Could be rating, prefer higher values
             rating = num;
           }
         }
@@ -511,7 +537,18 @@ async function writeOutputs(results: ScrapeResult[]) {
 async function main() {
   // Voorbeeld: Ajax (clubid=180)
   // Je kunt hier meerdere clubIds zetten
-  const clubIds = [180];
+  const clubIds = [
+    180, // Ajax tafel: 8
+    391, // Bayern Munchen tafel: 7
+    140, // Barcelona tafel: 2
+    163, // Real Madrid tafel: 3
+    208, // telstar tafel: 1
+    179, // AZ Alkmaar tafel: 6
+    115, // Ac milan  tafel: 4
+    47, // Machester city tafel: 5
+    44, // Liverpool tafel: 9
+    27, // Christal palace tafel: 10
+  ];
 
   const tasks = clubIds.map((clubId) =>
     limit(async () => {

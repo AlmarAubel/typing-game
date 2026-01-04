@@ -8,8 +8,9 @@
       <h2 class="text-3xl font-bold text-white mb-4">
         Kies een tafel om te oefenen!
       </h2>
-      <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.9);">
-        Elke tafel is gekoppeld aan een Eredivisie club. Verdien XP en tokens voor je favoriete teams!
+      <p class="text-xl mb-6" style="color: rgba(255, 255, 255, 0.9)">
+        Elke tafel is gekoppeld aan een voetbal club. Verdien XP en tokens voor
+        je favoriete teams!
       </p>
     </div>
 
@@ -20,7 +21,10 @@
     </div>
 
     <!-- Table Grid -->
-    <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto mb-8">
+    <div
+      v-else
+      class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto mb-8"
+    >
       <div
         v-for="table in tables"
         :key="table.number"
@@ -39,10 +43,10 @@
             <span class="text-2xl">🏆</span>
           </div>
           <div class="club-name">
-            <span class="font-bold">{{ table.club?.shortName || 'ERE' }}</span>
+            <span class="font-bold">{{ table.club?.shortName || "ERE" }}</span>
           </div>
           <div class="club-full-name text-xs opacity-75 mt-1">
-            {{ table.club?.name || 'Eredivisie' }}
+            {{ table.club?.name || "Eredivisie" }}
           </div>
         </div>
 
@@ -67,8 +71,8 @@
             :key="pack"
             class="unlock-indicator"
             :class="{
-              'unlocked': table.clubProgress?.unlockedPacks.includes(pack),
-              [pack]: true
+              unlocked: table.clubProgress?.unlockedPacks.includes(pack),
+              [pack]: true,
             }"
           >
             <span v-if="pack === 'bronze'">🥉</span>
@@ -98,26 +102,36 @@
 
     <!-- Quick Stats -->
     <div class="quick-stats max-w-4xl mx-auto">
-      <h3 class="text-2xl font-bold text-white text-center mb-6">📊 Jouw Voortgang</h3>
+      <h3 class="text-2xl font-bold text-white text-center mb-6">
+        📊 Jouw Voortgang
+      </h3>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="stat-card">
           <div class="stat-icon">🎮</div>
-          <div class="stat-value">{{ gameStore.globalStats.totalGamesPlayed }}</div>
+          <div class="stat-value">
+            {{ gameStore.globalStats.totalGamesPlayed }}
+          </div>
           <div class="stat-label">Sessies</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">❓</div>
-          <div class="stat-value">{{ gameStore.globalStats.totalQuestionsAnswered }}</div>
+          <div class="stat-value">
+            {{ gameStore.globalStats.totalQuestionsAnswered }}
+          </div>
           <div class="stat-label">Vragen</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">✅</div>
-          <div class="stat-value">{{ gameStore.globalStats.totalCorrectAnswers }}</div>
+          <div class="stat-value">
+            {{ gameStore.globalStats.totalCorrectAnswers }}
+          </div>
           <div class="stat-label">Correct</div>
         </div>
         <div class="stat-card">
           <div class="stat-icon">🔥</div>
-          <div class="stat-value">{{ gameStore.globalStats.bestOverallStreak }}</div>
+          <div class="stat-value">
+            {{ gameStore.globalStats.bestOverallStreak }}
+          </div>
           <div class="stat-label">Beste Streak</div>
         </div>
       </div>
@@ -125,10 +139,7 @@
 
     <!-- Club Store Button -->
     <div class="text-center mt-8">
-      <button
-        @click="openClubStores"
-        class="club-store-btn"
-      >
+      <button @click="openClubStores" class="club-store-btn">
         🏪 Club Winkels
         <span class="ml-2 text-sm opacity-75">(Bekijk alle clubs)</span>
       </button>
@@ -137,17 +148,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useVoetbalGameStore, useClubProgressStore } from '../stores';
-import { FootballDataService } from '../utils/football-data';
-import { TABLE_TO_CLUB_MAPPING } from '../utils/balance-config';
+import { ref, computed, onMounted, inject, watch } from "vue";
+import { useRouter } from "vue-router";
+import { useVoetbalGameStore, useClubProgressStore } from "../stores";
+import { FootballDataService } from "../utils/football-data";
+import { TABLE_TO_CLUB_MAPPING } from "../utils/balance-config";
 
 const router = useRouter();
 const gameStore = useVoetbalGameStore();
 const clubProgressStore = useClubProgressStore();
 
 const isLoading = ref(true);
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 interface TableInfo {
   number: number;
@@ -162,12 +174,20 @@ interface TableInfo {
 }
 
 const tables = computed<TableInfo[]>(() => {
+  // Only compute if data is initialized
+  if (!isDataInitialized.value) {
+    return [];
+  }
+
   const tableList: TableInfo[] = [];
 
   for (let i = 1; i <= 10; i++) {
     const clubId = TABLE_TO_CLUB_MAPPING[i];
     const club = clubId ? FootballDataService.getClubById(clubId) : undefined;
-    const clubProgress = clubId ? clubProgressStore.getClubProgress(clubId) : undefined;
+    console.log("Mapping table", i, "to clubId", clubId, "club:", club);
+    const clubProgress = clubId
+      ? clubProgressStore.getClubProgress(clubId)
+      : undefined;
 
     // Calculate progress percentage (0-100% based on XP)
     let progress = 0;
@@ -187,43 +207,54 @@ const tables = computed<TableInfo[]>(() => {
   return tableList;
 });
 
-async function initializeData() {
-  try {
-    await FootballDataService.initialize();
-    isLoading.value = false;
-  } catch (error) {
-    console.error('Failed to load football data:', error);
-    isLoading.value = false;
-  }
-}
-
 function selectTable(tableNumber: number) {
   // Check if there's already an active session
   if (gameStore.isSessionActive) {
-    if (confirm('Er is al een actieve sessie. Wil je deze beëindigen en een nieuwe starten?')) {
+    if (
+      confirm(
+        "Er is al een actieve sessie. Wil je deze beëindigen en een nieuwe starten?",
+      )
+    ) {
       gameStore.endSession();
     } else {
       return;
     }
   }
 
-  router.push({ name: 'VoetbalGame', params: { table: tableNumber.toString() } });
+  router.push({
+    name: "VoetbalGame",
+    params: { table: tableNumber.toString() },
+  });
 }
 
 function openClubStores() {
-  router.push({ name: 'VoetbalCollection' });
+  router.push({ name: "VoetbalCollection" });
 }
 
 function openClubStore(clubId?: number) {
   if (!clubId) return;
   router.push({
-    name: 'VoetbalClubStore',
-    params: { clubId: clubId.toString() }
+    name: "VoetbalClubStore",
+    params: { clubId: clubId.toString() },
   });
 }
 
+// Watch for data initialization from parent component
+watch(
+  isDataInitialized,
+  (initialized) => {
+    if (initialized) {
+      isLoading.value = false;
+    }
+  },
+  { immediate: true },
+);
+
 onMounted(() => {
-  initializeData();
+  // If already initialized, stop loading
+  if (isDataInitialized.value) {
+    isLoading.value = false;
+  }
 });
 </script>
 
@@ -233,7 +264,7 @@ onMounted(() => {
 .table-card {
   @apply relative backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:scale-105;
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid var(--club-color, #1976D2);
+  border: 2px solid var(--club-color, #1976d2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -270,7 +301,7 @@ onMounted(() => {
 
 .progress-fill {
   @apply h-full rounded-full transition-all duration-500;
-  background: linear-gradient(90deg, var(--club-color), #FFD700);
+  background: linear-gradient(90deg, var(--club-color), #ffd700);
 }
 
 .progress-stats {

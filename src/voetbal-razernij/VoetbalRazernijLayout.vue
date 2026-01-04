@@ -23,7 +23,7 @@
           ⚽ Voetbal Razernij
         </h1>
         <p class="text-xl drop-shadow" style="color: rgba(255, 255, 255, 0.9)">
-          Verzamel Eredivisie sterren door tafels te oefenen!
+          Verzamel voetbal sterren door tafels te oefenen!
         </p>
       </header>
 
@@ -109,12 +109,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, provide } from "vue";
 import { useVoetbalGameStore } from "./stores";
 import { FootballDataService } from "./utils/football-data";
 
 const gameStore = useVoetbalGameStore();
 const initializationError = ref<string>("");
+const isDataInitialized = ref(false);
+
+// Provide initialization state to child components
+provide("isDataInitialized", isDataInitialized);
 
 // Initialize football data on mount
 onMounted(async () => {
@@ -124,6 +128,7 @@ onMounted(async () => {
       await FootballDataService.initialize();
       console.log("FootballDataService initialized successfully");
     }
+    isDataInitialized.value = true;
   } catch (error) {
     console.error("Failed to initialize football data:", error);
     initializationError.value =

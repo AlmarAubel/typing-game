@@ -15,7 +15,12 @@
             class="club-badge"
             :style="{ '--club-color': club?.primaryColor || '#1976D2' }"
           >
-            <span class="text-3xl">🏆</span>
+            <img
+              v-if="club?.id"
+              :src="getClubLogoUrl(club.id)"
+              :alt="`${club.name} logo`"
+              class="club-logo"
+            />
           </div>
           <div>
             <h2 class="text-2xl font-bold text-white">
@@ -255,7 +260,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
+import {
+  ref,
+  computed,
+  onMounted,
+  onUnmounted,
+  watch,
+  nextTick,
+  inject,
+} from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useVoetbalGameStore } from "../stores";
 import { FootballDataService } from "../utils/football-data";
@@ -264,6 +277,7 @@ import { BALANCE_CONFIG } from "../utils/balance-config";
 const route = useRoute();
 const router = useRouter();
 const gameStore = useVoetbalGameStore();
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 // Props
 const table = ref<number>(parseInt(route.params.table as string) || 1);
@@ -317,17 +331,37 @@ const hintText = computed(() => {
   return hints[Math.floor(Math.random() * hints.length)];
 });
 
+function getClubLogoUrl(clubId: number): string {
+  return `https://cdn.soccerwiki.org/images/logos/clubs/${clubId}.png`;
+}
+
 // Lifecycle
 onMounted(async () => {
-  await FootballDataService.initialize();
-  startSession();
-  setupSessionTimer();
-  generateNewQuestion();
+  // Wait for data initialization from parent
+  if (!isDataInitialized.value) {
+    const unwatch = watch(isDataInitialized, (initialized) => {
+      if (initialized) {
+        startSession();
+        setupSessionTimer();
+        generateNewQuestion();
 
-  // Focus input
-  nextTick(() => {
-    answerInput.value?.focus();
-  });
+        // Focus input
+        nextTick(() => {
+          answerInput.value?.focus();
+        });
+        unwatch();
+      }
+    });
+  } else {
+    startSession();
+    setupSessionTimer();
+    generateNewQuestion();
+
+    // Focus input
+    nextTick(() => {
+      answerInput.value?.focus();
+    });
+  }
 });
 
 onUnmounted(() => {

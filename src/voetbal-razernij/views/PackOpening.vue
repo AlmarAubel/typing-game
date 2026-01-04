@@ -196,7 +196,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useClubProgressStore, useCollectionStore } from "../stores";
 import {
@@ -211,6 +211,7 @@ const route = useRoute();
 const router = useRouter();
 const clubProgressStore = useClubProgressStore();
 const collectionStore = useCollectionStore();
+const isDataInitialized = inject("isDataInitialized", ref(false));
 
 // Props from route - with validation
 const validateRouteParams = () => {
@@ -286,13 +287,21 @@ const canAffordAnother = computed(() => {
 onMounted(() => {
   // Only initialize if we have valid route parameters
   if (routeParams.clubId && routeParams.packType) {
-    initializePackOpening();
+    // Wait for data initialization from parent
+    if (!isDataInitialized.value) {
+      const unwatch = watch(isDataInitialized, (initialized) => {
+        if (initialized) {
+          initializePackOpening();
+          unwatch();
+        }
+      });
+    } else {
+      initializePackOpening();
+    }
   }
 });
 
-async function initializePackOpening() {
-  await FootballDataService.initialize();
-
+function initializePackOpening() {
   // Additional safety check: verify club exists
   const clubData = FootballDataService.getClubById(clubId.value);
   if (!clubData) {

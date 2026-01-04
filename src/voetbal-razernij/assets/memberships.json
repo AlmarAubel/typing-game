@@ -4,7 +4,7 @@
     "playerId": 3102,
     "playerName": "Remko Pasveer",
     "position": "K",
-    "rating": 42,
+    "rating": 85,
     "shirtNumber": 22
   },
   {
@@ -12,7 +12,7 @@
     "playerId": 51625,
     "playerName": "Steven Berghuis",
     "position": "M(C),AM(RC)",
-    "rating": 34,
+    "rating": 85,
     "shirtNumber": 23
   },
   {
@@ -20,7 +20,7 @@
     "playerId": 54268,
     "playerName": "Davy Klaassen",
     "position": "M,AM(C)",
-    "rating": 32,
+    "rating": 87,
     "shirtNumber": 18
   },
   {
@@ -28,7 +28,7 @@
     "playerId": 61859,
     "playerName": "Wout Weghorst",
     "position": "A(C)",
-    "rating": 33,
+    "rating": 88,
     "shirtNumber": 25
   },
   {
@@ -36,7 +36,7 @@
     "playerId": 71591,
     "playerName": "Branco",
     "position": "M",
-    "rating": 30,
+    "rating": 85,
     "shirtNumber": 21
   },
   {
@@ -52,7 +52,7 @@
     "playerId": 85867,
     "playerName": "Takehiro Tomiyasu",
     "position": "V(RLC)",
-    "rating": 32,
+    "rating": 88,
     "shirtNumber": 32
   },
   {
@@ -84,7 +84,7 @@
     "playerId": 102693,
     "playerName": "Josip",
     "position": "V(C)",
-    "rating": 37,
+    "rating": 88,
     "shirtNumber": 37
   },
   {
@@ -180,7 +180,7 @@
     "playerId": 135599,
     "playerName": "Rayane Bounida",
     "position": "AM(RLC)",
-    "rating": 43,
+    "rating": 78,
     "shirtNumber": 43
   },
   {
@@ -188,7 +188,7 @@
     "playerId": 135600,
     "playerName": "Gerald Alders",
     "position": "M(RC)",
-    "rating": 41,
+    "rating": 73,
     "shirtNumber": 41
   },
   {
@@ -220,7 +220,7 @@
     "playerId": 149881,
     "playerName": "Aaron Bouwman",
     "position": "V(C)",
-    "rating": 30,
+    "rating": 70,
     "shirtNumber": 30
   },
   {
@@ -228,7 +228,7 @@
     "playerId": 149883,
     "playerName": "Sean Steur",
     "position": "M,AM(C)",
-    "rating": 48,
+    "rating": 73,
     "shirtNumber": 48
   },
   {
@@ -241,82 +241,2782 @@
   },
   {
     "clubId": 180,
-    "playerId": 112312,
-    "playerName": "Amourricho Van",
-    "position": "A(RL)",
-    "rating": 75,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 180,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 180,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 180,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 180,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 180,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 391,
+    "playerId": 16053,
+    "playerName": "Manuel Neuer",
+    "position": "K",
+    "rating": 93,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 391,
+    "playerId": 32280,
+    "playerName": "Sven Ulreich",
+    "position": "K",
+    "rating": 83,
     "shirtNumber": 26
   },
   {
-    "clubId": 180,
-    "playerId": 148340,
-    "playerName": "Don",
-    "position": "M(C),AM(RLC)",
-    "rating": 65,
+    "clubId": 391,
+    "playerId": 49590,
+    "playerName": "Harry Kane",
+    "position": "A(C)",
+    "rating": 96,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 391,
+    "playerId": 58668,
+    "playerName": "Leon Goretzka",
+    "position": "M",
+    "rating": 91,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 391,
+    "playerId": 59500,
+    "playerName": "Rapha",
+    "position": "M(RLC)",
+    "rating": 90,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 391,
+    "playerId": 61101,
+    "playerName": "Serge Gnabry",
+    "position": "A(RLC)",
+    "rating": 91,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 391,
+    "playerId": 68027,
+    "playerName": "Jonathan Tah",
+    "position": "V(C)",
+    "rating": 92,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 391,
+    "playerId": 70860,
+    "playerName": "Joshua Kimmich",
+    "position": "M(RC)",
+    "rating": 94,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 391,
+    "playerId": 76629,
+    "playerName": "Konrad Laimer",
+    "position": "M(RLC)",
+    "rating": 91,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 391,
+    "playerId": 82312,
+    "playerName": "Dayot Upamecano",
+    "position": "V(C)",
+    "rating": 92,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 391,
+    "playerId": 85954,
+    "playerName": "Alphonso Davies",
+    "position": "M",
+    "rating": 92,
     "shirtNumber": 19
   },
   {
-    "clubId": 180,
-    "playerId": 149885,
-    "playerName": "Damian",
+    "clubId": 391,
+    "playerId": 89787,
+    "playerName": "Hiroki Ito",
+    "position": "V(LC)",
+    "rating": 90,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 391,
+    "playerId": 90167,
+    "playerName": "Min",
+    "position": "Min-Jae Kim",
+    "rating": 92,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 391,
+    "playerId": 95525,
+    "playerName": "Luis",
+    "position": "A(LC)",
+    "rating": 92,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 391,
+    "playerId": 101350,
+    "playerName": "Sacha Boey",
+    "position": "M(R)",
+    "rating": 88,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 391,
+    "playerId": 101780,
+    "playerName": "Michael Olise",
+    "position": "A(R)",
+    "rating": 93,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 391,
+    "playerId": 104640,
+    "playerName": "Jamal Musiala",
     "position": "M(C),AM(RLC)",
+    "rating": 94,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 391,
+    "playerId": 106073,
+    "playerName": "Nicolas Jackson",
+    "position": "A(C)",
+    "rating": 91,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 391,
+    "playerId": 110673,
+    "playerName": "Josip Stani",
+    "position": "V",
+    "rating": 90,
+    "shirtNumber": 44
+  },
+  {
+    "clubId": 391,
+    "playerId": 114268,
+    "playerName": "Jonas Urbig",
+    "position": "K",
+    "rating": 85,
+    "shirtNumber": 40
+  },
+  {
+    "clubId": 391,
+    "playerId": 114277,
+    "playerName": "Tom Bischof",
+    "position": "M",
+    "rating": 88,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 391,
+    "playerId": 135567,
+    "playerName": "Aleksandar Pavlovic",
+    "position": "M(C)",
+    "rating": 90,
+    "shirtNumber": 45
+  },
+  {
+    "clubId": 391,
+    "playerId": 155171,
+    "playerName": "Lennart Karl",
+    "position": "AM(RLC)",
+    "rating": 80,
+    "shirtNumber": 42
+  },
+  {
+    "clubId": 391,
+    "playerId": 158343,
+    "playerName": "Wisdom Mike",
+    "position": "A(RL)",
+    "rating": 73,
+    "shirtNumber": 36
+  },
+  {
+    "clubId": 391,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 391,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 391,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 391,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 391,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 391,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 140,
+    "playerId": 34893,
+    "playerName": "Robert Lewandowski",
+    "position": "A(C)",
+    "rating": 94,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 140,
+    "playerId": 41634,
+    "playerName": "Wojciech Szcz",
+    "position": "K",
+    "rating": 90,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 140,
+    "playerId": 47215,
+    "playerName": "Marc",
+    "position": "K",
+    "rating": 91,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 140,
+    "playerId": 69440,
+    "playerName": "Andreas Christensen",
+    "position": "V,VM(C)",
+    "rating": 89,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 140,
+    "playerId": 79874,
+    "playerName": "Dani Olmo",
+    "position": "M(C),AM(RLC)",
+    "rating": 92,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 140,
+    "playerId": 82275,
+    "playerName": "Frenkie",
+    "position": "M(C)",
+    "rating": 93,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 140,
+    "playerId": 84384,
+    "playerName": "Marcus Rashford",
+    "position": "A(RLC)",
+    "rating": 92,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 140,
+    "playerId": 87870,
+    "playerName": "Belloli Raphinha",
+    "position": "A(RL)",
+    "rating": 94,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 140,
+    "playerId": 93445,
+    "playerName": "Ferr",
+    "position": "A(RLC)",
+    "rating": 91,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 140,
+    "playerId": 94977,
+    "playerName": "Ronald Ara",
+    "position": "V(RC)",
+    "rating": 91,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 140,
+    "playerId": 95157,
+    "playerName": "Jules Kound",
+    "position": "V",
+    "rating": 92,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 140,
+    "playerId": 98009,
+    "playerName": "Eric Garc",
+    "position": "V(RC),VM(C)",
+    "rating": 89,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 140,
+    "playerId": 102243,
+    "playerName": "Gonzalez Pedri",
+    "position": "M,AM(C)",
+    "rating": 94,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 140,
+    "playerId": 110049,
+    "playerName": "Alejandro Balde",
+    "position": "M(L)",
+    "rating": 91,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 140,
+    "playerId": 110053,
+    "playerName": "Pablo Gavi",
+    "position": "M(C),AM(LC)",
+    "rating": 91,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 140,
+    "playerId": 117085,
+    "playerName": "Roony Bardghji",
+    "position": "A(RL)",
+    "rating": 83,
+    "shirtNumber": 28
+  },
+  {
+    "clubId": 140,
+    "playerId": 118586,
+    "playerName": "Joan Garc",
+    "position": "K",
+    "rating": 90,
+    "shirtNumber": 13
+  },
+  {
+    "clubId": 140,
+    "playerId": 124685,
+    "playerName": "Marc Casad",
+    "position": "M(C)",
+    "rating": 87,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 140,
+    "playerId": 126898,
+    "playerName": "Lamine Yamal",
+    "position": "A(RL)",
+    "rating": 95,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 140,
+    "playerId": 137578,
+    "playerName": "Ferm",
+    "position": "M(C),AM(RLC)",
+    "rating": 90,
+    "shirtNumber": 16
+  },
+  {
+    "clubId": 140,
+    "playerId": 138048,
+    "playerName": "Gerard Martin",
+    "position": "V(LC),VM(L)",
+    "rating": 87,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 140,
+    "playerId": 139611,
+    "playerName": "Marc Bernal",
+    "position": "M(C)",
+    "rating": 80,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 140,
+    "playerId": 139751,
+    "playerName": "Pau Cubars",
+    "position": "V(C)",
+    "rating": 91,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 140,
+    "playerId": 155055,
+    "playerName": "Dro Fern",
+    "position": "A(L)",
+    "rating": 76,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 140,
+    "playerId": 155056,
+    "playerName": "Jofre Torrents",
+    "position": "M",
+    "rating": 76,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 140,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 140,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 140,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 140,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 140,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 140,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 163,
+    "playerId": 38848,
+    "playerName": "Thibaut Courtois",
+    "position": "K",
+    "rating": 95,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 163,
+    "playerId": 42005,
+    "playerName": "David Alaba",
+    "position": "V(LC)",
+    "rating": 89,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 163,
+    "playerId": 46587,
+    "playerName": "Daniel Carvajal",
+    "position": "M(R)",
+    "rating": 92,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 163,
+    "playerId": 53792,
+    "playerName": "Antonio",
+    "position": "Antonio Rüdiger",
+    "rating": 93,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 163,
+    "playerId": 76222,
+    "playerName": "Dani Ceballos",
+    "position": "M,AM(C)",
+    "rating": 89,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 163,
+    "playerId": 81249,
+    "playerName": "Federico Valverde",
+    "position": "M",
+    "rating": 94,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 163,
+    "playerId": 82337,
+    "playerName": "Ferland Mendy",
+    "position": "M(L)",
+    "rating": 89,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 163,
+    "playerId": 85260,
+    "playerName": "Kylian Mbapp",
+    "position": "A(LC)",
+    "rating": 96,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 163,
+    "playerId": 87941,
+    "playerName": "Brahim",
+    "position": "A(RLC)",
+    "rating": 90,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 163,
+    "playerId": 88385,
+    "playerName": "Trent Alexander",
+    "position": "M(R)",
+    "rating": 94,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 163,
+    "playerId": 90068,
+    "playerName": "Vin",
+    "position": "A(LC)",
+    "rating": 95,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 163,
+    "playerId": 91300,
+    "playerName": "Andriy Lunin",
+    "position": "K",
+    "rating": 88,
+    "shirtNumber": 13
+  },
+  {
+    "clubId": 163,
+    "playerId": 93823,
+    "playerName": "Goes Rodrygo",
+    "position": "A(RLC)",
+    "rating": 93,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 163,
+    "playerId": 94241,
+    "playerName": "Milit",
+    "position": "V(RC)",
+    "rating": 93,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 163,
+    "playerId": 97514,
+    "playerName": "Aur",
+    "position": "M(C)",
+    "rating": 93,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 163,
+    "playerId": 99307,
+    "playerName": "Fran Garc",
+    "position": "M(L)",
+    "rating": 89,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 163,
+    "playerId": 101125,
+    "playerName": "Eduardo Camavinga",
+    "position": "M(LC)",
+    "rating": 92,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 163,
+    "playerId": 101902,
+    "playerName": "Jude Bellingham",
+    "position": "M,AM(LC)",
+    "rating": 95,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 163,
+    "playerId": 114505,
+    "playerName": "Arda",
+    "position": "Arda Güler",
+    "rating": 90,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 163,
+    "playerId": 118048,
+    "playerName": "Carreras",
+    "position": "M(L)",
+    "rating": 90,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 163,
+    "playerId": 129147,
+    "playerName": "Dean Huijsen",
+    "position": "V(C)",
+    "rating": 90,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 163,
+    "playerId": 133514,
+    "playerName": "Gonzalo Garc",
+    "position": "A(RLC)",
+    "rating": 82,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 163,
+    "playerId": 134027,
+    "playerName": "Sergio Mestre",
+    "position": "K",
+    "rating": 70,
+    "shirtNumber": 43
+  },
+  {
+    "clubId": 163,
+    "playerId": 137675,
+    "playerName": "Ra",
+    "position": "V(RC)",
+    "rating": 88,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 163,
+    "playerId": 143202,
+    "playerName": "Franco Mastantuono",
+    "position": "A(RL)",
+    "rating": 87,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 163,
+    "playerId": 164465,
+    "playerName": "Thiago Pitarch",
+    "position": "M,AM(C)",
+    "rating": 76,
+    "shirtNumber": 45
+  },
+  {
+    "clubId": 163,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 163,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 163,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 163,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 163,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 163,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 208,
+    "playerId": 52576,
+    "playerName": "Dion Malone",
+    "position": "V(RC),VM(C)",
+    "rating": 78,
+    "shirtNumber": 29
+  },
+  {
+    "clubId": 208,
+    "playerId": 69789,
+    "playerName": "Danny Bakker",
+    "position": "M(C)",
+    "rating": 76,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 208,
+    "playerId": 74433,
+    "playerName": "Mohamed Hamdaoui",
+    "position": "A(RL)",
+    "rating": 76,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 208,
+    "playerId": 81179,
+    "playerName": "Jeff Hardeveld",
+    "position": "M(L)",
+    "rating": 78,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 208,
+    "playerId": 86621,
+    "playerName": "Dylan Mertens",
+    "position": "M",
+    "rating": 78,
+    "shirtNumber": 16
+  },
+  {
+    "clubId": 208,
+    "playerId": 96154,
+    "playerName": "Ronald Koeman",
+    "position": "K",
+    "rating": 78,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 208,
+    "playerId": 110069,
+    "playerName": "Tyrick Bodak",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 13
+  },
+  {
+    "clubId": 208,
+    "playerId": 112991,
+    "playerName": "Daan Reiziger",
+    "position": "K",
+    "rating": 75,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 208,
+    "playerId": 116719,
+    "playerName": "Kay Tejan",
+    "position": "A(RLC)",
+    "rating": 78,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 208,
+    "playerId": 116765,
+    "playerName": "Devon Koswal",
+    "position": "V(C)",
+    "rating": 77,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 208,
+    "playerId": 122917,
+    "playerName": "Milan Zonneveld",
+    "position": "A(C)",
+    "rating": 68,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 208,
+    "playerId": 124984,
+    "playerName": "Patrick Brouwer",
+    "position": "M(C),AM(RLC)",
+    "rating": 72,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 208,
+    "playerId": 126457,
+    "playerName": "Achraf Oughcha",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 208,
+    "playerId": 126463,
+    "playerName": "Jochem Ritmeester",
+    "position": "M",
+    "rating": 80,
+    "shirtNumber": 39
+  },
+  {
+    "clubId": 208,
+    "playerId": 129641,
+    "playerName": "Nils Rossen",
+    "position": "M(C)",
+    "rating": 78,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 208,
+    "playerId": 155412,
+    "playerName": "Tyrese Noslin",
+    "position": "M(RL)",
+    "rating": 77,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 208,
+    "playerId": 155602,
+    "playerName": "Abdelraffie Benzzine",
+    "position": "V(C)",
+    "rating": 60,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 208,
+    "playerId": 155603,
+    "playerName": "Jaylan",
+    "position": "V,VM(C)",
+    "rating": 63,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 208,
+    "playerId": 155604,
+    "playerName": "Guus Offerhaus",
+    "position": "M(C)",
+    "rating": 78,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 208,
+    "playerId": 155605,
+    "playerName": "Adil Lechkar",
+    "position": "M(L)",
+    "rating": 63,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 208,
+    "playerId": 155607,
+    "playerName": "Tyrone Owusu",
+    "position": "M(RC)",
+    "rating": 78,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 208,
+    "playerId": 155608,
+    "playerName": "Soufiane Hetli",
+    "position": "A(RLC)",
+    "rating": 76,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 208,
+    "playerId": 155609,
+    "playerName": "Sebastiaan Hagedoorn",
+    "position": "A(C)",
     "rating": 63,
     "shirtNumber": 19
   },
   {
-    "clubId": 180,
-    "playerId": 149886,
-    "playerName": "Emre",
-    "position": "A(C)",
+    "clubId": 208,
+    "playerId": 160755,
+    "playerName": "Nigel Ogidi",
+    "position": "M(L)",
+    "rating": 67,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 208,
+    "playerId": 161616,
+    "playerName": "Yamano Olfers",
+    "position": "V(C)",
+    "rating": 63,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 208,
+    "playerId": 163706,
+    "playerName": "Neville Ogidi",
+    "position": "V(C)",
     "rating": 65,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 208,
+    "playerId": 164492,
+    "playerName": "Rojendro Oudsten",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 28
+  },
+  {
+    "clubId": 208,
+    "playerId": 164804,
+    "playerName": "Rayyan Koubini",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 208,
+    "playerId": 125070,
+    "playerName": "Remi",
+    "position": "M",
+    "rating": 70,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 208,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 208,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 208,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 208,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 208,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 208,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 179,
+    "playerId": 46118,
+    "playerName": "Jordy Clasie",
+    "position": "M(C)",
+    "rating": 86,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 179,
+    "playerId": 50002,
+    "playerName": "Jeroen Zoet",
+    "position": "K",
+    "rating": 82,
+    "shirtNumber": 41
+  },
+  {
+    "clubId": 179,
+    "playerId": 80961,
+    "playerName": "Hobie Verhulst",
+    "position": "K",
+    "rating": 78,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 179,
+    "playerId": 97377,
+    "playerName": "Mees",
+    "position": "M",
+    "rating": 82,
+    "shirtNumber": 34
+  },
+  {
+    "clubId": 179,
+    "playerId": 97862,
+    "playerName": "Ibrahim Sadiq",
+    "position": "A(RLC)",
+    "rating": 83,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 179,
+    "playerId": 101658,
+    "playerName": "Troy Parrott",
+    "position": "A(C)",
+    "rating": 86,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 179,
+    "playerId": 104907,
+    "playerName": "Alexandre Penetra",
+    "position": "V(RC)",
+    "rating": 85,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 179,
+    "playerId": 105785,
+    "playerName": "Sven Mijnans",
+    "position": "M(C),AM(RLC)",
+    "rating": 86,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 179,
+    "playerId": 111580,
+    "playerName": "Peer Koopmeiners",
+    "position": "M(C)",
+    "rating": 86,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 179,
+    "playerId": 111972,
+    "playerName": "Isak Jensen",
+    "position": "M,AM(L)",
+    "rating": 82,
     "shirtNumber": 17
   },
   {
-    "clubId": 180,
-    "playerId": 153212,
-    "playerName": "Aymean",
-    "position": "Aymean el Hani",
-    "rating": 65,
-    "shirtNumber": 18
-  },
-  {
-    "clubId": 180,
-    "playerId": 153213,
-    "playerName": "Mylo",
-    "position": "Mylo van der Lans",
-    "rating": 65,
-    "shirtNumber": 18
-  },
-  {
-    "clubId": 180,
-    "playerId": 155583,
-    "playerName": "Ryan",
+    "clubId": 179,
+    "playerId": 116018,
+    "playerName": "Seiya Maikuma",
     "position": "M(R)",
+    "rating": 84,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 179,
+    "playerId": 116531,
+    "playerName": "Dani",
+    "position": "K",
+    "rating": 70,
+    "shirtNumber": 31
+  },
+  {
+    "clubId": 179,
+    "playerId": 116536,
+    "playerName": "Maxim Dekker",
+    "position": "V(LC)",
+    "rating": 80,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 179,
+    "playerId": 116626,
+    "playerName": "Lequincio Zeefuik",
+    "position": "A(C)",
+    "rating": 78,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 179,
+    "playerId": 116638,
+    "playerName": "Denso Kasius",
+    "position": "M(R)",
+    "rating": 82,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 179,
+    "playerId": 122716,
+    "playerName": "Matej Sin",
+    "position": "M(C),AM(RLC)",
+    "rating": 82,
+    "shirtNumber": 33
+  },
+  {
+    "clubId": 179,
+    "playerId": 122926,
+    "playerName": "Rome Jayden",
+    "position": "K",
+    "rating": 84,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 179,
+    "playerId": 122928,
+    "playerName": "Ro",
+    "position": "A(RL)",
+    "rating": 77,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 179,
+    "playerId": 122929,
+    "playerName": "Mexx Meerdink",
+    "position": "A(C)",
+    "rating": 82,
+    "shirtNumber": 35
+  },
+  {
+    "clubId": 179,
+    "playerId": 122931,
+    "playerName": "Wouter Goes",
+    "position": "V(C)",
+    "rating": 85,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 179,
+    "playerId": 125023,
+    "playerName": "Billy",
+    "position": "V(C)",
     "rating": 73,
+    "shirtNumber": 52
+  },
+  {
+    "clubId": 179,
+    "playerId": 126587,
+    "playerName": "Dave Kwakman",
+    "position": "M(C)",
+    "rating": 78,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 179,
+    "playerId": 128169,
+    "playerName": "Weslley Patati",
+    "position": "A(RLC)",
+    "rating": 80,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 179,
+    "playerId": 130091,
+    "playerName": "Kees Smit",
+    "position": "M",
+    "rating": 82,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 179,
+    "playerId": 145446,
+    "playerName": "Mateo Ch",
+    "position": "M(L)",
+    "rating": 80,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 179,
+    "playerId": 152415,
+    "playerName": "Elijah Dijkstra",
+    "position": "M(RL)",
+    "rating": 78,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 179,
+    "playerId": 153198,
+    "playerName": "Ayoub Oufkir",
+    "position": "A(RL)",
+    "rating": 70,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 179,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 179,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 179,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 179,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 179,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 179,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 115,
+    "playerId": 4336,
+    "playerName": "Luka Modri",
+    "position": "M",
+    "rating": 92,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 115,
+    "playerId": 53473,
+    "playerName": "Niclas",
+    "position": "A(C)",
+    "rating": 89,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 115,
+    "playerId": 54442,
+    "playerName": "Pietro Terracciano",
+    "position": "K",
+    "rating": 87,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 115,
+    "playerId": 57953,
+    "playerName": "Adrien Rabiot",
+    "position": "M",
+    "rating": 92,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 115,
+    "playerId": 68131,
+    "playerName": "Mike Maignan",
+    "position": "K",
+    "rating": 92,
+    "shirtNumber": 16
+  },
+  {
+    "clubId": 115,
+    "playerId": 78753,
+    "playerName": "Ruben Loftus",
+    "position": "M",
+    "rating": 88,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 115,
+    "playerId": 80987,
+    "playerName": "Pervis Estupi",
+    "position": "M(L)",
+    "rating": 90,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 115,
+    "playerId": 85046,
+    "playerName": "Christian Pulisic",
+    "position": "A(RL)",
+    "rating": 92,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 115,
+    "playerId": 85984,
+    "playerName": "Christopher Nkunku",
+    "position": "A(RLC)",
+    "rating": 91,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 115,
+    "playerId": 86836,
+    "playerName": "Fikayo Tomori",
+    "position": "V(C)",
+    "rating": 90,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 115,
+    "playerId": 89041,
+    "playerName": "Matteo Gabbia",
+    "position": "V(C)",
+    "rating": 89,
+    "shirtNumber": 46
+  },
+  {
+    "clubId": 115,
+    "playerId": 93302,
+    "playerName": "Rafael Le",
+    "position": "A(LC)",
+    "rating": 93,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 115,
+    "playerId": 96684,
+    "playerName": "Alexis Saelemaekers",
+    "position": "M,AM(RL)",
+    "rating": 90,
+    "shirtNumber": 56
+  },
+  {
+    "clubId": 115,
+    "playerId": 97982,
+    "playerName": "Koni",
+    "position": "Koni de Winter",
+    "rating": 87,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 115,
+    "playerId": 99560,
+    "playerName": "Youssouf Fofana",
+    "position": "M(C)",
+    "rating": 90,
     "shirtNumber": 19
   },
   {
-    "clubId": 180,
-    "playerId": 165420,
-    "playerName": "Leroy Fr",
-    "position": "V(RC),VM(R)",
-    "rating": 65,
-    "shirtNumber": 17
+    "clubId": 115,
+    "playerId": 99895,
+    "playerName": "Strahinja Pavlovi",
+    "position": "V(C)",
+    "rating": 89,
+    "shirtNumber": 31
   },
   {
-    "clubId": 180,
-    "playerId": 167648,
-    "playerName": "Sinclair",
-    "position": "V(LC),VM(L)",
-    "rating": 65,
-    "shirtNumber": 17
+    "clubId": 115,
+    "playerId": 102542,
+    "playerName": "Santiago Gim",
+    "position": "A(C)",
+    "rating": 89,
+    "shirtNumber": 7
   },
   {
-    "clubId": 180,
-    "playerId": 167649,
-    "playerName": "Marley",
+    "clubId": 115,
+    "playerId": 104880,
+    "playerName": "Samuele Ricci",
+    "position": "M(C)",
+    "rating": 89,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 115,
+    "playerId": 121869,
+    "playerName": "Davide Bartesaghi",
+    "position": "M(L)",
+    "rating": 83,
+    "shirtNumber": 33
+  },
+  {
+    "clubId": 115,
+    "playerId": 122437,
+    "playerName": "Ardon Jashari",
+    "position": "M(C)",
+    "rating": 88,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 115,
+    "playerId": 131245,
+    "playerName": "Zachary Athekame",
     "position": "M(R)",
+    "rating": 82,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 115,
+    "playerId": 141546,
+    "playerName": "David Odogu",
+    "position": "V(C)",
+    "rating": 73,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 115,
+    "playerId": 149240,
+    "playerName": "Lorenzo Torriani",
+    "position": "K",
+    "rating": 75,
+    "shirtNumber": 96
+  },
+  {
+    "clubId": 115,
+    "playerId": 164769,
+    "playerName": "Cheveyo Balentien",
+    "position": "A(RLC)",
+    "rating": 73,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 115,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 115,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 115,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 115,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 115,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 115,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 47,
+    "playerId": 47427,
+    "playerName": "Mateo Kova",
+    "position": "M(C)",
+    "rating": 91,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 47,
+    "playerId": 53112,
+    "playerName": "Stefan Ortega",
+    "position": "K",
+    "rating": 88,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 47,
+    "playerId": 58947,
+    "playerName": "John Stones",
+    "position": "V(RC),VM(C)",
+    "rating": 92,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 47,
+    "playerId": 64301,
+    "playerName": "Marcus Bettinelli",
+    "position": "K",
+    "rating": 80,
+    "shirtNumber": 13
+  },
+  {
+    "clubId": 47,
+    "playerId": 64626,
+    "playerName": "Nathan Ak",
+    "position": "V(LC)",
+    "rating": 91,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 47,
+    "playerId": 68182,
+    "playerName": "Bernardo Silva",
+    "position": "M,AM(RC)",
+    "rating": 93,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 47,
+    "playerId": 80933,
+    "playerName": "Kalvin Phillips",
+    "position": "M(C)",
+    "rating": 87,
+    "shirtNumber": 44
+  },
+  {
+    "clubId": 47,
+    "playerId": 82178,
+    "playerName": "Hern",
+    "position": "M(C)",
+    "rating": 95,
+    "shirtNumber": 16
+  },
+  {
+    "clubId": 47,
+    "playerId": 82209,
+    "playerName": "Gianluigi Donnarumma",
+    "position": "K",
+    "rating": 93,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 47,
+    "playerId": 85994,
+    "playerName": "Dias",
+    "position": "V(C)",
+    "rating": 94,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 47,
+    "playerId": 88100,
+    "playerName": "Erling Haaland",
+    "position": "A(C)",
+    "rating": 96,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 47,
+    "playerId": 89018,
+    "playerName": "Phil Foden",
+    "position": "A(RLC)",
+    "rating": 93,
+    "shirtNumber": 47
+  },
+  {
+    "clubId": 47,
+    "playerId": 92649,
+    "playerName": "Tijjani Reijnders",
+    "position": "M",
+    "rating": 92,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 47,
+    "playerId": 97458,
+    "playerName": "Jo",
+    "position": "V(LC),VM(L)",
+    "rating": 93,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 47,
+    "playerId": 99465,
+    "playerName": "Rayan",
+    "position": "A",
+    "rating": 89,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 47,
+    "playerId": 99575,
+    "playerName": "Doku",
+    "position": "A(RL)",
+    "rating": 92,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 47,
+    "playerId": 102316,
+    "playerName": "Matheus Nunes",
+    "position": "M",
+    "rating": 89,
+    "shirtNumber": 27
+  },
+  {
+    "clubId": 47,
+    "playerId": 102637,
+    "playerName": "Rayan Cherki",
+    "position": "A(RL)",
+    "rating": 90,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 47,
+    "playerId": 103484,
+    "playerName": "Nico Gonz",
+    "position": "M(C)",
+    "rating": 90,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 47,
+    "playerId": 104825,
+    "playerName": "Omar Marmoush",
+    "position": "A(RLC)",
+    "rating": 92,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 47,
+    "playerId": 106407,
+    "playerName": "Moreira Savinho",
+    "position": "A(RL)",
+    "rating": 89,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 47,
+    "playerId": 114334,
+    "playerName": "James Trafford",
+    "position": "K",
+    "rating": 85,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 47,
+    "playerId": 115741,
+    "playerName": "Luke Mbete",
+    "position": "V(C)",
+    "rating": 77,
+    "shirtNumber": 79
+  },
+  {
+    "clubId": 47,
+    "playerId": 119442,
+    "playerName": "Oscar Bobb",
+    "position": "A(RLC)",
+    "rating": 85,
+    "shirtNumber": 52
+  },
+  {
+    "clubId": 47,
+    "playerId": 125045,
+    "playerName": "Rico Lewis",
+    "position": "M(RLC)",
+    "rating": 88,
+    "shirtNumber": 82
+  },
+  {
+    "clubId": 47,
+    "playerId": 125479,
+    "playerName": "Christian Mcfarlane",
+    "position": "M(L)",
+    "rating": 73,
+    "shirtNumber": 46
+  },
+  {
+    "clubId": 47,
+    "playerId": 129988,
+    "playerName": "Abdukodir Khusanov",
+    "position": "V(RC)",
+    "rating": 85,
+    "shirtNumber": 45
+  },
+  {
+    "clubId": 47,
+    "playerId": 132296,
+    "playerName": "Claudio Echeverri",
+    "position": "A(RL)",
+    "rating": 85,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 47,
+    "playerId": 137177,
+    "playerName": "Kian Breckin",
+    "position": "M",
+    "rating": 68,
+    "shirtNumber": 50
+  },
+  {
+    "clubId": 47,
+    "playerId": 137211,
+    "playerName": "Emilio Lawrence",
+    "position": "AM(RLC)",
+    "rating": 70,
+    "shirtNumber": 99
+  },
+  {
+    "clubId": 47,
+    "playerId": 137501,
+    "playerName": "Jaden Heskey",
+    "position": "A(C)",
+    "rating": 65,
+    "shirtNumber": 81
+  },
+  {
+    "clubId": 47,
+    "playerId": 137507,
+    "playerName": "Jadel Katongo",
+    "position": "V(C)",
+    "rating": 77,
+    "shirtNumber": 70
+  },
+  {
+    "clubId": 47,
+    "playerId": 137512,
+    "playerName": "Ezra Carrington",
+    "position": "M(R)",
+    "rating": 70,
+    "shirtNumber": 53
+  },
+  {
+    "clubId": 47,
+    "playerId": 137513,
+    "playerName": "Nico",
+    "position": "M",
+    "rating": 87,
+    "shirtNumber": 33
+  },
+  {
+    "clubId": 47,
+    "playerId": 137523,
+    "playerName": "Justin Oboavwoduo",
+    "position": "A(RC)",
+    "rating": 70,
+    "shirtNumber": 77
+  },
+  {
+    "clubId": 47,
+    "playerId": 145894,
+    "playerName": "Finlay Gorman",
+    "position": "AM(RLC)",
     "rating": 65,
     "shirtNumber": 17
+  },
+  {
+    "clubId": 47,
+    "playerId": 149210,
+    "playerName": "Mahamadou Sangar",
+    "position": "A(C)",
+    "rating": 70,
+    "shirtNumber": 71
+  },
+  {
+    "clubId": 47,
+    "playerId": 150073,
+    "playerName": "Isaac Smith",
+    "position": "V(C)",
+    "rating": 67,
+    "shirtNumber": 51
+  },
+  {
+    "clubId": 47,
+    "playerId": 150075,
+    "playerName": "Isaiah Dada",
+    "position": "V,VM(C)",
+    "rating": 67,
+    "shirtNumber": 64
+  },
+  {
+    "clubId": 47,
+    "playerId": 150076,
+    "playerName": "Seb Naylor",
+    "position": "M(L)",
+    "rating": 65,
+    "shirtNumber": 54
+  },
+  {
+    "clubId": 47,
+    "playerId": 150077,
+    "playerName": "Charlie Gray",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 59
+  },
+  {
+    "clubId": 47,
+    "playerId": 150079,
+    "playerName": "Ashton Muir",
+    "position": "A(RL)",
+    "rating": 67,
+    "shirtNumber": 62
+  },
+  {
+    "clubId": 47,
+    "playerId": 150151,
+    "playerName": "Matty Warhurst",
+    "position": "A(RLC)",
+    "rating": 67,
+    "shirtNumber": 98
+  },
+  {
+    "clubId": 47,
+    "playerId": 150154,
+    "playerName": "Leke Drake",
+    "position": "V(C)",
+    "rating": 65,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 47,
+    "playerId": 150163,
+    "playerName": "Harrison Parker",
+    "position": "V,VM(C)",
+    "rating": 65,
+    "shirtNumber": 55
+  },
+  {
+    "clubId": 47,
+    "playerId": 153536,
+    "playerName": "Kaden Braithwaite",
+    "position": "V(LC)",
+    "rating": 70,
+    "shirtNumber": 61
+  },
+  {
+    "clubId": 47,
+    "playerId": 155767,
+    "playerName": "Max Hudson",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 69
+  },
+  {
+    "clubId": 47,
+    "playerId": 156553,
+    "playerName": "Ryan Mcaidoo",
+    "position": "A(RL)",
+    "rating": 65,
+    "shirtNumber": 56
+  },
+  {
+    "clubId": 47,
+    "playerId": 157611,
+    "playerName": "Spike Brits",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 80
+  },
+  {
+    "clubId": 47,
+    "playerId": 157612,
+    "playerName": "Divine Mukasa",
+    "position": "M,AM(C)",
+    "rating": 70,
+    "shirtNumber": 63
+  },
+  {
+    "clubId": 47,
+    "playerId": 157613,
+    "playerName": "Reigan Heskey",
+    "position": "A(RL)",
+    "rating": 65,
+    "shirtNumber": 92
+  },
+  {
+    "clubId": 47,
+    "playerId": 160790,
+    "playerName": "Stephen Mfuni",
+    "position": "V(LC)",
+    "rating": 70,
+    "shirtNumber": 91
+  },
+  {
+    "clubId": 47,
+    "playerId": 163101,
+    "playerName": "Kian Noble",
+    "position": "V(C)",
+    "rating": 65,
+    "shirtNumber": 90
+  },
+  {
+    "clubId": 47,
+    "playerId": 163102,
+    "playerName": "Matty Henderson",
+    "position": "M",
+    "rating": 65,
+    "shirtNumber": 89
+  },
+  {
+    "clubId": 47,
+    "playerId": 166727,
+    "playerName": "Jack Wint",
+    "position": "K",
+    "rating": 70,
+    "shirtNumber": 84
+  },
+  {
+    "clubId": 47,
+    "playerId": 166728,
+    "playerName": "Femi Fapetu",
+    "position": "M(C)",
+    "rating": 70,
+    "shirtNumber": 60
+  },
+  {
+    "clubId": 47,
+    "playerId": 166729,
+    "playerName": "Floyd Samba",
+    "position": "M",
+    "rating": 70,
+    "shirtNumber": 75
+  },
+  {
+    "clubId": 47,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 47,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 47,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 47,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 47,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 47,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 44,
+    "playerId": 36734,
+    "playerName": "Jay Spearing",
+    "position": "M(C)",
+    "rating": 70,
+    "shirtNumber": 71
+  },
+  {
+    "clubId": 44,
+    "playerId": 46883,
+    "playerName": "Wataru Endo",
+    "position": "M(C)",
+    "rating": 88,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 44,
+    "playerId": 52690,
+    "playerName": "Mohamed Salah",
+    "position": "A(RC)",
+    "rating": 95,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 44,
+    "playerId": 53468,
+    "playerName": "Virgil",
+    "position": "Virgil van Dijk",
+    "rating": 95,
+    "shirtNumber": 4
+  },
+  {
+    "clubId": 44,
+    "playerId": 65977,
+    "playerName": "Andy Robertson",
+    "position": "M(L)",
+    "rating": 91,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 44,
+    "playerId": 68359,
+    "playerName": "Becker Alisson",
+    "position": "K",
+    "rating": 94,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 44,
+    "playerId": 76303,
+    "playerName": "Joe Gomez",
+    "position": "V(RLC)",
+    "rating": 89,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 44,
+    "playerId": 78933,
+    "playerName": "Freddie Woodman",
+    "position": "K",
+    "rating": 82,
+    "shirtNumber": 28
+  },
+  {
+    "clubId": 44,
+    "playerId": 83844,
+    "playerName": "Alexander Isak",
+    "position": "A(LC)",
+    "rating": 94,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 44,
+    "playerId": 87638,
+    "playerName": "Federico Chiesa",
+    "position": "A(RLC)",
+    "rating": 90,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 44,
+    "playerId": 90287,
+    "playerName": "Dominik Szoboszlai",
+    "position": "M",
+    "rating": 92,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 44,
+    "playerId": 91084,
+    "playerName": "Ibrahima Konat",
+    "position": "V(C)",
+    "rating": 92,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 44,
+    "playerId": 95236,
+    "playerName": "Alexis Mac",
+    "position": "M",
+    "rating": 94,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 44,
+    "playerId": 97322,
+    "playerName": "Cody Gakpo",
+    "position": "A(RLC)",
+    "rating": 92,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 44,
+    "playerId": 97934,
+    "playerName": "Curtis Jones",
+    "position": "M",
+    "rating": 91,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 44,
+    "playerId": 98514,
+    "playerName": "Ryan Gravenberch",
+    "position": "M(C)",
+    "rating": 92,
+    "shirtNumber": 38
+  },
+  {
+    "clubId": 44,
+    "playerId": 102385,
+    "playerName": "Jeremie Frimpong",
+    "position": "M",
+    "rating": 92,
+    "shirtNumber": 30
+  },
+  {
+    "clubId": 44,
+    "playerId": 104514,
+    "playerName": "Florian Wirtz",
+    "position": "A(RLC)",
+    "rating": 94,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 44,
+    "playerId": 104580,
+    "playerName": "Hugo Ekitik",
+    "position": "A(C)",
+    "rating": 91,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 44,
+    "playerId": 105635,
+    "playerName": "Rhys Williams",
+    "position": "V(C)",
+    "rating": 78,
+    "shirtNumber": 46
+  },
+  {
+    "clubId": 44,
+    "playerId": 108470,
+    "playerName": "Kaide Gordon",
+    "position": "AM(RLC)",
+    "rating": 75,
+    "shirtNumber": 49
+  },
+  {
+    "clubId": 44,
+    "playerId": 113207,
+    "playerName": "Calvin Ramsay",
+    "position": "M(R)",
+    "rating": 78,
+    "shirtNumber": 47
+  },
+  {
+    "clubId": 44,
+    "playerId": 113440,
+    "playerName": "Giorgi Mamardashvili",
+    "position": "K",
+    "rating": 91,
+    "shirtNumber": 25
+  },
+  {
+    "clubId": 44,
+    "playerId": 115745,
+    "playerName": "Conor Bradley",
+    "position": "M(R)",
+    "rating": 88,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 44,
+    "playerId": 119476,
+    "playerName": "Milos Kerkez",
+    "position": "M(L)",
+    "rating": 89,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 44,
+    "playerId": 121718,
+    "playerName": "Oakley Cannonier",
+    "position": "A(C)",
+    "rating": 70,
+    "shirtNumber": 87
+  },
+  {
+    "clubId": 44,
+    "playerId": 124644,
+    "playerName": "Stefan Bajcetic",
+    "position": "M(C)",
+    "rating": 84,
+    "shirtNumber": 43
+  },
+  {
+    "clubId": 44,
+    "playerId": 127807,
+    "playerName": "Luke Chambers",
+    "position": "M(L)",
+    "rating": 78,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 44,
+    "playerId": 130678,
+    "playerName": "Ármin Pécsi",
+    "position": "K",
+    "rating": 78,
+    "shirtNumber": 41
+  },
+  {
+    "clubId": 44,
+    "playerId": 137348,
+    "playerName": "Keyrol Figueroa",
+    "position": "A(RLC)",
+    "rating": 67,
+    "shirtNumber": 64
+  },
+  {
+    "clubId": 44,
+    "playerId": 140535,
+    "playerName": "Calum Scanlon",
+    "position": "M",
+    "rating": 76,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 44,
+    "playerId": 141340,
+    "playerName": "Trey Nyoni",
+    "position": "M",
+    "rating": 76,
+    "shirtNumber": 42
+  },
+  {
+    "clubId": 44,
+    "playerId": 141833,
+    "playerName": "Carter Pinnington",
+    "position": "V,VM(C)",
+    "rating": 65,
+    "shirtNumber": 57
+  },
+  {
+    "clubId": 44,
+    "playerId": 142090,
+    "playerName": "Josh Davidson",
+    "position": "M(R)",
+    "rating": 67,
+    "shirtNumber": 69
+  },
+  {
+    "clubId": 44,
+    "playerId": 143683,
+    "playerName": "Jayden Danns",
+    "position": "A(RLC)",
+    "rating": 76,
+    "shirtNumber": 76
+  },
+  {
+    "clubId": 44,
+    "playerId": 144639,
+    "playerName": "Giovanni Leoni",
+    "position": "V(C)",
+    "rating": 83,
+    "shirtNumber": 15
+  },
+  {
+    "clubId": 44,
+    "playerId": 145678,
+    "playerName": "Amara Nallo",
+    "position": "V(C)",
+    "rating": 73,
+    "shirtNumber": 65
+  },
+  {
+    "clubId": 44,
+    "playerId": 150037,
+    "playerName": "Fabian Mrozek",
+    "position": "K",
+    "rating": 73,
+    "shirtNumber": 93
+  },
+  {
+    "clubId": 44,
+    "playerId": 150038,
+    "playerName": "Terence Miles",
+    "position": "V(RC)",
+    "rating": 65,
+    "shirtNumber": 59
+  },
+  {
+    "clubId": 44,
+    "playerId": 150040,
+    "playerName": "Tommy Pilling",
+    "position": "M",
+    "rating": 65,
+    "shirtNumber": 70
+  },
+  {
+    "clubId": 44,
+    "playerId": 150041,
+    "playerName": "Nathan Morana",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 44,
+    "playerId": 150042,
+    "playerName": "Kornel Misciur",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 74
+  },
+  {
+    "clubId": 44,
+    "playerId": 150047,
+    "playerName": "Wellity Lucky",
+    "position": "V(RC)",
+    "rating": 70,
+    "shirtNumber": 92
+  },
+  {
+    "clubId": 44,
+    "playerId": 150048,
+    "playerName": "Lucas Pitt",
+    "position": "V(RC)",
+    "rating": 65,
+    "shirtNumber": 88
+  },
+  {
+    "clubId": 44,
+    "playerId": 150052,
+    "playerName": "Kyle Kelly",
+    "position": "M,AM(C)",
+    "rating": 65,
+    "shirtNumber": 61
+  },
+  {
+    "clubId": 44,
+    "playerId": 150053,
+    "playerName": "Michael Laffey",
+    "position": "M(RC)",
+    "rating": 65,
+    "shirtNumber": 94
+  },
+  {
+    "clubId": 44,
+    "playerId": 150055,
+    "playerName": "Fola Onanuga",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 99
+  },
+  {
+    "clubId": 44,
+    "playerId": 150056,
+    "playerName": "Emmanuel Airoboma",
+    "position": "M,AM(R)",
+    "rating": 65,
+    "shirtNumber": 90
+  },
+  {
+    "clubId": 44,
+    "playerId": 150057,
+    "playerName": "Ben Trueman",
+    "position": "M(C)",
+    "rating": 65,
+    "shirtNumber": 91
+  },
+  {
+    "clubId": 44,
+    "playerId": 150058,
+    "playerName": "Kieran Morrison",
+    "position": "M(C),AM(RC)",
+    "rating": 65,
+    "shirtNumber": 68
+  },
+  {
+    "clubId": 44,
+    "playerId": 150059,
+    "playerName": "Clae Ewing",
+    "position": "M(L)",
+    "rating": 65,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 44,
+    "playerId": 150061,
+    "playerName": "Trent Kone",
+    "position": "A(RL)",
+    "rating": 70,
+    "shirtNumber": 51
+  },
+  {
+    "clubId": 44,
+    "playerId": 150062,
+    "playerName": "Kareem Ahmed",
+    "position": "A(RLC)",
+    "rating": 65,
+    "shirtNumber": 81
+  },
+  {
+    "clubId": 44,
+    "playerId": 155330,
+    "playerName": "Rio Ngumoha",
+    "position": "A(RL)",
+    "rating": 77,
+    "shirtNumber": 73
+  },
+  {
+    "clubId": 44,
+    "playerId": 163108,
+    "playerName": "Joe Bradshaw",
+    "position": "A(RL)",
+    "rating": 65,
+    "shirtNumber": 62
+  },
+  {
+    "clubId": 44,
+    "playerId": 165698,
+    "playerName": "Will Wright",
+    "position": "A(C)",
+    "rating": 65,
+    "shirtNumber": 79
+  },
+  {
+    "clubId": 44,
+    "playerId": 168760,
+    "playerName": "Joshua Sonni",
+    "position": "A(C)",
+    "rating": 65,
+    "shirtNumber": 82
+  },
+  {
+    "clubId": 44,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 44,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 44,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 44,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 44,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 44,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
+  },
+  {
+    "clubId": 27,
+    "playerId": 37054,
+    "playerName": "Nathaniel Clyne",
+    "position": "V(RLC),VM(RL)",
+    "rating": 85,
+    "shirtNumber": 17
+  },
+  {
+    "clubId": 27,
+    "playerId": 55066,
+    "playerName": "Will Hughes",
+    "position": "M",
+    "rating": 87,
+    "shirtNumber": 19
+  },
+  {
+    "clubId": 27,
+    "playerId": 67300,
+    "playerName": "Jefferson Lerma",
+    "position": "M(C)",
+    "rating": 88,
+    "shirtNumber": 8
+  },
+  {
+    "clubId": 27,
+    "playerId": 73508,
+    "playerName": "Walter Ben",
+    "position": "K",
+    "rating": 88,
+    "shirtNumber": 44
+  },
+  {
+    "clubId": 27,
+    "playerId": 80189,
+    "playerName": "Borna Sosa",
+    "position": "M(L)",
+    "rating": 87,
+    "shirtNumber": 24
+  },
+  {
+    "clubId": 27,
+    "playerId": 84970,
+    "playerName": "Remi Matthews",
+    "position": "K",
+    "rating": 77,
+    "shirtNumber": 31
+  },
+  {
+    "clubId": 27,
+    "playerId": 85931,
+    "playerName": "Daichi Kamada",
+    "position": "M,AM(C)",
+    "rating": 88,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 27,
+    "playerId": 87576,
+    "playerName": "Isma",
+    "position": "A(RLC)",
+    "rating": 89,
+    "shirtNumber": 7
+  },
+  {
+    "clubId": 27,
+    "playerId": 87756,
+    "playerName": "Dean Henderson",
+    "position": "K",
+    "rating": 89,
+    "shirtNumber": 1
+  },
+  {
+    "clubId": 27,
+    "playerId": 87889,
+    "playerName": "Jean",
+    "position": "A(C)",
+    "rating": 91,
+    "shirtNumber": 14
+  },
+  {
+    "clubId": 27,
+    "playerId": 92807,
+    "playerName": "Eddie Nketiah",
+    "position": "A(C)",
+    "rating": 88,
+    "shirtNumber": 9
+  },
+  {
+    "clubId": 27,
+    "playerId": 95517,
+    "playerName": "Daniel Mu",
+    "position": "M(R)",
+    "rating": 90,
+    "shirtNumber": 2
+  },
+  {
+    "clubId": 27,
+    "playerId": 96656,
+    "playerName": "Chris Richards",
+    "position": "V,VM(C)",
+    "rating": 88,
+    "shirtNumber": 26
+  },
+  {
+    "clubId": 27,
+    "playerId": 98346,
+    "playerName": "Maxence Lacroix",
+    "position": "V(C)",
+    "rating": 89,
+    "shirtNumber": 5
+  },
+  {
+    "clubId": 27,
+    "playerId": 98429,
+    "playerName": "Cheick Doucour",
+    "position": "M(C)",
+    "rating": 87,
+    "shirtNumber": 28
+  },
+  {
+    "clubId": 27,
+    "playerId": 102524,
+    "playerName": "Marc Guehi",
+    "position": "V(C)",
+    "rating": 91,
+    "shirtNumber": 6
+  },
+  {
+    "clubId": 27,
+    "playerId": 105338,
+    "playerName": "Tyrick Mitchell",
+    "position": "M(L)",
+    "rating": 88,
+    "shirtNumber": 3
+  },
+  {
+    "clubId": 27,
+    "playerId": 105666,
+    "playerName": "Brennan Johnson",
+    "position": "A(RLC)",
+    "rating": 89,
+    "shirtNumber": 11
+  },
+  {
+    "clubId": 27,
+    "playerId": 106052,
+    "playerName": "Naouirou Ahamada",
+    "position": "M(C)",
+    "rating": 82,
+    "shirtNumber": 29
+  },
+  {
+    "clubId": 27,
+    "playerId": 106765,
+    "playerName": "Pino",
+    "position": "A(RL)",
+    "rating": 90,
+    "shirtNumber": 10
+  },
+  {
+    "clubId": 27,
+    "playerId": 114796,
+    "playerName": "Dylan Reid",
+    "position": "M(C)",
+    "rating": 70,
+    "shirtNumber": 45
+  },
+  {
+    "clubId": 27,
+    "playerId": 116512,
+    "playerName": "Matheus Fran",
+    "position": "Matheus França",
+    "rating": 80,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 27,
+    "playerId": 120160,
+    "playerName": "Justin Devenny",
+    "position": "M",
+    "rating": 82,
+    "shirtNumber": 55
+  },
+  {
+    "clubId": 27,
+    "playerId": 123504,
+    "playerName": "Chadi Riad",
+    "position": "V(C)",
+    "rating": 86,
+    "shirtNumber": 34
+  },
+  {
+    "clubId": 27,
+    "playerId": 123991,
+    "playerName": "Harry Lee",
+    "position": "K",
+    "rating": 65,
+    "shirtNumber": 41
+  },
+  {
+    "clubId": 27,
+    "playerId": 127251,
+    "playerName": "Adam Wharton",
+    "position": "M(C)",
+    "rating": 89,
+    "shirtNumber": 20
+  },
+  {
+    "clubId": 27,
+    "playerId": 132575,
+    "playerName": "Romain Esse",
+    "position": "AM(RLC)",
+    "rating": 82,
+    "shirtNumber": 21
+  },
+  {
+    "clubId": 27,
+    "playerId": 132883,
+    "playerName": "Luke Browne",
+    "position": "V(C)",
+    "rating": 67,
+    "shirtNumber": 40
+  },
+  {
+    "clubId": 27,
+    "playerId": 133498,
+    "playerName": "Kaden Rodney",
+    "position": "V(RC),VM(C)",
+    "rating": 70,
+    "shirtNumber": 42
+  },
+  {
+    "clubId": 27,
+    "playerId": 139663,
+    "playerName": "Rylan Brownlie",
+    "position": "A(C)",
+    "rating": 66,
+    "shirtNumber": 61
+  },
+  {
+    "clubId": 27,
+    "playerId": 143115,
+    "playerName": "Craig Farquhar",
+    "position": "V(C)",
+    "rating": 70,
+    "shirtNumber": 22
+  },
+  {
+    "clubId": 27,
+    "playerId": 147507,
+    "playerName": "Christantus Uche",
+    "position": "A(C)",
+    "rating": 85,
+    "shirtNumber": 12
+  },
+  {
+    "clubId": 27,
+    "playerId": 152212,
+    "playerName": "Asher Agbinone",
+    "position": "A(RLC)",
+    "rating": 67,
+    "shirtNumber": 64
+  },
+  {
+    "clubId": 27,
+    "playerId": 153540,
+    "playerName": "Jaydee Canvot",
+    "position": "V,VM(C)",
+    "rating": 82,
+    "shirtNumber": 23
+  },
+  {
+    "clubId": 27,
+    "playerId": 153806,
+    "playerName": "Caleb Kporha",
+    "position": "M(R)",
+    "rating": 73,
+    "shirtNumber": 58
+  },
+  {
+    "clubId": 27,
+    "playerId": 154958,
+    "playerName": "Zach Marsh",
+    "position": "A(RLC)",
+    "rating": 70,
+    "shirtNumber": 63
+  },
+  {
+    "clubId": 27,
+    "playerId": 161682,
+    "playerName": "Rio Cardines",
+    "position": "M(RL)",
+    "rating": 73,
+    "shirtNumber": 59
+  },
+  {
+    "clubId": 27,
+    "playerId": 166348,
+    "playerName": "Matteo Dashi",
+    "position": "M(C),AM(RLC)",
+    "rating": 65,
+    "shirtNumber": 18
+  },
+  {
+    "clubId": 27,
+    "playerId": 166736,
+    "playerName": "Adler Nascimento",
+    "position": "A(RL)",
+    "rating": 70,
+    "shirtNumber": 47
+  },
+  {
+    "clubId": 27,
+    "playerId": 166737,
+    "playerName": "Ben Casey",
+    "position": "A(C)",
+    "rating": 70,
+    "shirtNumber": 73
+  },
+  {
+    "clubId": 27,
+    "playerId": 169216,
+    "playerName": "Jo",
+    "position": "AM(RLC)",
+    "rating": 70,
+    "shirtNumber": 86
+  },
+  {
+    "clubId": 27,
+    "playerId": 169442,
+    "playerName": "Lee Chipolina"
+  },
+  {
+    "clubId": 27,
+    "playerId": 169441,
+    "playerName": "Oliver Joe"
+  },
+  {
+    "clubId": 27,
+    "playerId": 169440,
+    "playerName": "Kyle Clinton"
+  },
+  {
+    "clubId": 27,
+    "playerId": 169439,
+    "playerName": "Tayler Carrington"
+  },
+  {
+    "clubId": 27,
+    "playerId": 169438,
+    "playerName": "Jesús Toscano"
+  },
+  {
+    "clubId": 27,
+    "playerId": 169437,
+    "playerName": "Francisco Curro"
   }
 ]
