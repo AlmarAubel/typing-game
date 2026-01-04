@@ -18,6 +18,7 @@
           <slot></slot>
 
           <!-- Direct links -->
+
           <NavLink
             :to="{ name: 'shared-shop' }"
             class="text-yellow-400 hover:text-yellow-300"
@@ -33,6 +34,7 @@
             class="text-blue-400 hover:text-blue-300"
             >👨‍👩‍👧‍👦 Ouderportaal</NavLink
           >
+
 
           <!-- Games dropdown -->
           <div class="relative group">
