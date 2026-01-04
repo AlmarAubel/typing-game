@@ -3,7 +3,6 @@ import * as path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { load } from "cheerio";
 import pLimit from "p-limit";
-import { stringify as csvStringify } from "csv-stringify/sync";
 
 type Club = {
   clubId: number;
@@ -82,13 +81,6 @@ async function fetchHtml(url: string): Promise<string> {
   }
 
   throw new Error(`Failed to fetch ${url}`);
-}
-
-function parseNumber(value: string | undefined): number | undefined {
-  if (!value) return undefined;
-  const cleaned = value.replace(",", ".").trim();
-  const n = Number(cleaned);
-  return Number.isFinite(n) ? n : undefined;
 }
 
 function parseIntSafe(value: string | undefined): number | undefined {
@@ -691,13 +683,6 @@ async function scrapeClubSquad(clubId: number): Promise<ScrapeResult> {
 
 async function ensureOutputDir() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
-}
-
-function toCsv<T extends Record<string, any>>(rows: T[]): string {
-  return csvStringify(rows, {
-    header: true,
-    columns: Object.keys(rows[0] ?? {}),
-  });
 }
 
 async function writeOutputs(results: ScrapeResult[]) {
