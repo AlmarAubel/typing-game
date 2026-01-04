@@ -270,7 +270,7 @@ import {
   inject,
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useVoetbalGameStore } from "../stores";
+import { useVoetbalGameStore, type GameSession } from "../stores";
 import { FootballDataService } from "../utils/football-data";
 import { BALANCE_CONFIG } from "../utils/balance-config";
 
@@ -295,7 +295,7 @@ const showHint = ref<boolean>(false);
 const showMotivation = ref<boolean>(false);
 const motivationMessage = ref({ icon: "", text: "" });
 const showSessionEnd = ref<boolean>(false);
-const sessionResults = ref<any>(null);
+const sessionResults = ref<GameSession | null>(null);
 const sessionClubId = ref<number | null>(null);
 
 // Session timer

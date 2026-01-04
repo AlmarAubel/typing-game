@@ -301,7 +301,9 @@ export class ParentAnalyticsManager {
           ? Math.round(totalSessionTime / recentSessions.length / 1000 / 60) // minutes
           : 0,
       achievements: this.analytics.achievements.length,
-      recommendedPractice: this.getTablesNeedingPractice(),
+      recommendedPractice: this.getTablesNeedingPractice().map(
+        (stat) => stat.table,
+      ),
     };
   }
 
@@ -482,10 +484,10 @@ export class ParentAnalyticsManager {
 
         // Convert date strings back to Date objects
         if (parsed.weeklyProgress) {
-          parsed.weeklyProgress = parsed.weeklyProgress.map((session: any) => ({
+          parsed.weeklyProgress = parsed.weeklyProgress.map((session: Partial<SessionData>) => ({
             ...session,
-            startTime: new Date(session.startTime),
-            endTime: new Date(session.endTime),
+            startTime: new Date(session.startTime as Date),
+            endTime: new Date(session.endTime as Date),
           }));
         }
 
@@ -500,9 +502,9 @@ export class ParentAnalyticsManager {
         }
 
         if (parsed.achievements) {
-          parsed.achievements = parsed.achievements.map((achievement: any) => ({
+          parsed.achievements = parsed.achievements.map((achievement: Partial<Achievement>) => ({
             ...achievement,
-            unlockedAt: new Date(achievement.unlockedAt),
+            unlockedAt: new Date(achievement.unlockedAt as Date),
           }));
         }
 

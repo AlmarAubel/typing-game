@@ -203,7 +203,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { parentAnalytics, type ParentAnalytics } from '../utils/parentAnalytics';
+import { parentAnalytics, type ParentAnalytics, type SessionData } from '../utils/parentAnalytics';
 
 const analytics = ref<ParentAnalytics>({
   tableStats: {},
@@ -227,7 +227,7 @@ const progressSummary = ref({
   recentSessions: 0,
   averageSessionTime: 0,
   achievements: 0,
-  recommendedPractice: [] as any[]
+  recommendedPractice: [] as number[]
 });
 
 onMounted(() => {
@@ -262,7 +262,7 @@ const formatDate = (date: string | Date) => {
   });
 };
 
-const formatDuration = (session: any) => {
+const formatDuration = (session: SessionData) => {
   const start = new Date(session.startTime);
   const end = new Date(session.endTime);
   const minutes = Math.round((end.getTime() - start.getTime()) / 1000 / 60);

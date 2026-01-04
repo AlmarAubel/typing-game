@@ -67,7 +67,7 @@
         <!-- Unlock Status -->
         <div class="unlock-status flex justify-center gap-1 mt-2">
           <div
-            v-for="pack in ['bronze', 'silver', 'gold']"
+            v-for="pack in (['bronze', 'silver', 'gold'] as const)"
             :key="pack"
             class="unlock-indicator"
             :class="{
@@ -150,7 +150,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, inject, watch } from "vue";
 import { useRouter } from "vue-router";
-import { useVoetbalGameStore, useClubProgressStore } from "../stores";
+import { useVoetbalGameStore, useClubProgressStore, type ClubProgress } from "../stores";
 import { FootballDataService } from "../utils/football-data";
 import { TABLE_TO_CLUB_MAPPING } from "../utils/balance-config";
 
@@ -170,7 +170,7 @@ interface TableInfo {
     primaryColor: string;
   };
   progress: number;
-  clubProgress?: any;
+  clubProgress?: ClubProgress;
 }
 
 const tables = computed<TableInfo[]>(() => {

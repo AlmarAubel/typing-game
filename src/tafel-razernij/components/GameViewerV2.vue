@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, onUnmounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useSharedPokemonStore, GameType } from "../../stores/sharedPokemonStore";
 import { parentAnalytics } from "../../utils/parentAnalytics";
 
@@ -8,7 +8,6 @@ type PracticeType = "open" | "multiple-choice";
 type Difficulty = "easy" | "medium" | "hard";
 
 const route = useRoute();
-const router = useRouter();
 const pokemonStore = useSharedPokemonStore();
 
 // Game settings from route

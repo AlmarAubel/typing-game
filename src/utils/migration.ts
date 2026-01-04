@@ -1,5 +1,5 @@
 // Migration utility to transfer data from old stores to shared store
-import { useSharedPokemonStore } from "../stores/sharedPokemonStore";
+import { useSharedPokemonStore, type Pokemon } from "../stores/sharedPokemonStore";
 
 export async function migrateToSharedStore() {
   const sharedStore = useSharedPokemonStore();
@@ -44,7 +44,7 @@ export async function migrateToSharedStore() {
         // Migrate obtained pokemon
         if (parsed.obtainedPokemons && Array.isArray(parsed.obtainedPokemons)) {
           // Add pokemon that aren't already in the shared store
-          parsed.obtainedPokemons.forEach((pokemon: any) => {
+          parsed.obtainedPokemons.forEach((pokemon: Pokemon) => {
             const exists = sharedStore.state.obtainedPokemons.some(
               (p) => p.id === pokemon.id && p.name === pokemon.name,
             );
@@ -70,7 +70,7 @@ export async function migrateToSharedStore() {
 
         if (Array.isArray(parsed)) {
           // Add pokemon that aren't already in the shared store
-          parsed.forEach((pokemon: any) => {
+          parsed.forEach((pokemon: Pokemon) => {
             // Add cry if not present
             if (!pokemon.cry) {
               pokemon.cry = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokemon.id}.ogg`;
