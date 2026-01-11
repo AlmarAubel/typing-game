@@ -182,6 +182,48 @@
       </div>
     </div>
 
+    <!-- Game state import/export -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h2 class="text-xl font-bold mb-2 text-indigo-600">🔁 Game state import/export</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Download alle gespeelde data (analytics, pokemon stores en voetbalprogressie) of laad een opgeslagen JSON-bestand opnieuw in.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button
+          type="button"
+          class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          :disabled="isExporting"
+          @click="exportGameState"
+        >
+          📤 Export Game State
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          :disabled="isImporting"
+          @click="triggerImport"
+        >
+          📥 Import Game State
+        </button>
+      </div>
+      <input
+        ref="importFileInput"
+        type="file"
+        accept="application/json"
+        class="hidden"
+        @change="handleImportFile"
+      />
+      <p
+        v-if="gameStateMessage"
+        :class="[
+          'text-sm mt-4',
+          gameStateMessage.type === 'success' ? 'text-green-600' : 'text-red-600'
+        ]"
+      >
+        {{ gameStateMessage.text }}
+      </p>
+    </div>
+
     <!-- Action buttons -->
     <div class="mt-8 text-center space-x-4">
 
@@ -204,6 +246,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { parentAnalytics, type ParentAnalytics } from '../utils/parentAnalytics';
+import { useGameStateBackup } from '../composables/useGameStateBackup';
 
 const analytics = ref<ParentAnalytics>({
   tableStats: {},
@@ -230,10 +273,6 @@ const progressSummary = ref({
   recommendedPractice: [] as any[]
 });
 
-onMounted(() => {
-  loadAnalytics();
-});
-
 const loadAnalytics = () => {
   console.log('Loading analytics...');
   analytics.value = parentAnalytics.getDetailedAnalytics();
@@ -242,6 +281,22 @@ const loadAnalytics = () => {
   console.log('Progress summary:', progressSummary.value);
   console.log('Recent sessions:', analytics.value.weeklyProgress);
 };
+
+onMounted(() => {
+  loadAnalytics();
+});
+
+const {
+  importFileInput,
+  isExporting,
+  isImporting,
+  gameStateMessage,
+  exportGameState,
+  triggerImport,
+  handleImportFile,
+} = useGameStateBackup({
+  onImportSuccess: () => loadAnalytics(),
+});
 
 // Computed properties
 const tablesNeedingPractice = computed(() => {
@@ -252,7 +307,6 @@ const recentSessions = computed(() => {
   return analytics.value.weeklyProgress.slice(-5).reverse();
 });
 
-// Helper functions
 const formatDate = (date: string | Date) => {
   const d = new Date(date);
   return d.toLocaleDateString('nl-NL', {
