@@ -25,9 +25,6 @@ const DEFAULT_KEYS = [
   "voetbal-collection",
   "pokemon-collection",
   "xxxx",
-  "typegame-migration-completed",
-  "typegame-backup",
-  "typegame-migration-backup",
   "pokemon-sound-enabled",
 ];
 
