@@ -20,9 +20,19 @@
       <p class="text-white mt-4">Laden van clubs...</p>
     </div>
 
+    <!-- Mode Selection Buttons -->
+    <div class="flex justify-center gap-4 mb-6" v-if="!isLoading">
+      <button
+        @click="goToTournament"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-all border-2 border-white/20 shadow-lg hover:scale-105"
+      >
+        🏆 Champions League Toernooi
+      </button>
+    </div>
+
     <!-- Table Grid -->
     <div
-      v-else
+      v-if="!isLoading"
       class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto mb-8"
     >
       <div
@@ -206,6 +216,10 @@ const tables = computed<TableInfo[]>(() => {
 
   return tableList;
 });
+
+function goToTournament() {
+  router.push({ name: "VoetbalTournamentSelect" });
+}
 
 function selectTable(tableNumber: number) {
   // Check if there's already an active session

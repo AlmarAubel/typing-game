@@ -11,6 +11,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../views/TableSelect.vue"),
   },
   {
+    path: "/voetbal-razernij/tournament-select",
+    name: "VoetbalTournamentSelect",
+    component: () => import("../views/TournamentSelect.vue"),
+  },
+  {
+    path: "/voetbal-razernij/tournament-bracket",
+    name: "VoetbalTournamentBracket",
+    component: () => import("../views/TournamentBracket.vue"),
+  },
+  {
     path: "/voetbal-razernij/game/:table",
     name: "VoetbalGame",
     component: () => import("../views/GameSession.vue"),
@@ -31,6 +41,16 @@ const routes: RouteRecordRaw[] = [
     path: "/voetbal-razernij/team-builder",
     name: "VoetbalTeamBuilder",
     component: () => import("../views/TeamBuilder.vue"),
+  },
+  {
+    path: "/voetbal-razernij/match",
+    name: "VoetbalMatch",
+    component: () => import("../views/MatchView.vue"),
+  },
+  {
+    path: "/voetbal-razernij/champions-store",
+    name: "VoetbalChampionsStore",
+    component: () => import("../views/ChampionsStore.vue"),
   },
   {
     path: "/voetbal-razernij/pack-opening/:clubId/:packType",

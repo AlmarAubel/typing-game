@@ -120,13 +120,9 @@
 import { ref, computed, onMounted, inject, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useClubProgressStore, useCollectionStore } from "../stores";
-import {
-  FootballDataService,
-  type Player,
-  type PlayerCard,
-} from "../utils/football-data";
+import { useStaffStore } from "../stores/staff";
+import { FootballDataService, type Player } from "../utils/football-data";
 import { BALANCE_CONFIG } from "../utils/balance-config";
-import PlayerAvatar from "../components/PlayerAvatar.vue";
 import PlayerCardComponent from "../components/PlayerCard.vue";
 import PackResults from "../components/PackResults.vue";
 
@@ -134,6 +130,7 @@ const route = useRoute();
 const router = useRouter();
 const clubProgressStore = useClubProgressStore();
 const collectionStore = useCollectionStore();
+const staffStore = useStaffStore();
 const isDataInitialized = inject("isDataInitialized", ref(false));
 
 // Props from route - with validation
@@ -300,7 +297,21 @@ function generatePackContents() {
 
 function generateRarity(): string {
   const random = Math.random() * 100;
-  const rarities = BALANCE_CONFIG.rarity.distribution;
+  const rarities = { ...BALANCE_CONFIG.rarity.distribution };
+
+  // Apply Scout Bonus (Better Packs)
+  if (staffStore.hasStaff("scout")) {
+    // Reduce common change by 20% and distribute to others
+    const reduction = 20;
+    if (rarities.common && rarities.common > reduction) {
+      rarities.common -= reduction;
+      // Distribute reduction: 60% to uncommon, 30% to rare, 10% to legendary
+      if (rarities.uncommon !== undefined) rarities.uncommon += reduction * 0.6;
+      if (rarities.rare !== undefined) rarities.rare += reduction * 0.3;
+      if (rarities.legendary !== undefined)
+        rarities.legendary += reduction * 0.1;
+    }
+  }
 
   let cumulative = 0;
   for (const [rarity, chance] of Object.entries(rarities)) {
