@@ -144,12 +144,20 @@ const tournamentStore = useTournamentStore();
 const staffStore = useStaffStore();
 
 function buyStaff(staff: StaffMember) {
-  if (tournamentStore.spendMedals(staff.cost)) {
-    staffStore.hireStaff(staff.id);
-    // Success animation or feedback could go here
+  // Check affordability without spending first
+  if (tournamentStore.totalMedals < staff.cost) {
+    alert("Niet genoeg Medals!");
+    return;
+  }
+  
+  // Try to hire staff first
+  if (staffStore.hireStaff(staff.id)) {
+    // Only spend medals if hire was successful
+    tournamentStore.spendMedals(staff.cost);
     alert(`${staff.name} is nu in dienst!`);
   } else {
-    alert("Niet genoeg Medals!");
+    // Staff already owned or invalid ID
+    alert("Deze staf is al in dienst of ongeldig!");
   }
 }
 </script>

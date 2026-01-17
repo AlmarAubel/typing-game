@@ -82,6 +82,11 @@ export const useStaffStore = defineStore(
     });
 
     function hireStaff(staffId: string): boolean {
+      // Validate staffId exists in AVAILABLE_STAFF
+      const staffExists = AVAILABLE_STAFF.some(staff => staff.id === staffId);
+      if (!staffExists) {
+        return false; // Invalid staff ID
+      }
       if (ownedStaffIds.value.includes(staffId)) {
         return false; // Already owned
       }

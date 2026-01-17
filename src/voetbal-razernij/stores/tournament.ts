@@ -80,9 +80,17 @@ export const useTournamentStore = defineStore(
 
     function completeMatch(playerScore: number, opponentScore: number) {
       if (!tournament.value) return;
-
+      if (!tournament.value.isActive) return; // Guard against inactive tournament
+      
       const currentMatch =
         tournament.value.matches[tournament.value.currentMatchIndex];
+      
+      // Guard against missing or out of bounds match
+      if (!currentMatch) return;
+      
+      // Guard against double completion
+      if (currentMatch.completed) return;
+      
       currentMatch.completed = true;
       currentMatch.playerScore = playerScore;
       currentMatch.opponentScore = opponentScore;
@@ -182,11 +190,26 @@ export const useTournamentStore = defineStore(
       tournament.value = null;
     }
 
+    // Helper function to validate positive amounts
+    function validatePositiveAmount(amount: number, functionName: string): boolean {
+      if (amount <= 0) {
+        console.warn(`${functionName}: amount must be positive, received:`, amount);
+        return false;
+      }
+      return true;
+    }
+
     function addMedals(amount: number) {
+      if (!validatePositiveAmount(amount, 'addMedals')) {
+        return;
+      }
       totalMedals.value += amount;
     }
 
     function spendMedals(amount: number): boolean {
+      if (!validatePositiveAmount(amount, 'spendMedals')) {
+        return false;
+      }
       if (totalMedals.value >= amount) {
         totalMedals.value -= amount;
         return true;
