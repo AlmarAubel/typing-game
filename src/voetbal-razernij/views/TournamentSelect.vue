@@ -221,6 +221,17 @@ const tables = computed<TableInfo[]>(() => {
 function toggleTable(tableNumber: number) {
   const index = selectedTables.value.indexOf(tableNumber);
 
+  // Check for active tournament before any change
+  if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
+    if (
+      !confirm(
+        "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
+      )
+    ) {
+      return;
+    }
+  }
+
   if (index === -1) {
     // Add if not at max
     if (selectedTables.value.length < 5) {
@@ -228,21 +239,22 @@ function toggleTable(tableNumber: number) {
     }
   } else {
     // Remove
-    if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
-      if (
-        !confirm(
-          "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
-        )
-      ) {
-        return;
-      }
-    }
-
     selectedTables.value.splice(index, 1);
   }
 }
 
 function removeTable(tableNumber: number) {
+  // Check for active tournament before removal
+  if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
+    if (
+      !confirm(
+        "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
+      )
+    ) {
+      return;
+    }
+  }
+
   const index = selectedTables.value.indexOf(tableNumber);
   if (index !== -1) {
     selectedTables.value.splice(index, 1);

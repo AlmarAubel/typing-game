@@ -112,8 +112,11 @@ export const useVoetbalGameStore = defineStore(
         activeTables = [tableNumber];
       }
 
-      const clubId = TABLE_TO_CLUB_MAPPING[tableNumber];
-      // Note: In tournament mode with mixed clubs, we might handle clubId differently later
+      // Compute clubId by checking if all tables map to the same club
+      const mappedClubs = activeTables.map(t => TABLE_TO_CLUB_MAPPING[t]);
+      const firstClub = mappedClubs[0];
+      const allSameClub = mappedClubs.every(club => club === firstClub && club !== undefined);
+      const clubId = allSameClub ? firstClub : null;
 
       const session: GameSession = {
         tableNumber,

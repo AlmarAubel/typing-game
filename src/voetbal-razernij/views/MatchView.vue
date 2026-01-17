@@ -270,13 +270,26 @@ function startRound() {
 function handleAnswer() {
   if (isProcessing.value || !battle.value) return;
 
+  // Check for empty or invalid input
+  const trimmedAnswer = userAnswer.value?.trim();
+  if (!trimmedAnswer) {
+    // Empty input - ignore and don't change state
+    return;
+  }
+
+  const parsedAnswer = parseInt(trimmedAnswer);
+  if (isNaN(parsedAnswer)) {
+    // Non-numeric input - ignore and don't change state
+    return;
+  }
+
   const thinkingTime = (Date.now() - questionStartTime.value) / 1000;
   // Analyst Bonus: Deduct 5 seconds from thinking time (making the shot more powerful)
   const adjustedTime = hasAnalyst.value
     ? Math.max(0.1, thinkingTime - 5)
     : thinkingTime;
 
-  const isCorrect = parseInt(userAnswer.value) === correctAnswer.value;
+  const isCorrect = parsedAnswer === correctAnswer.value;
 
   // Keeper Trainer: Second Chance Logic
   if (!isCorrect && hasKeeperCoach.value && !secondChanceUsed.value) {
