@@ -218,18 +218,22 @@ const tables = computed<TableInfo[]>(() => {
   return tableList;
 });
 
+// Helper function to check for active tournament and confirm with user
+function confirmTournamentChange(): boolean {
+  if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
+    return confirm(
+      "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
+    );
+  }
+  return true;
+}
+
 function toggleTable(tableNumber: number) {
   const index = selectedTables.value.indexOf(tableNumber);
 
   // Check for active tournament before any change
-  if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
-    if (
-      !confirm(
-        "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
-      )
-    ) {
-      return;
-    }
+  if (!confirmTournamentChange()) {
+    return;
   }
 
   if (index === -1) {
@@ -245,14 +249,8 @@ function toggleTable(tableNumber: number) {
 
 function removeTable(tableNumber: number) {
   // Check for active tournament before removal
-  if (tournamentStore.tournament && tournamentStore.tournament.isActive) {
-    if (
-      !confirm(
-        "Je hebt nog een lopend toernooi. Weet je zeker dat je een nieuw toernooi wilt starten? Je oude voortgang gaat verloren.",
-      )
-    ) {
-      return;
-    }
+  if (!confirmTournamentChange()) {
+    return;
   }
 
   const index = selectedTables.value.indexOf(tableNumber);

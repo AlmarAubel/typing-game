@@ -190,17 +190,24 @@ export const useTournamentStore = defineStore(
       tournament.value = null;
     }
 
-    function addMedals(amount: number) {
+    // Helper function to validate positive amounts
+    function validatePositiveAmount(amount: number, functionName: string): boolean {
       if (amount <= 0) {
-        console.warn('addMedals: amount must be positive, received:', amount);
+        console.warn(`${functionName}: amount must be positive, received:`, amount);
+        return false;
+      }
+      return true;
+    }
+
+    function addMedals(amount: number) {
+      if (!validatePositiveAmount(amount, 'addMedals')) {
         return;
       }
       totalMedals.value += amount;
     }
 
     function spendMedals(amount: number): boolean {
-      if (amount <= 0) {
-        console.warn('spendMedals: amount must be positive, received:', amount);
+      if (!validatePositiveAmount(amount, 'spendMedals')) {
         return false;
       }
       if (totalMedals.value >= amount) {
