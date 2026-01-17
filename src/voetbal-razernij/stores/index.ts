@@ -96,7 +96,15 @@ export const useVoetbalGameStore = defineStore(
       }
     }
 
-    // Session management
+    /**
+     * Creates and starts a new game session for one or more table numbers.
+     *
+     * @param tableNumberOrTables - A single table number or an array of table numbers to start the session for.
+     *   If an array is provided it must be non-empty; the first element is used as the primary table.
+     * @returns The initialized GameSession object with timestamps, counters, rewards, and `isActive` set to true.
+     *   The session's `clubId` is set to the common mapped club if all provided tables map to the same defined club, otherwise `null`.
+     * @throws Error - If an empty array is provided for `tableNumberOrTables`.
+     */
     function startSession(tableNumberOrTables: number | number[]): GameSession {
       let tableNumber: number;
       let activeTables: number[];

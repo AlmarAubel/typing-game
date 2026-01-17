@@ -81,6 +81,12 @@ export const useStaffStore = defineStore(
       );
     });
 
+    /**
+     * Attempts to hire a staff member by ID and add them to the owned staff list.
+     *
+     * @param staffId - The ID of the staff member to hire
+     * @returns `true` if the staff ID existed and was added; `false` if the ID is invalid or the staff is already owned
+     */
     function hireStaff(staffId: string): boolean {
       // Validate staffId exists in AVAILABLE_STAFF
       const staffExists = AVAILABLE_STAFF.some(staff => staff.id === staffId);
