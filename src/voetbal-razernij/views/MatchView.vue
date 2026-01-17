@@ -422,8 +422,8 @@ function endGame() {
     } else {
       // Regular match - show alert and go home
       alert(`Wedstrijd afgelopen! ${playerScore} - ${opponentScore}`);
-      router.push("/voetbal-razernij");
       gameStore.endBattle();
+      router.push("/voetbal-razernij");
     }
   }, 3000); // Little longer delay to read final score
 }
