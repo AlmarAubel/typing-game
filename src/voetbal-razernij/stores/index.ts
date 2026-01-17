@@ -121,7 +121,7 @@ export const useVoetbalGameStore = defineStore(
       const session: GameSession = {
         tableNumber,
         activeTables,
-        clubId: clubId || null,
+        clubId,
         startTime: new Date(),
         questionsAnswered: 0,
         correctAnswers: 0,
