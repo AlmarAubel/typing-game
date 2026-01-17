@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeAll, vi } from "vitest";
 import { FootballDataService } from "../football-data";
-import type { Player, PlayerPosition } from "../football-data";
 
 describe("FootballDataService - Integration Tests", () => {
   beforeAll(async () => {

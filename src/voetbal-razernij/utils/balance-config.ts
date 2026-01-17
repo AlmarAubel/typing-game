@@ -29,6 +29,21 @@ export interface BalanceConfig {
       accuracyTokens: number;
     };
   };
+  medals: {
+    correctAnswer: number;
+    streakBonus: {
+      3: number;
+      5: number;
+      10: number;
+    };
+    perfectMatch: number;
+    phaseWin: {
+      group: number;
+      quarter: number;
+      semi: number;
+      final: number;
+    };
+  };
   packs: {
     bronze: {
       cost: number;
@@ -96,6 +111,21 @@ export const BALANCE_CONFIG: BalanceConfig = {
       activityTokens: 2,
       accuracyThreshold: 70,
       accuracyTokens: 1,
+    },
+  },
+  medals: {
+    correctAnswer: 1,
+    streakBonus: {
+      3: 2,
+      5: 5,
+      10: 10,
+    },
+    perfectMatch: 25,
+    phaseWin: {
+      group: 10,
+      quarter: 20,
+      semi: 30,
+      final: 50,
     },
   },
   packs: {

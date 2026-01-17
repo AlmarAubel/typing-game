@@ -273,24 +273,46 @@ import { useRoute, useRouter } from "vue-router";
 import { useVoetbalGameStore } from "../stores";
 import { FootballDataService } from "../utils/football-data";
 import { BALANCE_CONFIG } from "../utils/balance-config";
+import { useMathGame } from "../composables/useMathGame";
 
 const route = useRoute();
 const router = useRouter();
 const gameStore = useVoetbalGameStore();
 const isDataInitialized = inject("isDataInitialized", ref(false));
+const {
+  currentQuestion,
+  correctAnswer,
+  userAnswer,
+  lastAnswerCorrect,
+  consecutiveWrong,
+  isAnswerFeedbackShowing,
+  generateNewQuestion: generateNewMathQuestion,
+  submitAnswer: submitMathAnswer,
+} = useMathGame();
 
 // Props
-const table = ref<number>(parseInt(route.params.table as string) || 1);
+// If we have a comma separated list in the param (which is hacky but expected for quick updates), parse it.
+// Or we rely on store state if the session is already started?
+// The component mounts, reads params, then starts session.
+const tablesParam = route.params.table as string;
+const tables = ref<number[]>(
+  tablesParam.includes(",")
+    ? tablesParam.split(",").map((n) => parseInt(n))
+    : [parseInt(tablesParam) || 1],
+);
+
+// For template compatibility and display
+const table = computed(() => tables.value.join(", "));
 
 // Refs
 const answerInput = ref<HTMLInputElement>();
-const userAnswer = ref<string>("");
-const currentQuestion = ref({ factor1: table.value, factor2: 1 });
-const correctAnswer = ref<number>(0);
-const lastAnswerCorrect = ref<boolean>(false);
-const isAnswerFeedbackShowing = ref<boolean>(false);
+// userAnswer removed (using composable)
+// currentQuestion removed (using composable)
+// correctAnswer removed (using composable)
+// lastAnswerCorrect removed (using composable)
+// isAnswerFeedbackShowing removed (using composable)
 const lastRewards = ref({ coins: 0, xp: 0, tokens: 0 });
-const consecutiveWrong = ref<number>(0);
+// consecutiveWrong removed (using composable)
 const showHint = ref<boolean>(false);
 const showMotivation = ref<boolean>(false);
 const motivationMessage = ref({ icon: "", text: "" });
@@ -326,10 +348,11 @@ const club = computed(() => {
 });
 
 const hintText = computed(() => {
+  const currentTable = currentQuestion.value.factor1;
   const hints = [
-    `Tafel van ${table.value}: Tel in stapjes van ${table.value}! (${table.value}, ${table.value * 2}, ${table.value * 3}, ...)`,
-    `Tips: ${table.value} × 2 = ${table.value * 2}, ${table.value} × 5 = ${table.value * 5}, ${table.value} × 10 = ${table.value * 10}`,
-    `Gebruik je vingers! Tel ${table.value} keer het getal bij elkaar op.`,
+    `Tafel van ${currentTable}: Tel in stapjes van ${currentTable}! (${currentTable}, ${currentTable * 2}, ${currentTable * 3}, ...)`,
+    `Tips: ${currentTable} × 2 = ${currentTable * 2}, ${currentTable} × 5 = ${currentTable * 5}, ${currentTable} × 10 = ${currentTable * 10}`,
+    `Gebruik je vingers! Tel ${currentTable} keer het getal bij elkaar op.`,
   ];
   return hints[Math.floor(Math.random() * hints.length)];
 });
@@ -381,7 +404,7 @@ watch(timeRemaining, (newTime) => {
 // Methods
 function startSession() {
   try {
-    gameStore.startSession(table.value);
+    gameStore.startSession(tables.value);
   } catch (error) {
     console.error("Failed to start session:", error);
     router.push({ name: "VoetbalTableSelect" });
@@ -389,13 +412,7 @@ function startSession() {
 }
 
 function generateNewQuestion() {
-  const factor2 = Math.floor(Math.random() * 10) + 1; // 1-10
-  currentQuestion.value = {
-    factor1: table.value,
-    factor2: factor2,
-  };
-  correctAnswer.value = table.value * factor2;
-  userAnswer.value = "";
+  generateNewMathQuestion(tables.value);
 
   // Focus input after feedback
   if (!isAnswerFeedbackShowing.value) {
@@ -408,8 +425,7 @@ function generateNewQuestion() {
 function submitAnswer() {
   if (!userAnswer.value || isAnswerFeedbackShowing.value) return;
 
-  const answer = parseInt(userAnswer.value);
-  const isCorrect = answer === correctAnswer.value;
+  const isCorrect = submitMathAnswer();
 
   // Track previous rewards for display
   const prevCoins = currentSession.value?.coinsEarned || 0;
@@ -427,17 +443,11 @@ function submitAnswer() {
     tokens: (currentSession.value?.tokensEarned || 0) - prevTokens,
   };
 
-  // Handle feedback
-  lastAnswerCorrect.value = isCorrect;
-  isAnswerFeedbackShowing.value = true;
-
-  // Handle consecutive wrong answers for hints
+  // Handle consecutive wrong answers for hints - logic moved to composable for tracking, but UI trigger logic is here
   if (isCorrect) {
-    consecutiveWrong.value = 0;
     showHint.value = false;
     showMotivationMessage("🎉", "Goed gedaan!");
   } else {
-    consecutiveWrong.value++;
     if (consecutiveWrong.value >= 2) {
       showHint.value = true;
     }
@@ -490,7 +500,7 @@ function endSession() {
   if (currentSession.value?.clubId) {
     sessionClubId.value = currentSession.value.clubId;
   }
-  
+
   const results = gameStore.endSession();
   if (results) {
     sessionResults.value = results;
@@ -662,7 +672,8 @@ function formatTime(seconds: number): string {
 }
 
 .motivation-banner {
-  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-2xl shadow-2xl;
+  @apply fixed top-1/2 left-1/2 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-2xl shadow-2xl;
+  transform: translate(-50%, -50%);
   animation: motivation-appear 0.5s ease-out;
 }
 
@@ -763,11 +774,11 @@ function formatTime(seconds: number): string {
 @keyframes motivation-appear {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+    scale: 0.8;
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    scale: 1;
   }
 }
 

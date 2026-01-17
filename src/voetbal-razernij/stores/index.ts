@@ -1,17 +1,13 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import type {
-  Club,
-  Player,
-  PlayerCard,
-  TeamSlot,
-} from "../utils/football-data";
+import type { Player, PlayerCard, TeamSlot } from "../utils/football-data";
 import { FootballDataService } from "../utils/football-data";
 import { BALANCE_CONFIG, TABLE_TO_CLUB_MAPPING } from "../utils/balance-config";
 
 export interface GameSession {
   tableNumber: number;
-  clubId: number;
+  activeTables: number[];
+  clubId: number | null; // Null if it's a mix of clubs (e.g. tournament)
   startTime: Date;
   endTime?: Date;
   questionsAnswered: number;
@@ -48,12 +44,28 @@ export interface Team {
   createdAt: Date;
 }
 
+export interface BattleSession {
+  opponentClubId: number;
+  activeTables: number[]; // Which tables are used for questions
+  playerScore: number;
+  opponentScore: number;
+  startTime: Date;
+  matchMinutes: number; // 0-90
+  possession: "player" | "opponent";
+  history: string[]; // Commentary log
+  isActive: boolean;
+  rewards: { coins: number; xp: number };
+}
+
+import { useStaffStore } from "./staff";
+
 // Main game store for session management and scoring
 export const useVoetbalGameStore = defineStore(
   "voetbal-game",
   () => {
     // Session state
     const currentSession = ref<GameSession | null>(null);
+    const currentBattle = ref<BattleSession | null>(null);
     const sessionHistory = ref<GameSession[]>([]);
     const currentTime = ref<number>(Date.now()); // Reactive time reference for timer updates
 
@@ -69,14 +81,14 @@ export const useVoetbalGameStore = defineStore(
 
     // Timer interval
     let timerInterval: ReturnType<typeof setInterval> | null = null;
-    
+
     function startTimer() {
       stopTimer(); // Clear any existing timer
       timerInterval = setInterval(() => {
         currentTime.value = Date.now();
       }, 1000);
     }
-    
+
     function stopTimer() {
       if (timerInterval) {
         clearInterval(timerInterval);
@@ -85,14 +97,31 @@ export const useVoetbalGameStore = defineStore(
     }
 
     // Session management
-    function startSession(tableNumber: number): GameSession {
-      const clubId = TABLE_TO_CLUB_MAPPING[tableNumber];
-      if (!clubId) {
-        throw new Error(`No club mapped to table ${tableNumber}`);
+    function startSession(tableNumberOrTables: number | number[]): GameSession {
+      let tableNumber: number;
+      let activeTables: number[];
+
+      if (Array.isArray(tableNumberOrTables)) {
+        if (tableNumberOrTables.length === 0) {
+          throw new Error("Cannot start session with empty tables array");
+        }
+        activeTables = tableNumberOrTables;
+        tableNumber = activeTables[0]; // Primary table for now
+      } else {
+        tableNumber = tableNumberOrTables;
+        activeTables = [tableNumber];
       }
+
+      // Compute clubId by checking if all tables map to the same club
+      const mappedClubs = activeTables.map(t => TABLE_TO_CLUB_MAPPING[t]);
+      const firstClub = mappedClubs[0];
+      // All tables must map to the same club AND that club must be defined
+      const allSameClub = firstClub !== undefined && mappedClubs.every(club => club === firstClub);
+      const clubId = allSameClub ? firstClub : null;
 
       const session: GameSession = {
         tableNumber,
+        activeTables,
         clubId,
         startTime: new Date(),
         questionsAnswered: 0,
@@ -111,13 +140,40 @@ export const useVoetbalGameStore = defineStore(
       return session;
     }
 
+    function startBattle(opponentClubId: number, activeTables: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]): BattleSession {
+      const battle: BattleSession = {
+        opponentClubId,
+        activeTables,
+        playerScore: 0,
+        opponentScore: 0,
+        startTime: new Date(),
+        matchMinutes: 0,
+        possession: "player", // Home team starts?
+        history: ["De wedstrijd is begonnen!"],
+        isActive: true,
+        rewards: { coins: 0, xp: 0 },
+      };
+
+      currentBattle.value = battle;
+      // We don't use the regular session timer for battles, battle uses discrete time steps per question
+      return battle;
+    }
+
+    function endBattle() {
+      if (!currentBattle.value) return;
+      currentBattle.value.isActive = false;
+      // Awards coin logic here?
+      totalCoins.value += currentBattle.value.rewards.coins;
+      // XP logic would go to club progress, but which club? Maybe general XP?
+    }
+
     function endSession(): GameSession | null {
       if (!currentSession.value) return null;
 
       const session = currentSession.value;
       session.endTime = new Date();
       session.isActive = false;
-      
+
       stopTimer(); // Stop the timer when session ends
 
       // Calculate session-end bonuses
@@ -168,6 +224,11 @@ export const useVoetbalGameStore = defineStore(
       const session = currentSession.value;
       session.questionsAnswered++;
 
+      // Apply Head Coach XP Bonus
+      const staffStore = useStaffStore();
+      const xpMultiplier =
+        1 + (staffStore.hasStaff("head_coach") ? 0.1 : 0);
+
       if (isCorrect) {
         session.correctAnswers++;
         session.currentStreak++;
@@ -176,12 +237,16 @@ export const useVoetbalGameStore = defineStore(
           session.currentStreak,
         );
         session.coinsEarned += BALANCE_CONFIG.scoring.correctAnswerCoins;
-        session.xpEarned += BALANCE_CONFIG.scoring.correctAnswerXP;
+        session.xpEarned += Math.round(
+          BALANCE_CONFIG.scoring.correctAnswerXP * xpMultiplier,
+        );
       } else {
         session.incorrectAnswers++;
         session.currentStreak = 0;
         session.coinsEarned += BALANCE_CONFIG.scoring.incorrectAnswerCoins;
-        session.xpEarned += BALANCE_CONFIG.scoring.incorrectAnswerXP;
+        session.xpEarned += Math.round(
+          BALANCE_CONFIG.scoring.incorrectAnswerXP * xpMultiplier,
+        );
       }
 
       // Calculate token rewards
@@ -223,9 +288,10 @@ export const useVoetbalGameStore = defineStore(
       if (!currentSession.value) return 0;
       // Use currentTime.value to make this reactive
       // Ensure startTime is a Date object (handle deserialization from localStorage)
-      const startTime = currentSession.value.startTime instanceof Date 
-        ? currentSession.value.startTime 
-        : new Date(currentSession.value.startTime);
+      const startTime =
+        currentSession.value.startTime instanceof Date
+          ? currentSession.value.startTime
+          : new Date(currentSession.value.startTime);
       const elapsed = (currentTime.value - startTime.getTime()) / 1000;
       const totalTime = BALANCE_CONFIG.session.durationMinutes * 60;
       return Math.max(0, totalTime - elapsed);
@@ -234,6 +300,7 @@ export const useVoetbalGameStore = defineStore(
     return {
       // State
       currentSession,
+      currentBattle,
       sessionHistory,
       totalCoins,
       globalStats,
@@ -244,6 +311,8 @@ export const useVoetbalGameStore = defineStore(
 
       // Actions
       startSession,
+      startBattle,
+      endBattle,
       endSession,
       answerQuestion,
     };
@@ -275,6 +344,13 @@ export const useClubProgressStore = defineStore(
     }
 
     function addSessionProgress(session: GameSession): void {
+      // If clubId is null (tournament mode), we might distribute XP differently
+      // For now, let's just skip updating specific club progress if no single club set
+      if (!session.clubId) {
+        // TODO: Implement tournament XP logic (maybe distribute to all activeTables?)
+        return;
+      }
+
       const progress = getClubProgress(session.clubId);
 
       progress.totalXP += session.xpEarned;
