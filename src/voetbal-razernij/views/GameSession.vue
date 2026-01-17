@@ -672,7 +672,8 @@ function formatTime(seconds: number): string {
 }
 
 .motivation-banner {
-  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-2xl shadow-2xl;
+  @apply fixed top-1/2 left-1/2 z-50 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-2xl shadow-2xl;
+  transform: translate(-50%, -50%);
   animation: motivation-appear 0.5s ease-out;
 }
 
@@ -773,11 +774,11 @@ function formatTime(seconds: number): string {
 @keyframes motivation-appear {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+    scale: 0.8;
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    scale: 1;
   }
 }
 

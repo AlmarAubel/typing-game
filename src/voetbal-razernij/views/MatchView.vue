@@ -271,7 +271,8 @@ function handleAnswer() {
   if (isProcessing.value || !battle.value) return;
 
   // Check for empty or invalid input
-  const trimmedAnswer = userAnswer.value?.trim();
+  // Convert to string first since v-model with type="number" may return a number
+  const trimmedAnswer = String(userAnswer.value ?? "").trim();
   if (!trimmedAnswer) {
     // Empty input - ignore and don't change state
     return;
