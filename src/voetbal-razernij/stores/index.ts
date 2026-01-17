@@ -115,7 +115,8 @@ export const useVoetbalGameStore = defineStore(
       // Compute clubId by checking if all tables map to the same club
       const mappedClubs = activeTables.map(t => TABLE_TO_CLUB_MAPPING[t]);
       const firstClub = mappedClubs[0];
-      const allSameClub = mappedClubs.every(club => club === firstClub && club !== undefined);
+      // All tables must map to the same club AND that club must be defined
+      const allSameClub = firstClub !== undefined && mappedClubs.every(club => club === firstClub);
       const clubId = allSameClub ? firstClub : null;
 
       const session: GameSession = {
