@@ -78,6 +78,14 @@ export const useTournamentStore = defineStore(
       tournament.value = null;
     }
 
+    /**
+     * Finalizes the current active tournament match using the provided scores.
+     *
+     * Marks the current match as completed, records `playerScore` and `opponentScore`, increments the tournament's victory or defeat counters, and either advances the tournament phase when all matches in the current phase are completed or advances to the next match index. If there is no active tournament, no current match, or the current match is already completed, the function has no effect.
+     *
+     * @param playerScore - The player's score for the match
+     * @param opponentScore - The opponent's score for the match
+     */
     function completeMatch(playerScore: number, opponentScore: number) {
       if (!tournament.value) return;
       if (!tournament.value.isActive) return; // Guard against inactive tournament
@@ -186,11 +194,22 @@ export const useTournamentStore = defineStore(
       };
     });
 
+    /**
+     * Clears the current tournament state and marks there as being no active tournament.
+     */
     function endTournament() {
       tournament.value = null;
     }
 
-    // Helper function to validate positive amounts
+    /**
+     * Check that a numeric amount is greater than zero.
+     *
+     * Logs a warning including `functionName` if the value is not greater than zero.
+     *
+     * @param amount - The numeric value to validate
+     * @param functionName - Caller name included in the warning message when validation fails
+     * @returns `true` if `amount` is greater than zero, `false` otherwise
+     */
     function validatePositiveAmount(amount: number, functionName: string): boolean {
       if (amount <= 0) {
         console.warn(`${functionName}: amount must be positive, received:`, amount);
@@ -199,6 +218,11 @@ export const useTournamentStore = defineStore(
       return true;
     }
 
+    /**
+     * Increase the stored medal balance by the specified positive amount.
+     *
+     * @param amount - The number of medals to add; must be greater than zero. Non-positive values are ignored.
+     */
     function addMedals(amount: number) {
       if (!validatePositiveAmount(amount, 'addMedals')) {
         return;
@@ -206,6 +230,12 @@ export const useTournamentStore = defineStore(
       totalMedals.value += amount;
     }
 
+    /**
+     * Attempt to deduct a positive number of medals from the store balance.
+     *
+     * @param amount - The number of medals to spend; must be greater than zero.
+     * @returns `true` if the store had enough medals and the amount was deducted, `false` otherwise.
+     */
     function spendMedals(amount: number): boolean {
       if (!validatePositiveAmount(amount, 'spendMedals')) {
         return false;
